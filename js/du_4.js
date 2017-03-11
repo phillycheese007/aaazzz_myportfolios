@@ -107,7 +107,7 @@ loader.load('images/deer/pot.js', function (geometry) {
     subj = new THREE.Mesh(geometry,subjMat);
     subj.castShadow = true;
     geometry.computeVertexNormals();
-    subj.scale.set(20,20,20);
+    subj.scale.set(2,2,2);
 	subj.position.set(10, 0, 50);
 subj.castShadow = true;
     subj.rotation.y = convertToRad(90);
