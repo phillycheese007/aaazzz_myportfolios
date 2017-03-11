@@ -51,6 +51,16 @@ light2.position.set(20,30,5);
 
 scene.add(light2);
 
+
+			function onWindowResize() {
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+
 var render = function () {
   requestAnimationFrame( render );
 
@@ -74,13 +84,7 @@ function movement(){
   subj.rotation.z += convertToRad(-vy);
 }
 
-			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
-			}
+
 
 
 function update(){
