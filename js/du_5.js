@@ -81,18 +81,10 @@ function addSceneElements() {
     var cube = new THREE.CubeGeometry( 400, 1, 400);
 
   
-
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
 var subjMat = new THREE.MeshPhongMaterial({
   color:0xF2461C, 
-  shininess:11, 
-  specular:0xEBC335, 
-  shading: THREE.SmoothShading
-  // shading: THREE.FlatShading
-});
-var subjMat_num2 = new THREE.MeshPhongMaterial({
-  color:blue, 
   shininess:11, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
@@ -128,7 +120,7 @@ subj.castShadow = true;
 loader.load('images/deer/bean2.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry,subjMat_num2);
+    subj = new THREE.Mesh(geometry,subjMat);
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
@@ -140,9 +132,8 @@ subj.castShadow = true;
 
 	
 });
-
-
-	
+  
+  
   
   
     // create different materials
