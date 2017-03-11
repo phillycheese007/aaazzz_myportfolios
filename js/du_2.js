@@ -75,7 +75,8 @@ scene.add(light2);
 //
 var render = function () {
   requestAnimationFrame( render );
-
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
   update();
 
   renderer.render(scene, camera);
