@@ -36,7 +36,7 @@ var subjMat = new THREE.MeshPhongMaterial({
 });
 subjMat.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
 subjMat.side = THREE.BackSide;
-subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/deerBump.jpg');
+subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burger.jpg');
 var itmArr = [];
 var vx, vy, vz;
 
