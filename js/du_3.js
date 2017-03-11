@@ -46,6 +46,7 @@ loader.load('images/deer/bean.js', function (geometry) {
     subj = new THREE.Mesh(geometry,subjMat);
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
+    subj.positionX = 30;
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
     
