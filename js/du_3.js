@@ -5,8 +5,7 @@ var scene;
 var renderer;
 var controls;
 
-var spotLight;
-var counter = 0;
+
 
 init();
 animate();
@@ -60,7 +59,7 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
 
 
   
-spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
+var spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
 spotLight.position.set( 0, 150, 0 );
   
 var spotTarget = new THREE.Object3D();
@@ -68,8 +67,7 @@ spotTarget.position.set(0, 0, 0);
 spotLight.target = spotTarget;
   
 scene.add(spotLight);
-scene.add(new THREE.PointLightHelper(spotLight, 1));
-		
+scene.add(new THREE.PointLightHelper(spotLight, 1));	
 }
 
 
@@ -177,10 +175,6 @@ loader.load('images/deer/bean2.js', function (geometry) {
 function animate() {
     renderer.render( scene, camera );
     requestAnimationFrame( animate );  
-	
-    counter += .1;
-    spotLight.target.position.x = Math.sin(counter) * 100;
-	
     controls.update();
 	
 }
