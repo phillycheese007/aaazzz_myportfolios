@@ -42,6 +42,17 @@ function addLights() {
     var dirLight = new THREE.DirectionalLight(0xffffff, 1);
     dirLight.position.set(100, 100, 50);
     scene.add(dirLight);
+  
+var bluePoint = new THREE.PointLight(0x0033ff, 3, 150);
+bluePoint.position.set( 70, 5, 70 );
+scene.add(bluePoint);
+scene.add(new THREE.PointLightHelper(bluePoint, 3));
+  
+var greenPoint = new THREE.PointLight(0x33ff00, 1, 150);
+greenPoint.position.set( -70, 5, 70 );
+scene.add(greenPoint);
+scene.add(new THREE.PointLightHelper(greenPoint, 3));
+  
 }
   
 function addSceneElements() {
