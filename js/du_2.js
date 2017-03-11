@@ -22,6 +22,8 @@ window.addEventListener( 'resize', onWindowResize, false );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 
+
+
 camera.position.z = 250;
 //
 // var subjMat = new THREE.MeshBasicMaterial();
@@ -76,35 +78,6 @@ var render = function () {
 
 render();
 
-window.ondevicemotion = function(e) {
-      vx = event.accelerationIncludingGravity.x/12;
-      vy = event.accelerationIncludingGravity.y/12;
-      vz = event.accelerationIncludingGravity.z/12;
-}
-
-function movement(){
-   subj.rotation.x += convertToRad(vz);
-  subj.rotation.y += convertToRad(vx);
-  subj.rotation.z += convertToRad(-vy);
-}
-
-
-function update(){
- //
-  if(subj){
-//
-    movement();   
-  }
-}
-
-function convertToRad(deg){
-  return deg*Math.PI/180;
-}
-
-function randNum(n){
-  var p = ((Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) - 3) / 3;
-  return p*n;
-}
 
 
 
