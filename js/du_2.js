@@ -7,26 +7,11 @@ var renderer = new THREE.WebGLRenderer();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-				var container = document.getElementById( 'container' );
-				container.appendChild( renderer.domElement );
-
-
-
-				controls = new THREE.OrbitControls( camera, renderer.domElement );
-				controls.addEventListener( 'change', render ); // remove when using animation loop
-				// enable animation loop when using damping or autorotation
-				//controls.enableDamping = true;
-				//controls.dampingFactor = 0.25;
-				controls.enableZoom = false;
-
 
 
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
-
-
-
-
+document.body.appendChild( renderer.domElement );
 window.addEventListener( 'resize', onWindowResize, false );
 
 			function onWindowResize() {
@@ -36,7 +21,6 @@ window.addEventListener( 'resize', onWindowResize, false );
 				camera.updateProjectionMatrix();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
-
 
 camera.position.z = 250;
 //
@@ -78,13 +62,20 @@ light2.position.set(20,30,5);
 scene.add(light2);
 
 
-
+	// FLOOR
+	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
+	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+	floorTexture.repeat.set( 10, 10 );
+	var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+	floor.position.y = -0.5;
+	floor.rotation.x = Math.PI / 2;
+	scene.add(floor);
 
 
 //
 var render = function () {
-					container.appendChild( renderer.domElement );
-
   requestAnimationFrame( render );
 
   update();
@@ -104,44 +95,6 @@ function movement(){
    subj.rotation.x += convertToRad(vz);
   subj.rotation.y += convertToRad(vx);
   subj.rotation.z += convertToRad(-vy);
-}
-
-
-function onDocumentMouseMove( event ) {
-
-    event.preventDefault();
-
-    if ( isMouseDown ) {
-
-        theta = - ( ( event.clientX - onMouseDownPosition.x ) * 0.5 )
-                + onMouseDownTheta;
-        phi = ( ( event.clientY - onMouseDownPosition.y ) * 0.5 )
-              + onMouseDownPhi;
-
-        phi = Math.min( 180, Math.max( 0, phi ) );
-
-        camera.position.x = radious * Math.sin( theta * Math.PI / 360 )
-                            * Math.cos( phi * Math.PI / 360 );
-        camera.position.y = radious * Math.sin( phi * Math.PI / 360 );
-        camera.position.z = radious * Math.cos( theta * Math.PI / 360 )
-                            * Math.cos( phi * Math.PI / 360 );
-        camera.updateMatrix();
-
-    }
-
-    mouse3D = projector.unprojectVector(
-        new THREE.Vector3(
-            ( event.clientX / renderer.domElement.width ) * 2 - 1,
-            - ( event.clientY / renderer.domElement.height ) * 2 + 1,
-            0.5
-        ),
-        camera
-    );
-    ray.direction = mouse3D.subSelf( camera.position ).normalize();
-
-    interact();
-    render();
-
 }
 
 
