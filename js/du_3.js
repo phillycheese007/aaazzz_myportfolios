@@ -58,15 +58,17 @@ greenPoint.position.set( -70, 5, 70 );
 scene.add(greenPoint);
 scene.add(new THREE.PointLightHelper(greenPoint, 3));
 
-var spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
-spotLight.position.set( 0, 150, 0 );
+
   
 spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
+spotLight.position.set( 0, 150, 0 );
+  
+var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
 spotLight.target = spotTarget;
   
 scene.add(spotLight);
-scene.add(new THREE.PointLightHelper(spotLight, 1));	
+scene.add(new THREE.PointLightHelper(spotLight, 1));
 		
 }
 
