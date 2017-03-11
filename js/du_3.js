@@ -55,11 +55,11 @@ var loader2 = new THREE.JSONLoader(); // init the loader util
 
 loader2.load('images/deer/pot.js', function (geometry) {
   
-    subj = new THREE.Mesh(geometry,subjMat);
+    subj2 = new THREE.Mesh(geometry,subjMat);
     geometry.computeVertexNormals();
-    subj.scale.set(2,2,2);
-    subj.rotation.y = convertToRad(90);
-    scene.add(subj);
+    subj2.scale.set(2,2,2);
+    subj2.rotation.y = convertToRad(90);
+    scene.add(subj2);
     
   
 });
