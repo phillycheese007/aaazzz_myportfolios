@@ -89,6 +89,12 @@ scene.add(light2);
 
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 
+
+    var wallMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/bricks.jpg') } );
+    var redMat = new THREE.MeshPhongMaterial( { color: 0xff3300, specular: 0x555555, shininess: 30 } );
+    var purpleMat = new THREE.MeshPhongMaterial( { color: 0x6F6CC5, specular: 0x555555, shininess: 30 } );
+
+
 	// FLOOR
 	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/deer/checkerboard.jpg' );
 	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
@@ -100,6 +106,26 @@ scene.add(light2);
 	floor.rotation.x = Math.PI / 2;
 	scene.add(floor);
 
+
+    // Back wall
+    var backWall = new THREE.Mesh(cube, wallMat );
+    backWall.rotation.x = Math.PI/180 * 90;
+    backWall.position.set(0,100,-100);
+    scene.add( backWall );
+  
+    // Left wall
+    var leftWall = new THREE.Mesh(cube, wallMat );
+    leftWall.rotation.x = Math.PI/180 * 90;
+    leftWall.rotation.z = Math.PI/180 * 90;
+    leftWall.position.set(-100,100,0);
+    scene.add( leftWall );
+  
+    // Right wall
+    var rightWall = new THREE.Mesh(cube, wallMat );
+    rightWall.rotation.x = Math.PI/180 * 90;
+    rightWall.rotation.z = Math.PI/180 * 90;
+    rightWall.position.set(100,100,0);
+    scene.add( rightWall );
 
 //
 var render = function () {
