@@ -69,7 +69,7 @@ scene.add(light2);
 	// note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
 	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
 	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-	floorTexture.repeat.set( 10, 10 );
+	floorTexture.repeat.set( 100, 100 );
 	// DoubleSide: render texture on both sides of mesh
 	var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
 	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 1, 1);
