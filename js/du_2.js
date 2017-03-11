@@ -26,7 +26,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 
 
 
-document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 window.addEventListener( 'resize', onWindowResize, false );
 
