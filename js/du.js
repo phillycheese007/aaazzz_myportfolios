@@ -19,15 +19,15 @@ var subjMat = new THREE.MeshPhongMaterial({
   shading: THREE.SmoothShading
   // shading: THREE.FlatShading
 });
-subjMat.map = THREE.ImageUtils.loadTexture('img/deer/deer.jpg');
+subjMat.map = THREE.ImageUtils.loadTexture('images/deer/deer.jpg');
 subjMat.side = THREE.BackSide;
-subjMat.bumpMap = THREE.ImageUtils.loadTexture('img/deer/deerBump.jpg');
+subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/deerBump.jpg');
 var itmArr = [];
 var vx, vy, vz;
 
 var loader = new THREE.JSONLoader(); // init the loader util
 
-loader.load('img/deer/deer.js', function (geometry) {
+loader.load('images/deer/deer.js', function (geometry) {
   
     subj = new THREE.Mesh(geometry,subjMat);
     geometry.computeVertexNormals();
