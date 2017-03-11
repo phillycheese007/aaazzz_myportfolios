@@ -22,7 +22,7 @@ window.addEventListener( 'resize', onWindowResize, false );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 
-camera.position.z = 250;
+camera.position.z = 200;
 //
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
