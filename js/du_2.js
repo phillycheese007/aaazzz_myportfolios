@@ -106,6 +106,8 @@ function update(){
   if(subj){
 //
     movement();   
+	  	controls.update();
+
   }
 }
 
