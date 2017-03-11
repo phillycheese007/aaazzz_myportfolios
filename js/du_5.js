@@ -111,7 +111,7 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('images/deer/pot.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry);
+    subj = new THREE.Mesh(geometry, subjMat.bumpMap);
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(5,5,5);
