@@ -111,7 +111,7 @@ loader.load('images/deer/pot.js', function (geometry) {
     // Back wall
     var backWall = new THREE.Mesh(cube, wallMat );
     backWall.rotation.x = Math.PI/180 * 90;
-    backWall.position.set(0,100,-100);
+    backWall.position.set(0,100,-200);
     scene.add( backWall );
   
     // Left wall
@@ -125,7 +125,7 @@ loader.load('images/deer/pot.js', function (geometry) {
     var rightWall = new THREE.Mesh(cube, wallMat );
     rightWall.rotation.x = Math.PI/180 * 90;
     rightWall.rotation.z = Math.PI/180 * 90;
-    rightWall.position.set(100,100,0);
+    rightWall.position.set(200,100,0);
     scene.add( rightWall );
   
     // Sphere
