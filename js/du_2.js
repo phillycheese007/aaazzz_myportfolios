@@ -7,17 +7,16 @@ var renderer = new THREE.WebGLRenderer();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-var container = document.getElementById( 'jazz' );
-
+var container = document.createElement( 'div' );
 
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 
-container.appendChild( renderer.domElement );
-// CONTROLS
-controls = new THREE.OrbitControls( camera, renderer.domElement );
+
 
 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+document.body.appendChild( container );
+
 window.addEventListener( 'resize', onWindowResize, false );
 
 			function onWindowResize() {
@@ -78,6 +77,8 @@ scene.add(light2);
 
 //
 var render = function () {
+					container.appendChild( renderer.domElement );
+
   requestAnimationFrame( render );
 
   update();
