@@ -12,6 +12,8 @@ var windowHalfY = window.innerHeight / 2;
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
+
+document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 window.addEventListener( 'resize', onWindowResize, false );
 
 			function onWindowResize() {
@@ -21,7 +23,10 @@ window.addEventListener( 'resize', onWindowResize, false );
 				camera.updateProjectionMatrix();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
-
+			function onDocumentMouseMove( event ) {
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
+			}
 
 
 camera.position.z = 250;
@@ -78,6 +83,35 @@ var render = function () {
 
 render();
 
+window.ondevicemotion = function(e) {
+      vx = event.accelerationIncludingGravity.x/12;
+      vy = event.accelerationIncludingGravity.y/12;
+      vz = event.accelerationIncludingGravity.z/12;
+}
+
+function movement(){
+   subj.rotation.x += convertToRad(vz);
+  subj.rotation.y += convertToRad(vx);
+  subj.rotation.z += convertToRad(-vy);
+}
+
+
+function update(){
+ //
+  if(subj){
+//
+    movement();   
+  }
+}
+
+function convertToRad(deg){
+  return deg*Math.PI/180;
+}
+
+function randNum(n){
+  var p = ((Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) - 3) / 3;
+  return p*n;
+}
 
 
 
