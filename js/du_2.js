@@ -50,6 +50,8 @@ loader.load('images/deer/pot.js', function (geometry) {
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
+	subj.position.set(100, 150, 50);
+
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
 });
@@ -71,7 +73,7 @@ loader.load('images/deer/pot.js', function (geometry) {
 	// using THREE.MeshFaceMaterial() in the constructor below
 	//   causes the mesh to use the materials stored in the geometry
 	cube = new THREE.Mesh( cubeGeometry, cubeMaterials );
-	cube.position.set(-100, 50, -50);
+	cube.position.set(-200, 50, -50);
 	scene.add( cube );
 
 
