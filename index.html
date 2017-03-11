@@ -29,6 +29,9 @@
  renderer.setSize(window.innerWidth, window.innerHeight);
  document.body.appendChild(renderer.domElement);
 
+	 
+	// automatically resize renderer
+	THREEx.WindowResize(renderer, camera);
 
  // Add the lights
  var ambientLight = new THREE.AmbientLight(0x111111);
