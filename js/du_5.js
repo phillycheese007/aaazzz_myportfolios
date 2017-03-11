@@ -84,7 +84,7 @@ function addSceneElements() {
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
 var subjMat = new THREE.MeshPhongMaterial({
-  color:0xF2461C, 
+  color:green, 
   shininess:11, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
@@ -100,22 +100,6 @@ var vx, vy, vz;
 var loader = new THREE.JSONLoader(); // init the loader util
 
 
-
-loader.load('images/deer/pot.js', function (geometry) {
-
-	
-    subj = new THREE.Mesh(geometry,subjMat);
-    subj.castShadow = true;
-    geometry.computeVertexNormals();
-    subj.scale.set(5,5,5);
-	subj.position.set(10, 0, 50);
-subj.castShadow = true;
-    subj.rotation.y = convertToRad(90);
-    scene.add(subj);
-	  
-
-	
-});
   
 loader.load('images/deer/bean2.js', function (geometry) {
 
@@ -133,7 +117,45 @@ subj.castShadow = true;
 	
 });
   
+
+	
+// var subj2Mat = new THREE.MeshBasicMaterial();
+var subj2;
+var subj2Mat = new THREE.MeshPhongMaterial({
+  color:0xF2461C, 
+  shininess:11, 
+  specular:0xEBC335, 
+  shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+});
+subj2Mat.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
+
+	
+subj2Mat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
+var itmArr = [];
+var vx, vy, vz;
+
+var loader = new THREE.JSONLoader(); // init the loader util
+
+
+
   
+loader.load('images/deer/pot.js', function (geometry) {
+
+	
+    subj2 = new THREE.Mesh(geometry,subj2Mat);
+    subj2.castShadow = true;
+    geometry.computeVertexNormals();
+    subj2.scale.set(20,20,20);
+	subj2.position.set(-70, 0, 50);
+subj2.castShadow = true;
+    subj2.rotation.y = convertToRad(90);
+    scene.add(subj2);
+	  
+
+	
+});	
+	
   
   
     // create different materials
