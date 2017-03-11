@@ -59,7 +59,7 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
   
 function addSceneElements() {
     // Create a cube used to build the floor and walls
-    var cube = new THREE.CubeGeometry( 200, 1, 200);
+    var cube = new THREE.CubeGeometry( 400, 1, 200);
 
   
 // var subjMat = new THREE.MeshBasicMaterial();
