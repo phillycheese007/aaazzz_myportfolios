@@ -31,17 +31,7 @@
 
 	 
 
-			function onWindowResize() {
 
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
 
  // Add the lights
  var ambientLight = new THREE.AmbientLight(0x111111);
@@ -116,6 +106,18 @@
    scene.add( sphereModel );
  }
 
+	 
+	 window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+	 
 
  // Render loop to rotate our sphere by a little bit each frame
  var render = function () {
