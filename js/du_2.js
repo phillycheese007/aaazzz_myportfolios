@@ -124,5 +124,3 @@ function randNum(n){
   return p*n;
 }
 
-
-
