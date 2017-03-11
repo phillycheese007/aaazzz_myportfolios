@@ -1,3 +1,5 @@
+var scene = new THREE.Scene();
+
 var camera;
 var scene;
 var renderer;
