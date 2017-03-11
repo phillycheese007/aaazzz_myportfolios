@@ -62,7 +62,7 @@ function addSceneElements() {
     var cube = new THREE.CubeGeometry( 200, 1, 200);
 
   
-  // var subjMat = new THREE.MeshBasicMaterial();
+// var subjMat = new THREE.MeshBasicMaterial();
 var subj;
 var subjMat = new THREE.MeshPhongMaterial({
   color:0xF2461C, 
@@ -77,7 +77,24 @@ subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
 var itmArr = [];
 var vx, vy, vz;
 
-var loader = new THREE.JSONLoader();
+var loader = new THREE.JSONLoader(); // init the loader util
+
+
+
+loader.load('images/deer/pot.js', function (geometry) {
+  
+    subj = new THREE.Mesh(geometry,subjMat);
+    subj.castShadow = true;
+    geometry.computeVertexNormals();
+    subj.scale.set(20,20,20);
+	subj.position.set(0, 0, 50);
+
+    subj.rotation.y = convertToRad(90);
+    scene.add(subj);
+});
+  
+  
+  
   
   
   
