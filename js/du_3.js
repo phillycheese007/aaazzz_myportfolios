@@ -111,21 +111,21 @@ loader.load('images/deer/pot.js', function (geometry) {
     // Back wall
     var backWall = new THREE.Mesh(cube, wallMat );
     backWall.rotation.x = Math.PI/180 * 90;
-    backWall.position.set(0,100,-400);
+    backWall.position.set(0,100,-100);
     scene.add( backWall );
   
     // Left wall
     var leftWall = new THREE.Mesh(cube, wallMat );
     leftWall.rotation.x = Math.PI/180 * 90;
     leftWall.rotation.z = Math.PI/180 * 90;
-    leftWall.position.set(-100,400,0);
+    leftWall.position.set(-100,100,0);
     scene.add( leftWall );
   
     // Right wall
     var rightWall = new THREE.Mesh(cube, wallMat );
     rightWall.rotation.x = Math.PI/180 * 90;
     rightWall.rotation.z = Math.PI/180 * 90;
-    rightWall.position.set(100,400,0);
+    rightWall.position.set(100,100,0);
     scene.add( rightWall );
   
     // Sphere
