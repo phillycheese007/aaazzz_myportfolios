@@ -150,3 +150,24 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
+
+
+
+function update(){
+ //
+  if(subj){
+//
+    movement();   
+	  	controls.update();
+
+  }
+}
+
+function convertToRad(deg){
+  return deg*Math.PI/180;
+}
+
+function randNum(n){
+  var p = ((Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) - 3) / 3;
+  return p*n;
+}
