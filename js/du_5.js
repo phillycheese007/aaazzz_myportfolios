@@ -91,8 +91,8 @@ var subjMat = new THREE.MeshPhongMaterial({
   // shading: THREE.FlatShading
 });
 var subjMat_num2 = new THREE.MeshPhongMaterial({
-  color:0xF2461C, 
-  shininess:11, 
+  color:0xF3461C, 
+  shininess:1, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
   // shading: THREE.FlatShading
@@ -111,7 +111,7 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('images/deer/pot.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry, subjMat.bumpMap);
+    subj = new THREE.Mesh(geometry, subjMat_num2);
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(5,5,5);
