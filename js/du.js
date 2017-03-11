@@ -51,26 +51,13 @@ light2.position.set(20,30,5);
 
 scene.add(light2);
 
-				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				container.appendChild( renderer.domElement );
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				//
-				window.addEventListener( 'resize', onWindowResize, false );
-			}
-			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
-			}
-			function onDocumentMouseMove( event ) {
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
-			}
-//
+var render = function () {
+  requestAnimationFrame( render );
+
+  update();
+
+  renderer.render(scene, camera);
+};
 
 
 render();
