@@ -61,7 +61,7 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
 var spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
 spotLight.position.set( 0, 150, 0 );
   
-var spotTarget = new THREE.Object3D();
+spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
 spotTarget.position.set(0, 0, 0);
 spotLight.target = spotTarget;
   
@@ -176,6 +176,9 @@ function animate() {
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
     controls.update();
+	
+    counter += .1;
+    spotLight.target.position.x = Math.sin(counter) * 100
 }
   
 function onWindowResize() {
