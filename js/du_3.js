@@ -176,11 +176,13 @@ loader.load('images/deer/bean2.js', function (geometry) {
   
 function animate() {
     renderer.render( scene, camera );
-    requestAnimationFrame( animate );
+    requestAnimationFrame( animate );  
+	
+    counter += .1;
+    spotLight.target.position.x = Math.sin(counter) * 100;
+	
     controls.update();
 	
-counter += .1;
-spotLight.target.position.x = Math.sin(counter) * 100;
 }
   
 function onWindowResize() {
