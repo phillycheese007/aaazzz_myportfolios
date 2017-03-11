@@ -90,6 +90,13 @@ var subjMat = new THREE.MeshPhongMaterial({
   shading: THREE.SmoothShading
   // shading: THREE.FlatShading
 });
+var subjMat_num2 = new THREE.MeshPhongMaterial({
+  color:0xF2461C, 
+  shininess:11, 
+  specular:0xEBC335, 
+  shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+});	
 subjMat.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
 
 	
