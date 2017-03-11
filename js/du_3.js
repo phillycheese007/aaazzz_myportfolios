@@ -49,6 +49,15 @@ loader.load('images/deer/bean.js', function (geometry) {
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
     
+loader.load('images/deer/pot.js', function (geometry) {
+  
+    subj = new THREE.Mesh(geometry,subjMat);
+    subj.castShadow = true;
+    geometry.computeVertexNormals();
+    subj.scale.set(20,20,20);
+    subj.rotation.y = convertToRad(90);
+    scene.add(subj);
+	
   
 });
 var spotlight = new THREE.PointLight(0xffffff);
