@@ -127,7 +127,7 @@ subj.castShadow = true;
 loader.load('images/deer/bean2.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry,subjMat);
+    subj = new THREE.Mesh(geometry);
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
