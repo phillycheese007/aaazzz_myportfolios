@@ -58,6 +58,26 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
 function addSceneElements() {
     // Create a cube used to build the floor and walls
     var cube = new THREE.CubeGeometry( 200, 1, 200);
+
+  
+  // var subjMat = new THREE.MeshBasicMaterial();
+var subj;
+var subjMat = new THREE.MeshPhongMaterial({
+  color:0xF2461C, 
+  shininess:11, 
+  specular:0xEBC335, 
+  shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+});
+subjMat.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
+subjMat.side = THREE.BackSide;
+subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
+var itmArr = [];
+var vx, vy, vz;
+
+var loader = new THREE.JSONLoader();
+  
+  
   
     // create different materials
     var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/floor.jpg') } );
