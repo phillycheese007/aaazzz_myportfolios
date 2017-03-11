@@ -58,7 +58,7 @@ loader2.load('images/deer/pot.js', function (geometry) {
     subj2 = new THREE.Mesh(geometry,subjMat);
     geometry.computeVertexNormals();
     subj2.scale.set(2,2,2);
-    subj2.position.y = 150;
+    subj2.position.y = 50;
 
     subj2.rotation.y = convertToRad(90);
     scene.add(subj2);
