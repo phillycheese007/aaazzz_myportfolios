@@ -66,6 +66,16 @@ var render = function () {
 
 render();
 
+
+			function onWindowResize() {
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+
 window.ondevicemotion = function(e) {
       vx = event.accelerationIncludingGravity.x/12;
       vy = event.accelerationIncludingGravity.y/12;
