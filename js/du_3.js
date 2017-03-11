@@ -68,6 +68,9 @@ spotLight.target = spotTarget;
   
 scene.add(spotLight);
 scene.add(new THREE.PointLightHelper(spotLight, 1));	
+	
+var hemLight = new THREE.HemisphereLight(0xffe5bb, 0xFFBF00, .1);
+scene.add(hemLight);	
 }
 
 
