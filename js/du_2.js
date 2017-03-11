@@ -50,7 +50,7 @@ loader.load('images/deer/pot.js', function (geometry) {
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
-	subj.position.set(0, 150, 50);
+	subj.position.set(0, 0, 50);
 
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
