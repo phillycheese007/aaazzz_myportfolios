@@ -1,126 +1,100 @@
-//   name: 'rainbow',
-//   values: ['58C1DA', '30A135', 'EBC335', 'F2461C', 'D72827', 'CCCCCC']
-// }, {
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var renderer = new THREE.WebGLRenderer();
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
-
-
-
-renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
-window.addEventListener( 'resize', onWindowResize, false );
-
-			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
-			}
-
-camera.position.z = 250;
-//
-// var subjMat = new THREE.MeshBasicMaterial();
-var subj;
-var subjMat = new THREE.MeshPhongMaterial({
-  color:0xF2461C, 
-  shininess:11, 
-  specular:0xEBC335, 
-  shading: THREE.SmoothShading
-  // shading: THREE.FlatShading
-});
-subjMat.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
-subjMat.side = THREE.BackSide;
-subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/deerBump.jpg');
-var itmArr = [];
-var vx, vy, vz;
-
-var loader = new THREE.JSONLoader(); // init the loader util
-
-loader.load('images/deer/bean.js', function (geometry) {
+var camera;
+var scene;
+var renderer;
+var controls;
   
-    subj = new THREE.Mesh(geometry,subjMat);
-    geometry.computeVertexNormals();
-    subj.scale.set(20,20,20);
-    subj.positionX = 30;
-    subj.rotation.y = convertToRad(90);
-    scene.add(subj);
-    
-});
-
-var loader2 = new THREE.JSONLoader(); // init the loader util
-
-loader2.load('images/deer/pot.js', function (geometry) {
+init();
+animate();
   
-    subj2 = new THREE.Mesh(geometry,subjMat);
-    geometry.computeVertexNormals();
-    subj2.scale.set(2,2,2);
-    subj2.position.y = 50;
-
-    subj2.rotation.y = convertToRad(90);
-    scene.add(subj2);
-    
+function init() {
   
-});
-
-var spotlight = new THREE.PointLight(0xffffff);
-spotlight.position.set(-20,30,55);
-
-scene.add(spotlight);
-
-var light2 = new THREE.PointLight(0x30A135);
-light2.position.set(20,30,5);
-
-scene.add(light2);
-
-
-
-
-
-//
-var render = function () {
-  requestAnimationFrame( render );
-
-  update();
-
-  renderer.render(scene, camera);
-};
-
-render();
-
-window.ondevicemotion = function(e) {
-      vx = event.accelerationIncludingGravity.x/12;
-      vy = event.accelerationIncludingGravity.y/12;
-      vz = event.accelerationIncludingGravity.z/12;
+    // Create a scene
+    scene = new THREE.Scene();
+  
+    // Add the camera
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.set(0, 100, 250);
+  
+    // Add scene elements
+    addSceneElements();
+  
+    // Add lights
+    addLights();
+  
+    // Create the WebGL Renderer
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+  
+    // Append the renderer to the body
+    document.body.appendChild( renderer.domElement );
+  
+    // Add a resize event listener
+    window.addEventListener( 'resize', onWindowResize, false );
+  
+    // Add the orbit controls
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.target = new THREE.Vector3(0, 100, 0);
 }
-
-function movement(){
-   subj.rotation.x += convertToRad(vz);
-  subj.rotation.y += convertToRad(vx);
-  subj.rotation.z += convertToRad(-vy);
+  
+function addLights() {
+    var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(100, 100, 50);
+    scene.add(dirLight);
 }
-
-
-function update(){
- //
-  if(subj){
-//
-    movement();   
-  }
+  
+function addSceneElements() {
+    // Create a cube used to build the floor and walls
+    var cube = new THREE.CubeGeometry( 200, 1, 200);
+  
+    // create different materials
+    var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/wood-floor.jpg') } );
+    var wallMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/bricks.jpg') } );
+    var redMat = new THREE.MeshPhongMaterial( { color: 0xff3300, specular: 0x555555, shininess: 30 } );
+    var purpleMat = new THREE.MeshPhongMaterial( { color: 0x6F6CC5, specular: 0x555555, shininess: 30 } );
+  
+    // Floor
+    var floor = new THREE.Mesh(cube, floorMat );
+    scene.add( floor );
+  
+    // Back wall
+    var backWall = new THREE.Mesh(cube, wallMat );
+    backWall.rotation.x = Math.PI/180 * 90;
+    backWall.position.set(0,100,-100);
+    scene.add( backWall );
+  
+    // Left wall
+    var leftWall = new THREE.Mesh(cube, wallMat );
+    leftWall.rotation.x = Math.PI/180 * 90;
+    leftWall.rotation.z = Math.PI/180 * 90;
+    leftWall.position.set(-100,100,0);
+    scene.add( leftWall );
+  
+    // Right wall
+    var rightWall = new THREE.Mesh(cube, wallMat );
+    rightWall.rotation.x = Math.PI/180 * 90;
+    rightWall.rotation.z = Math.PI/180 * 90;
+    rightWall.position.set(100,100,0);
+    scene.add( rightWall );
+  
+    // Sphere
+    var sphere = new THREE.Mesh(new THREE.SphereGeometry(20, 70, 20), redMat);
+    sphere.position.set(-25, 100, -20);
+    scene.add(sphere);
+  
+    // Knot thingy
+    var knot = new THREE.Mesh(new THREE.TorusKnotGeometry( 40, 3, 100, 16 ), purpleMat);
+    knot.position.set(0, 60, 30);
+    scene.add(knot);
 }
-
-function convertToRad(deg){
-  return deg*Math.PI/180;
+  
+function animate() {
+    renderer.render( scene, camera );
+    requestAnimationFrame( animate );
+    controls.update();
 }
-
-function randNum(n){
-  var p = ((Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) - 3) / 3;
-  return p*n;
+  
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
 }
-
-
-
