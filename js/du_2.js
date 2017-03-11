@@ -90,18 +90,25 @@ scene.add(light2);
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 
-    var redMat = new THREE.MeshPhongMaterial( { color: 0xff3300, specular: 0x555555, shininess: 30 } );
+	// FLOOR
+	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
+	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+	floorTexture.repeat.set( 10, 10 );
+	var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+	floor.position.y = -0.5;
+	floor.rotation.x = Math.PI / 2;
+	scene.add(floor);
 
 
+	// leftwall
+	var floorTexture = new THREE.Mesh(cube, wallMat );
+    leftWall.rotation.x = Math.PI/180 * 90;
+    leftWall.rotation.z = Math.PI/180 * 90;
+    leftWall.position.set(-100,100,0);
+    scene.add( leftWall );
 
-
-
-    // Back wall
-    var backWall = new THREE.Mesh(cube, redMat );
-    backWall.rotation.x = Math.PI/180 * 90;
-    backWall.position.set(0,100,-100);
-    scene.add( backWall );
-  
 
 //
 var render = function () {
