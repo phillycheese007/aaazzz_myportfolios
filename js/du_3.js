@@ -83,7 +83,6 @@ var loader = new THREE.JSONLoader(); // init the loader util
 
 
 loader.load('images/deer/bean.js', function (geometry) {
-loader.load('images/deer/bean2.js', function (geometry) {
 
 	
     subj = new THREE.Mesh(geometry,subjMat);
@@ -99,7 +98,21 @@ loader.load('images/deer/bean2.js', function (geometry) {
 	
 });
   
-  
+loader.load('images/deer/bean2.js', function (geometry) {
+
+	
+    subj = new THREE.Mesh(geometry,subjMat);
+    subj.castShadow = true;
+    geometry.computeVertexNormals();
+    subj.scale.set(20,20,20);
+	subj.position.set(0, 0, 50);
+
+    subj.rotation.y = convertToRad(90);
+    scene.add(subj);
+	  
+
+	
+});
   
   
   
