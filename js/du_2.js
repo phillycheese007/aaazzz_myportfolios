@@ -25,10 +25,6 @@ window.addEventListener( 'resize', onWindowResize, false );
 			}
 
 
-			function onDocumentMouseMove( event ) {
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
-			}
 
 camera.position.z = 250;
 //
