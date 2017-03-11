@@ -4,7 +4,8 @@ var camera;
 var scene;
 var renderer;
 var controls;
-
+var spotLight;
+var counter = 0;
 
 
 init();
