@@ -41,7 +41,7 @@ var vx, vy, vz;
 
 var loader = new THREE.JSONLoader(); // init the loader util
 
-loader.load('images/deer/rockopera.js', function (geometry) {
+loader.load('images/deer/bean.js', function (geometry) {
   
     subj = new THREE.Mesh(geometry,subjMat);
     geometry.computeVertexNormals();
