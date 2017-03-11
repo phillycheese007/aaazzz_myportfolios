@@ -7,7 +7,19 @@ var renderer = new THREE.WebGLRenderer();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-var container = document.createElement( 'div' );
+				var container = document.getElementById( 'container' );
+				container.appendChild( renderer.domElement );
+
+
+
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.addEventListener( 'change', render ); // remove when using animation loop
+				// enable animation loop when using damping or autorotation
+				//controls.enableDamping = true;
+				//controls.dampingFactor = 0.25;
+				controls.enableZoom = false;
+
+
 
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -15,7 +27,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 
 
 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-document.body.appendChild( container );
 
 window.addEventListener( 'resize', onWindowResize, false );
 
