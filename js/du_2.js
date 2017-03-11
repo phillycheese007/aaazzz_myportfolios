@@ -102,11 +102,12 @@ scene.add(light2);
 	scene.add(floor);
 
 	// FLOOR
-	var leftwall = new THREE.Mesh(cube, wallMat );
+    var wallMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/foor.jpg') } )
+	var leftWall = new THREE.Mesh(cube, wallMat );
     leftWall.rotation.x = Math.PI/180 * 90;
     leftWall.rotation.z = Math.PI/180 * 90;
     leftWall.position.set(-100,100,0);
-	scene.add(leftwall);
+	scene.add(leftWall);
 
 
 
