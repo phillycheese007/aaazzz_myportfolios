@@ -45,6 +45,7 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('images/deer/pot.js', function (geometry) {
   
     subj = new THREE.Mesh(geometry,subjMat);
+    subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(2,2,2);
     subj.rotation.y = convertToRad(90);
