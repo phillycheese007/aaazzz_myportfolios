@@ -66,11 +66,10 @@ scene.add(light2);
 
 
 var render = function () {
-  requestAnimationFrame( render );
-
-  update();
-
-  renderer.render(scene, camera);
+			camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.lookAt( scene.position );
+				renderer.render( scene, camera );
 };
 
 
@@ -80,34 +79,4 @@ render();
 
 
 
-window.ondevicemotion = function(e) {
-      vx = event.accelerationIncludingGravity.x/12;
-      vy = event.accelerationIncludingGravity.y/12;
-      vz = event.accelerationIncludingGravity.z/12;
-}
 
-function movement(){
-   subj.rotation.x += convertToRad(vz);
-  subj.rotation.y += convertToRad(vx);
-  subj.rotation.z += convertToRad(-vy);
-}
-
-
-
-
-function update(){
- //
-  if(subj){
-//
-    movement();   
-  }
-}
-
-function convertToRad(deg){
-  return deg*Math.PI/180;
-}
-
-function randNum(n){
-  var p = ((Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) - 3) / 3;
-  return p*n;
-}
