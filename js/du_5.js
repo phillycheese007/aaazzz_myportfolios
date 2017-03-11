@@ -111,7 +111,7 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('images/deer/pot.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry,subjMat);
+    subj = new THREE.Mesh(geometry);
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(5,5,5);
@@ -127,7 +127,7 @@ subj.castShadow = true;
 loader.load('images/deer/bean2.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry);
+    subj = new THREE.Mesh(geometry, subjMat);
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
