@@ -102,12 +102,7 @@ scene.add(light2);
 	scene.add(floor);
 
 
-	// leftwall
-	var floorTexture = new THREE.Mesh(cube, wallMat );
-    leftWall.rotation.x = Math.PI/180 * 90;
-    leftWall.rotation.z = Math.PI/180 * 90;
-    leftWall.position.set(-100,100,0);
-    scene.add( leftWall );
+
 
 
 //
