@@ -63,6 +63,7 @@ light2.position.set(20,30,5);
 
 scene.add(light2);
 
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 	// FLOOR
 	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/deer/checkerboard.jpg' );
