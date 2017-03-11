@@ -78,7 +78,9 @@ scene.add(light2);
 //
 var render = function () {
 					container.appendChild( renderer.domElement );
-
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.lookAt( scene.position );
   requestAnimationFrame( render );
 
   update();
