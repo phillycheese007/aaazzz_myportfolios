@@ -83,7 +83,9 @@ var loader = new THREE.JSONLoader(); // init the loader util
 
 
 loader.load('images/deer/bean.js', function (geometry) {
-  
+loader.load('images/deer/bean2.js', function (geometry) {
+
+	
     subj = new THREE.Mesh(geometry,subjMat);
     subj.castShadow = true;
     geometry.computeVertexNormals();
@@ -92,6 +94,9 @@ loader.load('images/deer/bean.js', function (geometry) {
 
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
+	  
+
+	
 });
   
   
