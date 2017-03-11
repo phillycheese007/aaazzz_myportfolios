@@ -11,8 +11,8 @@ var renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-
-camera.position.set(0,0,80);
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 250;
 //
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
