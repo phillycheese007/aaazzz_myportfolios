@@ -80,6 +80,9 @@ var render = function () {
 				camera.position.x += ( mouseX - camera.position.x ) * .05;
 				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				camera.lookAt( scene.position );
+
+  update();
+
   renderer.render(scene, camera);
 };
 
