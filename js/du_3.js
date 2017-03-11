@@ -60,7 +60,7 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
 
   
 var spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
-spotLight.position.set( 0, 150, 0 );
+spotLight.position.set( 30, 150, 0 );
   
 var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
