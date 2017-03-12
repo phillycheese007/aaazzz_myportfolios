@@ -97,10 +97,10 @@ var subjMat_num2 = new THREE.MeshPhongMaterial({
   shading: THREE.SmoothShading
   // shading: THREE.FlatShading
 });	
-subjMat.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
+subjMat_num2.map = THREE.ImageUtils.loadTexture('images/deer/floor.jpg');
 
 	
-subjMat.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
+subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
 var itmArr = [];
 var vx, vy, vz;
 
