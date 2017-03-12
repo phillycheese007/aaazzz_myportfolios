@@ -91,7 +91,7 @@ var subjMat = new THREE.MeshPhongMaterial({
   // shading: THREE.FlatShading
 });
 var subjMat_num2 = new THREE.MeshPhongMaterial({
-  color:0xF3461C, 
+
   shininess:1, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
