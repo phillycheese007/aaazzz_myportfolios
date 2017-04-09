@@ -80,9 +80,9 @@ scene.add(hemLight);
 
 function addSceneElements() {
     // Create a cube used to build the floor and walls
-    var cube = new THREE.CubeGeometry( 1000, 1, 500);
+    var cube = new THREE.CubeGeometry( 500, 1, 500);
 	
-    var windowcube = new THREE.CubeGeometry( 200, 1, 200);
+    var windowcube = new THREE.CubeGeometry( 500, 1, 200);
 
 	
 	
@@ -166,21 +166,21 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var purpleMat = new THREE.MeshPhongMaterial( { color: 0x6F6CC5, specular: 0x555555, shininess: 30 } );
   
     // Floor
-    var floor = new THREE.Mesh(cube, wallMat );
+    var floor = new THREE.Mesh(cube, floorMat );
     floor.position.set(0,-250,0);
     scene.add( floor );
   
     // Back wall
     var backWall = new THREE.Mesh(cube, wallMat );
     backWall.rotation.x = Math.PI/180 * 90;
-    backWall.position.set(0,0,-500);
+    backWall.position.set(0,0,-250);
     scene.add( backWall );
   
     // Left wall
     var leftWall = new THREE.Mesh(cube, wallMat );
     leftWall.rotation.x = Math.PI/180 * 90;
     leftWall.rotation.z = Math.PI/180 * 90;
-    leftWall.position.set(-500,0,0);
+    leftWall.position.set(-250,0,0);
     scene.add( leftWall );
 
 	
@@ -189,7 +189,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var window = new THREE.Mesh(windowcube, windowMat );
     window.rotation.x = Math.PI/180 * 90;
     window.rotation.z = Math.PI/180 * 90;
-    window.position.set(-500,100,0);
+    window.position.set(-250,100,0);
     scene.add( window );
 	
 	
@@ -198,7 +198,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var rightWall = new THREE.Mesh(cube, wallMat );
     rightWall.rotation.x = Math.PI/180 * 90;
     rightWall.rotation.z = Math.PI/180 * 90;
-    rightWall.position.set(500,0,0);
+    rightWall.position.set(250,0,0);
     scene.add( rightWall );
   
     // Sphere
