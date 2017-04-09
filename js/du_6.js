@@ -80,7 +80,8 @@ scene.add(hemLight);
 function addSceneElements() {
     // Create a cube used to build the floor and walls
     var cube = new THREE.CubeGeometry( 400, 1, 400);
-
+	
+    var cube2 = new THREE.CubeGeometry( 200, 1, 200);
   
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
@@ -173,7 +174,7 @@ subj.castShadow = true;
 	
 	
     // window
-    var window = new THREE.Mesh(cube, windowMat );
+    var window = new THREE.Mesh(cube2, windowMat );
     window.rotation.x = Math.PI/180 * 90;
     window.rotation.z = Math.PI/180 * 90;
     window.position.set(-200,100,0);
