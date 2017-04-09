@@ -167,7 +167,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
   
     // Floor
     var floor = new THREE.Mesh(cube, floorMat );
-    backWall.position.set(0,100,-200);
+    floor.position.set(0,100,-200);
     scene.add( floor );
   
     // Back wall
