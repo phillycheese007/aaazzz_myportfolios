@@ -187,16 +187,16 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var leftWall2 = new THREE.Mesh(cube3, floorMat );
     leftWall2.rotation.x = Math.PI/180 * 90;
     leftWall2.rotation.z = Math.PI/180 * 90;
-    leftWall2.position.set(-350,0,0);
+    leftWall2.position.set(-250,100,0);
     leftWall2.castShadow = true;
     scene.add( leftWall2 );	
 	
     // window
-    var window = new THREE.Mesh(windowcube, windowMat );
-    window.rotation.x = Math.PI/180 * 90;
-    window.rotation.z = Math.PI/180 * 90;
-    window.position.set(-250,0,0);
-    scene.add( window );
+   // var window = new THREE.Mesh(windowcube, windowMat );
+   // window.rotation.x = Math.PI/180 * 90;
+   // window.rotation.z = Math.PI/180 * 90;
+    //window.position.set(-250,0,0);
+  //  scene.add( window );
 	
 	
 	
