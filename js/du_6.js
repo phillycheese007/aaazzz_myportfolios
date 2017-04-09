@@ -150,9 +150,14 @@ subj.castShadow = true;
   
     // create different materials
     var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/floor.jpg') } );
-    var wallMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/brick.jpg') } );
-      wallMat.wrapS = wallMat.wrapT = THREE.RepeatWrapping;
-      wallMat.repeat.set( 3, 3 );
+	
+	
+var wallMat = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
+wallMat.wrapS = wallMat.wrapT = THREE.RepeatWrapping;
+wallMat.repeat.set( 3, 3 );
+var lavaMaterial = new THREE.MeshBasicMaterial( { map: wallMat } );
+	
+	
 	
     var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/window1.jpg') } );
 
