@@ -161,7 +161,7 @@ wallTexture.repeat.set( 3, 3 );
 var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 	
 var wallTexture2 = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
-wallTexture2.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
+wallTexture2.wrapS = wallTexture2.wrapT = THREE.RepeatWrapping;
 wallTexture2.repeat.set( 3, 3 );
 var wallMat2 = new THREE.MeshBasicMaterial( { map: wallTexture2 } );
 	
