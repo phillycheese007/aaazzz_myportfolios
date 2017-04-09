@@ -63,12 +63,12 @@ var spotLight;
 var counter = 0;
   
 spotLight = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
-spotLight.position.set( 30, 250, 0 );
+spotLight.position.set( -130, 150, 0 );
   
 var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
 spotLight.target = spotTarget;
-spotLight.penumbra = 0.5; 
+spotLight.penumbra = 0.8; 
 	
 scene.add(spotLight);
 scene.add(new THREE.PointLightHelper(spotLight, 1));	
