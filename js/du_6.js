@@ -44,7 +44,7 @@ function init() {
   
 function addLights() {
    var dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(500, 100, 50);
+    dirLight.position.set(-500, 100, 50);
    scene.add(dirLight);
 var ambLight = new THREE.AmbientLight(0x404040);
 scene.add(ambLight);
