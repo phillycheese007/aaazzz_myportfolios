@@ -63,7 +63,7 @@ var spotLight;
 var counter = 0;
   
 spotLight = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
-spotLight.position.set( 430, 150, 0 );
+spotLight.position.set( 230, 150, 0 );
   
 var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
