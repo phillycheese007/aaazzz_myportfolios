@@ -189,7 +189,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var window = new THREE.Mesh(windowcube, windowMat );
     window.rotation.x = Math.PI/180 * 90;
     window.rotation.z = Math.PI/180 * 90;
-    window.position.set(-250,-100,0);
+    window.position.set(-250,0,0);
     scene.add( window );
 	
 	
