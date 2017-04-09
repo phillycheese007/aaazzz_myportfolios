@@ -50,7 +50,7 @@ var ambLight = new THREE.AmbientLight(0x404040);
 scene.add(ambLight);
   
 var bluePoint = new THREE.PointLight(0x0033ff, 3, 150);
-bluePoint.position.set( 70, 5, 70 );
+bluePoint.position.set( 370, 5, 270 );
 scene.add(bluePoint);
 scene.add(new THREE.PointLightHelper(bluePoint, 3));
   
@@ -62,8 +62,8 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
 var spotLight;
 var counter = 0;
   
-spotLight = new THREE.SpotLight(0xffffff, 1, 200, 20, 10);
-spotLight.position.set( 30, 150, 0 );
+spotLight = new THREE.SpotLight(0xffffff, 1, 500, 50, 10);
+spotLight.position.set( 30, 250, 0 );
   
 var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
