@@ -152,11 +152,12 @@ subj.castShadow = true;
     var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/floor.jpg') } );
 	
 	
-var wallMat = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
-wallMat.wrapS = wallMat.wrapT = THREE.RepeatWrapping;
-wallMat.repeat.set( 3, 3 );
-var lavaMaterial = new THREE.MeshBasicMaterial( { map: wallMat } );
+    var wallMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/brick.jpg') } );
 	
+var wallTexture = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
+wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
+wallTexture.repeat.set( 3, 3 );
+var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );	
 	
 	
     var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/window1.jpg') } );
