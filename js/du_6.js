@@ -179,25 +179,7 @@ subj.castShadow = true;
     scene.add( window );
 	
 	
-              var squareGeometry = new THREE.Geometry(); 
-                 squareGeometry.vertices.push(new THREE.Vector3(-1.0,  1.0, 0.0)); 
-                 squareGeometry.vertices.push(new THREE.Vector3( 1.0,  1.0, 0.0)); 
-                 squareGeometry.vertices.push(new THREE.Vector3( 1.0, -1.0, 0.0)); 
-                 squareGeometry.vertices.push(new THREE.Vector3(-1.0, -1.0, 0.0)); 
-                 squareGeometry.faces.push(new THREE.Face3(0, 1, 2)); 
-                 squareGeometry.faces.push(new THREE.Face3(0, 2, 3)); 
-	
-	
-                 var squareMaterial = new THREE.MeshBasicMaterial({ 
-                     color:0xFFFFFF, 
-                    side:THREE.DoubleSide 
-             }); 
-	
-	var squareMesh = new THREE.Mesh(squareGeometry, squareMaterial); 
-                squareMesh.position.set(1.5, 0.0, 4.0); 
-                scene.add(squareMesh); 
-           } 
-	
+
 	
 	
 
