@@ -152,7 +152,6 @@ subj.castShadow = true;
     var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/floor.jpg') } );
 	
 	
-    var wallMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/brick.jpg') } );
 	
 var wallTexture = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
 wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
