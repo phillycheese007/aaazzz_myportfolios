@@ -154,7 +154,7 @@ subj.castShadow = true;
 	
 	
 	
-var wallTexture = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
+var wallTexture = THREE.ImageUtils.loadTexture( '/responsive_shapes/images/aaa.svg' );
 wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
 wallTexture.repeat.set( 3, 3 );
 var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );	
