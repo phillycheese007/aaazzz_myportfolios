@@ -1,3 +1,4 @@
+
 var scene = new THREE.Scene();
 
 var camera;
@@ -150,7 +151,6 @@ subj.castShadow = true;
 	
     var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/window1.jpg') } );
 
-	
     var redMat = new THREE.MeshPhongMaterial( { color: 0xff3300, specular: 0x555555, shininess: 30 } );
     var purpleMat = new THREE.MeshPhongMaterial( { color: 0x6F6CC5, specular: 0x555555, shininess: 30 } );
   
@@ -170,6 +170,8 @@ subj.castShadow = true;
     leftWall.rotation.z = Math.PI/180 * 90;
     leftWall.position.set(-200,100,0);
     scene.add( leftWall );
+
+	
 	
     // window
     var window = new THREE.Mesh(windowcube, windowMat );
@@ -179,17 +181,7 @@ subj.castShadow = true;
     scene.add( window );
 	
 	
-
 	
-	
-
-	
-	
-	
-	
-	
-	
-  
     // Right wall
     var rightWall = new THREE.Mesh(cube, wallMat );
     rightWall.rotation.x = Math.PI/180 * 90;
