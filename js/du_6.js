@@ -158,7 +158,12 @@ subj.castShadow = true;
 var wallTexture = THREE.ImageUtils.loadTexture( '/responsive_shapes/images/aaa.svg' );
 wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
 wallTexture.repeat.set( 3, 3 );
-var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );	
+var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
+	
+var wallTexture2 = THREE.ImageUtils.loadTexture( 'images/deer/brick.jpg' );
+wallTexture2.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
+wallTexture2.repeat.set( 3, 3 );
+var wallMat2 = new THREE.MeshBasicMaterial( { map: wallTexture2 } );
 	
 	
     var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/window1.jpg') } );
@@ -178,13 +183,13 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     scene.add( backWall );
   
     // Left wall
-   // var leftWall = new THREE.Mesh(cube, wallMat );
-   // leftWall.rotation.x = Math.PI/180 * 90;
-   // leftWall.rotation.z = Math.PI/180 * 90;
-   // leftWall.position.set(-250,0,0);
-   // scene.add( leftWall );
+    var leftWall = new THREE.Mesh(cube, wallMat2 );
+    leftWall.rotation.x = Math.PI/180 * 90;
+    leftWall.rotation.z = Math.PI/180 * 90;
+    leftWall.position.set(-250,0,0);
+    scene.add( leftWall );
 
-    var leftWall2 = new THREE.Mesh(cube3, floorMat );
+    var leftWall2 = new THREE.Mesh(cube3, wallMat );
     leftWall2.rotation.x = Math.PI/180 * 90;
     leftWall2.rotation.z = Math.PI/180 * 90;
     leftWall2.position.set(-250,100,0);
