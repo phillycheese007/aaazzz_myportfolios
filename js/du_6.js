@@ -43,9 +43,9 @@ function init() {
 }
   
 function addLights() {
-   var dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(-500, 100, 50);
-   scene.add(dirLight);
+  // var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+  //  dirLight.position.set(-500, 100, 50);
+ //  scene.add(dirLight);
 var ambLight = new THREE.AmbientLight(0x404040);
 scene.add(ambLight);
   
@@ -63,7 +63,7 @@ var spotLight;
 var counter = 0;
   
 spotLight = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
-spotLight.position.set( 230, 150, 0 );
+spotLight.position.set( 430, 150, 0 );
   
 var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
