@@ -172,7 +172,15 @@ subj.castShadow = true;
 	
 	
 	
+                 var squareMaterial = new THREE.MeshBasicMaterial({ 
+                     color:0xFFFFFF, 
+                    side:THREE.DoubleSide 
+             }); 
 	
+	var squareMesh = new THREE.Mesh(squareGeometry, squareMaterial); 
+                squareMesh.position.set(1.5, 0.0, 4.0); 
+                scene.add(squareMesh); 
+           } 
 	
 	
 	
