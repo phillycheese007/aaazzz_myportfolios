@@ -165,11 +165,19 @@ subj.castShadow = true;
     scene.add( backWall );
   
     // Left wall
-    var leftWall = new THREE.Mesh(windowcube, wallMat );
+    var leftWall = new THREE.Mesh(cube, wallMat );
     leftWall.rotation.x = Math.PI/180 * 90;
     leftWall.rotation.z = Math.PI/180 * 90;
     leftWall.position.set(-200,100,0);
     scene.add( leftWall );
+	
+    // window
+    var window = new THREE.Mesh(windowcube, windowMat );
+    window.rotation.x = Math.PI/180 * 90;
+    window.rotation.z = Math.PI/180 * 90;
+    window.position.set(-200,100,0);
+    scene.add( window );
+	
 	
               var squareGeometry = new THREE.Geometry(); 
                  squareGeometry.vertices.push(new THREE.Vector3(-1.0,  1.0, 0.0)); 
@@ -192,12 +200,7 @@ subj.castShadow = true;
 	
 	
 	
-    // window
-    var window = new THREE.Mesh(cube, windowMat );
-    window.rotation.x = Math.PI/180 * 90;
-    window.rotation.z = Math.PI/180 * 90;
-    window.position.set(-200,100,0);
-    scene.add( window );
+
 	
 	
 	
