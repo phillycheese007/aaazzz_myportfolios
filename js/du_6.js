@@ -171,6 +171,13 @@ subj.castShadow = true;
     leftWall.position.set(-200,100,0);
     scene.add( leftWall );
 	
+              var squareGeometry = new THREE.Geometry(); 
+                 squareGeometry.vertices.push(new THREE.Vector3(-1.0,  1.0, 0.0)); 
+                 squareGeometry.vertices.push(new THREE.Vector3( 1.0,  1.0, 0.0)); 
+                 squareGeometry.vertices.push(new THREE.Vector3( 1.0, -1.0, 0.0)); 
+                 squareGeometry.vertices.push(new THREE.Vector3(-1.0, -1.0, 0.0)); 
+                 squareGeometry.faces.push(new THREE.Face3(0, 1, 2)); 
+                 squareGeometry.faces.push(new THREE.Face3(0, 2, 3)); 
 	
 	
                  var squareMaterial = new THREE.MeshBasicMaterial({ 
