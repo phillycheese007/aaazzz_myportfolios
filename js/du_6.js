@@ -83,7 +83,6 @@ function addSceneElements() {
     var cube = new THREE.CubeGeometry( 1000, 1, 500);
 	
     var windowcube = new THREE.CubeGeometry( 200, 1, 200);
-     windowcube.position.set( 30, 250, 0 );
 
 	
 	
