@@ -188,6 +188,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     leftWall2.rotation.x = Math.PI/180 * 90;
     leftWall2.rotation.z = Math.PI/180 * 90;
     leftWall2.position.set(-350,0,0);
+    leftWall2.castShadow = true;
     scene.add( leftWall2 );	
 	
     // window
