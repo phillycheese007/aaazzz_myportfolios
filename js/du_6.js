@@ -166,8 +166,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var purpleMat = new THREE.MeshPhongMaterial( { color: 0x6F6CC5, specular: 0x555555, shininess: 30 } );
   
     // Floor
-    var floor = new THREE.Mesh(cube, floorMat );
-    floor.rotation.y = Math.PI/180 * 90;
+    var floor = new THREE.Mesh(cube, wallMat );
     floor.position.set(0,-250,0);
     scene.add( floor );
   
