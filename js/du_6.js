@@ -167,7 +167,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
   
     // Floor
     var floor = new THREE.Mesh(cube, floorMat );
-    floor.position.set(0,400,0);
+    floor.position.set(0,-500,0);
     scene.add( floor );
   
     // Back wall
@@ -180,7 +180,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var leftWall = new THREE.Mesh(cube, wallMat );
     leftWall.rotation.x = Math.PI/180 * 90;
     leftWall.rotation.z = Math.PI/180 * 90;
-    leftWall.position.set(-500,100,0);
+    leftWall.position.set(-500,0,0);
     scene.add( leftWall );
 
 	
@@ -198,7 +198,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var rightWall = new THREE.Mesh(cube, wallMat );
     rightWall.rotation.x = Math.PI/180 * 90;
     rightWall.rotation.z = Math.PI/180 * 90;
-    rightWall.position.set(500,100,0);
+    rightWall.position.set(500,0,0);
     scene.add( rightWall );
   
     // Sphere
