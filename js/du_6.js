@@ -167,6 +167,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
   
     // Floor
     var floor = new THREE.Mesh(cube, floorMat );
+    floor.rotation.y = Math.PI/180 * 90;
     floor.position.set(0,-250,0);
     scene.add( floor );
   
