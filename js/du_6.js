@@ -121,7 +121,7 @@ loader.load('images/deer/pot.js', function (geometry) {
     subj.castShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(5,5,5);
-	subj.position.set(10, -250, 10);
+	subj.position.set(-110, -250, -110);
 subj.castShadow = true;
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
@@ -189,7 +189,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     var window = new THREE.Mesh(windowcube, windowMat );
     window.rotation.x = Math.PI/180 * 90;
     window.rotation.z = Math.PI/180 * 90;
-    window.position.set(-250,100,0);
+    window.position.set(-250,-100,0);
     scene.add( window );
 	
 	
