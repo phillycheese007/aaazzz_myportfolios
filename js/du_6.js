@@ -46,11 +46,11 @@ function addLights() {
   // var dirLight = new THREE.DirectionalLight(0xffffff, 1);
   //  dirLight.position.set(-500, 100, 50);
  //  scene.add(dirLight);
-var ambLight = new THREE.AmbientLight(0x404040);
-scene.add(ambLight);
+//var ambLight = new THREE.AmbientLight(0x404040);
+//scene.add(ambLight);
   
 var bluePoint = new THREE.PointLight(0x0033ff, 3, 150);
-bluePoint.position.set( 370, 5, 270 );
+bluePoint.position.set( 70, 5, 270 );
 scene.add(bluePoint);
 scene.add(new THREE.PointLightHelper(bluePoint, 3));
   
@@ -63,7 +63,7 @@ var spotLight;
 var counter = 0;
   
 spotLight = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
-spotLight.position.set( 230, 150, 0 );
+spotLight.position.set( 130, 150, 0 );
   
 var spotTarget = new THREE.Object3D();
 spotTarget.position.set(0, 0, 0);
@@ -73,9 +73,9 @@ spotLight.penumbra = 0.8;
 scene.add(spotLight);
 scene.add(new THREE.PointLightHelper(spotLight, 1));	
 	
-var hemLight = new THREE.HemisphereLight(0xffe5bb, 0xFFBF00, .1);
-scene.add(hemLight);	
-}
+//var hemLight = new THREE.HemisphereLight(0xffe5bb, 0xFFBF00, .1);
+//scene.add(hemLight);	
+//}
 
 
 function addSceneElements() {
