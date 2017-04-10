@@ -58,4 +58,4 @@
 	Object.assign( ShaderLib.standard.uniforms, ltc_brdf );
 	Object.assign( ShaderLib.physical.uniforms, ltc_brdf );
 
-} )()
+} );
