@@ -75,13 +75,14 @@
 				metalness: 0.0
 			};
 
-var cube = new THREE.CubeGeometry( 500, 1, 500);
-		
+
+			
+			
 var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
 var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			
 			
-			var matPhongFloor = new THREE.MeshPhongMaterial( matPhongParams );
+			var matPhongFloor = new THREE.MeshPhongMaterial( floorMat );
 			var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
 
 			
