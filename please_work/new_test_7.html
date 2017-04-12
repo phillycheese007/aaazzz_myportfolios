@@ -145,8 +145,15 @@
 			
 			var rectLight;
 			var rectLightHelper;
+			
 			var rectLight3;
 			var rectLightHelper3;
+			
+			var rectLight4;
+			var rectLightHelper4;
+			
+			var rectLight5;
+			var rectLightHelper5;
 			
 			var ray = new THREE.Raycaster();
 			var mouseDown = new THREE.Vector2();
@@ -198,13 +205,24 @@
 				rectLight3.position.set( 0, 30, 150 );
 				rectLight3.rotation.y = Math.PI/180 * 180;
 
-				// TODO: ensure RectAreaLight handles target param correctly
-				// rectLight.target = mshPhongBox;
-
 				rectLight3Helper = new THREE.RectAreaLightHelper( rectLight3 );
 				rectLight3.add( rectLight3Helper );			
-				// TODO (abelnation): rect light shadow
 
+				rectLight4 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
+				rectLight4.matrixAutoUpdate = true;
+				rectLight4.intensity = 1000.0;
+				rectLight4.position.set( 0, 30, -50 );
+				rectLight4.rotation.y = Math.PI/180 * 180;
+				rectLight4Helper = new THREE.RectAreaLightHelper( rectLight4 );
+				rectLight4.add( rectLight4Helper );
+
+				rectLight5 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
+				rectLight5.matrixAutoUpdate = true;
+				rectLight5.intensity = 1000.0;
+				rectLight5.position.set( 0, 30, 50 );
+				rectLight5.rotation.y = Math.PI/180 * 180;
+				rectLight5Helper = new THREE.RectAreaLightHelper( rectLight5 );
+				rectLight5.add( rectLight5Helper );				
 				
 // var subjMat = new THREE.MeshBasicMaterial();
 
@@ -334,6 +352,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				
 				scn.add( rectLight );
 				scn.add( rectLight3 );
+				scn.add( rectLight4 );
+				scn.add( rectLight5 );
 
 				
 
@@ -376,18 +396,13 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 			}
 
 			function tick() {
-
 				if ( param.motion )
 					update();
-
 				render();
-
 				requestAnimationFrame( tick );
-
 			}
 
 			function update() {
-
 				var dt = 6000;
 				var qdt = dt / 4.0;
 				var dirSigns = [
@@ -397,12 +412,10 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 					[ 1,  1 ]
 				];
 				var t = ( Date.now() / 1000 );
-
 				// move light in circle around center
 				// change light height with sine curve
-
 				var r = 15.0;
-
+				
 				var lx = r * Math.cos( t );
 				var lz = r * Math.sin( t );
 
@@ -415,12 +428,23 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				rectLight3.position.set( lx, ly, lz );
 				rectLight3.lookAt( origin.position );
 				rectLight3.updateMatrixWorld();
+				
+				rectLight4.position.set( lx, ly, lz );
+				rectLight4.lookAt( origin.position );
+				rectLight4.updateMatrixWorld();
+				
+				rectLight5.position.set( lx, ly, lz );
+				rectLight5.lookAt( origin.position );
+				rectLight5.updateMatrixWorld();
 			}
 
 			function render() {
 
 				rectLightHelper.update(); // required
 				rectLight3Helper.update(); // required
+				rectLight4Helper.update(); // required
+				rectLight5Helper.update(); // required
+
 
 				rnd.render( scn, cam );
 
@@ -463,8 +487,20 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 					height: rectLight3.height,
 					color: rectLight3.color.getHex(),
 					
+					width: rectLight4.width,
+					height: rectLight4.height,
+					color: rectLight4.color.getHex(),
+					
+					width: rectLight5.width,
+					height: rectLight5.height,
+					color: rectLight5.color.getHex(),
+					
 					intensity: rectLight.intensity,
 					intensity: rectLight3.intensity,
+					intensity: rectLight4.intensity,
+					intensity: rectLight5.intensity,
+
+					
 					'ambient light color': amb.color.getHex(),
 					'floor color p': matPhongFloor.color.getHex(),
 					'object color p': matPhongObjects.color.getHex(),
@@ -483,6 +519,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 					rectLight.width = val;
 					rectLight3.width = val;
+					rectLight4.width = val;
+					rectLight5.width = val;
 
 
 				} );
@@ -491,6 +529,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 					rectLight.height = val;
 					rectLight3.height = val;
+					rectLight4.height = val;
+					rectLight5.height = val;
 
 
 				} );
@@ -499,6 +539,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 					rectLight.color.setHex( val );
 					rectLight3.color.setHex( val );
+					rectLight4.color.setHex( val );
+					rectLight5.color.setHex( val );
 
 				} );
 
@@ -506,6 +548,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 					rectLight.intensity = val;
 					rectLight3.intensity = val;
+					rectLight4.intensity = val;
+					rectLight5.intensity = val;
 
 				} );
 
