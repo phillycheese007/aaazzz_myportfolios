@@ -94,8 +94,9 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
     var backWall = new THREE.Mesh(geoFloor, floorMat );
 
 			
-			
-			
+var ambLight2 = new THREE.AmbientLight(0x404040);
+scene.add(ambLight2);
+	
 			
 			var geoFloor = new THREE.BoxGeometry( 500, 0.1, 500 );
 			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
