@@ -88,12 +88,12 @@
 
 					
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
-  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
-		
+  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
  
 
 			
-			
+
+
 			
 			
 			var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
@@ -110,13 +110,17 @@
 	
 		
 	
-			
+//var geoPlant = new THREE.BoxGeometry( 300, 0.1, 300 );
+
 			
 			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
 			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
 			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
 			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
+			
+			
 
+			
 			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
 			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
@@ -224,7 +228,25 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot.position.set(0, 0, 0);
     plant_1_pot.castShadow = true;
     //plant_1_pot.rotation.y = convertToRad(90);
-    scn.add(plant_1_pot);	 	
+	
+	
+	
+	
+  var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/app.png' );
+  var gooseMat = new THREE.MeshBasicMaterial( { map: gooseTexture } );
+	
+  var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
+  var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
+  var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
+	
+	
+  matStdPlant.color.set( 0x808080 );
+  mshPhongPlant.receiveShadow = true;
+  mshPhongPlant.position.set( 0, 0, 0 );
+	
+	
+	
+  scn.add(plant_1_pot);	 	
 });
   
 		
@@ -261,9 +283,9 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				
 				
 
-	// 
-				
-				
+	// 	
+scn.add( mshPhongPlant );
+        //
 
 				
 				scn.add( mshPhongFloor );
@@ -293,7 +315,10 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				mshStdKnot.receiveShadow = true;
 
 				
-				
+        //			
+ scn.add( mshStdFloor );
+        //
+
 				scn.add( mshStdFloor );
 				scn.add( mshStdBox );
 				scn.add( mshStdSphere );
