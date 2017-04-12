@@ -238,6 +238,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
   var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
   var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
   var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
+  var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
+
 	
 	
   matStdPlant.color.set( 0x808080 );
