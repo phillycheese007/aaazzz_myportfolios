@@ -206,37 +206,6 @@
 				
 				
 				
-function addSceneElements() {
-	
-var cube = new THREE.CubeGeometry( 500, 1, 500);
-var cube3 = new THREE.CubeGeometry( 200, 1, 200);
-				
-				
-var wallTexture = THREE.ImageUtils.loadTexture( '/responsive_shapes/images/aaa.svg' );
-wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
-wallTexture.repeat.set( 3, 3 );
-var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );			
-			
-    // Back wall
-    var backWall = new THREE.Mesh(cube, wallMat );
-    backWall.rotation.x = Math.PI/180 * 90;
-    backWall.position.set(0,0,-250);
-    scene.add( backWall );
-  
-    // Left wall
-    var leftWall = new THREE.Mesh(cube, wallMat2 );
-    leftWall.rotation.x = Math.PI/180 * 90;
-    leftWall.rotation.z = Math.PI/180 * 90;
-    leftWall.position.set(-250,0,0);
-    scene.add( leftWall );			
-
-    // Right wall
-    var rightWall = new THREE.Mesh(cube, wallMat );
-    rightWall.rotation.x = Math.PI/180 * 90;
-    rightWall.rotation.z = Math.PI/180 * 90;
-    rightWall.position.set(250,0,0);
-    scene.add( rightWall );			
-}				
 				
 				
 				
@@ -339,7 +308,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 				clearGui();
 
 				param = {
-					motion: true,
+					motion: false,
 					width: rectLight.width,
 					height: rectLight.height,
 					color: rectLight.color.getHex(),
