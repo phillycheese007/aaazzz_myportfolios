@@ -96,9 +96,9 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
 			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
 
-			var mshPhongFloor = new THREE.Mesh( cube, matPhongFloor );
-			var mshPhongBox = new THREE.Mesh( cube, matPhongObjects );
-			var mshPhongSphere = new THREE.Mesh( cube, WallMat );
+			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
+			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
 			var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
 
 			var mshStdFloor = new THREE.Mesh( geoFloor, matStdFloor );
