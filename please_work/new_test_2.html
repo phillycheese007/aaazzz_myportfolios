@@ -210,6 +210,16 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				scn.add( mshPhongSphere );
 				scn.add( mshPhongKnot );
 
+				
+				
+				
+				backWall.position.set( 5, 5, -5 );
+				backWall.castShadow = true;
+				backWall.receiveShadow = true;
+				
+				
+				
+				
 				mshStdBox.castShadow = true;
 				mshStdBox.receiveShadow = true;
 				mshStdBox.position.set( 0, 5, -5 );
