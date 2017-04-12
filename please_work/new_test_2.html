@@ -125,7 +125,10 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			
 			var rectLight;
 			var rectLightHelper;
-
+			var rectLight2;
+			var rectLightHelper2;
+			
+			
 			var ray = new THREE.Raycaster();
 			var mouseDown = new THREE.Vector2();
 			var mouse = new THREE.Vector2();
@@ -168,7 +171,9 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
 				rectLight.add( rectLightHelper );
 
-								rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 2, 10 );
+				
+				
+				rectLight2 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 2, 10 );
 				rectLight2.matrixAutoUpdate = true;
 				rectLight2.intensity = 90.0;
 				rectLight2.position.set( 15, 5, 0 );
