@@ -202,12 +202,8 @@
 
 				orb.addEventListener( 'change', render );
 				orb.update();
-
-			}
-			
-			
-			
-			
+				
+				
 spotLight = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
 spotLight.position.set( 130, 150, 0 );
   
@@ -218,6 +214,16 @@ spotLight.penumbra = 0.8;
 	
 scene.add(spotLight);
 scene.add(new THREE.PointLightHelper(spotLight, 1));
+				
+				
+				
+
+			}
+			
+			
+			
+			
+
 			
 			
 
