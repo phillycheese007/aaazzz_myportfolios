@@ -75,11 +75,30 @@
 				metalness: 0.0
 			};
 
+			
+			
+
+			
+  var subjMat_num2 = new THREE.MeshPhongMaterial({
+
+    shininess:1, 
+    specular:0xEBC335, 
+    shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+  });
 
 			
 			
-var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
-var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
+			
+			
+			
+
+					
+  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
+			
+ 
+			
 			
 			
 			var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
@@ -90,10 +109,15 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
 
+		
 			
-
 			
+  var loader = new THREE.JSONLoader();
+  var plant_1_pot; 			
 	
+		
+	
+			
 			
 			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
 			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
@@ -183,6 +207,27 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				rectLightHelper2 = new THREE.RectAreaLightHelper( rectLight2 );
 				rectLight2.add( rectLightHelper2 );			
 				// TODO (abelnation): rect light shadow
+				
+				
+				
+				
+				
+				
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
+    plant_1_pot.castShadow = true;
+    geometry.computeVertexNormals();
+    plant_1_pot.scale.set(5,5,5);
+    plant_1_pot.position.set(-100, -250, -110);
+    plant_1_pot.castShadow = true;
+    plant_1_pot.rotation.y = convertToRad(90);
+    scene.add(plant_1_pot);	 	
+});
+				
+				
+				
+				
+				
 
 				scn.add( cam );
 				scn.add( origin );
