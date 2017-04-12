@@ -91,7 +91,7 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
 
 			
-    var backWall = new THREE.Mesh(geofloor, floorMat );
+    var backWall = new THREE.Mesh(geoFloor, floorMat );
 
 			
 			
@@ -193,7 +193,18 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				mshPhongKnot.position.set( 5, 5, 5 );
 				mshPhongKnot.castShadow = true;
 				mshPhongKnot.receiveShadow = true;
+				
+				
+				
+				backWall.rotation.x = Math.PI/180 * 90;
+                                backWall.position.set(0,0,-250);
 
+				
+	//			
+				scn.add( backWall );
+	//
+				
+				
 				scn.add( mshPhongFloor );
 				scn.add( mshPhongBox );
 				scn.add( mshPhongSphere );
@@ -212,6 +223,8 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				mshStdKnot.castShadow = true;
 				mshStdKnot.receiveShadow = true;
 
+				
+				
 				scn.add( mshStdFloor );
 				scn.add( mshStdBox );
 				scn.add( mshStdSphere );
