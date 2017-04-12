@@ -440,6 +440,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 				rectLightHelper.update(); // required
 				rectLight2Helper.update(); // required
+				rectLight3Helper.update(); // required
 
 				rnd.render( scn, cam );
 
@@ -477,6 +478,11 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 					width: rectLight.width,
 					height: rectLight.height,
 					color: rectLight.color.getHex(),
+					
+					width: rectLight3.width,
+					height: rectLight3.height,
+					color: rectLight3.color.getHex(),
+					
 					intensity: rectLight.intensity,
 					'ambient light color': amb.color.getHex(),
 					'floor color p': matPhongFloor.color.getHex(),
@@ -495,24 +501,30 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				lightFolder.add( param, 'width', 0.1, 20).onChange( function ( val ) {
 
 					rectLight.width = val;
+					rectLight3.width = val;
+
 
 				} );
 
 				lightFolder.add( param, 'height', 0.1, 20).onChange( function ( val ) {
 
 					rectLight.height = val;
+					rectLight3.height = val;
+
 
 				} );
 
 				lightFolder.addColor( param, 'color' ).onChange( function ( val ) {
 
 					rectLight.color.setHex( val );
+					rectLight3.color.setHex( val );
 
 				} );
 
 				lightFolder.add( param, 'intensity', 0.0, 200.0 ).onChange( function ( val ) {
 
 					rectLight.intensity = val;
+					rectLight3.intensity = val;
 
 				} );
 
