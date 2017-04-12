@@ -94,7 +94,6 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
     var backWall = new THREE.Mesh(geoFloor, floorMat );
 
 			
-var ambLight2 = new THREE.AmbientLight(0x404040);
 	
 			
 			var geoFloor = new THREE.BoxGeometry( 500, 0.1, 500 );
@@ -114,6 +113,7 @@ var ambLight2 = new THREE.AmbientLight(0x404040);
 
 			var amb = new THREE.AmbientLight( 0x000000 );
 
+                        var ambLight2 = new THREE.AmbientLight(0x404040);
 
 			
 			
@@ -241,7 +241,11 @@ var ambLight2 = new THREE.AmbientLight(0x404040);
 				scn.add( mshStdKnot );
 
 				scn.add( amb );
+				
+				scn.add( ambLight2 );
 
+				
+				
 				scn.add( rectLight );
 
 				document.body.appendChild( rnd.domElement );
