@@ -206,9 +206,9 @@ var geometry1;
 	
 
 				
-geometry.computeVertexNormals();
+geometry1.computeVertexNormals();
 				
-    plant_1_pot = new THREE.Mesh(geometry, poopMat);
+    plant_1_pot = new THREE.Mesh(geometry1, poopMat);
     plant_1_pot.castShadow = true;
     plant_1_pot.scale.set(5,5,5);
     plant_1_pot.position.set(0, 0, 0);
@@ -217,7 +217,7 @@ geometry.computeVertexNormals();
 				
 loader = new THREE.JSONLoader(); // init the loader util
 
-loader.load('images/deer/pot.js', geometry);
+loader.load('images/deer/pot.js', geometry1);
 	
 			
 				
