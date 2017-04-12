@@ -90,6 +90,7 @@ function addSceneElements() {
 	
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
+var plant_1_pot;
 var subjMat = new THREE.MeshPhongMaterial({
   color:0xF2461C, 
   shininess:11, 
@@ -118,14 +119,14 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('images/deer/pot.js', function (geometry) {
 
 	
-    subj = new THREE.Mesh(geometry, subjMat_num2);
-    subj.castShadow = true;
+    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
+    plant_1_pot.castShadow = true;
     geometry.computeVertexNormals();
-    subj.scale.set(5,5,5);
-	subj.position.set(-100, -250, -110);
-subj.castShadow = true;
-    subj.rotation.y = convertToRad(90);
-    scene.add(subj);
+    plant_1_pot.scale.set(5,5,5);
+	plant_1_pot.position.set(-100, -250, -110);
+plant_1_pot.castShadow = true;
+    plant_1_pot.rotation.y = convertToRad(90);
+    scene.add(plant_1_pot);
 	  
 
 	
