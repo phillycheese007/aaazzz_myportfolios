@@ -266,7 +266,10 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
   mshPhongPlant.castShadow = true;
   mshPhongPlant.receiveShadow = true;
 	
-  scn.add( mshPhongPlant );
+  mshPhongPlant.shininess = 1000;
+
+	
+	scn.add( mshPhongPlant );
   scn.add(plant_1_pot);	 	
 });
   
