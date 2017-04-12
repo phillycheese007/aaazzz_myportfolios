@@ -147,7 +147,8 @@
 			var rectLightHelper;
 			var rectLight2;
 			var rectLightHelper2;
-			
+			var rectLight3;
+			var rectLightHelper3;
 			
 			var ray = new THREE.Raycaster();
 			var mouseDown = new THREE.Vector2();
@@ -204,7 +205,19 @@
 				rectLight2Helper = new THREE.RectAreaLightHelper( rectLight2 );
 				rectLight2.add( rectLight2Helper );			
 				// TODO (abelnation): rect light shadow
-	
+
+				
+				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 100 );
+				rectLight3.matrixAutoUpdate = true;
+				rectLight3.intensity = 90.0;
+				rectLight3.position.set( 0, 0, -75 );
+
+				// TODO: ensure RectAreaLight handles target param correctly
+				// rectLight.target = mshPhongBox;
+
+				rectLight3Helper = new THREE.RectAreaLightHelper( rectLight3 );
+				rectLight3.add( rectLight3Helper );			
+				// TODO (abelnation): rect light shadow
 
 				
 // var subjMat = new THREE.MeshBasicMaterial();
@@ -335,6 +348,9 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				
 				scn.add( rectLight );
 				scn.add( rectLight2 );
+				scn.add( rectLight3 );
+
+				
 
 				document.body.appendChild( rnd.domElement );
 				onResize();
@@ -414,6 +430,10 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				rectLight2.position.set( 12, 21, 12 );
 				rectLight2.lookAt( origin.position );
 				rectLight2.updateMatrixWorld();
+				
+				rectLight3.position.set( lx, ly, lz );
+				rectLight3.lookAt( origin.position );
+				rectLight3.updateMatrixWorld();
 			}
 
 			function render() {
