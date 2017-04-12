@@ -89,7 +89,8 @@
 					
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
-		
+  var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
+  var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );		
  
 
 			
@@ -134,8 +135,9 @@
 		
 				
 
-
-			
+var plant_1_pot;	
+var loader; // init the loader util
+var geometry1;
 	
 			
 			
@@ -202,23 +204,24 @@
 				rectLight2.add( rectLightHelper2 );			
 				// TODO (abelnation): rect light shadow
 	
-				
-var plant_1_pot;	
-var loader = new THREE.JSONLoader(); // init the loader util
 
-	
-  var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
-  var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );				
 				
-loader.load('images/deer/pot.js', function (geometry) {
+geometry.computeVertexNormals();
+				
     plant_1_pot = new THREE.Mesh(geometry, poopMat);
     plant_1_pot.castShadow = true;
-    geometry.computeVertexNormals();
     plant_1_pot.scale.set(5,5,5);
     plant_1_pot.position.set(0, 0, 0);
     plant_1_pot.castShadow = true;
     plant_1_pot.rotation.y = convertToRad(90);
-});
+				
+loader = new THREE.JSONLoader(); // init the loader util
+
+loader.load('images/deer/pot.js', geometry);
+	
+			
+				
+
 				
 				
 				
