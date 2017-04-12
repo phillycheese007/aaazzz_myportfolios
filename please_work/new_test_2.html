@@ -91,6 +91,13 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
 
 			
+    var backWall = new THREE.Mesh(geofloor, floorMat );
+    backWall.rotation.x = Math.PI/180 * 90;
+    backWall.position.set(0,0,-250);
+    scene.add( backWall );
+			
+			
+			
 			
 			var geoFloor = new THREE.BoxGeometry( 500, 0.1, 500 );
 			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
@@ -154,8 +161,8 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 
 				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 2, 10 );
 				rectLight.matrixAutoUpdate = true;
-				rectLight.intensity = 80.0;
-				rectLight.position.set( 5, 5, 0 );
+				rectLight.intensity = 90.0;
+				rectLight.position.set( 15, 5, 0 );
 
 				// TODO: ensure RectAreaLight handles target param correctly
 				// rectLight.target = mshPhongBox;
