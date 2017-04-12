@@ -193,7 +193,7 @@
 
 				
 				
-				rectLight2 = new THREE.RectAreaLight( 0xFFFFFF, 77, 20, 100 );
+				rectLight2 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 100 );
 				rectLight2.matrixAutoUpdate = true;
 				rectLight2.intensity = 90.0;
 				rectLight2.position.set( 0, 0, -150 );
@@ -411,7 +411,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				rectLight.lookAt( origin.position );
 				rectLight.updateMatrixWorld();
 
-				rectLight2.position.set( lx, ly, lz );
+				rectLight2.position.set( 12, 21, 12 );
 				rectLight2.lookAt( origin.position );
 				rectLight2.updateMatrixWorld();
 			}
