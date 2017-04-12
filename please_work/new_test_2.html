@@ -96,14 +96,14 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
 			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
 
-			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+			var mshPhongFloor = new THREE.Mesh( geoFloor, wallMat );
 			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
-			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
+			var mshPhongSphere = new THREE.Mesh( geoSphere, wallMat );
 			var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
 
-			var mshStdFloor = new THREE.Mesh( geoFloor, matStdFloor );
+			var mshStdFloor = new THREE.Mesh( geoFloor, wallMat );
 			var mshStdBox = new THREE.Mesh( geoBox, matStdObjects );
-			var mshStdSphere = new THREE.Mesh( geoSphere, matStdObjects );
+			var mshStdSphere = new THREE.Mesh( geoSphere, wallMat );
 			var mshStdKnot = new THREE.Mesh( geoKnot, matStdObjects );
 
 			var amb = new THREE.AmbientLight( 0x000000 );
@@ -167,7 +167,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 				scn.add( cam );
 				scn.add( origin );
 
-				matPhongFloor.color.set( 0x808080 );
+				//matPhongFloor.color.set( 0x808080 );
 				matPhongObjects.color.set( 0xA00000 );
 				matStdFloor.color.set( 0x808080 );
 				matStdObjects.color.set( 0xA00000 );
