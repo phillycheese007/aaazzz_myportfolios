@@ -116,20 +116,15 @@ var loader = new THREE.JSONLoader(); // init the loader util
 
 
 
-loader.load('images/deer/pot.js', function (geometry) {
-
-	
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
     plant_1_pot.castShadow = true;
     geometry.computeVertexNormals();
     plant_1_pot.scale.set(5,5,5);
 	plant_1_pot.position.set(-100, -250, -110);
-plant_1_pot.castShadow = true;
+    plant_1_pot.castShadow = true;
     plant_1_pot.rotation.y = convertToRad(90);
-    scene.add(plant_1_pot);
-	  
-
-	
+    scene.add(plant_1_pot);	 	
 });
   
 loader.load('images/deer/bean2.js', function (geometry) {
