@@ -95,7 +95,7 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			
 	
 			
-			var geoFloor = new THREE.BoxGeometry( 500, 0.1, 500 );
+			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
 			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
 			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
 			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
@@ -172,10 +172,10 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 
 				
 				
-				rectLight2 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 2, 10 );
+				rectLight2 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 100 );
 				rectLight2.matrixAutoUpdate = true;
-				rectLight2.intensity = 70.0;
-				rectLight2.position.set( 0, 0, -250 );
+				rectLight2.intensity = 90.0;
+				rectLight2.position.set( 0, 0, -150 );
 
 				// TODO: ensure RectAreaLight handles target param correctly
 				// rectLight.target = mshPhongBox;
