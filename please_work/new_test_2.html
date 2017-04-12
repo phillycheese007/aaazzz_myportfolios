@@ -75,18 +75,29 @@
 				metalness: 0.0
 			};
 
+			
+var wallTexture = THREE.ImageUtils.loadTexture( '/responsive_shapes/images/aaa.svg' );
+wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
+wallTexture.repeat.set( 3, 3 );
+var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
+			
+			
 			var matPhongFloor = new THREE.MeshPhongMaterial( matPhongParams );
 			var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
+
+			
 
 			var matStdFloor = new THREE.MeshStandardMaterial( matStdParams );
 			var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
 
+			
+			
 			var geoFloor = new THREE.BoxGeometry( 2000, 0.1, 2000 );
 			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
 			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
 			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
 
-			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+			var mshPhongFloor = new THREE.Mesh( geoFloor, wallMat );
 			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
 			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
 			var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
@@ -98,6 +109,15 @@
 
 			var amb = new THREE.AmbientLight( 0x000000 );
 
+
+			
+			
+			
+			
+	
+			
+			
+			
 			var rectLight;
 			var rectLightHelper;
 
