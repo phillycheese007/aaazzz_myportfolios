@@ -168,6 +168,16 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
 				rectLight.add( rectLightHelper );
 
+								rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 2, 10 );
+				rectLight2.matrixAutoUpdate = true;
+				rectLight2.intensity = 90.0;
+				rectLight2.position.set( 15, 5, 0 );
+
+				// TODO: ensure RectAreaLight handles target param correctly
+				// rectLight.target = mshPhongBox;
+
+				rectLightHelper2 = new THREE.RectAreaLightHelper( rectLight2 );
+				rectLight2.add( rectLightHelper2 );			
 				// TODO (abelnation): rect light shadow
 
 				scn.add( cam );
@@ -247,6 +257,7 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				
 				
 				scn.add( rectLight );
+				scn.add( rectLight2 );
 
 				document.body.appendChild( rnd.domElement );
 				onResize();
