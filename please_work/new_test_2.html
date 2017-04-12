@@ -78,7 +78,7 @@
 var cube = new THREE.CubeGeometry( 500, 1, 500);
 		
 var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
-var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
+var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			
 			
 			var matPhongFloor = new THREE.MeshPhongMaterial( matPhongParams );
@@ -101,7 +101,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
 			var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
 
-			var mshStdFloor = new THREE.Mesh( geoFloor, wallMat );
+			var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
 			var mshStdBox = new THREE.Mesh( geoBox, matStdObjects );
 			var mshStdSphere = new THREE.Mesh( geoSphere, matStdObjects );
 			var mshStdKnot = new THREE.Mesh( geoKnot, matStdObjects );
