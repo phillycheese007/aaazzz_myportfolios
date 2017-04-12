@@ -77,8 +77,6 @@
 
 			
 var wallTexture = THREE.ImageUtils.loadTexture( '/responsive_shapes/images/aaa.svg' );
-wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
-wallTexture.repeat.set( 3, 3 );
 var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 			
 			
@@ -97,9 +95,9 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
 			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
 			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
 
-			var mshPhongFloor = new THREE.Mesh( geoFloor, wallMat );
-			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
-			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
+			var mshPhongFloor = new THREE.Mesh( wallMat, matPhongFloor );
+			var mshPhongBox = new THREE.Mesh( wallMat, matPhongObjects );
+			var mshPhongSphere = new THREE.Mesh( wallMat, WallMat );
 			var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
 
 			var mshStdFloor = new THREE.Mesh( geoFloor, matStdFloor );
