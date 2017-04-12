@@ -203,30 +203,18 @@
 				
 				
 var plant_1_pot;
-var subjMat_num2 = new THREE.MeshPhongMaterial({
 
-  shininess:1, 
-  specular:0xEBC335, 
-  shading: THREE.SmoothShading
-  // shading: THREE.FlatShading
-});	
-subjMat_num2.map = THREE.ImageUtils.loadTexture('images/deer/checkerboard.jpg');
-
-	
-subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('images/deer/checkerboard.jpg');
-var itmArr = [];
-var vx, vy, vz;
 
 var loader = new THREE.JSONLoader(); // init the loader util
 
 
 
 loader.load('images/deer/pot.js', function (geometry) {
-    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
+    plant_1_pot = new THREE.Mesh(geometry, floorMat);
     plant_1_pot.castShadow = true;
     geometry.computeVertexNormals();
-    plant_1_pot.scale.set(5,5,5);
-    plant_1_pot.position.set(-100, -250, -110);
+    plant_1_pot.scale.set(1,1,1);
+    plant_1_pot.position.set(0, 0, 0);
     plant_1_pot.castShadow = true;
     plant_1_pot.rotation.y = convertToRad(90);
 });
