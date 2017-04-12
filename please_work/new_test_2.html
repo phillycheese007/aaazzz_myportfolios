@@ -91,7 +91,6 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
 
 			
-    var backWall = new THREE.Mesh(geoFloor, floorMat );
 
 			
 	
@@ -211,12 +210,7 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				
 				
 				
-				backWall.rotation.x = Math.PI/180 * 90;
-                                backWall.position.set(0,0,-250);
 
-				
-	//			
-				scn.add( backWall );
 	//
 				
 				
@@ -228,9 +222,7 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 				
 				
 				
-				backWall.position.set( 5, 5, -5 );
-				backWall.castShadow = true;
-				backWall.receiveShadow = true;
+
 				
 				
 				
