@@ -206,6 +206,7 @@
 				
 				
 				
+function addSceneElements() {
 	
 var cube = new THREE.CubeGeometry( 500, 1, 500);
 var cube3 = new THREE.CubeGeometry( 200, 1, 200);
@@ -235,7 +236,7 @@ var wallMat = new THREE.MeshBasicMaterial( { map: wallTexture } );
     rightWall.rotation.z = Math.PI/180 * 90;
     rightWall.position.set(250,0,0);
     scene.add( rightWall );			
-				
+}				
 				
 				
 				
