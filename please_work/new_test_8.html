@@ -242,7 +242,7 @@ var loader = new THREE.JSONLoader(); // init the loader util
 
 
 
-loader.load('/aaazzz_myportfolios/images/deer/bean2.js', function (geometry) {
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot = new THREE.Mesh(geometry, gooseMat);
     plant_1_pot.castShadow = true;
     plant_1_pot.receiveShadow = true;
@@ -258,21 +258,21 @@ loader.load('/aaazzz_myportfolios/images/deer/bean2.js', function (geometry) {
   var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/app.png' );
   var gooseMat = new THREE.MeshBasicMaterial( { map: gooseTexture } );
 	
- // var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
-//  var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
- // var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
-//  var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
+  var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
+  var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
+  var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
+  var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
 
 	
 	
- // matStdPlant.color.set( 0x808080 );
+  matStdPlant.color.set( 0x808080 );
 	
-//  mshPhongPlant.scale.set(2,2,2);
- // mshPhongPlant.position.set( 0, 0, 120 );
- // mshPhongPlant.castShadow = true;
- // mshPhongPlant.receiveShadow = true;
+  mshPhongPlant.scale.set(2,2,2);
+  mshPhongPlant.position.set( 0, 0, 120 );
+  mshPhongPlant.castShadow = true;
+  mshPhongPlant.receiveShadow = true;
 	
- // scn.add( mshPhongPlant );
+  scn.add( mshPhongPlant );
   scn.add(plant_1_pot);	 	
 });
   
