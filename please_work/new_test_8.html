@@ -182,7 +182,7 @@
 				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
 				rectLight.matrixAutoUpdate = true;
 				rectLight.intensity = 590.0;
-				rectLight.position.set( 0, 30, -150 );
+				rectLight.position.set( 0, 30, -149.5 );
 
 				// TODO: ensure RectAreaLight handles target param correctly
 				//rectLight.target = mshPhongBox;
@@ -195,7 +195,7 @@
 				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
 				rectLight3.matrixAutoUpdate = true;
 				rectLight3.intensity = 590.0;
-				rectLight3.position.set( 0, 30, 150 );
+				rectLight3.position.set( 0, 30, 149.5 );
 				rectLight3.rotation.y = Math.PI/180 * 180;
 
 				// TODO: ensure RectAreaLight handles target param correctly
@@ -290,7 +290,7 @@ scn.add( plane );
 plane.position.y = -2;
 plane.rotation.x = -Math.PI/2;		
 				
-var wallGeometry = new THREE.PlaneGeometry( 300, 200, 200 );
+var wallGeometry = new THREE.PlaneGeometry( 300, 200, 100 );
 var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
