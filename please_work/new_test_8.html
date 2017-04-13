@@ -460,7 +460,10 @@ plane.rotation.x = -Math.PI/2;
 			}
 
 			function render() {
+  requestAnimationFrame( render );
 
+  box.rotation.x += 0.02;
+  box.rotation.y += 0.02;
 				rectLightHelper.update(); // required
 				rectLight3Helper.update(); // required
 
