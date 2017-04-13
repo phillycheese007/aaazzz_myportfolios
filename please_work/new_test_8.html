@@ -290,8 +290,8 @@ scn.add( plane );
 plane.position.y = -2;
 plane.rotation.x = -Math.PI/2;		
 				
-var wallGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32 );
-var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFF0000, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+var wallGeometry = new THREE.PlaneGeometry( 200, 200, 302, 302 );
+var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 var backWall = new THREE.Mesh( wallGeometry, wallMaterial );
 backWall.receiveShadow = true;
 scn.add( backWall );
