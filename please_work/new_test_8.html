@@ -239,7 +239,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot.castShadow = true;
     geometry.computeVertexNormals();
     plant_1_pot.scale.set(2,2,2);
-    plant_1_pot.position.set(0, 0, 0);
+    plant_1_pot.position.set(0, 0, 120);
     //plant_1_pot.rotation.y = convertToRad(90);
 	
 	
@@ -259,7 +259,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 	
   mshPhongPlant.receiveShadow = true;
   mshPhongPlant.scale.set(2,2,2);
-  mshPhongPlant.position.set( 0, 0, 0 );
+  mshPhongPlant.position.set( 0, 0, 120 );
   mshPhongPlant.castShadow = true;
   mshPhongPlant.receiveShadow = true;
 	
@@ -280,6 +280,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				//matPhongFloor.color.set( 0x808080 );
 				matPhongObjects.color.set( 0xA00000 );
 				matStdFloor.color.set( 0x808080 );
+				matStdFloor.receiveShadow = true;
+
 				matStdObjects.color.set( 0xA00000 );
 
 				mshPhongFloor.receiveShadow = true;
