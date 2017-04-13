@@ -223,14 +223,14 @@
 				
 				
 				
-var spotLight2 = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
+var spotLight2 = new THREE.SpotLight(0xff0000, 1, 500, 20, 10);
 var spotTarget2 = new THREE.Object3D();
 	
-spotLight2.position.set( 130, 150, 0 );
+spotLight2.position.set( 10, 10, 0 );
   
 spotTarget2.position.set(30, 0, 0);
 spotLight2.target = spotTarget2;
-spotLight2.penumbra = 0.8; 
+//spotLight2.penumbra = 0.8; 
 	
 scn.add(spotLight2);
 scn.add(new THREE.PointLightHelper(spotLight2, 1));
