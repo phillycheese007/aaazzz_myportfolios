@@ -297,14 +297,20 @@ var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/de
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
 brickTexture.repeat.set( 14, 14 );			
 var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+				
 var backWall = new THREE.Mesh( wallGeometry, brickMat );
 backWall.material.side = THREE.DoubleSide;
-	
 backWall.receiveShadow = true;
 scn.add( backWall );
 backWall.position.set( 0, 50, 150 );
 backWall.rotation.y = Math.PI/180 * 180;
 
+var leftWall = new THREE.Mesh( wallGeometry, brickMat );
+leftWall.material.side = THREE.DoubleSide;
+leftWall.receiveShadow = true;
+scn.add( leftWall );
+leftWall.position.set( 0, 50, -150 );
+leftWall.rotation.y = Math.PI/180 * 180;				
 				
 				scn.add( cam );
 				scn.add( origin );
