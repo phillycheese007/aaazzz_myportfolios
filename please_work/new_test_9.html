@@ -266,10 +266,11 @@ scn.add( speciallight );
 
 				
 var spotLight2 = new THREE.SpotLight( 0xffffff );
-spotLight2.position.set( 0, 50, 140 );
+spotLight2.position.set( 0, 50, 10 );
 spotLight2.castShadow = true;
 spotLight2.shadow.mapSize.width = 1024;
 spotLight2.shadow.mapSize.height = 1024;
+backWall.rotation.y = Math.PI/180 * 90;
 
 spotLight2.shadow.camera.left = 500							
 scn.add( spotLight2 );					
