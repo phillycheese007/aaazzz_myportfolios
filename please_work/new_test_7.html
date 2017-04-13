@@ -136,7 +136,17 @@
                         var ambLight2 = new THREE.AmbientLight(0x404040);
 
 		
-				
+
+var spotLight2 = new THREE.SpotLight(0xffffff, 1, 500, 20, 10);
+spotLight2.position.set( 130, 150, 0 );
+  
+var spotTarget2 = new THREE.Object3D();
+spotTarget2.position.set(30, 0, 0);
+spotLight2.target = spotTarget2;
+spotLight2.penumbra = 0.8; 
+	
+scene.add(spotLight2);
+scene.add(new THREE.PointLightHelper(spotLight2, 1));	
 
 
 	
