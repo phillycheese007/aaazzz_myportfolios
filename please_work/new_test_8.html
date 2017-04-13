@@ -89,7 +89,7 @@
 					
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
- 
+
 
 			
 
@@ -292,7 +292,10 @@ plane.rotation.x = -Math.PI/2;
 				
 var wallGeometry = new THREE.PlaneGeometry( 200, 200, 302, 302 );
 var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
-var backWall = new THREE.Mesh( wallGeometry, wallMaterial );
+
+var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
+var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+var backWall = new THREE.Mesh( wallGeometry, brickMat );
 backWall.material.side = THREE.DoubleSide;
 	
 backWall.receiveShadow = true;
