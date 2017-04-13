@@ -295,7 +295,7 @@ var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x0
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
-brickTexture.repeat.set( 14, 14 );			
+brickTexture.repeat.set( 7, 7 );			
 var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 				
 var backWall = new THREE.Mesh( wallGeometry, brickMat );
@@ -318,6 +318,13 @@ leftWall.receiveShadow = true;
 scn.add( leftWall );
 leftWall.position.set( 150, 50, 0 );
 leftWall.rotation.y = Math.PI/180 * 90;
+
+var rightWall = new THREE.Mesh( wallGeometry, brickMat );
+rightWall.material.side = THREE.DoubleSide;
+rightWall.receiveShadow = true;
+scn.add( rightWall );
+rightWall.position.set( -150, 50, 0 );
+rightWall.rotation.y = Math.PI/180 * 90;				
 				
 				scn.add( cam );
 				scn.add( origin );
