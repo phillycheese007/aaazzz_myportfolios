@@ -223,17 +223,19 @@
 				
 				
 				
-var spotLight2 = new THREE.SpotLight(0xff0000, 1, 500, 20, 10);
-var spotTarget2 = new THREE.Object3D();
-	
-spotLight2.position.set( 10, 10, 0 );
-  
-spotTarget2.position.set(0, 0, 0);
-spotLight2.target = spotTarget2;
-//spotLight2.penumbra = 0.8; 
-	
-scn.add(spotLight2);
-scn.add(new THREE.PointLightHelper(spotLight2, 1));
+var spotLight2 = new THREE.SpotLight( 0xffffff );
+spotLight2.position.set( 100, 1000, 100 );
+
+spotLight2.castShadow = true;
+
+spotLight2.shadow.mapSize.width = 1024;
+spotLight2.shadow.mapSize.height = 1024;
+
+spotLight2.shadow.camera.near = 500;
+spotLight2.shadow.camera.far = 4000;
+spotLight2.shadow.camera.fov = 30;
+
+scn.add( spotLight2 );	
 				
 				
 // var subjMat = new THREE.MeshBasicMaterial();
