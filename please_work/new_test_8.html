@@ -443,8 +443,16 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 				rectLightHelper.update(); // required
 				rectLight3Helper.update(); // required
+				
+				rnd.shadowMap.enabled = true;
+				rnd.shadowMap.type = THREE.PCFSoftShadowMap;
 
+				rnd.gammaInput = true;
+				rnd.gammaOutput = true;		
+				
 				rnd.render( scn, cam );
+					
+
 
 			}
 
