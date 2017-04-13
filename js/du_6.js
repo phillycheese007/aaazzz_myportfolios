@@ -106,9 +106,8 @@ var subj;
 var plant_1_pot;
 var subjMat = new THREE.MeshPhongMaterial({
   color:0xF2461C, 
-	    plant_1_pot.castShadow = true;
-
-  mshPhongPlant.receiveShadow = true;
+  castShadow: true,
+  receiveShadow:true,
   shininess:11, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
