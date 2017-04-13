@@ -307,8 +307,11 @@ scn.add( plane );
 plane.position.y = -2;
 plane.rotation.x = -Math.PI/2;		
 				
-var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );
+var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
 var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+
+var windowGeometry = new THREE.PlaneGeometry( 30, 100, 40, 50 );
+
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
@@ -342,6 +345,16 @@ rightWall.receiveShadow = true;
 scn.add( rightWall );
 rightWall.position.set( -150, 50, 0 );
 rightWall.rotation.y = Math.PI/180 * 90;				
+
+var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
+
+var window1 = new THREE.Mesh( windowGeometry, windowMat );
+window1.material.side = THREE.DoubleSide;
+window1.receiveShadow = true;
+scn.add( window1 );
+window1.position.set( -150, 50, 0 );
+window1.rotation.y = Math.PI/180 * 90;
+				
 				
 				scn.add( cam );
 				scn.add( origin );
