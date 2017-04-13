@@ -237,7 +237,7 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot = new THREE.Mesh(geometry, poopMat);
     plant_1_pot.castShadow = true;
-    plant_1_pot.receiveShadow = true;
+    //plant_1_pot.receiveShadow = true;
 
     geometry.computeVertexNormals();
     plant_1_pot.scale.set(2,2,2);
