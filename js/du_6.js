@@ -94,6 +94,8 @@ scene.add(hemLight);
 function addSceneElements() {
     // Create a cube used to build the floor and walls
     var cube = new THREE.CubeGeometry( 500, 1, 500);
+    cube.castShadow = true;
+    cube.receiveShadow = true;
 	    var cube3 = new THREE.CubeGeometry( 200, 1, 200);
 
     var windowcube = new THREE.CubeGeometry( 100, 1, 200);
