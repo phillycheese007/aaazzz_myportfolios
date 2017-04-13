@@ -211,8 +211,8 @@ spotLight2.position.set( 100, 1000, 100 );
 
 spotLight2.castShadow = true;
 
-spotLight2.shadow.mapSize.width = 1024;
-spotLight2.shadow.mapSize.height = 1024;
+spotLight2.shadow.mapSize.width = 2024;
+spotLight2.shadow.mapSize.height = 2024;
 
 spotLight2.shadow.camera.near = 500;
 spotLight2.shadow.camera.far = 4000;
@@ -237,6 +237,8 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot = new THREE.Mesh(geometry, poopMat);
     plant_1_pot.castShadow = true;
+    plant_1_pot.receiveShadow = true;
+
     geometry.computeVertexNormals();
     plant_1_pot.scale.set(2,2,2);
     plant_1_pot.position.set(0, 0, 120);
@@ -288,7 +290,9 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 
 				mshPhongBox.castShadow = true;
 				mshPhongBox.receiveShadow = true;
-				mshPhongBox.position.set( 0, 5, 5 );
+				mshPhongBox.scale.set(5,5,5);
+
+				mshPhongBox.position.set( 0, 0, 0 );
 				mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
 
 				mshPhongSphere.castShadow = true;
