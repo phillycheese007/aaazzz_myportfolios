@@ -206,8 +206,23 @@
 				// TODO (abelnation): rect light shadow
 
 				
-// var subjMat = new THREE.MeshBasicMaterial();
+var spotLight2 = new THREE.SpotLight( 0xffffff );
+spotLight2.position.set( 100, 1000, 100 );
 
+spotLight2.castShadow = true;
+
+spotLight2.shadow.mapSize.width = 1024;
+spotLight2.shadow.mapSize.height = 1024;
+
+spotLight2.shadow.camera.near = 500;
+spotLight2.shadow.camera.far = 4000;
+spotLight2.shadow.camera.fov = 30;
+
+scn.add( spotLight2 );	
+				
+				
+				
+				
 var plant_1_pot;
 				
   var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
