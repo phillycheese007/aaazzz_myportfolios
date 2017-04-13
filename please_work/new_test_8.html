@@ -290,7 +290,7 @@ scn.add( plane );
 plane.position.y = -2;
 plane.rotation.x = -Math.PI/2;		
 				
-var wallGeometry = new THREE.PlaneGeometry( 300, 2, 200 );
+var wallGeometry = new THREE.PlaneGeometry( 300, 200, 200 );
 var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
@@ -300,7 +300,7 @@ backWall.material.side = THREE.DoubleSide;
 	
 backWall.receiveShadow = true;
 scn.add( backWall );
-backWall.position.set( 120, 32, 20 );
+backWall.position.set( 0, 0, 150 );
 backWall.rotation.y = Math.PI/180 * 180;
 
 				
