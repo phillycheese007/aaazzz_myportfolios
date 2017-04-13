@@ -270,7 +270,20 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
   scn.add( mshPhongPlant );
   scn.add(plant_1_pot);	 	
 });
-  
+
+				
+//scene.add( directionalLight );
+
+var speciallight = new THREE.PointLight( 0xffffff, 1, 100 );
+speciallight.position.set( 0, 12, 0 );
+speciallight.castShadow = true;
+speciallight.shadow.mapSize.width = 1024;
+speciallight.shadow.mapSize.height = 1024;
+
+speciallight.shadow.camera.left = 500
+scn.add( speciallight );
+				
+				
     //Creating box
     var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
     var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
