@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - lights - rect light</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				text-align: center;
+			}
+
+			a {
+				color: #ff0080;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: #0080ff;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="container"></div>
+		<div id="info">
+			<a href="http://threejs.org" target="_blank">three.js</a> - Demo of RectAreaLight on Phong and Standard Material Meshes - by <a href="http://github.com/abelnation" target="_blank">abelnation</a><br />
+			Click and drag to move OrbitControls.<br />
+			<br />
+		</div>
+
+		<script src="../build/three.js"></script>
+		<!--<script src="js/lights/RectAreaLightUniformsLib.js"></script>-->
+		<!--<script src="../please_work/js/libs/dat.gui.min.js"></script>-->
+		<!--<script src="../please_work/js/controls/OrbitControls.js"></script>-->
+		<!--<script src="js/Detector.js"></script>-->
+
+		
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/lights/RectAreaLightUniformsLib.js"></script>
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/libs/dat.gui.min.js"></script>
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/controls/OrbitControls.js"></script>
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/Detector.js"></script>
+
+		<script>
+
+			var container = document.getElementById( 'container' );
+
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+			var rnd = new THREE.WebGLRenderer();
+			var cam = new THREE.PerspectiveCamera( 34, window.innerWidth / window.innerHeight, 0.1, 20000 );
+			var orb = new THREE.OrbitControls( cam, rnd.domElement );
+
+			var scn = new THREE.Scene();
+			var origin = new THREE.Object3D();
+
+			var matPhongParams = {
+				specular: 0xFFFFFF,
+				shininess: 1000
+			};
+			var matStdParams = {
+				roughness: 0.044676705160855, // calculated from shininess = 1000
+				metalness: 0.0
+			};
+
+			
+			
+
+
+
+			
+			
+			
+			
+			
+
+					
+  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
+
+
+			
+
+
+			
+			
+			var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
+			var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
+
+			
+
+			var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
+			var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
+
+		
+			
+			
+	
+		
+	
+//var geoPlant = new THREE.BoxGeometry( 300, 0.1, 300 );
+
+			
+			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
+			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
+			var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
+			var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
+			
+			
+
+			
+			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
+			var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
+			var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
+
+			var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
+			var mshStdBox = new THREE.Mesh( geoBox, matStdObjects );
+			var mshStdSphere = new THREE.Mesh( geoSphere, matStdObjects );
+			var mshStdKnot = new THREE.Mesh( geoKnot, matStdObjects );
+
+			var amb = new THREE.AmbientLight( 0x000000 );
+
+                        var ambLight2 = new THREE.AmbientLight(0x404040);
+
+		
+				
+
+
+	
+			
+			
+			
+			var rectLight;
+			var rectLightHelper;
+			var rectLight3;
+			var rectLightHelper3;
+			
+			var ray = new THREE.Raycaster();
+			var mouseDown = new THREE.Vector2();
+			var mouse = new THREE.Vector2();
+
+			var gui, guiElements;
+			var param = {};
+
+			function init() {
+
+				var gl = rnd.context;
+
+				// Check for float-RT support
+				// TODO (abelnation): figure out fall-back for float textures
+				if (!gl.getExtension("OES_texture_float")) {
+					alert("OES_texture_float not supported");
+					throw "missing webgl extension";
+				}
+
+				if (!gl.getExtension("OES_texture_float_linear")) {
+					alert("OES_texture_float_linear not supported");
+					throw "missing webgl extension";
+				}
+
+				rnd.shadowMap.enabled = true;
+				rnd.shadowMap.type = THREE.PCFSoftShadowMap;
+				rnd.gammaInput = true;
+				rnd.gammaOutput = true;
+				rnd.antialias = true;
+
+				cam.position.set( 0, 20, 45 );
+
+				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
+				rectLight.matrixAutoUpdate = true;
+				rectLight.intensity = 2000.0;
+				rectLight.position.set( 0, 30, -149.5 );
+
+				// TODO: ensure RectAreaLight handles target param correctly
+				//rectLight.target = mshPhongBox;
+
+				rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
+				rectLight.add( rectLightHelper );
+
+				
+				
+				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
+				rectLight3.matrixAutoUpdate = true;
+				rectLight3.intensity = 2000.0;
+				rectLight3.position.set( 0, 30, 149 );
+				rectLight3.rotation.y = Math.PI/180 * 180;
+
+				// TODO: ensure RectAreaLight handles target param correctly
+				// rectLight.target = mshPhongBox;
+
+				rectLight3Helper = new THREE.RectAreaLightHelper( rectLight3 );
+				rectLight3.add( rectLight3Helper );			
+				// TODO (abelnation): rect light shadow
+
+				
+								
+var plant_1_pot;
+				
+  var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
+  var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );
+
+				
+
+
+var loader = new THREE.JSONLoader(); // init the loader util
+
+
+
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+    plant_1_pot = new THREE.Mesh(geometry, poopMat);
+    plant_1_pot.castShadow = true;
+    plant_1_pot.receiveShadow = true;
+
+    geometry.computeVertexNormals();
+    plant_1_pot.scale.set(2,2,2);
+    plant_1_pot.position.set(0, 0, 120);
+    //plant_1_pot.rotation.y = convertToRad(90);
+	
+	
+	
+	
+  var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/app.png' );
+  var gooseMat = new THREE.MeshBasicMaterial( { map: gooseTexture } );
+	
+  var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
+  var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
+  var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
+  var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
+
+	
+	
+  matStdPlant.color.set( 0x808080 );
+	
+  mshPhongPlant.scale.set(2,2,2);
+  mshPhongPlant.position.set( 0, 0, 120 );
+  mshPhongPlant.castShadow = true;
+ // mshPhongPlant.receiveShadow = true;
+	
+  scn.add( mshPhongPlant );
+  scn.add(plant_1_pot);	 	
+});
+
+				
+//scene.add( directionalLight );
+var speciallight = new THREE.PointLight( 0xffffff, 1, 100 );
+speciallight.position.set( 0, 12, 55 );
+speciallight.castShadow = true;
+speciallight.shadow.mapSize.width = 1024;
+speciallight.shadow.mapSize.height = 1024;
+
+speciallight.shadow.camera.left = 500
+scn.add( speciallight );
+
+				
+var spotLight2 = new THREE.SpotLight( 0xffffff );
+spotLight2.position.set( 0, 50, 10 );
+spotLight2.castShadow = true;
+spotLight2.shadow.mapSize.width = 1024;
+spotLight2.shadow.mapSize.height = 1024;
+spotLight2.rotation.y = Math.PI/180 * 90;
+
+spotLight2.shadow.camera.left = 500							
+scn.add( spotLight2 );					
+
+				
+    var dir_light = new THREE.DirectionalLight(0xffffff, 1);
+    dir_light.castShadow = true;
+    dir_light.shadowCameraVisible = true;
+	dir_light.shadowCameraNear = 100;
+	dir_light.shadowCameraFar = 200;
+    dir_light.shadowCameraLeft = -20; // CHANGED
+	dir_light.shadowCameraRight = 20; // CHANGED
+	dir_light.shadowCameraTop = 20; // CHANGED
+	dir_light.shadowCameraBottom = -20; // CHANGED
+
+    dir_light.position.set(-60, 20, 100); // CHANGED
+    scn.add(dir_light);
+    scn.add( new THREE.DirectionalLightHelper(dir_light, 0.2) );
+				
+				
+				
+    //Creating box
+    var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
+    var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
+    var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
+    boxer.castShadow = true;
+    scn.add( boxer );			
+
+var planeGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32 );
+var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+plane.receiveShadow = true;
+scn.add( plane );
+plane.position.y = -2;
+plane.rotation.x = -Math.PI/2;		
+				
+var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
+var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+
+
+var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
+brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
+brickTexture.repeat.set( 7, 5 );			
+var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+				
+var backWall = new THREE.Mesh( wallGeometry, brickMat );
+backWall.material.side = THREE.DoubleSide;
+backWall.receiveShadow = true;
+scn.add( backWall );
+backWall.position.set( 0, 50, 150 );
+backWall.rotation.y = Math.PI/180 * 180;
+
+var frontWall = new THREE.Mesh( wallGeometry, brickMat );
+frontWall.material.side = THREE.DoubleSide;
+frontWall.receiveShadow = true;
+scn.add( frontWall );
+frontWall.position.set( 0, 50, -150 );
+frontWall.rotation.y = Math.PI/180 * 180;				
+
+var leftWall = new THREE.Mesh( wallGeometry, brickMat );
+leftWall.material.side = THREE.DoubleSide;
+leftWall.receiveShadow = true;
+scn.add( leftWall );
+leftWall.position.set( 150, 50, 0 );
+leftWall.rotation.y = Math.PI/180 * 90;
+
+var rightWall = new THREE.Mesh( wallGeometry, brickMat );
+rightWall.material.side = THREE.DoubleSide;
+rightWall.receiveShadow = true;
+scn.add( rightWall );
+rightWall.position.set( -150, 50, 0 );
+rightWall.rotation.y = Math.PI/180 * 90;	
+				
+				
+var windowGeometry = new THREE.PlaneGeometry( 30, 60, 40, 30 );
+var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
+
+var window1 = new THREE.Mesh( windowGeometry, windowMat );
+window1.material.side = THREE.DoubleSide;
+window1.receiveShadow = true;
+scn.add( window1 );
+window1.position.set( 0, 60,-149.9 );
+//window1.rotation.y = Math.PI/180 * 180;
+				
+				
+				scn.add( cam );
+				scn.add( origin );
+
+				//matPhongFloor.color.set( 0x808080 );
+				matPhongObjects.color.set( 0xA00000 );
+				matStdFloor.color.set( 0x808080 );
+				matStdFloor.receiveShadow = true;
+
+				matStdObjects.color.set( 0xA00000 );
+				matStdObjects.castShadow = true;
+				matStdObjects.receiveShadow = true;
+
+				mshPhongFloor.receiveShadow = true;
+				mshPhongFloor.position.set( 0, 0, 0 );
+
+				mshPhongBox.castShadow = true;
+				mshPhongBox.receiveShadow = true;
+
+				mshPhongBox.position.set( 0, 0, 0 );
+				mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
+
+				mshPhongSphere.castShadow = true;
+				mshPhongSphere.receiveShadow = true;
+				mshPhongSphere.position.set(-5, 5, 5 );
+
+				mshPhongKnot.position.set( 5, 5, 5 );
+				mshPhongKnot.castShadow = true;
+				mshPhongKnot.receiveShadow = true;
+				
+				
+				
+
+	// 	
+        //
+
+				
+				scn.add( mshPhongFloor );
+				scn.add( mshPhongBox );
+				scn.add( mshPhongSphere );
+				scn.add( mshPhongKnot );
+
+				
+				
+				
+
+				
+				
+				
+				
+				mshStdBox.castShadow = true;
+				mshStdBox.receiveShadow = true;
+				mshStdBox.position.set( 0, 5, -5 );
+				mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
+
+				mshStdSphere.castShadow = true;
+				mshStdSphere.receiveShadow = true;
+				mshStdSphere.position.set(-5, 5, -5 );
+
+				mshStdKnot.position.set( 5, 5, -5 );
+				mshStdKnot.castShadow = true;
+				mshStdKnot.receiveShadow = true;
+
+				
+        //			
+ scn.add( mshStdFloor );
+        //
+
+				scn.add( mshStdFloor );
+				scn.add( mshStdBox );
+				scn.add( mshStdSphere );
+				scn.add( mshStdKnot );
+
+				scn.add( amb );
+				
+				scn.add( ambLight2 );
+
+				
+				
+				scn.add( rectLight );
+				scn.add( rectLight3 );
+
+				
+
+				document.body.appendChild( rnd.domElement );
+				onResize();
+				window.addEventListener( 'resize', onResize, false );
+
+				orb.addEventListener( 'change', render );
+				orb.update();
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			//end of adding stuff place	
+			}
+			//end of adding stuff place	
+			
+			
+	
+			
+
+			
+			
+
+			function onResize() {
+
+				rnd.setSize( window.innerWidth, window.innerHeight );
+				cam.aspect = ( window.innerWidth / window.innerHeight );
+				cam.updateProjectionMatrix();
+				orb.target = mshPhongBox.position;
+
+			}
+
+			function tick() {
+
+				if ( param.motion )
+					update();
+
+				render();
+
+				requestAnimationFrame( tick );
+
+			}
+
+			function update() {
+
+				var dt = 6000;
+				var qdt = dt / 4.0;
+				var dirSigns = [
+					[ 1,  1 ],
+					[ - 1,  1 ],
+					[ - 1,  1 ],
+					[ 1,  1 ]
+				];
+				var t = ( Date.now() / 1000 );
+
+				// move light in circle around center
+				// change light height with sine curve
+
+				var r = 15.0;
+
+				var lx = r * Math.cos( t );
+				var lz = r * Math.sin( t );
+
+				var ly = 5.0 + 5.0 * Math.sin( t / 3.0 );
+
+				rectLight.position.set( lx, ly, lz );
+				rectLight.lookAt( origin.position );
+				rectLight.updateMatrixWorld();
+				
+				rectLight3.position.set( lx, ly, lz );
+				rectLight3.lookAt( origin.position );
+				rectLight3.updateMatrixWorld();
+			}
+
+			function render() {
+
+				rectLightHelper.update(); // required
+				rectLight3Helper.update(); // required
+
+				rnd.render( scn, cam );
+					
+			}
+
+			function clearGui() {
+
+				if ( gui ) gui.destroy();
+
+				gui = new dat.GUI();
+				gui.width = 190;
+				var gStyle = gui.domElement.style;
+				gStyle.position = "absolute";
+				gStyle.top = "48px";
+				gStyle.height = "220px";
+
+				gui.open();
+
+			}
+
+			function blinnToGGX( blinnExp ) {
+				return Math.sqrt( 2.0 / ( blinnExp + 2.0 ) );
+			}
+
+			function GGXToBlinn( roughness ) {
+				return ( 2.0 / Math.pow( roughness + 0.0001, 2 ) - 2.0 );
+			}
+
+			function buildGui() {
+
+				clearGui();
+
+				param = {
+					motion: false,
+					width: rectLight.width,
+					height: rectLight.height,
+					color: rectLight.color.getHex(),
+					
+					width: rectLight3.width,
+					height: rectLight3.height,
+					color: rectLight3.color.getHex(),
+					
+					intensity: rectLight.intensity,
+					intensity: rectLight3.intensity,
+					'ambient light color': amb.color.getHex(),
+					'floor color p': matPhongFloor.color.getHex(),
+					'object color p': matPhongObjects.color.getHex(),
+					'shininess p': matPhongFloor.shininess,
+					'floor color s': matStdFloor.color.getHex(),
+					'object color s': matStdObjects.color.getHex(),
+					'roughness s': matStdFloor.roughness,
+					'metalness s': matStdFloor.metalness,
+
+				};
+
+				gui.add( param, 'motion' );
+
+				var lightFolder = gui.addFolder( 'Light' );
+				lightFolder.add( param, 'width', 0.1, 20).onChange( function ( val ) {
+
+					rectLight.width = val;
+					rectLight3.width = val;
+
+
+				} );
+
+				lightFolder.add( param, 'height', 0.1, 20).onChange( function ( val ) {
+
+					rectLight.height = val;
+					rectLight3.height = val;
+
+
+				} );
+
+				lightFolder.addColor( param, 'color' ).onChange( function ( val ) {
+
+					rectLight.color.setHex( val );
+					rectLight3.color.setHex( val );
+
+				} );
+
+				lightFolder.add( param, 'intensity', 0.0, 2000.0 ).onChange( function ( val ) {
+
+					rectLight.intensity = val;
+					rectLight3.intensity = val;
+
+				} );
+
+				lightFolder.addColor( param, 'ambient light color' ).onChange( function ( val ) {
+
+					amb.color.setHex( val );
+
+				} );
+
+				var phongFolder = gui.addFolder( 'Phong Material' );
+				phongFolder.addColor( param, 'floor color p' ).onChange( function ( val ) {
+
+						matPhongFloor.color.setHex( val );
+
+					} );
+
+				phongFolder.addColor( param, 'object color p' ).onChange( function ( val ) {
+
+					matPhongObjects.color.setHex( val );
+
+				} );
+
+				phongFolder.add( param, 'shininess p', 0.0, 1000.0 ).listen().onChange( function ( val ) {
+
+					matPhongObjects.shininess = val;
+					matPhongFloor.shininess = val;
+
+					param['roughness s'] = blinnToGGX( val );
+
+				} );
+
+				var standardFolder = gui.addFolder( 'Standard Material' );
+				standardFolder.addColor( param, 'floor color s' ).onChange( function ( val ) {
+
+					matStdFloor.color.setHex( val );
+
+				} );
+
+				standardFolder.addColor( param, 'object color s' ).onChange( function ( val ) {
+
+					matStdObjects.color.setHex( val );
+
+				} );
+
+				standardFolder.add( param, 'roughness s', 0.0, 1.0 ).listen().onChange( function ( val ) {
+
+					matStdObjects.roughness = val;
+					matStdFloor.roughness = val;
+
+					param['shininess p'] = GGXToBlinn( val );
+
+				} );
+
+				// TODO (abelnation): use env map to reflect metal property
+				standardFolder.add( param, 'metalness s', 0.0, 1.0 ).onChange( function ( val ) {
+
+					matStdObjects.metalness = val;
+					matStdFloor.metalness = val;
+
+				} );
+
+				// TODO: rect area light distance
+				// TODO: rect area light decay
+
+			}
+
+			init();
+			buildGui();
+			tick();
+
+		</script>
+	</body>
+</html>
