@@ -345,14 +345,14 @@ rightWall.position.set( -150, 50, 0 );
 rightWall.rotation.y = Math.PI/180 * 90;	
 				
 				
-var windowGeometry = new THREE.PlaneGeometry( 30, 60, 20, 40 );
+var windowGeometry = new THREE.PlaneGeometry( 30, 60, 20, 50 );
 var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
 
 var window1 = new THREE.Mesh( windowGeometry, windowMat );
 window1.material.side = THREE.DoubleSide;
 window1.receiveShadow = true;
 scn.add( window1 );
-window1.position.set( 0, 50,-149.9 );
+window1.position.set( 0, 60,-149.9 );
 //window1.rotation.y = Math.PI/180 * 180;
 				
 				
