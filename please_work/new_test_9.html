@@ -181,7 +181,7 @@
 
 				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
 				rectLight.matrixAutoUpdate = true;
-				rectLight.intensity = 590.0;
+				rectLight.intensity = 2000.0;
 				rectLight.position.set( 0, 30, -149.5 );
 
 				// TODO: ensure RectAreaLight handles target param correctly
@@ -194,7 +194,7 @@
 				
 				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
 				rectLight3.matrixAutoUpdate = true;
-				rectLight3.intensity = 590.0;
+				rectLight3.intensity = 2000.0;
 				rectLight3.position.set( 0, 30, 149.5 );
 				rectLight3.rotation.y = Math.PI/180 * 180;
 
@@ -295,7 +295,7 @@ var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x0
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
-brickTexture.repeat.set( 7, 7 );			
+brickTexture.repeat.set( 7, 5 );			
 var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 				
 var backWall = new THREE.Mesh( wallGeometry, brickMat );
@@ -574,7 +574,7 @@ rightWall.rotation.y = Math.PI/180 * 90;
 
 				} );
 
-				lightFolder.add( param, 'intensity', 0.0, 500.0 ).onChange( function ( val ) {
+				lightFolder.add( param, 'intensity', 0.0, 2000.0 ).onChange( function ( val ) {
 
 					rectLight.intensity = val;
 					rectLight3.intensity = val;
