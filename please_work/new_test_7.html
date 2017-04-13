@@ -60,6 +60,15 @@
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var rnd = new THREE.WebGLRenderer();
+			
+				rnd.shadowMap.enabled = true;
+				rnd.shadowMap.type = THREE.PCFSoftShadowMap;
+
+				rnd.gammaInput = true;
+				rnd.gammaOutput = true;
+			
+			
+			
 			var cam = new THREE.PerspectiveCamera( 34, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			var orb = new THREE.OrbitControls( cam, rnd.domElement );
 
