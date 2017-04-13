@@ -106,6 +106,9 @@ var subj;
 var plant_1_pot;
 var subjMat = new THREE.MeshPhongMaterial({
   color:0xF2461C, 
+	    plant_1_pot.castShadow = true;
+
+  mshPhongPlant.receiveShadow = true;
   shininess:11, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
@@ -132,6 +135,8 @@ var loader = new THREE.JSONLoader(); // init the loader util
 loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
     plant_1_pot.castShadow = true;
+
+    plant_1_pot.receiveShadow = true;
     geometry.computeVertexNormals();
     plant_1_pot.scale.set(5,5,5);
     plant_1_pot.position.set(-100, -250, -110);
@@ -145,6 +150,7 @@ loader.load('images/deer/bean2.js', function (geometry) {
 	
     subj = new THREE.Mesh(geometry, subjMat);
     subj.castShadow = true;
+    subj.receiveShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
 	subj.position.set(0, -250, 50);
@@ -183,6 +189,8 @@ var wallMat2 = new THREE.MeshBasicMaterial( { map: wallTexture2 } );
     // Floor
     var floor = new THREE.Mesh(cube, floorMat );
     floor.position.set(0,-250,0);
+    floor.castShadow = true;
+    floor.receiveShadow = true;
     scene.add( floor );
   
     // Back wall
