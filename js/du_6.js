@@ -152,8 +152,7 @@ loader.load('images/deer/bean2.js', function (geometry) {
     subj.receiveShadow = true;
     geometry.computeVertexNormals();
     subj.scale.set(20,20,20);
-	subj.position.set(0, -250, 50);
-subj.castShadow = true;
+    subj.position.set(0, -250, 50);
     subj.rotation.y = convertToRad(90);
     scene.add(subj);
 	  
