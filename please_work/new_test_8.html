@@ -226,7 +226,15 @@ scn.add( spotLight2 );
 var plant_1_pot;
 				
   var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
-  var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );
+  var poopMat = new THREE.MeshBasicMaterial( { 
+	  
+  color:0xF2461C, 
+  castShadow: true,
+  receiveShadow:true,
+  shininess:11, 
+  specular:0xEBC335, 
+  shading: THREE.SmoothShading		     
+					     } );
 				
 
 
