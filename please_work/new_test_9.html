@@ -179,7 +179,7 @@
 
 				cam.position.set( 0, 20, 45 );
 
-				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
+				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				rectLight.matrixAutoUpdate = true;
 				rectLight.intensity = 2000.0;
 				rectLight.position.set( 0, 30, -149.5 );
@@ -192,7 +192,7 @@
 
 				
 				
-				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 15, 25 );
+				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				rectLight3.matrixAutoUpdate = true;
 				rectLight3.intensity = 2000.0;
 				rectLight3.position.set( 0, 30, 149.5 );
@@ -352,7 +352,7 @@ var window1 = new THREE.Mesh( windowGeometry, windowMat );
 window1.material.side = THREE.DoubleSide;
 window1.receiveShadow = true;
 scn.add( window1 );
-window1.position.set( 0, 50,-149 );
+window1.position.set( 0, 50,-149.5 );
 //window1.rotation.y = Math.PI/180 * 180;
 				
 				
