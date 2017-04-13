@@ -206,11 +206,7 @@
 				// TODO (abelnation): rect light shadow
 
 				
-
-				
-				
-				
-var box;				
+								
 var plant_1_pot;
 				
   var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
@@ -282,9 +278,9 @@ scn.add( spotLight2 );
     //Creating box
     var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
     var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
-    var box = new THREE.Mesh( boxGeometry, boxMaterial );
-    box.castShadow = true;
-    scn.add( box );			
+    var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
+    boxer.castShadow = true;
+    scn.add( boxer );			
 
 var planeGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32 );
 var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
@@ -462,8 +458,8 @@ plane.rotation.x = -Math.PI/2;
 			function render() {
   requestAnimationFrame( render );
 
-  box.rotation.x += 0.02;
-  box.rotation.y += 0.02;
+  boxer.rotation.x += 0.02;
+  boxer.rotation.y += 0.02;
 				rectLightHelper.update(); // required
 				rectLight3Helper.update(); // required
 
