@@ -80,9 +80,12 @@ var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/ima
 var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/window1.jpg" );			
 
 			
-var specWindText2 = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/special_scene_window.png' );			
-var specWindMat2 = new THREE.MeshBasicMaterial( { map: specWindText2 } );				
+//var specWindText2 = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/special_scene_window.png' );			
+//var specWindMat2 = new THREE.MeshBasicMaterial( { map: specWindText2 } );	
 			
+var sceneTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/special_scene_window.png" );
+var sceneMat = new THREE.MeshBasicMaterial( { map: sceneTexture } );		
+		
 
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );		
   
@@ -98,7 +101,7 @@ var my_rect_light_width = windowWidth - 10 ;
 var my_rect_light_height = windowHeight - 36 ;	
 			
     var windowGeometry = new THREE.PlaneGeometry( windowWidth, windowHeight, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
-    var windowMat = new THREE.MeshPhongMaterial( { map: specWindMat2 } );
+    var windowMat = new THREE.MeshPhongMaterial( { map: scene1 } );
     var window1 = new THREE.Mesh( windowGeometry, windowMat );	
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
