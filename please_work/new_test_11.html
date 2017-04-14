@@ -103,12 +103,13 @@ rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1
 var window1_dir_light = new THREE.DirectionalLight(0xffffff, 1);  //
 window1_dir_light.castShadow = true;
 window1_dir_light.shadowCameraVisible = true;
-window1_dir_light.shadowCameraNear = 100;
-window1_dir_light.shadowCameraFar = 4000;
-window1_dir_light.shadowCameraLeft = -20; // CHANGED
-window1_dir_light.shadowCameraRight = 20; // CHANGED
-window1_dir_light.shadowCameraTop = 20; // CHANGED
-window1_dir_light.shadowCameraBottom = -20; // CHANGED
+			
+window1_dir_light.shadow.camera.near = 100;
+window1_dir_light.shadow.camera.far = 4000;
+window1_dir_light.shadow.camera.left = -20; // CHANGED
+window1_dir_light.shadow.camera.right = 20; // CHANGED
+window1_dir_light.shadow.camera.top = 20; // CHANGED
+window1_dir_light.shadow.camera.bottom = -20; // CHANGED
 			
 			
 window1_dir_light.position.set(10, 80, 150); // X,Y,Z
