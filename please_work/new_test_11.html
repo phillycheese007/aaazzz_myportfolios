@@ -285,19 +285,19 @@ spotLight2.shadow.camera.left = 500
 scn.add( spotLight2 );					
 
 				
-    var dir_light = new THREE.DirectionalLight(0xffffff, 1);
-    dir_light.castShadow = true;
-    dir_light.shadowCameraVisible = true;
-	dir_light.shadowCameraNear = 100;
-	dir_light.shadowCameraFar = 200;
-    dir_light.shadowCameraLeft = -20; // CHANGED
-	dir_light.shadowCameraRight = 20; // CHANGED
-	dir_light.shadowCameraTop = 20; // CHANGED
-	dir_light.shadowCameraBottom = -20; // CHANGED
+var dir_light = new THREE.DirectionalLight(0xffffff, 1);
+dir_light.castShadow = true;
+dir_light.shadowCameraVisible = true;
+dir_light.shadowCameraNear = 100;
+dir_light.shadowCameraFar = 200;
+dir_light.shadowCameraLeft = -20; // CHANGED
+dir_light.shadowCameraRight = 20; // CHANGED
+dir_light.shadowCameraTop = 20; // CHANGED
+dir_light.shadowCameraBottom = -20; // CHANGED
 
-    dir_light.position.set(-60, 20, 100); // CHANGED
-    scn.add(dir_light);
-    scn.add( new THREE.DirectionalLightHelper(dir_light, 0.2) );
+dir_light.position.set(60, 20, 100); // CHANGED
+scn.add(dir_light);
+scn.add( new THREE.DirectionalLightHelper(dir_light, 0.2) );
 				
 				
 				
