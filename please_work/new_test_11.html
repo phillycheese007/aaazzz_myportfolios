@@ -117,8 +117,10 @@ window1_dir_light.position.set(10, 80, 150); // X,Y,Z
 //window1_dir_light.rotation.y = Math.PI/180 * 180;
 			
 
-scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );		
-
+//scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );	
+			
+var mynewdirlighthelper = new THREE.CameraHelper( window1_dir_light.shadow.camera );
+scn.add( mynewdirlighthelper );
 			
 
 window1.material.side = THREE.DoubleSide;
