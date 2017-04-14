@@ -82,8 +82,8 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 var rectLight;
 var rectLightHelper;				
 			
-			
-var windowGeometry = new THREE.PlaneGeometry( 45, 60, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
+var windowWidth = 45 ;			
+var windowGeometry = new THREE.PlaneGeometry( windowWidth, 60, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
 var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );			
 var window1 = new THREE.Mesh( windowGeometry, windowMat );			
 				
