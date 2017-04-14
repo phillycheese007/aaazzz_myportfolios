@@ -323,9 +323,12 @@ var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x0
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
 brickTexture.repeat.set( 7, 5 );			
-var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+//var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 
-				
+var brickTexture2 = THREE.ImageUtils.loadTexture( 'https://github.com/phillycheese007/aaazzz_myportfolios/blob/master/images/deer/special_scene_window.png' );
+			
+var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture2 } );				
+			
 			
 var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/lightcity.jpg" );
 var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );		
