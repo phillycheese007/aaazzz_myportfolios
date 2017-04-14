@@ -78,8 +78,10 @@ var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/ima
 			
 			
 var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/window1.jpg" );			
-var specialWindowTexture = new THREE.TextureLoader().load( "/aaaazzz_myportfolios/images/deer/special_scene_window.png" );	
-		
+
+			
+var specWindText2 = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/special_scene_window.png' );			
+var specWindMat2 = new THREE.MeshBasicMaterial( { map: specWindText2 } );				
 			
 
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );		
@@ -96,7 +98,7 @@ var my_rect_light_width = windowWidth - 10 ;
 var my_rect_light_height = windowHeight - 36 ;	
 			
     var windowGeometry = new THREE.PlaneGeometry( windowWidth, windowHeight, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
-    var windowMat = new THREE.MeshPhongMaterial( { map: specialWindowTexture } );
+    var windowMat = new THREE.MeshPhongMaterial( { map: specWindMat2 } );
     var window1 = new THREE.Mesh( windowGeometry, windowMat );	
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
@@ -325,11 +327,8 @@ brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
 brickTexture.repeat.set( 7, 5 );			
 //var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 
-var brickTexture2 = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/special_scene_window.png' );
-			
-var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture2 } );				
-			
-			
+					
+		
 var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/lightcity.jpg" );
 var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );		
 				
