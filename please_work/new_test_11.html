@@ -80,7 +80,10 @@ var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );		
   
 var rectLight;
-var rectLightHelper;				
+var rectLightHelper;
+			
+var rectLight_top;
+var rectLightHelper_top;	
 			
 var windowWidth = 45 ;
 var windowHeight = 60 ;	
@@ -91,9 +94,11 @@ var my_rect_light_height = windowHeight - 36 ;
     var windowMat = new THREE.MeshPhongMaterial( { map: windowTexture } );
     var window1 = new THREE.Mesh( windowGeometry, windowMat );	
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
+rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 
 window1.position.set( 0, windowHeight, -149.5 );
 rectLight.position.set( 0, 46.9, -149.5 );    // its.. ?, top-bottom, ?, 		
+rectLight_top.position.set( 0, 66.9, -149.5 );    // its.. ?, top-bottom, ?, 		
 
 		
 
@@ -151,8 +156,7 @@ scn.add( window1 );
 
 		
 	
-			//var rectLight3;
-			//var rectLightHelper3;
+
 			
 			var ray = new THREE.Raycaster();
 			var mouseDown = new THREE.Vector2();
@@ -183,13 +187,13 @@ scn.add( window1 );
 				rnd.gammaOutput = true;
 				rnd.antialias = true;
 
-				cam.position.set( 13, 270, 55 ); // ITS.. X,Y,Z
+				cam.position.set( 0, 170, 55 ); // ITS.. X,Y,Z
 
 				//rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				rectLight.matrixAutoUpdate = true;
 				rectLight.intensity = 2000.0;
-				
-				
+				rectLight_top.matrixAutoUpdate = true;
+				rectLight_top.intensity = 2000.0;			
 				
 				//rectLight.position.set( 0, 30, -149.5 );
 
@@ -202,7 +206,8 @@ scn.add( window1 );
 				rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
 				rectLight.add( rectLightHelper );
 
-				
+				rectLightHelper_top = new THREE.RectAreaLightHelper( rectLight_top );
+				rectLight_top.add( rectLightHelper_top );
 				
 				//rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				//rectLight3.matrixAutoUpdate = true;
@@ -418,6 +423,7 @@ frontWall.rotation.y = Math.PI/180 * 180;
 				
 				
 				scn.add( rectLight );
+				scn.add( rectLight_top );
 				//scn.add( rectLight3 );
 
 				
@@ -475,6 +481,10 @@ frontWall.rotation.y = Math.PI/180 * 180;
 				rectLight.position.set( lx, ly, lz );
 				rectLight.lookAt( origin.position );
 				rectLight.updateMatrixWorld();
+
+				rectLight_top.position.set( lx, ly, lz );
+				rectLight_top.lookAt( origin.position );
+				rectLight_top.updateMatrixWorld();
 				
 				//rectLight3.position.set( lx, ly, lz );
 				//rectLight3.lookAt( origin.position );
