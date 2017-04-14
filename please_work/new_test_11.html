@@ -100,7 +100,7 @@ window1.position.set( 0, windowHeight, -149.5 );
 rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
 rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
-var window1_dir_light = new THREE.DirectionalLight(0xffffff, 10);  //the second after color adds line
+var window1_dir_light = new THREE.DirectionalLight(0xffffff, 1);  //
 window1_dir_light.castShadow = true;
 window1_dir_light.shadowCameraVisible = true;
 window1_dir_light.shadowCameraNear = 100;
@@ -114,7 +114,7 @@ window1_dir_light.position.set(10, 80, -150); // X,Y,Z
 //window1_dir_light.rotation.y = Math.PI/180 * 180;
 	
 scn.add(window1_dir_light);
-scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.2) );		
+scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0) );		
 
 			
 
