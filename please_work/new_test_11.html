@@ -83,18 +83,14 @@
 var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
 var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
   
-			
-			
-			
-var window1 = new THREE.Mesh( windowGeometry, windowMat );
-			
-			
-var windowGeometry = new THREE.PlaneGeometry( 60, 40, 30 );
-var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
-
-			
 var rectLight;
-var rectLightHelper;						
+var rectLightHelper;				
+			
+			
+var window1 = new THREE.Mesh( windowGeometry, windowMat );			
+var windowGeometry = new THREE.PlaneGeometry( 60, 40, 30 );
+var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );			
+					
 
 var my_rect_light_width = 22.8 ;	
 var my_rect_light_height = 24.4 ;			
