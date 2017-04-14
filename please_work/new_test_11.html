@@ -86,6 +86,8 @@ var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );
 			
 			
 			
+var window1 = new THREE.Mesh( windowGeometry, windowMat );
+			
 			
 var windowGeometry = new THREE.PlaneGeometry( 60, 40, 30 );
 var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
@@ -93,13 +95,12 @@ var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture
 			
 var rectLight;
 var rectLightHelper;						
-var window1 = new THREE.Mesh( windowGeometry, windowMat );
 
-var rect_light_width = 22.8 ;	
-var rect_light_height = 24.4 ;			
+var my_rect_light_width = 22.8 ;	
+var my_rect_light_height = 24.4 ;			
 		
 window1.position.set( 0, 60, -149.5 );
-rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, rect_light_width, rect_light_height );   //Its... undefined, width, height);
+rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 rectLight.position.set( 0, 46.5, -149.5 );    // its.. ?, top-bottom, ?, 
 		
 			
