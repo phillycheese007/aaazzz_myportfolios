@@ -101,11 +101,11 @@ rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?,
 rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 0.8 );
-    dirLight44.position.set(23, 70, -150);
+    dirLight44.position.set(3, 70, -150);
     dirLight44.castShadow = true;
     scn.add( dirLight44 );
-    scn.add( new THREE.DirectionalLightHelper(dirLight44, 21) );
-			
+    scn.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+dirLight44.shadowCameraVisible = true;
 
     //dirLight44.rotation.y = Math.PI/180 * 180;
 			
