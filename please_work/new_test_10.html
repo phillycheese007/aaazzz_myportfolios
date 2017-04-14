@@ -347,12 +347,12 @@ frontWall.rotation.y = Math.PI/180 * 180;
 //leftWall.position.set( 150, 50, 0 );
 //leftWall.rotation.y = Math.PI/180 * 90;
 
-var rightWall = new THREE.Mesh( wallGeometry, brickMat );
-rightWall.material.side = THREE.DoubleSide;
-rightWall.receiveShadow = true;
-scn.add( rightWall );
-rightWall.position.set( -150, 50, 0 );
-rightWall.rotation.y = Math.PI/180 * 90;	
+//var rightWall = new THREE.Mesh( wallGeometry, brickMat );
+//rightWall.material.side = THREE.DoubleSide;
+//rightWall.receiveShadow = true;
+//scn.add( rightWall );
+//rightWall.position.set( -150, 50, 0 );
+//rightWall.rotation.y = Math.PI/180 * 90;	
 				
 				
 
@@ -387,24 +387,14 @@ rightWall.rotation.y = Math.PI/180 * 90;
 				//mshPhongKnot.castShadow = true;
 				//mshPhongKnot.receiveShadow = true;
 				
-				
-				
-
-	// 	
-        //
-
+			
 				
 				scn.add( mshPhongFloor );
 				scn.add( mshPhongBox );
 				//scn.add( mshPhongSphere );
 				//scn.add( mshPhongKnot );
 
-				
-				
-				
-
-				
-				
+						
 				
 				
 				mshStdBox.castShadow = true;
@@ -452,10 +442,7 @@ rightWall.rotation.y = Math.PI/180 * 90;
 				
 				
 				
-				
-				
-				
-				
+		
 				
 				
 				
@@ -463,10 +450,6 @@ rightWall.rotation.y = Math.PI/180 * 90;
 			}
 			//end of adding stuff place	
 			
-			
-	
-			
-
 			
 			
 
@@ -606,12 +589,11 @@ rightWall.rotation.y = Math.PI/180 * 90;
 
 				} );
 
-				lightFolder.add( param, 'intensity', 0.0, 2000.0 ).onChange( function ( val ) {
-
-					rectLight.intensity = val;
-					//rectLight3.intensity = val;
-
-				} );
+	//			lightFolder.add( param, 'intensity', 0.0, 2000.0 ).onChange( function ( val ) {
+	//
+	//				rectLight.intensity = val;
+	//				//rectLight3.intensity = val;
+	//			} );
 
 				lightFolder.addColor( param, 'ambient light color' ).onChange( function ( val ) {
 
