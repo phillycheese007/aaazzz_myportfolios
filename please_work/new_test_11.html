@@ -82,14 +82,15 @@ var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
 var rectLight;
 var rectLightHelper;				
 			
-var windowWidth = 45 ;			
+var windowWidth = 45 ;
+var windowHeight = 60 ;					
 var windowGeometry = new THREE.PlaneGeometry( windowWidth, 60, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
 var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );			
 var window1 = new THREE.Mesh( windowGeometry, windowMat );			
 				
 
 var my_rect_light_width = windowWidth - 10 ;	
-var my_rect_light_height = 24.4 ;			
+var my_rect_light_height = windowHeight - 10 ;			
 		
 window1.position.set( 0, 60, -149.5 );
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
