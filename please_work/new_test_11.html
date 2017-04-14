@@ -10,7 +10,6 @@
 				margin: 0px;
 				overflow: hidden;
 			}
-
 			#info {
 				position: absolute;
 				top: 0px; width: 100%;
@@ -20,12 +19,10 @@
 				font-size: 13px;
 				text-align: center;
 			}
-
 			a {
 				color: #ff0080;
 				text-decoration: none;
 			}
-
 			a:hover {
 				color: #0080ff;
 			}
@@ -57,6 +54,7 @@
 
 			var rnd = new THREE.WebGLRenderer();
 			var cam = new THREE.PerspectiveCamera( 34, window.innerWidth / window.innerHeight, 0.1, 20000 );
+			
 			var orb = new THREE.OrbitControls( cam, rnd.domElement );
 
 			var scn = new THREE.Scene();
@@ -74,9 +72,7 @@
 			
 			
 			
-var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
-
-					
+var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );					
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );		
   
 var rectLight;
@@ -183,7 +179,7 @@ scn.add( window1 );
 				rnd.gammaOutput = true;
 				rnd.antialias = true;
 
-				cam.position.set( 0, 20, 45 );
+				cam.position.set( 0, 50, 45 );
 
 				//rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				rectLight.matrixAutoUpdate = true;
