@@ -88,7 +88,7 @@ var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture
 var window1 = new THREE.Mesh( windowGeometry, windowMat );			
 				
 
-var my_rect_light_width = 22.8 ;	
+var my_rect_light_width = windowWidth - 10 ;	
 var my_rect_light_height = 24.4 ;			
 		
 window1.position.set( 0, 60, -149.5 );
@@ -495,7 +495,6 @@ frontWall.rotation.y = Math.PI/180 * 180;
 
 
 			init();
-			tick();
 
 		</script>
 	</body>
