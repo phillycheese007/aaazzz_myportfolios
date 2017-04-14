@@ -319,6 +319,14 @@ var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/de
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
 brickTexture.repeat.set( 7, 5 );			
 var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+
+				
+			
+var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/lightcity.jpg" );
+
+var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );		
+				
+				
 				
 var backWall = new THREE.Mesh( wallGeometry, brickMat );
 backWall.material.side = THREE.DoubleSide;
@@ -334,12 +342,12 @@ scn.add( frontWall );
 frontWall.position.set( 0, 50, -150 );
 frontWall.rotation.y = Math.PI/180 * 180;				
 
-//var leftWall = new THREE.Mesh( wallGeometry, brickMat );
-//leftWall.material.side = THREE.DoubleSide;
-//leftWall.receiveShadow = true;
-//scn.add( leftWall );
-//leftWall.position.set( 150, 50, 0 );
-//leftWall.rotation.y = Math.PI/180 * 90;
+var leftWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
+leftWall.material.side = THREE.DoubleSide;
+leftWall.receiveShadow = true;
+scn.add( leftWall );
+leftWall.position.set( 150, 50, 0 );
+leftWall.rotation.y = Math.PI/180 * 90;
 
 //var rightWall = new THREE.Mesh( wallGeometry, brickMat );
 //rightWall.material.side = THREE.DoubleSide;
