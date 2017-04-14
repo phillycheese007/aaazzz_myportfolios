@@ -100,12 +100,20 @@ window1.position.set( 0, windowHeight, -149.5 );
 rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
 rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
-		
+var window1_dir_light = new THREE.DirectionalLight(0xffffff, 1);
+window1_dir_light.castShadow = true;
+window1_dir_light.shadowCameraVisible = true;
+window1_dir_light.shadowCameraNear = 100;
+window1_dir_light.shadowCameraFar = 200;
+window1_dir_light.shadowCameraLeft = -20; // CHANGED
+window1_dir_light.shadowCameraRight = 20; // CHANGED
+window1_dir_light.shadowCameraTop = 20; // CHANGED
+window1_dir_light.shadowCameraBottom = -20; // CHANGED
 
-		
-		
+window1_dir_light.position.set(60, 20, 100); // CHANGED
+scn.add(window1_dir_light);
+scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.2) );		
 
-		
 			
 
 window1.material.side = THREE.DoubleSide;
@@ -285,19 +293,7 @@ spotLight2.shadow.camera.left = 500
 scn.add( spotLight2 );					
 
 				
-var dir_light = new THREE.DirectionalLight(0xffffff, 1);
-dir_light.castShadow = true;
-dir_light.shadowCameraVisible = true;
-dir_light.shadowCameraNear = 100;
-dir_light.shadowCameraFar = 200;
-dir_light.shadowCameraLeft = -20; // CHANGED
-dir_light.shadowCameraRight = 20; // CHANGED
-dir_light.shadowCameraTop = 20; // CHANGED
-dir_light.shadowCameraBottom = -20; // CHANGED
 
-dir_light.position.set(60, 20, 100); // CHANGED
-scn.add(dir_light);
-scn.add( new THREE.DirectionalLightHelper(dir_light, 0.2) );
 				
 				
 				
