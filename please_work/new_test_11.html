@@ -113,7 +113,7 @@ window1_dir_light.shadowCameraBottom = -20; // CHANGED
 			
 window1_dir_light.position.set(10, 80, 150); // X,Y,Z
 			
-window1_dir_light.rotation.y = Math.PI/180 * 180;
+//window1_dir_light.rotation.y = Math.PI/180 * 180;
 			
 
 scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );		
@@ -275,15 +275,14 @@ scn.add( window1 );
 				
 				
 				
-//scene.add( directionalLight );
-var speciallight = new THREE.PointLight( 0xffffff, 1, 100 );
-speciallight.position.set( 0, 12, 55 );
-speciallight.castShadow = true;
-speciallight.shadow.mapSize.width = 1024;
-speciallight.shadow.mapSize.height = 1024;
+//var speciallight = new THREE.PointLight( 0xffffff, 1, 100 );
+//speciallight.position.set( 0, 12, 55 );
+//speciallight.castShadow = true;
+//speciallight.shadow.mapSize.width = 1024;
+//speciallight.shadow.mapSize.height = 1024;
 
-speciallight.shadow.camera.left = 500
-scn.add( speciallight );
+//speciallight.shadow.camera.left = 500
+//scn.add( speciallight );
 
 				
 //var spotLight2 = new THREE.SpotLight( 0xffffff );
