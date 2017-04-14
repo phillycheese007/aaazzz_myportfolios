@@ -98,7 +98,7 @@ rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_widt
 
 window1.position.set( 0, windowHeight, -149.5 );
 rectLight.position.set( 0, 46.9, -149.5 );    // its.. ?, top-bottom, ?, 		
-rectLight_top.position.set( 0, 66.9, -149.5 );    // its.. ?, top-bottom, ?, 		
+rectLight_top.position.set( 0, ( windowHeight + 10 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
 		
 
@@ -224,8 +224,7 @@ scn.add( window1 );
 
 				
 
-var newObject = rectLight_top.clone(); // Clone object
-newObject.position.set( 0, 66.9, -149.5 );    // its.. ?, top-bottom, ?, 		
+		
 
 				
 				
