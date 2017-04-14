@@ -89,9 +89,32 @@
 					
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
-
-
+  
 			
+			
+			
+			
+			
+			
+var window1 = new THREE.Mesh( windowGeometry, windowMat );			
+window1.position.set( 0, 60,-149.9 );
+rectLight.position.set( 0, 30, -149.5 );
+rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 50, 55 );
+			
+			
+			
+			
+			
+
+var windowGeometry = new THREE.PlaneGeometry( 30, 60, 40, 30 );
+var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
+
+
+window1.material.side = THREE.DoubleSide;
+window1.receiveShadow = true;
+scn.add( window1 );
+//window1.position.set( 0, 60,-149.9 );
+//window1.rotation.y = Math.PI/180 * 180;		
 
 
 			
@@ -179,11 +202,17 @@
 
 				cam.position.set( 0, 20, 45 );
 
-				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
+				//rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				rectLight.matrixAutoUpdate = true;
 				rectLight.intensity = 2000.0;
-				rectLight.position.set( 0, 30, -149.5 );
+				
+				
+				
+				//rectLight.position.set( 0, 30, -149.5 );
 
+				
+				
+				
 				// TODO: ensure RectAreaLight handles target param correctly
 				//rectLight.target = mshPhongBox;
 
@@ -345,15 +374,7 @@ rightWall.position.set( -150, 50, 0 );
 rightWall.rotation.y = Math.PI/180 * 90;	
 				
 				
-var windowGeometry = new THREE.PlaneGeometry( 30, 60, 40, 30 );
-var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/window1.jpg') } );
 
-var window1 = new THREE.Mesh( windowGeometry, windowMat );
-window1.material.side = THREE.DoubleSide;
-window1.receiveShadow = true;
-scn.add( window1 );
-window1.position.set( 0, 60,-149.9 );
-//window1.rotation.y = Math.PI/180 * 180;
 				
 				
 				scn.add( cam );
