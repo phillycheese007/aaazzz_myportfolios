@@ -328,7 +328,7 @@ var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x0
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
 brickTexture.repeat.set( 7, 5 );			
-//var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 
 					
 		
