@@ -53,7 +53,9 @@
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var rnd = new THREE.WebGLRenderer();
-			var cam = new THREE.PerspectiveCamera( 34, window.innerWidth / window.innerHeight, 0.1, 20000 );
+			
+			//Its..  fov, aspect, near, far 
+			var cam = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
 			var orb = new THREE.OrbitControls( cam, rnd.domElement );
 
