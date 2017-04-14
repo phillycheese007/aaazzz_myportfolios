@@ -100,12 +100,11 @@ window1.position.set( 0, windowHeight, -149.5 );
 rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
 rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
-    //var dirLight44 = new THREE.DirectionalLight( 0xffffff, 0.8 );
-    //dirLight44.position.set(0, 80, 310);
-    //dirLight44.castShadow = true;
-
-    //scn.add( dirLight44 );
-    //scn.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+    var dirLight44 = new THREE.DirectionalLight( 0xffffff, 0.8 );
+    dirLight44.position.set(0, 80, 310);
+    dirLight44.castShadow = true;
+    scn.add( dirLight44 );
+    scn.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
 			
 			
 	
