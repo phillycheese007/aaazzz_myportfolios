@@ -81,7 +81,6 @@ var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/ima
 var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/special_scene_window.png" );			
 
 var windowTexture777 = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/windpic_clearframe.png" );			
-windowTexture777.transparent = true;	
 			
 			
 			
@@ -112,7 +111,8 @@ var my_rect_light_height = windowHeight - 36 ;
 			
 			
     var window1 = new THREE.Mesh( windowGeometry, windowMat );	
-    var windowSpecial1 = new THREE.Mesh( windowGeometry, windowSpecialMat );	
+    var windowSpecial1 = new THREE.Mesh( windowGeometry, windowSpecialMat {transparent: true;} );             
+	
 		
 			
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
