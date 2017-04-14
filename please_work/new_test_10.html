@@ -145,8 +145,8 @@
 			
 			var rectLight;
 			var rectLightHelper;
-			var rectLight3;
-			var rectLightHelper3;
+			//var rectLight3;
+			//var rectLightHelper3;
 			
 			var ray = new THREE.Raycaster();
 			var mouseDown = new THREE.Vector2();
@@ -192,17 +192,17 @@
 
 				
 				
-				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
-				rectLight3.matrixAutoUpdate = true;
-				rectLight3.intensity = 2000.0;
-				rectLight3.position.set( 0, 30, 149 );
-				rectLight3.rotation.y = Math.PI/180 * 180;
+				//rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
+				//rectLight3.matrixAutoUpdate = true;
+				//rectLight3.intensity = 2000.0;
+				//rectLight3.position.set( 0, 30, 149 );
+				//rectLight3.rotation.y = Math.PI/180 * 180;
 
 				// TODO: ensure RectAreaLight handles target param correctly
 				// rectLight.target = mshPhongBox;
 
-				rectLight3Helper = new THREE.RectAreaLightHelper( rectLight3 );
-				rectLight3.add( rectLight3Helper );			
+				//rectLight3Helper = new THREE.RectAreaLightHelper( rectLight3 );
+				//rectLight3.add( rectLight3Helper );			
 				// TODO (abelnation): rect light shadow
 
 				
@@ -514,15 +514,15 @@ window1.position.set( 0, 60,-149.9 );
 				rectLight.lookAt( origin.position );
 				rectLight.updateMatrixWorld();
 				
-				rectLight3.position.set( lx, ly, lz );
-				rectLight3.lookAt( origin.position );
-				rectLight3.updateMatrixWorld();
+				//rectLight3.position.set( lx, ly, lz );
+				//rectLight3.lookAt( origin.position );
+				//rectLight3.updateMatrixWorld();
 			}
 
 			function render() {
 
 				rectLightHelper.update(); // required
-				rectLight3Helper.update(); // required
+				//rectLight3Helper.update(); // required
 
 				rnd.render( scn, cam );
 					
@@ -561,12 +561,12 @@ window1.position.set( 0, 60,-149.9 );
 					height: rectLight.height,
 					color: rectLight.color.getHex(),
 					
-					width: rectLight3.width,
-					height: rectLight3.height,
-					color: rectLight3.color.getHex(),
+					//width: rectLight3.width,
+					//height: rectLight3.height,
+					//color: rectLight3.color.getHex(),
 					
 					intensity: rectLight.intensity,
-					intensity: rectLight3.intensity,
+					//intensity: rectLight3.intensity,
 					'ambient light color': amb.color.getHex(),
 					'floor color p': matPhongFloor.color.getHex(),
 					'object color p': matPhongObjects.color.getHex(),
@@ -584,7 +584,7 @@ window1.position.set( 0, 60,-149.9 );
 				lightFolder.add( param, 'width', 0.1, 20).onChange( function ( val ) {
 
 					rectLight.width = val;
-					rectLight3.width = val;
+					//rectLight3.width = val;
 
 
 				} );
@@ -592,7 +592,7 @@ window1.position.set( 0, 60,-149.9 );
 				lightFolder.add( param, 'height', 0.1, 20).onChange( function ( val ) {
 
 					rectLight.height = val;
-					rectLight3.height = val;
+					//rectLight3.height = val;
 
 
 				} );
@@ -600,14 +600,14 @@ window1.position.set( 0, 60,-149.9 );
 				lightFolder.addColor( param, 'color' ).onChange( function ( val ) {
 
 					rectLight.color.setHex( val );
-					rectLight3.color.setHex( val );
+					//rectLight3.color.setHex( val );
 
 				} );
 
 				lightFolder.add( param, 'intensity', 0.0, 2000.0 ).onChange( function ( val ) {
 
 					rectLight.intensity = val;
-					rectLight3.intensity = val;
+					//rectLight3.intensity = val;
 
 				} );
 
