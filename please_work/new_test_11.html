@@ -111,6 +111,8 @@ window1_dir_light.shadowCameraTop = 20; // CHANGED
 window1_dir_light.shadowCameraBottom = -20; // CHANGED
 
 window1_dir_light.position.set(60, 20, 100); // CHANGED
+window1_dir_light.rotation.y = Math.PI/180 * 90;
+	
 scn.add(window1_dir_light);
 scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.2) );		
 
