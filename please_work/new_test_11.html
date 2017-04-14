@@ -100,31 +100,19 @@ window1.position.set( 0, windowHeight, -149.5 );
 rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
 rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
-var window1_dir_light = new THREE.DirectionalLight(0xffffff, 1);  //
-window1_dir_light.castShadow = true;
-window1_dir_light.shadowCameraVisible = true;
-			
-window1_dir_light.shadow.camera.near = 100;
-window1_dir_light.shadow.camera.far = 4000;
-window1_dir_light.shadow.camera.left = -20; // CHANGED
-window1_dir_light.shadow.camera.right = 20; // CHANGED
-window1_dir_light.shadow.camera.top = 20; // CHANGED
-window1_dir_light.shadow.camera.bottom = -20; // CHANGED
+    var dirLight44 = new THREE.DirectionalLight( 0xffffff, 0.8 );
+    dirLight44.position.set(0, 80, 0);
+    scn.add( dirLight44 );
+    scn.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
 			
 			
-window1_dir_light.position.set(10, 80, 150); // X,Y,Z
-window1_dir_light.rotation.y = Math.PI/180 * 90;
 	
 //window1_dir_light.rotation.y = Math.PI/180 * 180;
 			
 
 //scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );	
 			
-var mynewdirlighthelper = new THREE.CameraHelper( window1_dir_light.shadow.camera );
-mynewdirlighthelper.position.set(10, 80, 150);
-mynewdirlighthelper.rotation.y = Math.PI/180 * 180;
 
-scn.add( mynewdirlighthelper );
 			
 
 window1.material.side = THREE.DoubleSide;
