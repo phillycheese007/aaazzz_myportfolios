@@ -124,6 +124,11 @@ dirLight44.shadowCameraVisible = true;
     dirLight55.castShadow = true;
     scn.add( dirLight55 );
     scn.add( new THREE.DirectionalLightHelper(dirLight55, 1) );
+dirLight44.shadow.mapSize.width = 1024;
+dirLight44.shadow.mapSize.height = 1024;
+
+dirLight44.shadow.camera.left = 500	
+			
 dirLight44.shadowCameraVisible = true;			
 
 //scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );	
