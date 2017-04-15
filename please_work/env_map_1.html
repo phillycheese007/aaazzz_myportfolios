@@ -35,11 +35,6 @@
 <script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/controls/OrbitControls.js"></script>
 <!--<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/Detector.js"></script>-->
 
-		<div id="info">
-			<a href="http://threejs.org" target="_blank">three.js</a> - webgl environment mapping example<br/>
-			Equirectangular Map by <a href="http://gl.ict.usc.edu/Data/HighResProbes/">University of Southern California</a><br/>
-			Spherical Map by <a href="http://www.pauldebevec.com/Probes/">Paul Debevec</a>
-		</div>
 
 		<script>
 
@@ -86,7 +81,13 @@
 				textureCube = new THREE.CubeTextureLoader().load( urls );
 				textureCube.format = THREE.RGBFormat;
 				textureCube.mapping = THREE.CubeReflectionMapping;
+				
+				
+				
 				var textureLoader = new THREE.TextureLoader();
+				
+				
+				
 				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
 				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
 				textureEquirec.magFilter = THREE.LinearFilter;
@@ -164,8 +165,9 @@
 				};
 
 				var gui = new dat.GUI();
-				gui.add( params, 'Cube' );
 				gui.add( params, 'Equirectangular' );
+
+				gui.add( params, 'Cube' );
 				gui.add( params, 'Spherical' );
 				gui.add( params, 'Refraction' ).onChange( function( value ) {
 
