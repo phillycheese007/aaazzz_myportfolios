@@ -173,6 +173,8 @@ loader.load('images/deer/bean2.js', function (geometry) {
     // create different materials
     var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/floor.jpg') } );
 	
+var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
+var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
 	
 	
 var wallTexture = THREE.ImageUtils.loadTexture( '/responsive_shapes/images/aaa.svg' );
@@ -205,7 +207,7 @@ var wallMat2 = new THREE.MeshBasicMaterial( { map: wallTexture2 } );
     scene.add( backWall );
   
     // Left wall
-    var leftWall = new THREE.Mesh(cube, wallMat2 );
+    var leftWall = new THREE.Mesh(cube, wallWindMat );
     leftWall.rotation.x = Math.PI/180 * 90;
     leftWall.rotation.z = Math.PI/180 * 90;
     leftWall.position.set(-250,0,0);
