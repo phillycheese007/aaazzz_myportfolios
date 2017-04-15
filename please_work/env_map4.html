@@ -122,24 +122,25 @@ var planeGeometry = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
 var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 var plane = new THREE.Mesh( planeGeometry, floorMat ); // planeMaterial );
 plane.receiveShadow = true;
-plane.material.side = THREE.DoubleSide;
-			
+plane.material.side = THREE.DoubleSide;			
 scene.add( plane );
 plane.position.y = 0;
 plane.position.x = 0;
 plane.position.z = 0;			
 plane.rotation.x = -Math.PI/2;		
 
+				
+				
+				
 var planeGeometry2 = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
 var plane2 = new THREE.Mesh( planeGeometry2, wallWindMat ); // planeMaterial );
 plane2.receiveShadow = true;
-plane2.material.side = THREE.DoubleSide;
-			
+plane2.material.side = THREE.DoubleSide;			
 scene.add( plane2 );
-plane.position.y = 0;
-plane.position.x = 0;
-plane.position.z = 0;			
-plane.rotation.y = -Math.PI/2;		
+plane2.position.y = 0;
+plane2.position.x = 0;
+plane2.position.z = 0;			
+plane2.rotation.y = -Math.PI/2;		
 	
 				
 				
