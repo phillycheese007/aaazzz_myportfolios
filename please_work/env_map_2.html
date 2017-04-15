@@ -104,6 +104,24 @@
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 				scene.add( sphereMesh );
 				//
+				
+var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
+var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+
+
+var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
+brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
+brickTexture.repeat.set( 7, 5 );			
+var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );			
+				
+var backWall = new THREE.Mesh( wallGeometry, brickMat );
+backWall.material.side = THREE.DoubleSide;
+backWall.receiveShadow = true;
+scn.add( backWall );
+backWall.position.set( 0, 50, 150 );
+backWall.rotation.y = Math.PI/180 * 180;
+				
+				
 				renderer = new THREE.WebGLRenderer();
 				renderer.autoClear = false;
 				renderer.setPixelRatio( window.devicePixelRatio );
