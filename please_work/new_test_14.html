@@ -58,11 +58,11 @@
 			var cam = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
 			var orb = new THREE.OrbitControls( cam, renderer.domElement );
-				orb.minDistance = 50;
-				orb.maxDistance = 150;
+				orb.minDistance = 40;
+				orb.maxDistance = 70;
 			var scn = new THREE.Scene();
 			var origin = new THREE.Object3D();
-origin.position.set(3,40,5);
+origin.position.set(0,0,0);
     			var matPhongParams = {
     			specular: 0xFFFFFF,
     			shininess: 1000
