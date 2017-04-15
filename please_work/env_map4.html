@@ -123,6 +123,7 @@ var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
 
 				var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 var plane = new THREE.Mesh( floorGeometry, floorMat ); // planeMaterial );
+wallRight.receiveShadow = true;
 plane.receiveShadow = true;
 plane.material.side = THREE.DoubleSide;			
 scene.add( plane );
@@ -190,7 +191,16 @@ spotLight.shadow.mapSize.height = 1024;
 spotLight.shadow.camera.near = 500;
 spotLight.shadow.camera.far = 4000;
 spotLight.shadow.camera.fov = 30;
-scene.add( spotLight );					
+scene.add( spotLight );		
+				
+var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight44.position.set(3, 70, -150);
+dirLight44.castShadow = true;
+scene.add( dirLight44 );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+dirLight44.shadowCameraVisible = true;		
+				
+				
 				
 				renderer = new THREE.WebGLRenderer();
 				renderer.autoClear = false;
