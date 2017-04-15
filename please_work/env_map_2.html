@@ -38,7 +38,7 @@
 
 		<script>
 
-			var controls, cam, scn, rnd;
+			var controls, cam, scn, renderer;
 			var cameraCube, sceneCube;
 			var textureEquirec, textureSphere; // textureCube,
 			var cubeMesh, sphereMesh;
@@ -102,11 +102,11 @@
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 				scn.add( sphereMesh );
 				//
-				rnd = new THREE.WebGLRenderer();
-				rnd.autoClear = false;
-				rnd.setPixelRatio( window.devicePixelRatio );
-				rnd.setSize( window.innerWidth, window.innerHeight );
-				rnd.setFaceCulling( THREE.CullFaceNone );
+				renderer = new THREE.WebGLRenderer();
+				renderer.autoClear = false;
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setFaceCulling( THREE.CullFaceNone );
 				document.body.appendChild( renderer.domElement );
 				//
 				var params = {
@@ -140,20 +140,20 @@
 				cam.updateProjectionMatrix();
 				cameraCube.aspect = window.innerWidth / window.innerHeight;
 				cameraCube.updateProjectionMatrix();
-				rnd.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 			//
 			function animate() {
 				requestAnimationFrame( animate );
-				rnd();
+				renderer();
 				controls.update();
 			}
 			function render() {
 				var timer = -0.0002 * Date.now();
 				cam.lookAt( scene.position );
 				cameraCube.rotation.copy( cam.rotation );
-				rnd.render( sceneCube, cameraCube );
-				rnd.render( scn, cam );
+				renderer.render( sceneCube, cameraCube );
+				renderer.render( scn, cam );
 			}
 		</script>
 
