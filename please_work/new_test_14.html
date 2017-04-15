@@ -75,7 +75,8 @@ origin.position.set(3,40,5);
 			
 			
 var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
-			
+woodFloorTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
+woodFloorTexture.repeat.set( 7, 5 );		
 	
 var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
 var wallBrickTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwall.jpg" );			
@@ -248,34 +249,34 @@ dirLight44.shadowCameraVisible = true;
 				
 				
 				
-//var plant_1_pot;
-//var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
-//var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );
-//var loader = new THREE.JSONLoader(); // init the loader util
+var plant_1_pot;
+var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
+var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );
+var loader = new THREE.JSONLoader();  
 				
-//loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
-//plant_1_pot = new THREE.Mesh(geometry, poopMat);
-//plant_1_pot.castShadow = true;
-//plant_1_pot.receiveShadow = true;
-//geometry.computeVertexNormals();
-//plant_1_pot.scale.set(2,2,2);
-//plant_1_pot.position.set(0, 0, 120);
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+plant_1_pot = new THREE.Mesh(geometry, poopMat);
+plant_1_pot.castShadow = true;
+plant_1_pot.receiveShadow = true;
+geometry.computeVertexNormals();
+plant_1_pot.scale.set(2,2,2);
+plant_1_pot.position.set(0, 0, 120);
 								
-//plant_1_pot.rotation.y = convertToRad(90);  //???// dont uncomment this for now
+plant_1_pot.rotation.y = convertToRad(90);  
 							
-//var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/app.png' );
-//var gooseMat = new THREE.MeshBasicMaterial( { map: gooseTexture } );
-//var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
-//var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
-//var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
-//var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
-//matStdPlant.color.set( 0x808080 );
-//mshPhongPlant.scale.set(2,2,2);
-//mshPhongPlant.position.set( 0, 0, 120 );
-//mshPhongPlant.castShadow = true;
-//scn.add( mshPhongPlant );
-//scn.add(plant_1_pot);	 	
-//});
+var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/app.png' );
+var gooseMat = new THREE.MeshBasicMaterial( { map: gooseTexture } );
+var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
+var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
+var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
+var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
+matStdPlant.color.set( 0x808080 );
+mshPhongPlant.scale.set(2,2,2);
+mshPhongPlant.position.set( 0, 0, 120 );
+mshPhongPlant.castShadow = true;
+scn.add( mshPhongPlant );
+scn.add(plant_1_pot);	 	
+});
 
 				
 				
