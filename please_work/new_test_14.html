@@ -82,7 +82,8 @@ var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images
 
 var windowTexture777 = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/windpic_clearframe.png" );			
 			
-			
+var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/windpic_clearframe.png" );			
+		
 			
 			
 			
@@ -108,12 +109,12 @@ var my_rect_light_height = windowHeight - 36 ;
     var windowGeometry = new THREE.PlaneGeometry( windowWidth, windowHeight, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
     var windowMat = new THREE.MeshPhongMaterial( { map: windowTexture } );
     var windowSpecialMat = new THREE.MeshPhongMaterial( { map: windowTexture777, transparent: true } );
-			
+    var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
+	
 			
     var window1 = new THREE.Mesh( windowGeometry, windowMat );	
-    var windowSpecial1 = new THREE.Mesh( windowGeometry, windowSpecialMat);             
-	
-		
+    var windowSpecial1 = new THREE.Mesh( windowGeometry, windowSpecialMat);             		
+    //var wallWind1 = new THREE.Mesh( windowGeometry, wallWindMat);  		
 			
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
@@ -351,8 +352,7 @@ var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/lightcity.jpg" );
 var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );	
 				
-var wallWindTexture = new THREE.TextureLoader().load( "aaazzz_myportfolios/images/deer/bumwallwind.png" );
-var wallWindMat = new THREE.MeshBasicMaterial( { map: wallWindTexture } );					
+				
 				
 		
 				
@@ -377,7 +377,8 @@ scn.add( leftWall );
 leftWall.position.set( 175, 50, 0 );
 leftWall.rotation.y = Math.PI/180 * 90;
 
-var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
+var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat);  							
+//var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
 leftWall2.material.side = THREE.DoubleSide;
 leftWall2.receiveShadow = true;
 scn.add( leftWall2 );
