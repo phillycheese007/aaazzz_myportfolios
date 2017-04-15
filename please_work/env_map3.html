@@ -108,7 +108,7 @@
 				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
 				sceneCube.add( cubeMesh );
 				//
-				var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
+				var geometry = new THREE.SphereGeometry( 7.0, 2, 2 );
 				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 				scene.add( sphereMesh );
@@ -131,6 +131,7 @@ plane.rotation.x = -Math.PI/2;
 				
 				
 				
+var cube_for_walls = new THREE.CubeGeometry( 500, 1, 500);
 				
 				
 // var subjMat = new THREE.MeshBasicMaterial();
