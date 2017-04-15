@@ -31,7 +31,11 @@
 	<body>
 
 		<div id="container"></div>
-
+		<div id="info">
+			<a href="http://threejs.org" target="_blank">three.js</a> - Demo of RectAreaLight on Phong and Standard Material Meshes - by <a href="http://github.com/abelnation" target="_blank">abelnation</a><br />
+			Click and drag to move OrbitControls.<br />
+			<br />
+		</div>
 
 <!--<script src="../build/three.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
@@ -48,12 +52,12 @@
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-			var rnd = new THREE.WebGLRenderer();
+			var renderer = new THREE.WebGLRenderer();
 			
 			//Its..  fov, aspect, near, far 
 			var cam = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
-			var orb = new THREE.OrbitControls( cam, rnd.domElement );
+			var orb = new THREE.OrbitControls( cam, renderer.domElement );
 
 			var scn = new THREE.Scene();
 			var origin = new THREE.Object3D();
@@ -67,17 +71,6 @@ origin.position.set(3,40,5);
     				metalness: 0.0
     			};
 
-			
-			
-			
-			var controls, camera, scene, renderer;
-			var cameraCube, sceneCube;
-			var textureEquirec, textureSphere; // textureCube,
-			var cubeMesh, sphereMesh;
-			var sphereMaterial;
-			
-			
-			
 			
 			
 			
@@ -207,7 +200,7 @@ scn.add( windowSpecial1 );
 
 			function init() {
 
-				var gl = rnd.context;
+				var gl = renderer.context;
 
 				// Check for float-RT support
 				// TODO (abelnation): figure out fall-back for float textures
@@ -221,11 +214,11 @@ scn.add( windowSpecial1 );
 					throw "missing webgl extension";
 				}
 
-				rnd.shadowMap.enabled = true;
-				rnd.shadowMap.type = THREE.PCFSoftShadowMap;
-				rnd.gammaInput = true;
-				rnd.gammaOutput = true;
-				rnd.antialias = true;
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
 
 				cam.position.set( 0, 170, 5 ); // ITS.. X,Y,Z
 
@@ -237,36 +230,8 @@ scn.add( windowSpecial1 );
 				
 				//rectLight.position.set( 0, 30, -149.5 );
 
-scnCube = new THREE.Scene();
-				var textureLoader = new THREE.TextureLoader();
-				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
-				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
-				textureEquirec.magFilter = THREE.LinearFilter;
-				textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
-				textureSphere = textureLoader.load( "textures/metal.jpg" );
-				textureSphere.mapping = THREE.SphericalReflectionMapping;
-				// Materials
-				var equirectShader = THREE.ShaderLib[ "equirect" ];
-				var equirectMaterial = new THREE.ShaderMaterial( {
-					fragmentShader: equirectShader.fragmentShader,
-					vertexShader: equirectShader.vertexShader,
-					uniforms: equirectShader.uniforms,
-					depthWrite: false,
-					side: THREE.BackSide
-				} );
-				equirectMaterial.uniforms[ "tEquirect" ].value = textureEquirec;
-				var cubeShader = THREE.ShaderLib[ "cube" ];
-				var cubeMaterial = new THREE.ShaderMaterial( {
-					fragmentShader: cubeShader.fragmentShader,
-					vertexShader: cubeShader.vertexShader,
-					uniforms: cubeShader.uniforms,
-					depthWrite: false,
-					side: THREE.BackSide
-				} );
-				//cubeMaterial.uniforms[ "tCube" ].value = textureCube;
-				// Skybox
-				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), equirectMaterial );
-				scnCube.add( cubeMesh );				
+				
+				
 				
 				// TODO: ensure RectAreaLight handles target param correctly
 				//rectLight.target = mshPhongBox;
@@ -492,7 +457,7 @@ leftWall.rotation.y = Math.PI/180 * 90;
 
 				
 
-				document.body.appendChild( rnd.domElement );
+				document.body.appendChild( renderer.domElement );
 				onResize();
 				window.addEventListener( 'resize', onResize, false );
 
@@ -511,7 +476,7 @@ leftWall.rotation.y = Math.PI/180 * 90;
 
 			function onResize() {
 
-				rnd.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( window.innerWidth, window.innerHeight );
 				cam.aspect = ( window.innerWidth / window.innerHeight );
 				cam.updateProjectionMatrix();
 				orb.target = mshPhongBox.position;
@@ -554,54 +519,14 @@ leftWall.rotation.y = Math.PI/180 * 90;
 				//rectLight3.lookAt( origin.position );
 				//rectLight3.updateMatrixWorld();
 			}
-			
-			
-			
-				var params = {
-					Cube: function () {
-						cubeMesh.material = cubeMaterial;
-						cubeMesh.visible = true;
-						sphereMaterial.envMap = textureCube;
-						sphereMaterial.needsUpdate = true;
-					},
-					Equirectangular: function () {
-						cubeMesh.material = equirectMaterial;
-						cubeMesh.visible = true;
-						sphereMaterial.envMap = textureEquirec;
-						sphereMaterial.needsUpdate = true;
-					},
-					Spherical: function () {
-							cubeMesh.visible = false;
-						sphereMaterial.envMap = textureSphere;
-						sphereMaterial.needsUpdate = true;
-					},
-				};
-				var gui = new dat.GUI();
-				//gui.add( params, 'Cube' );
-				gui.add( params, 'Equirectangular' );
-				gui.add( params, 'Spherical' );
-				gui.open();
-				//window.addEventListener( 'resize', onWindowResize, false );
-			
-			
-				rnd.autoClear = false;
-				rnd.setPixelRatio( window.devicePixelRatio );
-				rnd.setSize( window.innerWidth, window.innerHeight );
-				rnd.setFaceCulling( THREE.CullFaceNone );
-			
-			
+
 			function render() {
 
 				rectLightHelper.update(); // required
 				//rectLight3Helper.update(); // required
 
-				
-				cam.lookAt( scene.position );
-				cameraCube.rotation.copy( camera.rotation );
-				rnd.render( sceneCube, cameraCube );
-				
-				
-				rnd.render( scn, cam )
+				renderer.render( scn, cam );
+					
 			}
 
 
