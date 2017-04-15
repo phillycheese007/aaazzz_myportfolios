@@ -115,7 +115,7 @@ var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
 
 var planeGeometry = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
 var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
-var plane = new THREE.Mesh( planeGeometry, woodFloorTexture ); // planeMaterial );
+var plane = new THREE.Mesh( planeGeometry, floorMat ); // planeMaterial );
 plane.receiveShadow = true;
 plane.material.side = THREE.DoubleSide;
 			
