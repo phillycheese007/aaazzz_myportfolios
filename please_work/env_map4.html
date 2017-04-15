@@ -184,7 +184,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 });
 
 var spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 100, 1000, 100 );
+spotLight.position.set( 100, 100, 100 );
 spotLight.castShadow = true;
 spotLight.shadow.mapSize.width = 1024;
 spotLight.shadow.mapSize.height = 1024;
@@ -194,7 +194,7 @@ spotLight.shadow.camera.fov = 30;
 scene.add( spotLight );		
 				
 var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
-dirLight44.position.set(3, 70, -150);
+dirLight44.position.set(3, 70, -50);
 dirLight44.castShadow = true;
 scene.add( dirLight44 );
 scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
