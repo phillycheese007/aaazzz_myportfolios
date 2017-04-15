@@ -89,10 +89,10 @@
 				
 				
 				
-				var textureLoader = new THREE.TextureLoader().load( "textures/2294472375_24a3b8ef46_o.jpg" );
+				var textureLoader = new THREE.TextureLoader();
+				
+				textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
 
-				
-				
 				textureLoader.mapping = THREE.EquirectangularReflectionMapping;
 				textureLoader.magFilter = THREE.LinearFilter;
 				textureLoader.minFilter = THREE.LinearMipMapLinearFilter;
