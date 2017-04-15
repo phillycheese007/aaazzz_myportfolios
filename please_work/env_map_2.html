@@ -105,7 +105,7 @@
 				scene.add( sphereMesh );
 				//
 				
-var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
+var wallGeometry = new THREE.PlaneGeometry( 30, 10, 40, 50 );				
 var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 
 
@@ -118,7 +118,7 @@ var backWall = new THREE.Mesh( wallGeometry, brickMat );
 backWall.material.side = THREE.DoubleSide;
 backWall.receiveShadow = true;
 scene.add( backWall );
-backWall.position.set( 0, 50, 150 );
+backWall.position.set( 0, 0, 0 );
 backWall.rotation.y = Math.PI/180 * 180;
 				
 				
