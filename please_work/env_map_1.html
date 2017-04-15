@@ -40,7 +40,7 @@
 
 			var controls, camera, scene, renderer;
 			var cameraCube, sceneCube;
-			var textureEquirec, textureCube, textureSphere;
+			var textureEquirec, textureSpheret, // textureCube,
 			var cubeMesh, sphereMesh;
 			var sphereMaterial;
 			init();
@@ -64,9 +64,9 @@
 				var urls = [ r + "posx.jpg", r + "negx.jpg",
 							 r + "posy.jpg", r + "negy.jpg",
 							 r + "posz.jpg", r + "negz.jpg" ];
-				textureCube = new THREE.CubeTextureLoader().load( urls );
-				textureCube.format = THREE.RGBFormat;
-				textureCube.mapping = THREE.CubeReflectionMapping;
+				//textureCube = new THREE.CubeTextureLoader().load( urls );
+				//textureCube.format = THREE.RGBFormat;
+				//textureCube.mapping = THREE.CubeReflectionMapping;
 				var textureLoader = new THREE.TextureLoader();
 				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
 				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
@@ -92,7 +92,7 @@
 					depthWrite: false,
 					side: THREE.BackSide
 				} );
-				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+				//cubeMaterial.uniforms[ "tCube" ].value = textureCube;
 				// Skybox
 				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), equirectMaterial );
 				sceneCube.add( cubeMesh );
@@ -129,7 +129,7 @@
 					},
 				};
 				var gui = new dat.GUI();
-				gui.add( params, 'Cube' );
+				//gui.add( params, 'Cube' );
 				gui.add( params, 'Equirectangular' );
 				gui.add( params, 'Spherical' );
 				gui.open();
