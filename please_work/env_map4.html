@@ -136,7 +136,7 @@ plane.rotation.x = -Math.PI/2;
 var wallRight = new THREE.Mesh( planeGeometry, wallWindMat ); 
 wallRight.receiveShadow = true;
 wallRight.material.side = THREE.DoubleSide;			
-wallRight.add( wallRight );
+scene.add( wallRight );
 wallRight.position.x = 0;
 wallRight.position.y = 0;
 wallRight.position.z = 0;			
