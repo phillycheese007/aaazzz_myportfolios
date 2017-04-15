@@ -57,10 +57,7 @@
 			
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				
-				
-				
-				
-				
+
 				controls = new THREE.OrbitControls( camera );
 				controls.minDistance = 500;
 				controls.maxDistance = 2500;
@@ -108,7 +105,7 @@
 				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
 				sceneCube.add( cubeMesh );
 				//
-				var geometry22 = new THREE.SphereGeometry( 40.0, 24, 24 );
+				var geometry22 = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
 				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry22, sphereMaterial );
 				scene.add( sphereMesh );
