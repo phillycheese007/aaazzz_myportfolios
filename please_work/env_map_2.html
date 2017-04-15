@@ -105,12 +105,11 @@
 				scene.add( sphereMesh );
 				//
 				
-var geometry2 = new THREE.SphereGeometry( 400.0, 24, 24 );
+var geometry2 = new THREE.SphereGeometry( 400.0, 204, 204 );
 
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
-brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
-brickTexture.repeat.set( 7, 5 );			
+			
 var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );			
 				
 //var backWall = new THREE.Mesh( wallGeometry, brickMat );
@@ -135,17 +134,23 @@ var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );
 						cubeMesh.visible = true;
 						sphereMaterial.envMap = textureCube;
 						sphereMaterial.needsUpdate = true;
+						sphereMaterial2.envMap = textureCube;
+						sphereMaterial2.needsUpdate = true;
 					},
 					Equirectangular: function () {
 						cubeMesh.material = equirectMaterial;
 						cubeMesh.visible = true;
 						sphereMaterial.envMap = textureEquirec;
 						sphereMaterial.needsUpdate = true;
+						sphereMaterial2.envMap = textureEquirec;
+						sphereMaterial2.needsUpdate = true;
 					},
 					Spherical: function () {
 							cubeMesh.visible = false;
 						sphereMaterial.envMap = textureSphere;
 						sphereMaterial.needsUpdate = true;
+						sphereMaterial2.envMap = textureSphere;
+						sphereMaterial2.needsUpdate = true;
 					},
 					Refraction: false
 				};
@@ -162,6 +167,8 @@ var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );
 						textureCube.mapping = THREE.CubeReflectionMapping;
 					}
 					sphereMaterial.needsUpdate = true;
+					sphereMaterial2.needsUpdate = true;
+
 				} );
 				gui.open();
 				window.addEventListener( 'resize', onWindowResize, false );
