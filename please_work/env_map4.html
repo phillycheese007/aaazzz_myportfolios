@@ -99,19 +99,23 @@
 				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
 				sceneCube.add( cubeMesh );
 				//
-				var geometry = new THREE.SphereGeometry( 40, 40, 32, 32 );
+				var geometry = new THREE.SphereGeometry( 70, 70, 32, 32 );
 				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
-				sphereMesh.position.x =100;
-				sphereMesh.position.y =0;
-				sphereMesh.position.z =30;
+				sphereMesh.position.x =120;
+				sphereMesh.position.y =210;
+				sphereMesh.position.z =70;
 				scene.add( sphereMesh );
 				//
-				
+var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
+woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+woodFloorTexture.repeat.set( 7, 5 );
+
+var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );			
 
 var planeGeometry = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
 var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
-var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+var plane = new THREE.Mesh( planeGeometry, woodFloorTexture ); // planeMaterial );
 plane.receiveShadow = true;
 plane.material.side = THREE.DoubleSide;
 			
@@ -151,8 +155,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot.castShadow = true;
     plant_1_pot.receiveShadow = true;
     geometry.computeVertexNormals();
-    plant_1_pot.scale.set(9,9,9);
-    plant_1_pot.position.set(30, 0, -120);
+    plant_1_pot.scale.set(12,12,12);
+    plant_1_pot.position.set(130, 0, -120);
     plant_1_pot.castShadow = true;
     scene.add(plant_1_pot);	 	
 });
