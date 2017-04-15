@@ -77,9 +77,9 @@
 							 r + "posz.jpg", r + "negz.jpg" ];
 				
 				
-				//textureCube = new THREE.CubeTextureLoader().load( urls );
-				//textureCube.format = THREE.RGBFormat;
-				//textureCube.mapping = THREE.CubeReflectionMapping;
+				textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
+				textureCube.mapping = THREE.CubeReflectionMapping;
 				
 				
 				
@@ -116,7 +116,7 @@
 					side: THREE.BackSide
 				} );
 
-				//cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
 
 				// Skybox
 
