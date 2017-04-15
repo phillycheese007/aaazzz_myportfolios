@@ -364,7 +364,7 @@ function randNum(n){
 
 				var textureLoader = new THREE.TextureLoader();
 
-				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
+				textureEquirec = textureLoader.load( "https://phillycheese007.github.io/aaazzz_myportfolios/please_work/textures/2294472375_24a3b8ef46_o.jpg" );
 				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
 				textureEquirec.magFilter = THREE.LinearFilter;
 				textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
