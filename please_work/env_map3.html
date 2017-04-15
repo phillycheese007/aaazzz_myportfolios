@@ -154,11 +154,11 @@ subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('../images/deer/burgers.jpg'
 var itmArr = [];
 var vx, vy, vz;
 var loader = new THREE.JSONLoader(); // init the loader util
-loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (pot_geometry) {
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
     plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
     plant_1_pot.castShadow = true;
     plant_1_pot.receiveShadow = true;
-    pot_geometry.computeVertexNormals();
+    geometry.computeVertexNormals();
     plant_1_pot.scale.set(5,5,5);
     plant_1_pot.position.y = -1000;
     plant_1_pot.position.x = 0;
