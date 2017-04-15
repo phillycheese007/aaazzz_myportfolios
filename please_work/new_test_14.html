@@ -286,7 +286,7 @@ dirLight44.shadowCameraVisible = true;
 
 				
 var spotLight2 = new THREE.SpotLight( 0xffffff );
-spotLight2.position.set( 0, 50, 10 );
+spotLight2.position.set( 0, 70, 90 );
 spotLight2.castShadow = true;
 spotLight2.shadow.mapSize.width = 1024;
 spotLight2.shadow.mapSize.height = 1024;
@@ -345,7 +345,7 @@ var frontWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
 frontWall.material.side = THREE.DoubleSide;
 frontWall.receiveShadow = true;
 scn.add( frontWall );
-frontWall.position.set( 0, 50, -200 );
+frontWall.position.set( 0, 50, -220 );
 frontWall.rotation.y = Math.PI/180 * 180;
 				
 var frontWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
@@ -359,7 +359,7 @@ var leftWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
 leftWall.material.side = THREE.DoubleSide;
 leftWall.receiveShadow = true;
 scn.add( leftWall );
-leftWall.position.set( 175, 50, 0 );
+leftWall.position.set( 220, 50, 0 );
 leftWall.rotation.y = Math.PI/180 * 90;
 
 var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat);  							
