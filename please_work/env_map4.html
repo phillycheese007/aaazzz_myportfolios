@@ -132,15 +132,15 @@ plane.rotation.x = -Math.PI/2;
 				
 				
 				
-var planeGeometry2 = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
-var plane2 = new THREE.Mesh( planeGeometry2, wallWindMat ); // planeMaterial );
-plane2.receiveShadow = true;
-plane2.material.side = THREE.DoubleSide;			
-scene.add( plane2 );
-plane2.position.y = 0;
-plane2.position.x = 0;
-plane2.position.z = 0;			
-plane2.rotation.y = -Math.PI/2;		
+//var planeGeometry2 = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
+var wallRight = new THREE.Mesh( planeGeometry, wallWindMat ); 
+wallRight.receiveShadow = true;
+wallRight.material.side = THREE.DoubleSide;			
+wallRight.add( wallRight );
+wallRight.position.x = 500;
+wallRight.position.y = 0;
+wallRight.position.z = 0;			
+wallRight.rotation.y = -Math.PI/2;		
 	
 				
 				
