@@ -50,7 +50,7 @@
 			function init() {
 				// CAMERAS
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-				camera.position.set( 0, 0, 700 );
+				camera.position.set( 0, 0, 300 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				controls = new THREE.OrbitControls( camera );
 				controls.minDistance = 500;
@@ -114,8 +114,8 @@ plane.material.side = THREE.DoubleSide;
 			
 scene.add( plane );
 plane.position.y = -1000;
-plane.position.x = 42;
-plane.position.z = 12;			
+plane.position.x = 0;
+plane.position.z = 0;			
 plane.rotation.x = -Math.PI/2;		
 
 
