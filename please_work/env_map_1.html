@@ -86,12 +86,21 @@
 				textureCube.format = THREE.RGBFormat;
 				textureCube.mapping = THREE.CubeReflectionMapping;
 
-				var textureLoader = new THREE.TextureLoader();
+				
+				
+				
+				var textureLoader = new THREE.TextureLoader().load( "textures/2294472375_24a3b8ef46_o.jpg" );
 
-				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
-				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
-				textureEquirec.magFilter = THREE.LinearFilter;
-				textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
+				
+				
+				textureLoader.mapping = THREE.EquirectangularReflectionMapping;
+				textureLoader.magFilter = THREE.LinearFilter;
+				textureLoader.minFilter = THREE.LinearMipMapLinearFilter;
+				
+				//textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
+				//textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+				//textureEquirec.magFilter = THREE.LinearFilter;
+				//textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
 
 				textureSphere = textureLoader.load( "textures/metal.jpg" );
 				textureSphere.mapping = THREE.SphericalReflectionMapping;
