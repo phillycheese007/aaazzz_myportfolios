@@ -118,9 +118,11 @@ var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transpare
 				
 				
 				
-var planeGeometry = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
-var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
-var plane = new THREE.Mesh( planeGeometry, floorMat ); // planeMaterial );
+var floorGeometry = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
+var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
+
+				var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+var plane = new THREE.Mesh( floorGeometry, floorMat ); // planeMaterial );
 plane.receiveShadow = true;
 plane.material.side = THREE.DoubleSide;			
 scene.add( plane );
@@ -133,7 +135,7 @@ plane.rotation.x = -Math.PI/2;
 				
 				
 //var planeGeometry2 = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
-var wallRight = new THREE.Mesh( planeGeometry, wallWindMat ); 
+var wallRight = new THREE.Mesh( wallGeometry, wallWindMat ); 
 wallRight.receiveShadow = true;
 wallRight.material.side = THREE.DoubleSide;			
 scene.add( wallRight );
