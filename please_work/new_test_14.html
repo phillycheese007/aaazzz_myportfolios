@@ -55,14 +55,14 @@
 			var renderer = new THREE.WebGLRenderer();
 			
 			//Its..  fov, aspect, near, far 
-			var cam = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 0.1, 20000 );
+			var cam = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
 			var orb = new THREE.OrbitControls( cam, renderer.domElement );
 				orb.minDistance = 50;
 				orb.maxDistance = 150;
 			var scn = new THREE.Scene();
 			var origin = new THREE.Object3D();
-origin.position.set(122,320,125);
+origin.position.set(0,30,15);
     			var matPhongParams = {
     			specular: 0xFFFFFF,
     			shininess: 1000
