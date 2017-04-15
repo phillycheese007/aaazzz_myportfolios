@@ -49,9 +49,18 @@
 			animate();
 			function init() {
 				// CAMERAS
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-				camera.position.set( 0, 0, 2000 );
+				//camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				//camera.position.set( 0, 0, 2000 );
+				
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.set(0, 100, 250);
+			
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				
+				
+				
+				
+				
 				controls = new THREE.OrbitControls( camera );
 				controls.minDistance = 500;
 				controls.maxDistance = 2500;
@@ -99,7 +108,7 @@
 				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
 				sceneCube.add( cubeMesh );
 				//
-				var geometry = new THREE.PlaneGeometry( 200, 200, 302, 302 );
+				var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
 				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 				scene.add( sphereMesh );
