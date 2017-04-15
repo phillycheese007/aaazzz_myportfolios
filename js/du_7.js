@@ -188,7 +188,6 @@ wallTexture2.repeat.set( 3, 3 );
 var wallMat2 = new THREE.MeshBasicMaterial( { map: wallTexture2 } );
 	
 	
-    var windowMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/deer/window1.jpg') } );
 
     var redMat = new THREE.MeshPhongMaterial( { color: 0xff3300, specular: 0x555555, shininess: 30 } );
     var purpleMat = new THREE.MeshPhongMaterial( { color: 0x6F6CC5, specular: 0x555555, shininess: 30 } );
@@ -220,17 +219,12 @@ var wallMat2 = new THREE.MeshBasicMaterial( { map: wallTexture2 } );
     leftWall2.castShadow = true;
     scene.add( leftWall2 );	
 	
-    // window
-    var window = new THREE.Mesh(windowcube, windowMat );
-    window.rotation.x = Math.PI/180 * 90;
-    window.rotation.z = Math.PI/180 * 90;
-    window.position.set(-250,0,0);
-    scene.add( window );
+
 	
 	
 	
     // Right wall
-    var rightWall = new THREE.Mesh(cube, wallMat );
+    var rightWall = new THREE.Mesh(cube, wallWindMat );
     rightWall.rotation.x = Math.PI/180 * 90;
     rightWall.rotation.z = Math.PI/180 * 90;
     rightWall.position.set(250,0,0);
