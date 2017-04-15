@@ -87,16 +87,16 @@ var wallBrickTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/ima
 
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );		
   
-var rectLight;
-var rectLightHelper;
+//var rectLight;
+//var rectLightHelper;
 			
-var rectLight_top;
-var rectLightHelper_top;	
+//var rectLight_top;
+//var rectLightHelper_top;	
 			
 var windowWidth = 45 ;
 var windowHeight = 60 ;	
-var my_rect_light_width = windowWidth - 10 ;	
-var my_rect_light_height = windowHeight - 36 ;	
+//var my_rect_light_width = windowWidth - 10 ;	
+//var my_rect_light_height = windowHeight - 36 ;	
 			
 
     var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
@@ -104,12 +104,12 @@ var my_rect_light_height = windowHeight - 36 ;
 	
 				
 			
-rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
-rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
+//rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
+//rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 
 
-rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
-rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
+//rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
+//rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
     dirLight44.position.set(3, 70, -150);
@@ -119,7 +119,7 @@ rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1
 dirLight44.shadowCameraVisible = true;
 
     var dirLight55 = new THREE.DirectionalLight( 0xffffff, 2 );
-    dirLight55.position.set(570, 100, 30);
+    dirLight55.position.set(370, 90, 0);
     dirLight55.castShadow = true;
     scn.add( dirLight55 );
     scn.add( new THREE.DirectionalLightHelper(dirLight55, 1) );
@@ -208,10 +208,10 @@ dirLight44.shadowCameraVisible = true;
 				cam.position.set( 0, 170, 5 ); // ITS.. X,Y,Z
 
 				//rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
-				rectLight.matrixAutoUpdate = true;
-				rectLight.intensity = 4000.0;
-				rectLight_top.matrixAutoUpdate = true;
-				rectLight_top.intensity = 4000.0;			
+				//rectLight.matrixAutoUpdate = true;
+				//rectLight.intensity = 4000.0;
+				//rectLight_top.matrixAutoUpdate = true;
+				//rectLight_top.intensity = 4000.0;			
 				
 				//rectLight.position.set( 0, 30, -149.5 );
 
@@ -221,11 +221,11 @@ dirLight44.shadowCameraVisible = true;
 				// TODO: ensure RectAreaLight handles target param correctly
 				//rectLight.target = mshPhongBox;
 
-				rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
-				rectLight.add( rectLightHelper );
+				//rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
+				//rectLight.add( rectLightHelper );
 
-				rectLightHelper_top = new THREE.RectAreaLightHelper( rectLight_top );
-				rectLight_top.add( rectLightHelper_top );
+				//rectLightHelper_top = new THREE.RectAreaLightHelper( rectLight_top );
+				//rectLight_top.add( rectLightHelper_top );
 				
 				//rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				//rectLight3.matrixAutoUpdate = true;
@@ -438,8 +438,8 @@ leftWall2.rotation.y = Math.PI/180 * 90;
 
 				
 				
-				scn.add( rectLight );
-				scn.add( rectLight_top );
+				//scn.add( rectLight );
+				//scn.add( rectLight_top );
 				//scn.add( rectLight3 );
 
 				
@@ -494,13 +494,13 @@ leftWall2.rotation.y = Math.PI/180 * 90;
 
 				var ly = 5.0 + 5.0 * Math.sin( t / 3.0 );
 
-				rectLight.position.set( lx, ly, lz );
-				rectLight.lookAt( origin.position );
-				rectLight.updateMatrixWorld();
+				//rectLight.position.set( lx, ly, lz );
+				//rectLight.lookAt( origin.position );
+				//rectLight.updateMatrixWorld();
 
-				rectLight_top.position.set( lx, ly, lz );
-				rectLight_top.lookAt( origin.position );
-				rectLight_top.updateMatrixWorld();
+				//rectLight_top.position.set( lx, ly, lz );
+				//rectLight_top.lookAt( origin.position );
+				//rectLight_top.updateMatrixWorld();
 				
 				//rectLight3.position.set( lx, ly, lz );
 				//rectLight3.lookAt( origin.position );
@@ -509,7 +509,7 @@ leftWall2.rotation.y = Math.PI/180 * 90;
 
 			function render() {
 
-				rectLightHelper.update(); // required
+				//rectLightHelper.update(); // required
 				//rectLight3Helper.update(); // required
 
 				renderer.render( scn, cam );
