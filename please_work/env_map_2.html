@@ -117,7 +117,7 @@ var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 var backWall = new THREE.Mesh( wallGeometry, brickMat );
 backWall.material.side = THREE.DoubleSide;
 backWall.receiveShadow = true;
-scn.add( backWall );
+scene.add( backWall );
 backWall.position.set( 0, 50, 150 );
 backWall.rotation.y = Math.PI/180 * 180;
 				
