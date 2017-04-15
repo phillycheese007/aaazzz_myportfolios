@@ -55,7 +55,7 @@
 			var renderer = new THREE.WebGLRenderer();
 			
 			//Its..  fov, aspect, near, far 
-			var cam = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 20000 );
+			var cam = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 2000 );
 			
 			var orb = new THREE.OrbitControls( cam, renderer.domElement );
 				orb.minDistance = 50;
