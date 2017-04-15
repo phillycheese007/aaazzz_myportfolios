@@ -554,7 +554,39 @@ leftWall.rotation.y = Math.PI/180 * 90;
 				//rectLight3.lookAt( origin.position );
 				//rectLight3.updateMatrixWorld();
 			}
-
+			
+			
+			
+				var params = {
+					Cube: function () {
+						cubeMesh.material = cubeMaterial;
+						cubeMesh.visible = true;
+						sphereMaterial.envMap = textureCube;
+						sphereMaterial.needsUpdate = true;
+					},
+					Equirectangular: function () {
+						cubeMesh.material = equirectMaterial;
+						cubeMesh.visible = true;
+						sphereMaterial.envMap = textureEquirec;
+						sphereMaterial.needsUpdate = true;
+					},
+					Spherical: function () {
+							cubeMesh.visible = false;
+						sphereMaterial.envMap = textureSphere;
+						sphereMaterial.needsUpdate = true;
+					},
+				};
+				var gui = new dat.GUI();
+				//gui.add( params, 'Cube' );
+				gui.add( params, 'Equirectangular' );
+				gui.add( params, 'Spherical' );
+				gui.open();
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+			
+			
+			
+			
 			function render() {
 
 				rectLightHelper.update(); // required
