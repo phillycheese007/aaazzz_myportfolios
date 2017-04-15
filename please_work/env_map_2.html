@@ -41,9 +41,9 @@
 
 			var controls, camera, scene, renderer;
 			var cameraCube, sceneCube;
-			var textureEquirec, textureCube, textureSphere, textureSphere2;
-			var cubeMesh, sphereMesh, sphereMesh2;
-			var sphereMaterial, sphereMaterial2;
+			var textureEquirec, textureCube, textureSphere;
+			var cubeMesh, sphereMesh;
+			var sphereMaterial;
 			var refract;
 			init();
 			animate();
@@ -105,20 +105,15 @@
 				scene.add( sphereMesh );
 				//
 				
-var geometry2 = new THREE.SphereGeometry( 400.0, 204, 204 );
 
+var planeGeometry = new THREE.PlaneGeometry( 200, 200, 302, 302 );
+var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+plane.receiveShadow = true;
+scene.add( plane );
+plane.position.y = 12;
+plane.rotation.x = -Math.PI/2;		
 
-var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
-			
-var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );			
-				
-//var backWall = new THREE.Mesh( wallGeometry, brickMat );
-				
-				
-				sphereMaterial2 = new THREE.MeshLambertMaterial( { envMap: textureCube } );
-				sphereMesh2 = new THREE.Mesh( geometry2, sphereMaterial2 );
-				scene.add( sphereMesh2 );
-				sphereMesh2.position.set( 0, 2, 2 );
 
 				
 				renderer = new THREE.WebGLRenderer();
@@ -134,23 +129,17 @@ var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );
 						cubeMesh.visible = true;
 						sphereMaterial.envMap = textureCube;
 						sphereMaterial.needsUpdate = true;
-						sphereMaterial2.envMap = textureCube;
-						sphereMaterial2.needsUpdate = true;
 					},
 					Equirectangular: function () {
 						cubeMesh.material = equirectMaterial;
 						cubeMesh.visible = true;
 						sphereMaterial.envMap = textureEquirec;
 						sphereMaterial.needsUpdate = true;
-						sphereMaterial2.envMap = textureEquirec;
-						sphereMaterial2.needsUpdate = true;
 					},
 					Spherical: function () {
 							cubeMesh.visible = false;
 						sphereMaterial.envMap = textureSphere;
 						sphereMaterial.needsUpdate = true;
-						sphereMaterial2.envMap = textureSphere;
-						sphereMaterial2.needsUpdate = true;
 					},
 					Refraction: false
 				};
@@ -167,7 +156,6 @@ var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );
 						textureCube.mapping = THREE.CubeReflectionMapping;
 					}
 					sphereMaterial.needsUpdate = true;
-					sphereMaterial2.needsUpdate = true;
 
 				} );
 				gui.open();
