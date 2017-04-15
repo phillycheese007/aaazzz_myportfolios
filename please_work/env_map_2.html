@@ -38,35 +38,37 @@
 
 		<script>
 
-			var controls, cam, scn, renderer;
+
+			var controls, camera, scene, renderer;
 			var cameraCube, sceneCube;
-			var textureEquirec, textureSphere; // textureCube,
+			var textureEquirec, textureCube, textureSphere;
 			var cubeMesh, sphereMesh;
 			var sphereMaterial;
+			var refract;
 			init();
 			animate();
 			function init() {
 				// CAMERAS
-				cam = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-				cam.position.set( 0, 0, 1000 );
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				camera.position.set( 0, 0, 1000 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-				controls = new THREE.OrbitControls( cam );
+				controls = new THREE.OrbitControls( camera );
 				controls.minDistance = 500;
 				controls.maxDistance = 2500;
 				// SCENE
-				scn = new THREE.Scene();
+				scene = new THREE.Scene();
 				sceneCube = new THREE.Scene();
 				// Lights
 				var ambient = new THREE.AmbientLight( 0xffffff );
-				scn.add( ambient );
+				scene.add( ambient );
 				// Textures
 				var r = "textures/cube/Bridge2/";
 				var urls = [ r + "posx.jpg", r + "negx.jpg",
 							 r + "posy.jpg", r + "negy.jpg",
 							 r + "posz.jpg", r + "negz.jpg" ];
-				//textureCube = new THREE.CubeTextureLoader().load( urls );
-				//textureCube.format = THREE.RGBFormat;
-				//textureCube.mapping = THREE.CubeReflectionMapping;
+				textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
+				textureCube.mapping = THREE.CubeReflectionMapping;
 				var textureLoader = new THREE.TextureLoader();
 				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
 				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
@@ -92,15 +94,15 @@
 					depthWrite: false,
 					side: THREE.BackSide
 				} );
-				//cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
 				// Skybox
-				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), equirectMaterial );
+				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
 				sceneCube.add( cubeMesh );
 				//
 				var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
-				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureEquirec } );
+				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
-				scn.add( sphereMesh );
+				scene.add( sphereMesh );
 				//
 				renderer = new THREE.WebGLRenderer();
 				renderer.autoClear = false;
@@ -127,17 +129,28 @@
 						sphereMaterial.envMap = textureSphere;
 						sphereMaterial.needsUpdate = true;
 					},
+					Refraction: false
 				};
 				var gui = new dat.GUI();
-				//gui.add( params, 'Cube' );
+				gui.add( params, 'Cube' );
 				gui.add( params, 'Equirectangular' );
 				gui.add( params, 'Spherical' );
+				gui.add( params, 'Refraction' ).onChange( function( value ) {
+					if ( value ) {
+						textureEquirec.mapping = THREE.EquirectangularRefractionMapping;
+						textureCube.mapping = THREE.CubeRefractionMapping;
+					} else {
+						textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+						textureCube.mapping = THREE.CubeReflectionMapping;
+					}
+					sphereMaterial.needsUpdate = true;
+				} );
 				gui.open();
 				window.addEventListener( 'resize', onWindowResize, false );
 			}
 			function onWindowResize() {
-				cam.aspect = window.innerWidth / window.innerHeight;
-				cam.updateProjectionMatrix();
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
 				cameraCube.aspect = window.innerWidth / window.innerHeight;
 				cameraCube.updateProjectionMatrix();
 				renderer.setSize( window.innerWidth, window.innerHeight );
@@ -145,15 +158,15 @@
 			//
 			function animate() {
 				requestAnimationFrame( animate );
-				renderer();
+				render();
 				controls.update();
 			}
 			function render() {
 				var timer = -0.0002 * Date.now();
-				cam.lookAt( scene.position );
-				cameraCube.rotation.copy( cam.rotation );
+				camera.lookAt( scene.position );
+				cameraCube.rotation.copy( camera.rotation );
 				renderer.render( sceneCube, cameraCube );
-				renderer.render( scn, cam );
+				renderer.render( scene, camera );
 			}
 		</script>
 
