@@ -55,14 +55,14 @@
 			var renderer = new THREE.WebGLRenderer();
 			
 			//Its..  fov, aspect, near, far 
-			var cam = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 2000 );
+			var cam = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
 			var orb = new THREE.OrbitControls( cam, renderer.domElement );
 				orb.minDistance = 50;
 				orb.maxDistance = 150;
 			var scn = new THREE.Scene();
 			var origin = new THREE.Object3D();
-origin.position.set(0,30,15);
+origin.position.set(0,130,5);
     			var matPhongParams = {
     			specular: 0xFFFFFF,
     			shininess: 1000
@@ -212,7 +212,7 @@ dirLight44.shadowCameraVisible = true;
 				renderer.gammaOutput = true;
 				renderer.antialias = true;
 
-				cam.position.set( 12, 50, 5 ); // ITS.. X,Y,Z
+				cam.position.set( 0, 130, 0  ); // ITS.. X,Y,Z
 
 				//rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
 				//rectLight.matrixAutoUpdate = true;
