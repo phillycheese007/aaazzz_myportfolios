@@ -106,14 +106,14 @@ var windowHeight = 60 ;
     dirLight44.position.set(3, 70, -150);
     dirLight44.castShadow = true;
     scn.add( dirLight44 );
-    scn.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+   // scn.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
 dirLight44.shadowCameraVisible = true;
 
     var dirLight55 = new THREE.DirectionalLight( 0xffffff, 2 );
     dirLight55.position.set(370, 90, 0);
     dirLight55.castShadow = true;
     scn.add( dirLight55 );
-    scn.add( new THREE.DirectionalLightHelper(dirLight55, 1) );
+   // scn.add( new THREE.DirectionalLightHelper(dirLight55, 1) );
 dirLight44.shadow.mapSize.width = 1024;
 dirLight44.shadow.mapSize.height = 1024;
 
@@ -275,14 +275,7 @@ scn.add(plant_1_pot);
 				
 				
 				
-var speciallight = new THREE.PointLight( 0xffffff, 1, 100 );
-speciallight.position.set( 0, 12, 55 );
-speciallight.castShadow = true;
-speciallight.shadow.mapSize.width = 1024;
-speciallight.shadow.mapSize.height = 1024;
 
-speciallight.shadow.camera.left = 500
-scn.add( speciallight );
 
 								
 				
@@ -364,7 +357,7 @@ leftWall2.rotation.y = Math.PI/180 * 90;
 				
 				
 var spotLight2 = new THREE.SpotLight( 0xffffff );
-spotLight2.position.set( 0, 50, 10 );
+spotLight2.position.set( 20, 50, 20 );
 spotLight2.castShadow = true;
 spotLight2.shadow.mapSize.width = 1024;
 spotLight2.shadow.mapSize.height = 1024;
