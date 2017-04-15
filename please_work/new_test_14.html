@@ -76,19 +76,10 @@ origin.position.set(3,40,5);
 			
 var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
 			
-			
-//var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/window1.jpg" );			
-var windowTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/special_scene_window.png" );			
-
-var windowTexture777 = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/windpic_clearframe.png" );			
-			
+	
 var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
 		
-			
-			
-			
-//var specWindText2 = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/special_scene_window.png' );			
-//var specWindMat2 = new THREE.MeshBasicMaterial( { map: specWindText2 } );	
+
 			
 		
 		
@@ -101,26 +92,18 @@ var rectLightHelper;
 var rectLight_top;
 var rectLightHelper_top;	
 			
-var windowWidth = 45 ;
-var windowHeight = 60 ;	
+
 var my_rect_light_width = windowWidth - 10 ;	
 var my_rect_light_height = windowHeight - 36 ;	
 			
-    var windowGeometry = new THREE.PlaneGeometry( windowWidth, windowHeight, 130 );  //Its.. width,height, ?widthsegments?, ?heightsegments? 
-    var windowMat = new THREE.MeshPhongMaterial( { map: windowTexture } );
-    var windowSpecialMat = new THREE.MeshPhongMaterial( { map: windowTexture777, transparent: true } );
+
     var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
 	
-			
-    var window1 = new THREE.Mesh( windowGeometry, windowMat );	
-    var windowSpecial1 = new THREE.Mesh( windowGeometry, windowSpecialMat);             		
-    //var wallWind1 = new THREE.Mesh( windowGeometry, wallWindMat);  		
+				
 			
 rectLight = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 rectLight_top = new THREE.RectAreaLight( 0xFF0000, undefined, my_rect_light_width, my_rect_light_height );   //Its... undefined, width, height);
 
-window1.position.set( 0, windowHeight, -149.5 );
-windowSpecial1.position.set( 0, windowHeight, -147.5 );
 
 rectLight.position.set( 0, 47.2, -149.5 );    // its.. ?, top-bottom, ?, 		
 rectLight_top.position.set( 0, ( windowHeight + ( my_rect_light_height / 2 ) + 1.8 ), -149.5 );    // its.. ?, top-bottom, ?, XYZ		
@@ -138,13 +121,7 @@ dirLight44.shadowCameraVisible = true;
 //scn.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );	
 			
 
-			
-
-window1.material.side = THREE.DoubleSide;
-window1.receiveShadow = true;
-scn.add( window1 );
-			
-scn.add( windowSpecial1 );		
+					
 //window1.position.set( 0, 60,-149.9 );
 //window1.rotation.y = Math.PI/180 * 180;		
 
@@ -307,16 +284,16 @@ scn.add( windowSpecial1 );
 //scn.add( speciallight );
 
 				
-//var spotLight2 = new THREE.SpotLight( 0xffffff );
-//spotLight2.position.set( 0, 50, 10 );
-//spotLight2.castShadow = true;
-//spotLight2.shadow.mapSize.width = 1024;
-//spotLight2.shadow.mapSize.height = 1024;
-//spotLight2.rotation.y = Math.PI/180 * 90;
+var spotLight2 = new THREE.SpotLight( 0xffffff );
+spotLight2.position.set( 0, 50, 10 );
+spotLight2.castShadow = true;
+spotLight2.shadow.mapSize.width = 1024;
+spotLight2.shadow.mapSize.height = 1024;
+spotLight2.rotation.y = Math.PI/180 * 90;
 
 				
-//spotLight2.shadow.camera.left = 500							
-//scn.add( spotLight2 );					
+spotLight2.shadow.camera.left = 500							
+scn.add( spotLight2 );					
 
 				
 
