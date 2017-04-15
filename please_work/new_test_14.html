@@ -584,7 +584,10 @@ leftWall.rotation.y = Math.PI/180 * 90;
 				//window.addEventListener( 'resize', onWindowResize, false );
 			
 			
-			
+				rnd.autoClear = false;
+				rnd.setPixelRatio( window.devicePixelRatio );
+				rnd.setSize( window.innerWidth, window.innerHeight );
+				rnd.setFaceCulling( THREE.CullFaceNone );
 			
 			
 			function render() {
@@ -592,13 +595,14 @@ leftWall.rotation.y = Math.PI/180 * 90;
 				rectLightHelper.update(); // required
 				//rectLight3Helper.update(); // required
 
-				rnd.render( scn, cam );
+				
+				cam.lookAt( scene.position );
+				cameraCube.rotation.copy( camera.rotation );
+				rnd.render( sceneCube, cameraCube );
+				rnd.render( scene, camera );	
 				
 				
-				rnd.autoClear = false;
-				rnd.setPixelRatio( window.devicePixelRatio );
-				rnd.setSize( window.innerWidth, window.innerHeight );
-				rnd.setFaceCulling( THREE.CullFaceNone );	
+				rnd.render( scn, cam )
 			}
 
 
