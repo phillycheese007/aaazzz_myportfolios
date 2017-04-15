@@ -107,7 +107,7 @@
 				rnd.setPixelRatio( window.devicePixelRatio );
 				rnd.setSize( window.innerWidth, window.innerHeight );
 				rnd.setFaceCulling( THREE.CullFaceNone );
-				document.body.appendChild( rnd.domElement );
+				document.body.appendChild( renderer.domElement );
 				//
 				var params = {
 					Cube: function () {
