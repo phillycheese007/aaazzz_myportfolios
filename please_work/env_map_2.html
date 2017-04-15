@@ -41,9 +41,9 @@
 
 			var controls, camera, scene, renderer;
 			var cameraCube, sceneCube;
-			var textureEquirec, textureCube, textureSphere;
-			var cubeMesh, sphereMesh;
-			var sphereMaterial;
+			var textureEquirec, textureCube, textureSphere, textureSphere2;
+			var cubeMesh, sphereMesh, sphereMesh2;
+			var sphereMaterial, sphereMaterial2;
 			var refract;
 			init();
 			animate();
@@ -105,19 +105,22 @@
 				scene.add( sphereMesh );
 				//
 				
-var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 500 );				
+var geometry2 = new THREE.SphereGeometry( 400.0, 24, 24 );
 
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
 brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
 brickTexture.repeat.set( 7, 5 );			
-var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );			
+var sphereMaterial2 = new THREE.MeshBasicMaterial( { map: brickTexture } );			
 				
 var backWall = new THREE.Mesh( wallGeometry, brickMat );
-backWall.material.side = THREE.DoubleSide;
-scene.add( backWall );
-//backWall.position.set( 0, 0, 0 );
 				
+				
+				sphereMaterial2 = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+				sphereMesh2 = new THREE.Mesh( geometry2, sphereMaterial2 );
+				scene.add( sphereMesh2 );
+				sphereMesh2.position.set( 0, 2, 2 );
+
 				
 				renderer = new THREE.WebGLRenderer();
 				renderer.autoClear = false;
