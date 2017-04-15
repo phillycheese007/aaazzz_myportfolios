@@ -342,8 +342,8 @@ var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x0
 
 
 var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
-brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
-brickTexture.repeat.set( 7, 5 );			
+//brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
+//brickTexture.repeat.set( 7, 5 );			
 var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 
 					
@@ -352,7 +352,7 @@ var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/
 var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );	
 				
 var wallWindTexture = new THREE.TextureLoader().load( "aaazzz_myportfolios/images/deer/bumwallwind.png" );
-var wallWindMat = new THREE.MeshBasicMaterial( { map: wallWindTexture, transparent: true } );					
+var wallWindMat = new THREE.MeshBasicMaterial( { map: wallWindTexture } );					
 				
 		
 				
