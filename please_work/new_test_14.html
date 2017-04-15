@@ -260,7 +260,7 @@ plant_1_pot.castShadow = true;
 plant_1_pot.receiveShadow = true;
 geometry.computeVertexNormals();
 plant_1_pot.scale.set(2,2,2);
-plant_1_pot.position.set(0, 0, 120);
+plant_1_pot.position.set(0, 0, 0);
 								
 //plant_1_pot.rotation.y = convertToRad(90);  
 							
@@ -272,7 +272,7 @@ var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
 var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
 matStdPlant.color.set( 0x808080 );
 mshPhongPlant.scale.set(2,2,2);
-mshPhongPlant.position.set( 0, 0, 120 );
+mshPhongPlant.position.set( 0, 0, 0 );
 mshPhongPlant.castShadow = true;
 scn.add( mshPhongPlant );
 scn.add(plant_1_pot);	 	
@@ -369,7 +369,15 @@ leftWall2.rotation.y = Math.PI/180 * 90;
 //rightWall.rotation.y = Math.PI/180 * 90;	
 				
 				
+var spotLight2 = new THREE.SpotLight( 0xffffff );
+spotLight2.position.set( 0, 50, 10 );
+spotLight2.castShadow = true;
+spotLight2.shadow.mapSize.width = 1024;
+spotLight2.shadow.mapSize.height = 1024;
+spotLight2.rotation.y = Math.PI/180 * 90;
 
+spotLight2.shadow.camera.left = 500							
+scn.add( spotLight2 );		
 				
 				
 				scn.add( cam );
