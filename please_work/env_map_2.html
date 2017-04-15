@@ -50,7 +50,7 @@
 				cam = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				cam.position.set( 0, 0, 1000 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-				controls = new THREE.OrbitControls( camera );
+				controls = new THREE.OrbitControls( cam );
 				controls.minDistance = 500;
 				controls.maxDistance = 2500;
 				// SCENE
