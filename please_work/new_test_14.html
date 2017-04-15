@@ -31,39 +31,26 @@
 	<body>
 
 		<div id="container"></div>
-		<div id="info">
-			<a href="http://threejs.org" target="_blank">three.js</a> - Demo of RectAreaLight on Phong and Standard Material Meshes - by <a href="http://github.com/abelnation" target="_blank">abelnation</a><br />
-			Click and drag to move OrbitControls.<br />
-			<br />
-		</div>
 
-<!--<script src="../build/three.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
-
-		
-<!--<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/lights/RectAreaLightUniformsLib.js"></script>-->
 <script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/libs/dat.gui.min.js"></script>
 <script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/controls/OrbitControls.js"></script>
 <script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/Detector.js"></script>
 
 		<script>
 
-			var container = document.getElementById( 'container' );
-
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-
-			var renderer = new THREE.WebGLRenderer();
+var container = document.getElementById( 'container' );
+if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+var renderer = new THREE.WebGLRenderer();
 			
-			//Its..  fov, aspect, near, far 
-			//var cam = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 20000 );
-    var cam = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000);
-    cam.position.set(0, 100, 250);
+var cam = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000);
+cam.position.set(0, 100, 250);
 			
-			var orb = new THREE.OrbitControls( cam, renderer.domElement );
-				orb.minDistance = 50;
-				orb.maxDistance = 150;
-			var scn = new THREE.Scene();
-			var origin = new THREE.Object3D();
+var orb = new THREE.OrbitControls( cam, renderer.domElement );
+orb.minDistance = 50;
+orb.maxDistance = 150;
+var scn = new THREE.Scene();
+var origin = new THREE.Object3D();
 origin.position.set(0,130,5);
     			var matPhongParams = {
     			specular: 0xFFFFFF,
@@ -191,7 +178,6 @@ dirLight44.shadowCameraVisible = true;
 
     //			var gui, guiElements;
     //			var param = {};
-init();
 			function init() {
 
 				var gl = renderer.context;
