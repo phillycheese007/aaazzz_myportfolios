@@ -52,12 +52,12 @@
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-			var rnd = new THREE.WebGLRenderer();
+			var renderer = new THREE.WebGLRenderer();
 			
 			//Its..  fov, aspect, near, far 
 			var cam = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
-			var orb = new THREE.OrbitControls( cam, rnd.domElement );
+			var orb = new THREE.OrbitControls( cam, renderer.domElement );
 
 			var scn = new THREE.Scene();
 			var origin = new THREE.Object3D();
@@ -200,7 +200,7 @@ scn.add( windowSpecial1 );
 
 			function init() {
 
-				var gl = rnd.context;
+				var gl = renderer.context;
 
 				// Check for float-RT support
 				// TODO (abelnation): figure out fall-back for float textures
@@ -214,11 +214,11 @@ scn.add( windowSpecial1 );
 					throw "missing webgl extension";
 				}
 
-				rnd.shadowMap.enabled = true;
-				rnd.shadowMap.type = THREE.PCFSoftShadowMap;
-				rnd.gammaInput = true;
-				rnd.gammaOutput = true;
-				rnd.antialias = true;
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
 
 				cam.position.set( 0, 170, 5 ); // ITS.. X,Y,Z
 
@@ -457,7 +457,7 @@ leftWall.rotation.y = Math.PI/180 * 90;
 
 				
 
-				document.body.appendChild( rnd.domElement );
+				document.body.appendChild( renderer.domElement );
 				onResize();
 				window.addEventListener( 'resize', onResize, false );
 
@@ -476,7 +476,7 @@ leftWall.rotation.y = Math.PI/180 * 90;
 
 			function onResize() {
 
-				rnd.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( window.innerWidth, window.innerHeight );
 				cam.aspect = ( window.innerWidth / window.innerHeight );
 				cam.updateProjectionMatrix();
 				orb.target = mshPhongBox.position;
@@ -525,7 +525,7 @@ leftWall.rotation.y = Math.PI/180 * 90;
 				rectLightHelper.update(); // required
 				//rectLight3Helper.update(); // required
 
-				rnd.render( scn, cam );
+				renderer.render( scn, cam );
 					
 			}
 
