@@ -108,7 +108,7 @@
 				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
 				sceneCube.add( cubeMesh );
 				//
-				var geometry = new THREE.SphereGeometry( 7.0, 2, 2 );
+				var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
 				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 				scene.add( sphereMesh );
@@ -157,11 +157,11 @@ subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('../images/deer/burgers.jpg'
 var itmArr = [];
 var vx, vy, vz;
 var loader = new THREE.JSONLoader(); // init the loader util
-loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (pot_geometry) {
     plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
     plant_1_pot.castShadow = true;
     plant_1_pot.receiveShadow = true;
-    geometry.computeVertexNormals();
+    pot_geometry.computeVertexNormals();
     plant_1_pot.scale.set(5,5,5);
     plant_1_pot.position.y = -1000;
     plant_1_pot.position.x = 0;
