@@ -363,12 +363,19 @@ scn.add( backWall );
 backWall.position.set( 0, 50, 150 );
 backWall.rotation.y = Math.PI/180 * 180;
 
-var frontWall = new THREE.Mesh( wallGeometry, brickMat );
+var frontWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
 frontWall.material.side = THREE.DoubleSide;
 frontWall.receiveShadow = true;
 scn.add( frontWall );
-frontWall.position.set( 0, 50, -150 );
-frontWall.rotation.y = Math.PI/180 * 180;				
+frontWall.position.set( 0, 50, -200 );
+frontWall.rotation.y = Math.PI/180 * 180;
+				
+var frontWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
+frontWall2.material.side = THREE.DoubleSide;
+frontWall2.receiveShadow = true;
+scn.add( frontWall2 );
+frontWall2.position.set( 0, 50, -150 );
+frontWall2.rotation.y = Math.PI/180 * 180;	
 
 var leftWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
 leftWall.material.side = THREE.DoubleSide;
