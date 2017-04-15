@@ -377,7 +377,7 @@ scn.add( leftWall );
 leftWall.position.set( 175, 50, 0 );
 leftWall.rotation.y = Math.PI/180 * 90;
 
-var leftWall2 = new THREE.Mesh( wallGeometry, brickMat );
+var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
 leftWall2.material.side = THREE.DoubleSide;
 leftWall2.receiveShadow = true;
 scn.add( leftWall2 );
