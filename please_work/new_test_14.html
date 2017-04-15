@@ -58,7 +58,8 @@
 			var cam = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 0.1, 20000 );
 			
 			var orb = new THREE.OrbitControls( cam, renderer.domElement );
-
+				orb.minDistance = 500;
+				orb.maxDistance = 1500;
 			var scn = new THREE.Scene();
 			var origin = new THREE.Object3D();
 origin.position.set(3,40,5);
