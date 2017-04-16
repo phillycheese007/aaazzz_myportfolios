@@ -302,19 +302,19 @@ var matStdParams = {
   floorTexture.repeat.set( 7, 5 );								
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
   var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );			
-  var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
+ // var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
   var geoFloor = new THREE.BoxGeometry( 1000, 0.1, 1000 );
   var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
-  var mshStdFloor = new THREE.Mesh( geoFloor, floorMat ); 
+ // var mshStdFloor = new THREE.Mesh( geoFloor, floorMat ); 
 
   matStdFloor.color.set( 0x808080 );
   matStdFloor.receiveShadow = true;
 
   mshPhongFloor.receiveShadow = true;
   mshPhongFloor.position.set( 0, -250, 0 );
-  mshStdFloor.position.set( 0, -250, 0 );
+//  mshStdFloor.position.set( 0, -250, 0 );
   scene.add( mshPhongFloor );
-  scene.add( mshStdFloor );
+ // scene.add( mshStdFloor );
 			
 				
 				// poles
