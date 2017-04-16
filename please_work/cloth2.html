@@ -240,6 +240,29 @@
 				mesh.receiveShadow = true;
 				scene.add( mesh );
 
+				
+				
+				
+				
+var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
+var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
+								
+var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
+var wallRight = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallRight.receiveShadow = true;
+wallRight.material.side = THREE.DoubleSide;			
+scene.add( wallRight );
+wallRight.position.x = 500;
+wallRight.position.y = 250;
+wallRight.position.z = 0;			
+wallRight.rotation.y = -Math.PI/2;			
+				
+				
+				
+				
+				
+				
+				
 				// poles
 
 				var poleGeo = new THREE.BoxGeometry( 5, 375, 5 );
