@@ -20,7 +20,7 @@ var restDistance = 17;
 var xSegs = 10;
 var ySegs = 10;
 
-var clothFunction = plane(100, 200); //plane( restDistance * xSegs, restDistance * ySegs );
+var clothFunction = plane(10, 20); //plane( restDistance * xSegs, restDistance * ySegs );
 
 var cloth = new Cloth( xSegs, ySegs );
 
@@ -50,8 +50,13 @@ function plane( width, height ) {
 
 	return function( u, v ) {
 
-		var x = ( u - 0.5 ) * width;
-		var y = ( v + 0.5 ) * height;
+		//var x = ( u - 0.5 ) * width;
+		//var y = ( v + 0.5 ) * height;
+		//var z = 0;
+		
+
+		var x = 700;
+		var y = 100;
 		var z = 0;
 
 		return new THREE.Vector3( x, y, z );
