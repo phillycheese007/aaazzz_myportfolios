@@ -252,7 +252,8 @@ var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterialArray );
 var cubeGeometry = new THREE.CubeGeometry( 1000, 1000, 500, 1, 1, 1 );
 // using THREE.MeshFaceMaterial() in the constructor below
 //   causes the mesh to use the materials stored in the geometry
-cube = new THREE.Mesh( cubeGeometry, cubeMaterials );
+var cube = new THREE.Mesh( cubeGeometry, cubeMaterials );
+cube.position.set( 0, 9.5, 0 );
 				
 var matPhongParams = {
   specular: 0xFFFFFF,
