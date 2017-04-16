@@ -53,7 +53,7 @@
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				controls = new THREE.OrbitControls( camera );
 				controls.minDistance = 50; //500;
-				controls.maxDistance = 1000;
+				controls.maxDistance = 800;
 				// SCENE
 				scene = new THREE.Scene();
 				sceneCube = new THREE.Scene();
@@ -167,7 +167,7 @@ wallFront.material.side = THREE.DoubleSide;
 scene.add( wallFront );
 wallFront.position.x = 0;
 wallFront.position.y = 250;
-wallFront.position.z = -500;			
+wallFront.position.z = 500;			
 wallFront.rotation.y = -Math.PI/2 * 90;					
 				
 ////////////////////////////////////////////////////////////////////////////////////				
