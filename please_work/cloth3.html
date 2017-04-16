@@ -342,9 +342,8 @@ scene.add( mesh );
 				
 				
 var wallRight = new THREE.Mesh( wallyGeo, wallWindMat ); 
-wallRight.material.side = THREE.DoubleSide;
-mesh.receiveShadow = true;
-mesh.castShadow = true;			
+wallRight.receiveShadow = true;
+wallRight.castShadow = true;			
 scene.add( wallRight );
 wallRight.position.x = 500;
 wallRight.position.y = 0;
