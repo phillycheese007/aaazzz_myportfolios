@@ -288,8 +288,33 @@ wallFront.position.y = 0;
 wallFront.position.z = 500;			
 wallFront.rotation.y = -Math.PI/2 * 90;				
 				
-				
-				
+var matPhongParams = {
+  specular: 0xFFFFFF,
+  shininess: 1000
+};
+var matStdParams = {
+  roughness: 0.044676705160855, // calculated from shininess = 1000
+  metalness: 0.0
+};
+											
+  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+  floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+  floorTexture.repeat.set( 7, 5 );								
+  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
+  var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );			
+
+  var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
+  var geoFloor = new THREE.BoxGeometry( 1000, 0.1, 1000 );
+  var mshStdFloor = new THREE.Mesh( geoFloor, floorMat ); 
+
+  matStdFloor.color.set( 0x808080 );
+  matStdFloor.receiveShadow = true;
+
+  mshPhongFloor.receiveShadow = true;
+  mshPhongFloor.position.set( 0, 0, 0 );
+  scene.add( mshPhongFloor );
+  scene.add( mshStdFloor );
+			
 				
 				// poles
 
