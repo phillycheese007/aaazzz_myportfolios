@@ -215,8 +215,8 @@ var matStdParams = {
   var ray = new THREE.Raycaster();
 				
 //scene.add( directionalLight );
-var speciallight = new THREE.PointLight( 0xffffff, 10, 1000 );
-speciallight.position.set( 0, 12, 0 );
+var speciallight = new THREE.PointLight( 0xffffff, 10, 500 );
+speciallight.position.set( 0, 142, 0 );
 speciallight.castShadow = true;
 speciallight.shadow.mapSize.width = 1024;
 speciallight.shadow.mapSize.height = 1024;
@@ -224,14 +224,7 @@ speciallight.shadow.mapSize.height = 1024;
 speciallight.shadow.camera.left = 500
 scene.add( speciallight );
 				
-var spotLight2 = new THREE.SpotLight( 0xffffff );
-spotLight2.position.set( 0, 50, 140 );
-spotLight2.castShadow = true;
-spotLight2.shadow.mapSize.width = 1024;
-spotLight2.shadow.mapSize.height = 1024;
-
-spotLight2.shadow.camera.left = 500							
-scene.add( spotLight2 );	
+	
 				
     //Creating box
 var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
