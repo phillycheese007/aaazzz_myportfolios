@@ -161,7 +161,14 @@ wallBack.position.y = 250;
 wallBack.position.z = -500;			
 wallBack.rotation.y = -Math.PI/2 * 90;				
 				
-				
+var wallFront = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallFront.receiveShadow = true;
+wallFront.material.side = THREE.DoubleSide;			
+scene.add( wallFront );
+wallFront.position.x = 0;
+wallFront.position.y = 250;
+wallFront.position.z = -500;			
+wallFront.rotation.y = -Math.PI/2 * 90;					
 				
 ////////////////////////////////////////////////////////////////////////////////////				
 				
