@@ -146,7 +146,16 @@ wallRight.position.z = 0;
 wallRight.rotation.y = -Math.PI/2;		
 	
 				
-				
+var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
+var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
+var mshStdKnot = new THREE.Mesh( geoKnot, matStdObjects );
+mshPhongKnot.position.set( 5, 5, 5 );
+mshPhongKnot.castShadow = true;
+mshPhongKnot.receiveShadow = true;
+mshStdKnot.position.set( 5, 5, -5 );
+mshStdKnot.castShadow = true;
+mshStdKnot.receiveShadow = true;scn.add( mshPhongKnot );
+scene.add( mshStdKnot );				
 				
 				
 // var subjMat = new THREE.MeshBasicMaterial();
