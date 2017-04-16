@@ -563,9 +563,37 @@ dirLight44.shadowCameraVisible = true;
 				var timer = -0.0002 * Date.now();
 				camera.lookAt( scene.position );
 				cameraCube.rotation.copy( camera.rotation );
+				
+				
+				
+				
+								var p = cloth.particles;
+
+				for ( var i = 0, il = p.length; i < il; i ++ ) {
+
+					clothGeometry.vertices[ i ].copy( p[ i ].position );
+
+				}
+
+				clothGeometry.computeFaceNormals();
+				clothGeometry.computeVertexNormals();
+
+				clothGeometry.normalsNeedUpdate = true;
+				clothGeometry.verticesNeedUpdate = true;
+
+				sphere.position.copy( ballPosition );
+				
+				
+				
+				
+				
+				
+				
 				renderer.render( sceneCube, cameraCube );
 				renderer.render( scene, camera );
 			}
+	
+	
 		</script>
 
 	</body>
