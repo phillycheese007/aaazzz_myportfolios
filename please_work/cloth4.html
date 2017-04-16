@@ -40,7 +40,16 @@
 <script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/Detector.js"></script>
 
 
+		
+		
+		
+    <script src="/aaazzz_myportfolios/please_work/js/JDLoader.min.js"></script><!-- for eagle -->
 
+		
+		
+		
+		
+		
 		<script src="/aaazzz_myportfolios/please_work/js/libs/stats.min.js"></script>
 
 		<script src="/aaazzz_myportfolios/please_work/js/cloth2.js"></script>
@@ -80,6 +89,7 @@
 		</script>
 
 		<script>
+        var clock = new THREE.Clock; //for eagle
 
 			/* testing cloth simulation */
 			var pinsFormation = [];
@@ -306,7 +316,27 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 });
 				
 				
-			
+            var loader = new THREE.JDLoader();
+            loader.load("/aaazzz_myportfolios/please_work/js/model.jd",
+                        function (data)
+                        {
+                            var multiMaterial = new THREE.MultiMaterial(data.materials);
+                            for (var i = 0; i < data.geometries.length; ++i)
+                            {
+                                var mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
+                                meshes.push(mesh);
+                                scene.add(mesh);
+
+                                if (mesh.geometry.animations)
+                                {
+                                    var mixer = new THREE.AnimationMixer(mesh);
+                                    mixers.push(mixer);
+                                    mixer.clipAction(mesh.geometry.animations[0]).play();
+                                }
+                            }
+		    
+		    
+		    
 				
 				
 				// poles
@@ -577,6 +607,14 @@ scene.add( mesh );
 
 			function animate() {
 
+				
+				            var delta = clock.getDelta();//for eagele
+            for (var i = 0; i < mixers.length; ++i)//for eagele
+                mixers[i].update(delta);//for eagele
+				
+				
+				
+				
 				requestAnimationFrame( animate );
 
 				var time = Date.now();
