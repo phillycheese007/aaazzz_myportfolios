@@ -52,7 +52,7 @@
 				camera.position.set( 0, 500, 2000 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				controls = new THREE.OrbitControls( camera );
-				controls.minDistance = 500;
+				controls.minDistance = 50; //500;
 				controls.maxDistance = 1000;
 				// SCENE
 				scene = new THREE.Scene();
@@ -278,7 +278,9 @@ mshStdSphere.castShadow = true;
 mshStdSphere.receiveShadow = true;
 mshStdSphere.position.set(-5, 5, -5 );
 
-mshStdKnot.position.set( 5, 25, -5 );
+				
+mshStdKnot.position.set( 333, 25, 5 );
+mshStdKnot.scale.set(12,12,12);				
 mshStdKnot.castShadow = true;
 mshStdKnot.receiveShadow = true;
 
