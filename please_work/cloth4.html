@@ -657,8 +657,9 @@ scene.add( mesh );
 
 			function animate() {
 				
-				
-				requestAnimationFrame( animate );
+            var delta = clock.getDelta();//eag
+            for (var i = 0; i < mixers.length; ++i)//eag
+                mixers[i].update(delta);//eag
 
 				var time = Date.now();
 
@@ -668,22 +669,12 @@ scene.add( mesh );
 				simulate( time );
 				render();
 				stats.update();
-				controls.update();
+                                if (controls) controls.update();//eag
 
+				requestAnimationFrame( animate );
 			}
 			
-        function animate()
-        {
-            var delta = clock.getDelta();
-            for (var i = 0; i < mixers.length; ++i)
-                mixers[i].update(delta);
 
-            if (controls) controls.update();
-
-            if (camera)  renderer.render(scene, camera);
-
-            requestAnimationFrame(animate);
-        }
 
 			
 			
