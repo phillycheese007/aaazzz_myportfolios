@@ -250,6 +250,74 @@
 				scene.add( mesh );
 				
 				
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+            var loader = new THREE.JDLoader();
+            loader.load("/aaazzz_myportfolios/please_work/js/model.jd",
+                        function (data)
+                        {
+                            var multiMaterial = new THREE.MultiMaterial(data.materials);
+                            for (var i = 0; i < data.geometries.length; ++i)
+                            {
+                                var mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
+                                meshes.push(mesh);
+                                scene.add(mesh);
+
+                                if (mesh.geometry.animations)
+                                {
+                                    var mixer = new THREE.AnimationMixer(mesh);
+                                    mixers.push(mixer);
+                                    mixer.clipAction(mesh.geometry.animations[0]).play();
+                                }
+                            }
+
+                            camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10 * data.boundingSphere.radius);
+                            camera.position.z = data.boundingSphere.center.z + 2.5 * data.boundingSphere.radius;
+                            camera.lookAt(data.boundingSphere.center);        
+                            scene.add(camera);  //mainLight.position.copy(camera.position);
+                            camera.add(new THREE.DirectionalLight(0xFFFFFF, 1));                            
+                            if (!controls)
+                               controls = new THREE.OrbitControls(camera, renderer.domElement);
+                            controls.target.copy(data.boundingSphere.center);
+                        });				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				
 				
