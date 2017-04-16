@@ -124,7 +124,6 @@ var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
 				var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
 var plane = new THREE.Mesh( floorGeometry, floorMat ); // planeMaterial );
 plane.receiveShadow = true;
-plane.receiveShadow = true;
 plane.material.side = THREE.DoubleSide;			
 scene.add( plane );
 plane.position.y = 0;
@@ -171,6 +170,8 @@ mshStdKnot.color= 0xF2461C,
 
 mshStdKnot.castShadow = true;
 mshStdKnot.receiveShadow = true;
+geoKnot.castShadow = true;
+geoKnot.receiveShadow = true;			
 scene.add( mshPhongKnot );
 scene.add( mshStdKnot );				
 				
