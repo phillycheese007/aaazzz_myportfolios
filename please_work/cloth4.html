@@ -136,10 +136,7 @@
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				camera.position.set( 0, 0, 1000); //1000 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-
-				controls = new THREE.OrbitControls( camera );
-				controls.minDistance = 300;
-				controls.maxDistance = 700;				
+			
 				
 				// controls
 				controls = new THREE.OrbitControls( camera );
@@ -199,7 +196,7 @@
 				// cloth mesh
 
 				object = new THREE.Mesh( clothGeometry, clothMaterial );
-				object.position.set( 0, 0, 455 );
+				object.position.set( 20, 50, 455 );
 				object.castShadow = true;
 				scene.add( object );
 
