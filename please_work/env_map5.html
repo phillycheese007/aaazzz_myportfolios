@@ -143,6 +143,14 @@ wallRight.position.y = 250;
 wallRight.position.z = 0;			
 wallRight.rotation.y = -Math.PI/2;		
 	
+
+				
+				
+				
+				
+				
+////////////////////////////////////////////////////////////////////////////////////				
+				
 				
 var matPhongParams = {
   specular: 0xFFFFFF,
@@ -152,8 +160,7 @@ var matStdParams = {
   roughness: 0.044676705160855, // calculated from shininess = 1000
   metalness: 0.0
 };
-						
-					
+											
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
 
@@ -191,7 +198,6 @@ speciallight.shadow.mapSize.height = 1024;
 
 speciallight.shadow.camera.left = 500
 scene.add( speciallight );
-
 				
 var spotLight2 = new THREE.SpotLight( 0xffffff );
 spotLight2.position.set( 0, 50, 140 );
@@ -203,11 +209,11 @@ spotLight2.shadow.camera.left = 500
 scene.add( spotLight2 );	
 				
     //Creating box
-    var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
-    var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
-    var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
-    boxer.castShadow = true;
-    scene.add( boxer );			
+var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
+var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
+var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
+boxer.castShadow = true;
+scene.add( boxer );			
 
 var planeGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32 );
 var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
@@ -232,63 +238,59 @@ scene.add( backWall );
 backWall.position.set( 0, 50, 150 );
 backWall.rotation.y = Math.PI/180 * 180;				
 				
-				//matPhongFloor.color.set( 0x808080 );
-				matPhongObjects.color.set( 0xA00000 );
-				matStdFloor.color.set( 0x808080 );
-				matStdFloor.receiveShadow = true;
+matPhongObjects.color.set( 0xA00000 );
+matStdFloor.color.set( 0x808080 );
+matStdFloor.receiveShadow = true;
 
-				matStdObjects.color.set( 0xA00000 );
-				matStdObjects.castShadow = true;
-				matStdObjects.receiveShadow = true;
+matStdObjects.color.set( 0xA00000 );
+matStdObjects.castShadow = true;
+matStdObjects.receiveShadow = true;
 
-				mshPhongFloor.receiveShadow = true;
-				mshPhongFloor.position.set( 0, 0, 0 );
+mshPhongFloor.receiveShadow = true;
+mshPhongFloor.position.set( 0, 0, 0 );
 
-				mshPhongBox.castShadow = true;
-				mshPhongBox.receiveShadow = true;
+mshPhongBox.castShadow = true;
+mshPhongBox.receiveShadow = true;
 
-				mshPhongBox.position.set( 0, 0, 0 );
-				mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
+mshPhongBox.position.set( 0, 0, 0 );
+mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
 
-				mshPhongSphere.castShadow = true;
-				mshPhongSphere.receiveShadow = true;
-				mshPhongSphere.position.set(-5, 5, 5 );
+mshPhongSphere.castShadow = true;
+mshPhongSphere.receiveShadow = true;
+mshPhongSphere.position.set(-5, 5, 5 );
 
-				mshPhongKnot.position.set( 5, 5, 5 );
-				mshPhongKnot.castShadow = true;
-				mshPhongKnot.receiveShadow = true;
+mshPhongKnot.position.set( 5, 5, 5 );
+mshPhongKnot.castShadow = true;
+mshPhongKnot.receiveShadow = true;				
 				
-
-				
-				scene.add( mshPhongFloor );
-				scene.add( mshPhongBox );
-				scene.add( mshPhongSphere );
-				scene.add( mshPhongKnot );
-
+scene.add( mshPhongFloor );
+scene.add( mshPhongBox );
+scene.add( mshPhongSphere );
+scene.add( mshPhongKnot );
 							
-				mshStdBox.castShadow = true;
-				mshStdBox.receiveShadow = true;
-				mshStdBox.position.set( 0, 5, -5 );
-				mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
+mshStdBox.castShadow = true;
+mshStdBox.receiveShadow = true;
+mshStdBox.position.set( 0, 5, -5 );
+mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
 
-				mshStdSphere.castShadow = true;
-				mshStdSphere.receiveShadow = true;
-				mshStdSphere.position.set(-5, 5, -5 );
+mshStdSphere.castShadow = true;
+mshStdSphere.receiveShadow = true;
+mshStdSphere.position.set(-5, 5, -5 );
 
-				mshStdKnot.position.set( 5, 5, -5 );
-				mshStdKnot.castShadow = true;
-				mshStdKnot.receiveShadow = true;
+mshStdKnot.position.set( 5, 5, -5 );
+mshStdKnot.castShadow = true;
+mshStdKnot.receiveShadow = true;
 
-
-				scene.add( mshStdFloor );
-				scene.add( mshStdBox );
-				scene.add( mshStdSphere );
-				scene.add( mshStdKnot );
-				scene.add( amb );
-				scene.add( ambLight2 );
+scene.add( mshStdFloor );
+scene.add( mshStdBox );
+scene.add( mshStdSphere );
+scene.add( mshStdKnot );
+scene.add( amb );
+scene.add( ambLight2 );
 
 				
-				
+////////////////////////////////////////////////////////////////////////////////////				
+
 				
 				
 				
