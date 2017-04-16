@@ -276,19 +276,19 @@ var matStdParams = {
   color:0xF2461C, 
   castShadow: true,
   receiveShadow:true,
-  shininess:11, 
+  shininess:10, 
   specular:0xEBC335, 
   shading: THREE.SmoothShading
   // shading: THREE.FlatShading
 });
 var subjMat_num2 = new THREE.MeshPhongMaterial({
-  shininess:1, 
-  specular:0xEBC335, 
+  shininess:10, 
+  specular:0xFF0000, 
   shading: THREE.SmoothShading
   // shading: THREE.FlatShading
 });	
 subjMat_num2.map = THREE.ImageUtils.loadTexture('images/deer/burgs.jpg');	
-subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
+subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('images/deer/checkerboard.jpg');
 var itmArr = [];
 var vx, vy, vz;
 var loader = new THREE.JSONLoader(); // init the loader util
