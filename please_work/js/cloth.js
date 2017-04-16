@@ -12,8 +12,8 @@
 
 var DAMPING = 0.03;
 var DRAG = 1 - DAMPING;
-var MASS = 0.5;
-var restDistance = 5;
+var MASS = 2;
+var restDistance = 15;
 
 
 
@@ -24,7 +24,7 @@ var clothFunction = plane( restDistance * xSegs, restDistance * ySegs );
 
 var cloth = new Cloth( xSegs, ySegs );
 
-var GRAVITY = 981 * 1.4;
+var GRAVITY = 981 * 3//981 * 1.4;
 var gravity = new THREE.Vector3( 0, - GRAVITY, 0 ).multiplyScalar( MASS );
 
 
