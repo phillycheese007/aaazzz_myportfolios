@@ -162,6 +162,10 @@ var matStdParams = {
 };
 											
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+  floorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+  floorTexture.repeat.set( 7, 5 );	
+				
+				
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
 
   var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
