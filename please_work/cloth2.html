@@ -141,11 +141,7 @@
 				//controls.minDistance = 3;
 				//controls.maxDistance = 230;				
 				
-				// controls
-				var controls = new THREE.OrbitControls( camera, renderer.domElement );
-				controls.maxPolarAngle = Math.PI * 0.5;
-				controls.minDistance = 30;
-				controls.maxDistance = 500;
+
 				
 				// lights
 
@@ -556,9 +552,11 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 					
 					
 					
-			
-					
-					
+				// controls
+				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.maxPolarAngle = Math.PI * 0.5;
+				controls.minDistance = 1000;
+				controls.maxDistance = 7500;	
 					
 					
 					
