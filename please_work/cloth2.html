@@ -253,12 +253,36 @@ wallRight.receiveShadow = true;
 wallRight.material.side = THREE.DoubleSide;			
 scene.add( wallRight );
 wallRight.position.x = 500;
-wallRight.position.y = 250;
+wallRight.position.y = 0;
 wallRight.position.z = 0;			
 wallRight.rotation.y = -Math.PI/2;			
+								
+var wallLeft = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallLeft.receiveShadow = true;
+wallLeft.material.side = THREE.DoubleSide;			
+scene.add( wallLeft );
+wallLeft.position.x = -500;
+wallLeft.position.y = 0;
+wallLeft.position.z = 0;			
+wallLeft.rotation.y = -Math.PI/2; 
 				
+var wallBack = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallBack.receiveShadow = true;
+wallBack.material.side = THREE.DoubleSide;			
+scene.add( wallBack );
+wallBack.position.x = 0;
+wallBack.position.y = 0;
+wallBack.position.z = -500;			
+wallBack.rotation.y = -Math.PI/2 * 90;				
 				
-				
+var wallFront = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallFront.receiveShadow = true;
+wallFront.material.side = THREE.DoubleSide;			
+scene.add( wallFront );
+wallFront.position.x = 0;
+wallFront.position.y = 0;
+wallFront.position.z = 500;			
+wallFront.rotation.y = -Math.PI/2 * 90;				
 				
 				
 				
