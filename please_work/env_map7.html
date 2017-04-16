@@ -49,11 +49,11 @@
 			function init() {
 				// CAMERAS
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-				camera.position.set( 0, 500, 2000 );
+				camera.position.set( 0, 600, 2000 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 				controls = new THREE.OrbitControls( camera );
 				controls.minDistance = 50; //500;
-				controls.maxDistance = 700;
+				controls.maxDistance = 1000;
 				// SCENE
 				scene = new THREE.Scene();
 				sceneCube = new THREE.Scene();
