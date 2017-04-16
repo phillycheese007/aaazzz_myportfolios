@@ -146,6 +146,14 @@ wallRight.position.z = 0;
 wallRight.rotation.y = -Math.PI/2;		
 	
 				
+var matPhongParams = {
+  specular: 0xFFFFFF,
+  shininess: 1000
+};
+var matStdParams = {
+  roughness: 0.044676705160855, // calculated from shininess = 1000
+  metalness: 0.0
+};
 				
 var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
 var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
