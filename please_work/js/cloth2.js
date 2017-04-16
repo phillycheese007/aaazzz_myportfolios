@@ -50,14 +50,12 @@ function plane( width, height ) {
 
 	return function( u, v ) {
 
-		//var x = ( u - 0.5 ) * width;
-		//var y = ( v + 0.5 ) * height;
-		//var z = 0;
+		var x = ( u - 0.5 ) * width;
+		var y = ( v + 0.5 ) * height;
+		var z = 0;
 		
 
-		var x = 700;
-		var y = 100;
-		var z = 0;
+
 
 		return new THREE.Vector3( x, y, z );
 
