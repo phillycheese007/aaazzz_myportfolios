@@ -656,13 +656,6 @@ scene.add( mesh );
 			//
 
 			function animate() {
-
-				
-				      //      var delta = clock.getDelta();//for eagele
-         //   for (var i = 0; i < mixers.length; ++i)//for eagele
-           //     mixers[i].update(delta);//for eagele
-				
-				
 				
 				
 				requestAnimationFrame( animate );
@@ -678,6 +671,27 @@ scene.add( mesh );
 				controls.update();
 
 			}
+			
+        function animate()
+        {
+            var delta = clock.getDelta();
+            for (var i = 0; i < mixers.length; ++i)
+                mixers[i].update(delta);
+
+            if (controls) controls.update();
+
+            if (camera)  renderer.render(scene, camera);
+
+            requestAnimationFrame(animate);
+        }
+
+			
+			
+			
+			
+			
+			
+			
 
 			function render() {
 
