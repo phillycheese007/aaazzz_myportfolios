@@ -45,7 +45,7 @@
 
 		<script src="/aaazzz_myportfolios/please_work/js/cloth2.js"></script>
 
-		<script type="x-shader/x-fragment" id="fragmentShaderDepth">
+		<script type="x-shader/x-fragment" id="fragmentShaderDepth"><!--for the cloth-->
 
 			#include <packing>
 
@@ -63,20 +63,13 @@
 			}
 		</script>
 
-		<script type="x-shader/x-vertex" id="vertexShaderDepth">
-
+		<script type="x-shader/x-vertex" id="vertexShaderDepth"><!--for the cloth-->
 			varying vec2 vUV;
-
 			void main() {
-
 				vUV = 0.75 * uv;
-
 				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-
 				gl_Position = projectionMatrix * mvPosition;
-
 			}
-
 		</script>
 
 		<script>
