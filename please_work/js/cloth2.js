@@ -20,7 +20,7 @@ var restDistance = 17;
 var xSegs = 10;
 var ySegs = 10;
 
-var clothFunction = plane(10, 20); //plane( restDistance * xSegs, restDistance * ySegs );
+var clothFunction = plane(10, 70); //plane( restDistance * xSegs, restDistance * ySegs );
 
 var cloth = new Cloth( xSegs, ySegs );
 
