@@ -355,12 +355,12 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				var poleGeo = new THREE.BoxGeometry( 5, 375, 5 );
 				var poleMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x111111, shininess: 100 } );
 
-				var wallyGeo = new THREE.PlaneGeometry( 575, 375, 55, 55 );
+				var wallyGeo = new THREE.boxGeometry( 75, 475, 55, 55 );
 				var wallyMat = new THREE.MeshPhongMaterial( { color: 0xffff00, specular: 0x111111, shininess: 100 } );
 				
 				
 				var mesh = new THREE.Mesh( poleGeo, poleMat );
-				mesh.position.x = - 125;
+				mesh.position.x = - 25;
 				mesh.position.y = - 62;
 				mesh.receiveShadow = true;
 				mesh.castShadow = true;
