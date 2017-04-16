@@ -11,7 +11,7 @@
 // Real-time Cloth Animation http://www.darwin3d.com/gamedev/articles/col0599.pdf
 
 var DAMPING = 0.03;
-var DRAG = 2 - DAMPING;
+var DRAG = 1.5 - DAMPING;
 var MASS = 0.1;
 var restDistance = 25;
 
