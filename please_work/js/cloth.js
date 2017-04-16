@@ -15,6 +15,8 @@ var DRAG = 1 - DAMPING;
 var MASS = 0.1;
 var restDistance = 25;
 
+
+
 var xSegs = 10;
 var ySegs = 10;
 
@@ -33,8 +35,8 @@ var pins = [];
 
 
 var wind = true;
-var windStrength = 22;
-var windForce = new THREE.Vector3( 222, 0, 0 );
+var windStrength = 1;
+var windForce = new THREE.Vector3( 0, 0, 57 );
 
 var ballPosition = new THREE.Vector3( 0, - 45, 0 );
 var ballSize = 60; //40
