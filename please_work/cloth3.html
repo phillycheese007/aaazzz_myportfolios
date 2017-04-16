@@ -353,7 +353,7 @@ scene.add( mesh );
 								
 var wallLeft = new THREE.Mesh( wallGeometry, wallWindMat ); 
 wallLeft.receiveShadow = true;
-wallRight.castShadow = true;				
+wallLeft.castShadow = true;				
 wallLeft.material.side = THREE.DoubleSide;			
 scene.add( wallLeft );
 wallLeft.position.x = -500;
@@ -363,7 +363,7 @@ wallLeft.rotation.y = -Math.PI/2;
 				
 var wallBack = new THREE.Mesh( wallGeometry, wallManyWindMat ); 
 wallBack.receiveShadow = true;
-wallRight.castShadow = true;				
+wallBack.castShadow = true;				
 wallBack.material.side = THREE.DoubleSide;			
 scene.add( wallBack );
 wallBack.position.x = 0;
