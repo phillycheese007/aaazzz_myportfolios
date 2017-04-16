@@ -341,13 +341,18 @@
 
 				//
 
-				var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
+				//var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
+				//sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+				//sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
+				//scene.add( sphereMesh );
+
+			var geometry = new THREE.SphereGeometry( 70, 70, 32, 32 );
 				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
-
+				sphereMesh.position.x =120;
+				sphereMesh.position.y =210;
+				sphereMesh.position.z =70;
 				scene.add( sphereMesh );
-
-				//
 				
 				
 				
