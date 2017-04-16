@@ -425,15 +425,7 @@ scene.add( mesh );
 	mirrorCubeCamera.position = mirrorCube.position;
 	scene.add(mirrorCube);	
 	
-	var sphereGeom =  new THREE.SphereGeometry( 50, 32, 16 ); // radius, segmentsWidth, segmentsHeight
-	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
-	// mirrorCubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
-	scene.add( mirrorSphereCamera );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
-	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
-	mirrorSphere.position.set(75,50,0);
-	mirrorSphereCamera.position = mirrorSphere.position;
-	scene.add(mirrorSphere);	
+	
 				
 				
 				
