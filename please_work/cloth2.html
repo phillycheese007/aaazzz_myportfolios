@@ -138,7 +138,7 @@
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 
 				controls = new THREE.OrbitControls( camera );
-				controls.minDistance = 100;
+				controls.minDistance = 300;
 				controls.maxDistance = 700;				
 				
 
@@ -498,7 +498,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				// controls
 				var controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.maxPolarAngle = Math.PI * 0.5;
-				controls.minDistance = 1000;
+				controls.minDistance = 300;//1000;
 				controls.maxDistance = 7500;	
 				
 
