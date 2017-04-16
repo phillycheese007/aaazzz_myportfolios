@@ -355,7 +355,12 @@
 				scene.add( sphereMesh );
 				
 				
-				
+	cube3333 = new THREE.Mesh( new THREE.CubeGeometry( 2000, 2000, 2000 ), new THREE.MeshNormalMaterial() );
+	cube3333.position.y = 150;
+¶
+add the object to the scene
+
+	scene.addObject( cube3333 );
 				
 				
 				
@@ -442,6 +447,32 @@
 
 					clothGeometry.vertices[ i ].copy( p[ i ].position );
 
+					
+					
+					
+			
+					
+					
+					
+					
+	cube.rotation.x += 0.02;
+	cube.rotation.y += 0.0225;
+	cube.rotation.z += 0.0175;
+¶
+	var dtime	= Date.now() - startTime;
+	cube.scale.x	= 1.0 + 0.3*Math.sin(dtime/300);
+	cube.scale.y	= 1.0 + 0.3*Math.sin(dtime/300);
+	cube.scale.z	= 1.0 + 0.3*Math.sin(dtime/300);
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				}
 
 				clothGeometry.computeFaceNormals();
