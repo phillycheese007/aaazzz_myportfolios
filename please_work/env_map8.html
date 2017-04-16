@@ -44,7 +44,7 @@
 		
 		
 		
-		<script src="/aaazzz_myportfolios/please_work/js/libs/stats.min.js"></script>
+		<!--<script src="/aaazzz_myportfolios/please_work/js/libs/stats.min.js"></script>-->
 
 		<script src="/aaazzz_myportfolios/please_work/js/cloth.js"></script>
 
@@ -110,7 +110,7 @@
 	
 	
 	
-			var container, stats;
+			var container;
 			var clothGeometry;
 			var sphere;
 			var object;
@@ -185,6 +185,7 @@
 				sphereMesh.position.y =210;
 				sphereMesh.position.z =70;
 				scene.add( sphereMesh );
+				
 				
 				
 				
@@ -555,7 +556,6 @@ dirLight44.shadowCameraVisible = true;
 				simulate( time );
 				render();
 				controls.update();
-				stats.update();
 
 			}
 	
