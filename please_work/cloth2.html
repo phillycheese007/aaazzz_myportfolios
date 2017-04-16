@@ -236,7 +236,10 @@
 				
 var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
 var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
-								
+
+var wallManyWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallmanywind.png" );			
+var wallManyWindMat = new THREE.MeshPhongMaterial( { map: wallManyWindTexture, transparent: true } );
+				
 var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
 var wallRight = new THREE.Mesh( wallGeometry, wallWindMat ); 
 wallRight.receiveShadow = true;
@@ -258,7 +261,7 @@ wallLeft.position.y = 0;
 wallLeft.position.z = 0;			
 wallLeft.rotation.y = -Math.PI/2; 
 				
-var wallBack = new THREE.Mesh( wallGeometry, wallWindMat ); 
+var wallBack = new THREE.Mesh( wallGeometry, wallManyWindMat ); 
 wallBack.receiveShadow = true;
 wallRight.castShadow = true;				
 wallBack.material.side = THREE.DoubleSide;			
