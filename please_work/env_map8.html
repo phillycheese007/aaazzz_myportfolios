@@ -102,6 +102,28 @@
 			var cubeMesh, sphereMesh;
 			var sphereMaterial;
 			var refract;
+	
+	
+	
+	
+	
+	
+	
+	
+			var container, stats;
+			var clothGeometry;
+			var sphere;
+			var object;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 			init();
 			animate();
 			function init() {
@@ -163,6 +185,59 @@
 				sphereMesh.position.y =210;
 				sphereMesh.position.z =70;
 				scene.add( sphereMesh );
+				
+				
+				
+				
+				
+				
+				
+				
+				// cloth material
+
+				var loader = new THREE.TextureLoader();
+				var clothTexture = loader.load( '/aaazzz_myportfolios/images/deer/checkerboard.jpg' );
+				clothTexture.wrapS = clothTexture.wrapT = THREE.RepeatWrapping;
+				clothTexture.anisotropy = 16;
+
+				var clothMaterial = new THREE.MeshPhongMaterial( {
+					specular: 0x030303,
+					map: clothTexture,
+					side: THREE.DoubleSide,
+					alphaTest: 0.5
+				} );
+
+				// cloth geometry
+				clothGeometry = new THREE.ParametricGeometry( clothFunction, cloth.w, cloth.h );
+				clothGeometry.dynamic = true;
+
+				var uniforms = { texture:  { value: clothTexture } };
+				var vertexShader = document.getElementById( 'vertexShaderDepth' ).textContent;
+				var fragmentShader = document.getElementById( 'fragmentShaderDepth' ).textContent;
+
+				// BB cloth mesh
+
+				object = new THREE.Mesh( clothGeometry, clothMaterial );
+				object.position.set( 0, 0, 0 );
+				object.castShadow = true;
+				scene.add( object );
+
+				object.customDepthMaterial = new THREE.ShaderMaterial( {
+					uniforms: uniforms,
+					vertexShader: vertexShader,
+					fragmentShader: fragmentShader,
+					side: THREE.DoubleSide
+				} );
+				
+				// EE cloth mesh
+
+				
+				
+				
+				
+				
+				
+				
 				//
 //var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
 //woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
@@ -466,11 +541,24 @@ dirLight44.shadowCameraVisible = true;
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 			//
-			function animate() {
+
+	
+				function animate() {
+
 				requestAnimationFrame( animate );
+
+				var time = Date.now();
+
+				windStrength = Math.cos( time / 7000 ) * 20 + 40;
+				windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
+
+				simulate( time );
 				render();
 				controls.update();
+				stats.update();
+
 			}
+	
 			function render() {
 				var timer = -0.0002 * Date.now();
 				camera.lookAt( scene.position );
