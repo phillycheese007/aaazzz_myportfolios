@@ -113,6 +113,7 @@
 
 			var container, stats;
 			var camera, scene, renderer;
+			var cameraCube, sceneCube;
 
 			var clothGeometry;
 			var sphere;
@@ -129,16 +130,28 @@
 				// scene
 
 				scene = new THREE.Scene();
+				sceneCube = new THREE.Scene();
 				scene.fog = new THREE.Fog( 0xcce0ff, 500, 10000 );
+				
+				
+				//camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 10000 );
+				//camera.position.x = 1000;
+				//camera.position.y = 50;
+				//camera.position.z = 1500;
+				//scene.add( camera );
 
-				// camera
+				// CAMERAS
 
-				camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 10000 );
-				camera.position.x = 1000;
-				camera.position.y = 50;
-				camera.position.z = 1500;
-				scene.add( camera );
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				camera.position.set( 0, 0, 1000 );
+				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 
+				controls = new THREE.OrbitControls( camera );
+				controls.minDistance = 500;
+				controls.maxDistance = 2500;				
+				
+				
+				
 				// lights
 
 				var light, materials;
@@ -267,20 +280,107 @@
 				mesh.castShadow = true;
 				scene.add( mesh );
 
+				
+				
+				
+				
+				
+				
+				
+				
+				// Textures
+
+				var r = "textures/cube/Bridge2/";
+				var urls = [ r + "posx.jpg", r + "negx.jpg",
+							 r + "posy.jpg", r + "negy.jpg",
+							 r + "posz.jpg", r + "negz.jpg" ];
+
+				textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
+				textureCube.mapping = THREE.CubeReflectionMapping;
+
+				var textureLoader = new THREE.TextureLoader();
+
+				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
+				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+				textureEquirec.magFilter = THREE.LinearFilter;
+				textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
+
+				textureSphere = textureLoader.load( "textures/metal.jpg" );
+				textureSphere.mapping = THREE.SphericalReflectionMapping;
+
+				// Materials
+
+				var equirectShader = THREE.ShaderLib[ "equirect" ];
+
+				var equirectMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: equirectShader.fragmentShader,
+					vertexShader: equirectShader.vertexShader,
+					uniforms: equirectShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+
+				equirectMaterial.uniforms[ "tEquirect" ].value = textureEquirec;
+
+				var cubeShader = THREE.ShaderLib[ "cube" ];
+				var cubeMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: cubeShader.fragmentShader,
+					vertexShader: cubeShader.vertexShader,
+					uniforms: cubeShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+
+				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+
+				// Skybox
+
+				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
+				sceneCube.add( cubeMesh );
+
+				//
+
+				var geometry = new THREE.SphereGeometry( 400.0, 24, 24 );
+				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
+
+				scene.add( sphereMesh );
+
+				//
+				
+				
+				
+				
+				
+				
+				
+				
 				// renderer
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				
+				renderer.autoClear = false;
+
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				
+				renderer.setFaceCulling( THREE.CullFaceNone );
+	
+				
 				renderer.setClearColor( scene.fog.color );
-
 				container.appendChild( renderer.domElement );
-
 				renderer.gammaInput = true;
 				renderer.gammaOutput = true;
-
 				renderer.shadowMap.enabled = true;
 
+				
+                                //document.body.appendChild( renderer.domElement );				
+				
+				
+				
+				
+				
 				// controls
 				var controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.maxPolarAngle = Math.PI * 0.5;
@@ -325,6 +425,7 @@
 				//simulate( time );
 				render();
 				stats.update();
+				controls.update();
 
 			}
 
@@ -347,7 +448,9 @@
 				sphere.position.copy( ballPosition );
 
 				camera.lookAt( scene.position );
+				cameraCube.rotation.copy( camera.rotation );
 
+				renderer.render( sceneCube, cameraCube );
 				renderer.render( scene, camera );
 
 			}
