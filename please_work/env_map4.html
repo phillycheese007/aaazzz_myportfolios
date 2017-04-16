@@ -158,7 +158,7 @@ var matStdParams = {
 var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
 var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
 				
-var geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 100, 16 );
+var geoKnot = new THREE.TorusKnotGeometry( 4.5, 1.5, 200, 26 );
 var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
 var mshStdKnot = new THREE.Mesh( geoKnot, matStdObjects );
 mshPhongKnot.position.set( 5, 5, 5 );
@@ -231,6 +231,12 @@ dirLight44.shadowCameraVisible = true;
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.setFaceCulling( THREE.CullFaceNone );
+				
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
 				document.body.appendChild( renderer.domElement );
 				//
 				var params = {
