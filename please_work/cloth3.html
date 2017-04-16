@@ -249,7 +249,7 @@ cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0x8833ff } ) );
 var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterialArray );
 // Cube parameters: width (x), height (y), depth (z), 
 //        (optional) segments along x, segments along y, segments along z
-var cubeGeometry = new THREE.CubeGeometry( 1000, 1000, 500, 1000, 10, 10 );
+var cubeGeometry = new THREE.CubeGeometry( 1000, 1000, 50, 100, 1, 1 );
 // using THREE.MeshFaceMaterial() in the constructor below
 //   causes the mesh to use the materials stored in the geometry
 var cube = new THREE.Mesh( cubeGeometry, cubeMaterials );
