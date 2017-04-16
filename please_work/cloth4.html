@@ -415,17 +415,25 @@ scene.add( mesh );
 	// CUSTOM //
 	////////////
 	
-	var cubeGeom = new THREE.CubeGeometry(100, 100, 10, 1, 1, 1);
-	mirrorCubeCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
+	//var cubeGeom = new THREE.CubeGeometry(100, 100, 10, 1, 1, 1);
+	//mirrorCubeCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
 	// mirrorCubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
-	scene.add( mirrorCubeCamera );
-	var mirrorCubeMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorCubeCamera.renderTarget } );
-	mirrorCube = new THREE.Mesh( cubeGeom, mirrorCubeMaterial );
-	mirrorCube.position.set(-75,50,0);
-	mirrorCubeCamera.position = mirrorCube.position;
-	scene.add(mirrorCube);	
+	//scene.add( mirrorCubeCamera );
+	//var mirrorCubeMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorCubeCamera.renderTarget } );
+	//mirrorCube = new THREE.Mesh( cubeGeom, mirrorCubeMaterial );
+	//mirrorCube.position.set(-75,50,0);
+	//mirrorCubeCamera.position = mirrorCube.position;
+	//scene.add(mirrorCube);	
 	
-	
+	var sphereGeom =  new THREE.SphereGeometry( 50, 32, 16 ); // radius, segmentsWidth, segmentsHeight
+	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
+	// mirrorCubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
+	scene.add( mirrorSphereCamera );
+	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
+	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
+	mirrorSphere.position.set(75,50,0);
+	mirrorSphereCamera.position = mirrorSphere.position;
+	scene.add(mirrorSphere);
 				
 				
 				
@@ -536,7 +544,6 @@ scene.add( mesh );
 
 
 				// performance monitor
-
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
@@ -592,9 +599,9 @@ scene.add( mesh );
 	//    and apply it to the surface.
 	// need to hide surface before and after so that it does not
 	//    "get in the way" of the camera
-	mirrorCube.visible = false;
-	mirrorCubeCamera.updateCubeMap( renderer, scene );
-	mirrorCube.visible = true;
+	//mirrorCube.visible = false;
+	//mirrorCubeCamera.updateCubeMap( renderer, scene );
+	//mirrorCube.visible = true;
 
 	mirrorSphere.visible = false;
 	mirrorSphereCamera.updateCubeMap( renderer, scene );
