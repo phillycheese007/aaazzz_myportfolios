@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - materials - cube reflection [cars]</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background:#000;
+				color:#fff;
+				padding:0;
+				margin:0;
+				overflow:hidden;
+				font-family:georgia;
+				text-align:center;
+			}
+			a { color:skyblue; text-decoration:none }
+			#info {
+				position: absolute;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+
+		
+<!--<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/lights/RectAreaLightUniformsLib.js"></script>-->
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/libs/dat.gui.min.js"></script>
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/controls/OrbitControls.js"></script>
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/Detector.js"></script>
+
+
+<script>
+	
+			var controls, camera, scene, renderer;
+			var cameraCube, sceneCube;
+			var textureEquirec, textureCube, textureSphere;
+			var cubeMesh, sphereMesh;
+			var sphereMaterial;
+			var refract;
+			init();
+			animate();
+			function init() {
+				// CAMERAS
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				camera.position.set( 0, 600, 2000 );
+				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				controls = new THREE.OrbitControls( camera );
+				controls.minDistance = 50; //500;
+				controls.maxDistance = 1000;
+				// SCENE
+				scene = new THREE.Scene();
+				sceneCube = new THREE.Scene();
+				// Lights
+				var ambient = new THREE.AmbientLight( 0xffffff );
+				scene.add( ambient );
+				// Textures
+				var r = "textures/cube/Bridge2/";
+				var urls = [ r + "posx.jpg", r + "negx.jpg",
+							 r + "posy.jpg", r + "negy.jpg",
+							 r + "posz.jpg", r + "negz.jpg" ];
+				textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
+				textureCube.mapping = THREE.CubeReflectionMapping;
+				var textureLoader = new THREE.TextureLoader();
+				textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
+				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+				textureEquirec.magFilter = THREE.LinearFilter;
+				textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
+				textureSphere = textureLoader.load( "textures/metal.jpg" );
+				textureSphere.mapping = THREE.SphericalReflectionMapping;
+				// Materials
+				var equirectShader = THREE.ShaderLib[ "equirect" ];
+				var equirectMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: equirectShader.fragmentShader,
+					vertexShader: equirectShader.vertexShader,
+					uniforms: equirectShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+				equirectMaterial.uniforms[ "tEquirect" ].value = textureEquirec;
+				var cubeShader = THREE.ShaderLib[ "cube" ];
+				var cubeMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: cubeShader.fragmentShader,
+					vertexShader: cubeShader.vertexShader,
+					uniforms: cubeShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+				// Skybox
+				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
+				sceneCube.add( cubeMesh );
+				//
+				var geometry = new THREE.SphereGeometry( 70, 70, 32, 32 );
+				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
+				sphereMesh.position.x =120;
+				sphereMesh.position.y =210;
+				sphereMesh.position.z =70;
+				scene.add( sphereMesh );
+				//
+//var woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
+//woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+//woodFloorTexture.repeat.set( 7, 5 );
+
+//var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
+				
+var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
+var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
+				
+				
+				
+//var floorGeometry = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
+var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
+
+//var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+//var plane = new THREE.Mesh( floorGeometry, floorMat ); // planeMaterial );
+//plane.receiveShadow = true;
+//plane.material.side = THREE.DoubleSide;			
+//scene.add( plane );
+//plane.position.y = 0;
+//plane.position.x = 0;
+//plane.position.z = 0;			
+//plane.rotation.x = -Math.PI/2;		
+
+				
+				
+				
+//var planeGeometry2 = new THREE.PlaneGeometry( 1000, 1000, 302, 302 );
+var wallRight = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallRight.receiveShadow = true;
+wallRight.material.side = THREE.DoubleSide;			
+scene.add( wallRight );
+wallRight.position.x = 500;
+wallRight.position.y = 250;
+wallRight.position.z = 0;			
+wallRight.rotation.y = -Math.PI/2;		
+	
+var wallLeft = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallLeft.receiveShadow = true;
+wallLeft.material.side = THREE.DoubleSide;			
+scene.add( wallLeft );
+wallLeft.position.x = -500;
+wallLeft.position.y = 250;
+wallLeft.position.z = 0;			
+wallLeft.rotation.y = -Math.PI/2; 
+				
+var wallBack = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallBack.receiveShadow = true;
+wallBack.material.side = THREE.DoubleSide;			
+scene.add( wallBack );
+wallBack.position.x = 0;
+wallBack.position.y = 250;
+wallBack.position.z = -500;			
+wallBack.rotation.y = -Math.PI/2 * 90;				
+				
+var wallFront = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallFront.receiveShadow = true;
+wallFront.material.side = THREE.DoubleSide;			
+scene.add( wallFront );
+wallFront.position.x = 0;
+wallFront.position.y = 250;
+wallFront.position.z = 500;			
+wallFront.rotation.y = -Math.PI/2 * 90;					
+				
+////////////////////////////////////////////////////////////////////////////////////				
+				
+				
+var matPhongParams = {
+  specular: 0xFFFFFF,
+  shininess: 1000
+};
+var matStdParams = {
+  roughness: 0.044676705160855, // calculated from shininess = 1000
+  metalness: 0.0
+};
+											
+  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+  floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+  floorTexture.repeat.set( 7, 5 );	
+				
+				
+  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
+
+  var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
+  var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
+			
+  var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
+  var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );	
+				
+  var geoFloor = new THREE.BoxGeometry( 1000, 0.1, 1000 );
+  var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
+  var geoSphere = new THREE.SphereGeometry( 1.5, 32, 32 );
+  var geoKnot = new THREE.TorusKnotGeometry( 20.5, 3.5, 200, 363 );
+
+				var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+  var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
+  var mshPhongSphere = new THREE.Mesh( geoSphere, matPhongObjects );
+  var mshPhongKnot = new THREE.Mesh( geoKnot, matPhongObjects );
+
+  var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
+  var mshStdBox = new THREE.Mesh( geoBox, matStdObjects );
+  var mshStdSphere = new THREE.Mesh( geoSphere, matStdObjects );
+  var mshStdKnot = new THREE.Mesh( geoKnot, matStdObjects );
+
+  var amb = new THREE.AmbientLight( 0x000000 );
+  var ambLight2 = new THREE.AmbientLight(0x404040);				
+  var ray = new THREE.Raycaster();
+				
+//scene.add( directionalLight );
+var speciallight = new THREE.PointLight( 0xffffff, 10, 500 );
+speciallight.position.set( 0, 142, 0 );
+speciallight.castShadow = true;
+speciallight.shadow.mapSize.width = 1024;
+speciallight.shadow.mapSize.height = 1024;
+
+speciallight.shadow.camera.left = 500
+scene.add( speciallight );
+				
+	
+				
+    //Creating box
+var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
+var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
+var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
+boxer.castShadow = true;
+scene.add( boxer );			
+
+				
+				
+matPhongObjects.color.set( 0xA00000 );
+matStdFloor.color.set( 0x808080 );
+matStdFloor.receiveShadow = true;
+
+matStdObjects.color.set( 0xA00000 );
+matStdObjects.castShadow = true;
+matStdObjects.receiveShadow = true;
+
+mshPhongFloor.receiveShadow = true;
+mshPhongFloor.position.set( 0, 0, 0 );
+
+mshPhongBox.castShadow = true;
+mshPhongBox.receiveShadow = true;
+
+mshPhongBox.position.set( 0, 0, 0 );
+mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
+
+mshPhongSphere.castShadow = true;
+mshPhongSphere.receiveShadow = true;
+mshPhongSphere.position.set(-5, 5, 5 );
+
+mshPhongKnot.position.set( 333, 525, 5 );
+mshPhongKnot.scale.set(12,12,12);
+mshPhongKnot.castShadow = true;
+mshPhongKnot.receiveShadow = true;				
+				
+scene.add( mshPhongFloor );
+scene.add( mshPhongBox );
+scene.add( mshPhongSphere );
+scene.add( mshPhongKnot );
+							
+mshStdBox.castShadow = true;
+mshStdBox.receiveShadow = true;
+mshStdBox.position.set( 0, 5, -5 );
+mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
+
+mshStdSphere.castShadow = true;
+mshStdSphere.receiveShadow = true;
+mshStdSphere.position.set(-5, 5, -5 );
+
+				
+mshStdKnot.position.set( 333, 525, 5 );
+mshStdKnot.scale.set(12,12,12);				
+mshStdKnot.castShadow = true;
+mshStdKnot.receiveShadow = true;
+
+scene.add( mshStdFloor );
+scene.add( mshStdBox );
+scene.add( mshStdSphere );
+scene.add( mshStdKnot );
+scene.add( amb );
+scene.add( ambLight2 );
+
+				
+////////////////////////////////////////////////////////////////////////////////////				
+
+				
+				
+				
+				
+				
+// var subjMat = new THREE.MeshBasicMaterial();
+  var subj;
+  var plant_1_pot;
+  var subjMat = new THREE.MeshPhongMaterial({
+  color:0xF2461C, 
+  castShadow: true,
+  receiveShadow:true,
+  shininess:11, 
+  specular:0xEBC335, 
+  shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+});
+var subjMat_num2 = new THREE.MeshPhongMaterial({
+  shininess:1, 
+  specular:0xEBC335, 
+  shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+});	
+subjMat_num2.map = THREE.ImageUtils.loadTexture('images/deer/burgs.jpg');	
+subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('images/deer/burgers.jpg');
+var itmArr = [];
+var vx, vy, vz;
+var loader = new THREE.JSONLoader(); // init the loader util
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
+    plant_1_pot.castShadow = true;
+    plant_1_pot.receiveShadow = true;
+    geometry.computeVertexNormals();
+    plant_1_pot.scale.set(12,12,12);
+    plant_1_pot.position.set(130, 0, -120);
+    plant_1_pot.castShadow = true;
+    scene.add(plant_1_pot);	 	
+});
+
+var spotLight = new THREE.SpotLight( 0xffffff );
+spotLight.position.set( 100, 500, 100 );
+spotLight.castShadow = true;
+spotLight.shadow.mapSize.width = 1024;
+spotLight.shadow.mapSize.height = 1024;
+spotLight.shadow.camera.near = 500;
+spotLight.shadow.camera.far = 4000;
+spotLight.shadow.camera.fov = 30;
+scene.add( spotLight );		
+				
+var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight44.position.set(3, 70, -50);
+dirLight44.castShadow = true;
+scene.add( dirLight44 );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+dirLight44.shadowCameraVisible = true;		
+				
+				
+				
+				renderer = new THREE.WebGLRenderer();
+				renderer.autoClear = false;
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setFaceCulling( THREE.CullFaceNone );
+				
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
+				document.body.appendChild( renderer.domElement );
+				//
+				var params = {
+					Cube: function () {
+						cubeMesh.material = cubeMaterial;
+						cubeMesh.visible = true;
+						sphereMaterial.envMap = textureCube;
+						sphereMaterial.needsUpdate = true;
+					},
+					Equirectangular: function () {
+						cubeMesh.material = equirectMaterial;
+						cubeMesh.visible = true;
+						sphereMaterial.envMap = textureEquirec;
+						sphereMaterial.needsUpdate = true;
+					},
+					Spherical: function () {
+							cubeMesh.visible = false;
+						sphereMaterial.envMap = textureSphere;
+						sphereMaterial.needsUpdate = true;
+					},
+					Refraction: false
+				};
+				var gui = new dat.GUI();
+				gui.add( params, 'Cube' );
+				gui.add( params, 'Equirectangular' );
+				gui.add( params, 'Spherical' );
+				gui.add( params, 'Refraction' ).onChange( function( value ) {
+					if ( value ) {
+						textureEquirec.mapping = THREE.EquirectangularRefractionMapping;
+						textureCube.mapping = THREE.CubeRefractionMapping;
+					} else {
+						textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+						textureCube.mapping = THREE.CubeReflectionMapping;
+					}
+					sphereMaterial.needsUpdate = true;
+
+				} );
+				gui.open();
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				cameraCube.aspect = window.innerWidth / window.innerHeight;
+				cameraCube.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			//
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+				controls.update();
+			}
+			function render() {
+				var timer = -0.0002 * Date.now();
+				camera.lookAt( scene.position );
+				cameraCube.rotation.copy( camera.rotation );
+				renderer.render( sceneCube, cameraCube );
+				renderer.render( scene, camera );
+			}
+		</script>
+
+	</body>
+</html>
