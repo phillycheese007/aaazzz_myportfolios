@@ -240,10 +240,10 @@
 // Create an array of materials to be used in a cube, one for each side
 var cubeMaterialArray = [];
 // order to add materials: x+,x-,y+,y-,z+,z-
-cubeMaterialArray.push( new THREE.MeshBasicMaterial( { map: floorTexture  } ) );
+cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0x3333ff  } ) );
 cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0xff8800 } ) );
 cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0xffff33 } ) );
-cubeMaterialArray.push( new THREE.MeshBasicMaterial( { map: floorTexture } ) );
+cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0x3333ff } ) );
 cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0x3333ff } ) );
 cubeMaterialArray.push( new THREE.MeshBasicMaterial( { color: 0x8833ff } ) );
 var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterialArray );
