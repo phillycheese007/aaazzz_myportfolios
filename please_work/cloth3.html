@@ -242,8 +242,8 @@ var wallManyWindMat = new THREE.MeshPhongMaterial( { map: wallManyWindTexture, t
 				
 var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
 var wallRight = new THREE.Mesh( wallGeometry, wallWindMat ); 
+wallRight.castShadow = true;	
 wallRight.receiveShadow = true;
-wallRight.castShadow = true;				
 wallRight.material.side = THREE.DoubleSide;			
 scene.add( wallRight );
 wallRight.position.x = 500;
