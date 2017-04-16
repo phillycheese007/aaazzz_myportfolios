@@ -15,8 +15,8 @@ var DRAG = 1 - DAMPING;
 var MASS = 0.1;
 var restDistance = 25;
 
-var xSegs = 7;
-var ySegs = 7;
+var xSegs = 8;
+var ySegs = 8;
 
 var clothFunction = plane( restDistance * xSegs, restDistance * ySegs );
 
@@ -116,8 +116,8 @@ function satisifyConstraints( p1, p2, distance ) {
 
 function Cloth( w, h ) {
 
-	w = w || 7;
-	h = h || 7;
+	w = w || 10;
+	h = h || 10;
 	this.w = w;
 	this.h = h;
 
