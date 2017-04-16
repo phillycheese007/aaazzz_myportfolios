@@ -365,7 +365,17 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				mesh.receiveShadow = true;
 				mesh.castShadow = true;
 				scene.add( mesh );
+				
 
+	
+				var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );
+				mesh.position.x = - 125;
+				mesh.position.y = - 62;
+				mesh.receiveShadow = true;
+				mesh.castShadow = true;
+				scene.add( mesh );
+				
+				
 				
 				var mesh = new THREE.Mesh( wallyGeo, wallyMat );
 				mesh.position.x = - 125;
