@@ -50,7 +50,7 @@ function plane( width, height ) {
 
 	return function( u, v ) {
 
-		var x = ( u - 0.5 ) * width;
+		var x = 55//( u - 0.5 ) * width;
 		var y = ( v + 0.5 ) * height;
 		var z = 0;
 
