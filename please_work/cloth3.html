@@ -141,7 +141,11 @@
 				controls.minDistance = 300;
 				controls.maxDistance = 700;				
 				
-
+				// controls
+				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.maxPolarAngle = Math.PI * 0.5;
+				controls.minDistance = 300;//1000;
+				controls.maxDistance = 7500;
 				
 				// lights
 
@@ -507,11 +511,7 @@ wallBack.rotation.y = -Math.PI/2 * 90;
 				
 				
 				
-				// controls
-				var controls = new THREE.OrbitControls( camera, renderer.domElement );
-				controls.maxPolarAngle = Math.PI * 0.5;
-				controls.minDistance = 300;//1000;
-				controls.maxDistance = 7500;	
+	
 				
 
 
