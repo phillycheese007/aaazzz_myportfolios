@@ -303,14 +303,7 @@
                                 }
                             }
 
-                            camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10 * data.boundingSphere.radius);
-                            camera.position.z = data.boundingSphere.center.z + 2.5 * data.boundingSphere.radius;
-                            camera.lookAt(data.boundingSphere.center);        
-                            scene.add(camera);  //mainLight.position.copy(camera.position);
-                            camera.add(new THREE.DirectionalLight(0xFFFFFF, 1));                            
-                            if (!controls)
-                               controls = new THREE.OrbitControls(camera, renderer.domElement);
-                            controls.target.copy(data.boundingSphere.center);
+
                         });				
 				
 				
@@ -661,9 +654,9 @@ scene.add( mesh );
 
 			function animate() {
 				
-            var delta = clock.getDelta();//eag
-            for (var i = 0; i < mixers.length; ++i)//eag
-                mixers[i].update(delta);//eag
+        //    var delta = clock.getDelta();//eag
+        //    for (var i = 0; i < mixers.length; ++i)//eag
+       //         mixers[i].update(delta);//eag
 
 				var time = Date.now();
 
