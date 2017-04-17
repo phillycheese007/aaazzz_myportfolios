@@ -41,9 +41,7 @@
 
 
 		
-		
-		
-    <script src="/aaazzz_myportfolios/please_work/js/JDLoader.min.js"></script><!-- for eagle -->
+ <script src="/aaazzz_myportfolios/please_work/js/JDLoader.min.js"></script><!-- for eagle -->
 
 		
 		
@@ -256,8 +254,28 @@
 
 				
 				
-				
-				
+	            var nip_loader = new THREE.JDLoader();
+            nip_loader.load("https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/model.jd",
+			
+			function (data)
+                        {
+                            var multiMaterial = new THREE.MultiMaterial(data.materials);
+                            for (var i = 0; i < data.geometries.length; ++i)
+                            {
+                                var mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
+                                nip_meshes.push(mesh);
+                                scene.add(mesh);
+
+                                if (mesh.geometry.animations)
+                                {
+                                    var mixer = new THREE.AnimationMixer(mesh);
+                                    nip_mixers.push(mixer);
+                                    mixer.clipAction(mesh.geometry.animations[0]).play();
+                                }
+                            }
+
+
+                        });
 				
 				
 				
