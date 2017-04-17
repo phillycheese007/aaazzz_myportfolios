@@ -646,21 +646,9 @@ scene.add( mesh );
 				requestAnimationFrame( animate );
 				
 	
-				
-				
-				  newMesh = new THREE.Mesh(nip_mesh.geometry,
-    new THREE.MeshBasicMaterial({
-      color: 0xff0000
-    })
-  );
-  newMesh.position.x = skinnedMesh.position.x - 6;
-  scene.add(newMesh);
+    plant_1_pot.position.y = 77; // These to strings make it work //eag
+				    renderer.render(scene, camera); //eag
 
-  render();
-
-				
-				
-				
 			}
 			
 
