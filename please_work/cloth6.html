@@ -288,18 +288,7 @@ var clock = new THREE.Clock; //foreagle
 				
 				
 				
-var sunGeo = new THREE.SphereGeometry(32,35,35);
-var sunMat = new THREE.MeshPhongMaterial(); 
-    sunMat.map = THREE.ImageUtils.loadTexture("image/sunmap.jpg");
-var sun = new THREE.Mesh(sunGeo, sunMat); 
-sun.position.set(330,55,0);
-scene.add(sun); // add Sun
 
-var mercuryGeo = new THREE.SphereGeometry(2,15,15);
-var mercuryMat = new THREE.MeshPhongMaterial(); 
-    mercuryMat.map = THREE.ImageUtils.loadTexture("image/mercurymap.jpg");
-var mercury = new THREE.Mesh(mercuryGeo, mercuryMat); 
-scene.add(mercury); // add Mercury
 				
 				
 				
@@ -662,8 +651,18 @@ scene.add( mesh );
 
 
 			
-			
+var sunGeo = new THREE.SphereGeometry(32,35,35);
+var sunMat = new THREE.MeshPhongMaterial(); 
+    sunMat.map = THREE.ImageUtils.loadTexture("image/sunmap.jpg");
+var sun = new THREE.Mesh(sunGeo, sunMat); 
+sun.position.set(330,55,0);
+scene.add(sun); // add Sun
 
+var mercuryGeo = new THREE.SphereGeometry(2,15,15);
+var mercuryMat = new THREE.MeshPhongMaterial(); 
+    mercuryMat.map = THREE.ImageUtils.loadTexture("image/mercurymap.jpg");
+var mercury = new THREE.Mesh(mercuryGeo, mercuryMat); 
+scene.add(mercury); // add Mercury
 			
 			
 			
