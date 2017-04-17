@@ -283,7 +283,7 @@
 				
 				
 				
-				
+		var snoop;		
             var loader = new THREE.JDLoader();
             loader.load("/aaazzz_myportfolios/please_work/js/model.jd",
                         function (data)
@@ -292,14 +292,14 @@
                             for (var i = 0; i < data.geometries.length; ++i)
                             {
                                 var mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
-                                meshes.push(mesh);
-                                scene.add(mesh);
+                                meshes.push(snoop);
+                                scene.add(snoop);
 
-                                if (mesh.geometry.animations)
+                                if (snoop.geometry.animations)
                                 {
-                                    var mixer = new THREE.AnimationMixer(mesh);
+                                    var mixer = new THREE.AnimationMixer(snoop);
                                     mixers.push(mixer);
-                                    mixer.clipAction(mesh.geometry.animations[0]).play();
+                                    mixer.clipAction(snoop.geometry.animations[0]).play();
                                 }
                             }
 
