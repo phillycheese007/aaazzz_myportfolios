@@ -256,15 +256,16 @@ var clock = new THREE.Clock; //foreagle
 				
 				
 
-var nip_mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
-	
+var nip_mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial); //foreag made global
+var multiMaterial = new THREE.MultiMaterial(data.materials); //foreag made global
+
 				
 	            var nip_loader = new THREE.JDLoader();
             nip_loader.load("https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/model.jd",
 			
 			function (data)
                         {
-                            var multiMaterial = new THREE.MultiMaterial(data.materials);
+                            //var multiMaterial = new THREE.MultiMaterial(data.materials);
                             for (var i = 0; i < data.geometries.length; ++i)
                             {
                                 //var nip_mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
