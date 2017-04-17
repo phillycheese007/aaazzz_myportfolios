@@ -112,6 +112,8 @@
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
+			
+			
 			var container, stats;
 			var camera, scene, renderer;
 			var cameraCube, sceneCube;
@@ -121,7 +123,21 @@
 			var object;
 			var cube3333;
 			
-// custom global variables
+			
+var sunGeo;
+var sunMat;
+    sunMat.map = THREE.ImageUtils.loadTexture("image/sunmap.jpg");
+var sun;
+sun.position.set(330,55,0);
+scene.add(sun); // add Sun
+
+var mercuryGeo = new THREE.SphereGeometry(2,15,15);
+var mercuryMat = new THREE.MeshPhongMaterial(); 
+    mercuryMat.map = THREE.ImageUtils.loadTexture("image/mercurymap.jpg");
+var mercury = new THREE.Mesh(mercuryGeo, mercuryMat); 
+scene.add(mercury); // add Mercury
+			
+			// custom global variables
 //var mirrorCube, mirrorCubeCamera; // for mirror material
 //var mirrorSphere, mirrorSphereCamera; // for mirror material
 			
@@ -144,7 +160,9 @@ var clock = new THREE.Clock; //foreagle
 				sceneCube = new THREE.Scene();
 				scene.fog = new THREE.Fog( 0xcce0ff, 500, 10000 );
 				
-				
+sunGeo = new THREE.SphereGeometry(32,35,35);
+ sun = new THREE.Mesh(sunGeo, sunMat);
+sunMat = new THREE.MeshPhongMaterial();				
 				//camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 10000 );
 				//camera.position.x = 1000;
 				//camera.position.y = 50;
@@ -651,18 +669,7 @@ scene.add( mesh );
 
 
 			
-var sunGeo = new THREE.SphereGeometry(32,35,35);
-var sunMat = new THREE.MeshPhongMaterial(); 
-    sunMat.map = THREE.ImageUtils.loadTexture("image/sunmap.jpg");
-var sun = new THREE.Mesh(sunGeo, sunMat); 
-sun.position.set(330,55,0);
-scene.add(sun); // add Sun
 
-var mercuryGeo = new THREE.SphereGeometry(2,15,15);
-var mercuryMat = new THREE.MeshPhongMaterial(); 
-    mercuryMat.map = THREE.ImageUtils.loadTexture("image/mercurymap.jpg");
-var mercury = new THREE.Mesh(mercuryGeo, mercuryMat); 
-scene.add(mercury); // add Mercury
 			
 			
 			
