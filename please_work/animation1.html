@@ -9,17 +9,17 @@
     </style>
 </head>
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
 
-    <script src="/aaazzz_myportfolios/please_work/js/JDLoader.min.js"></script>
-	
 	
 		
-<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/controls/OrbitControls.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+<script src="https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/controls/OrbitControls.js"></script>
+<script src="/aaazzz_myportfolios/please_work/js/JDLoader.min.js"></script><!-- for eagle -->
 	
 	
-    <script>
+	
+	<script>
         var meshes = [], mixers = [], hemisphereLight, camera, scene, renderer, controls;
         var clock = new THREE.Clock;
 
@@ -47,7 +47,8 @@
 
             var loader = new THREE.JDLoader();
             loader.load("/aaazzz_myportfolios/please_work/js/model.jd",
-                        function (data)
+			
+			function (data)
                         {
                             var multiMaterial = new THREE.MultiMaterial(data.materials);
                             for (var i = 0; i < data.geometries.length; ++i)
