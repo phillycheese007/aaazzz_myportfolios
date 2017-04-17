@@ -126,16 +126,12 @@
 			
 var sunGeo;
 var sunMat;
-    sunMat.map = THREE.ImageUtils.loadTexture("image/sunmap.jpg");
+    sunMat.color.set( 0x808080 );
+
 var sun;
 sun.position.set(330,55,0);
 scene.add(sun); // add Sun
 
-var mercuryGeo = new THREE.SphereGeometry(2,15,15);
-var mercuryMat = new THREE.MeshPhongMaterial(); 
-    mercuryMat.map = THREE.ImageUtils.loadTexture("image/mercurymap.jpg");
-var mercury = new THREE.Mesh(mercuryGeo, mercuryMat); 
-scene.add(mercury); // add Mercury
 			
 			// custom global variables
 //var mirrorCube, mirrorCubeCamera; // for mirror material
