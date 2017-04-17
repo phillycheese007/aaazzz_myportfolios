@@ -279,6 +279,20 @@ var clock = new THREE.Clock; //foreagle
                                 }
                             }
 
+		    
+		            function animate()
+        {
+            var delta = clock.getDelta();
+            for (var i = 0; i < mixers.length; ++i)
+                mixers[i].update(delta);
+
+         //   if (controls) controls.update();
+
+
+            requestAnimationFrame(animate);
+        }
+		    
+		    
 
                         });
 				
