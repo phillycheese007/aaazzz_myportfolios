@@ -283,6 +283,7 @@ var clock = new THREE.Clock; //foreagle
                         });
 				
 				
+
 				
 				
 				
@@ -292,22 +293,7 @@ var clock = new THREE.Clock; //foreagle
 				
 				
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+			
 				
   var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
 
@@ -640,13 +626,14 @@ scene.add( mesh );
 
 			}
 
-			//
+            var direction = new THREE.Vector(0.3, 0.5, 0); // amount to move per frame  //foreagle
 
 			function animate() {
-				
+            object.position.add(direction); // add to position //eag
+
             var delta = clock.getDelta();//eag
             for (var i = 0; i < nip_mixers.length; ++i)//eag
-               nip_mixers[i].update(delta);//eag
+            nip_mixers[i].update(delta);//eag
 
 				var time = Date.now();
 
@@ -657,12 +644,26 @@ scene.add( mesh );
 				render();
 				stats.update();
                              //   if (controls) controls.update();//eag
+				
+				
+				
+                                renderer.render(camera, scene); // render new frame //foreag
 
 				requestAnimationFrame( animate );
 			}
 			
+requestAnimationFrame(animate); //foreagle
 
 
+function animate() {
+  object.position.add(direction); // add to position
+
+  renderer.render(camera, scene); // render new frame
+
+  requestAnimationFrame(animate); // keep looping
+}
+
+requestAnimationFrame(animate);
 			
 			
 			
