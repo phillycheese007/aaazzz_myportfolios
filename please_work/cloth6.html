@@ -651,7 +651,7 @@ scene.add( mesh );
 
 			
 			
-			
+
 			
 			
 			
@@ -704,6 +704,23 @@ scene.add( mesh );
 				renderer.render( sceneCube, cameraCube );
 				renderer.render( scene, camera );
 
+function loop(){ //foreagle
+	// Rotate the propeller, the sea and the sky
+	nip_mesh.mesh.positon.z += .005;
+	nip_mesh.mesh.rotation.z += .01;
+
+	// render the scene
+	renderer.render(scene, camera);
+
+	// call the loop function again
+	requestAnimationFrame(loop);
+}
+				
+				
+				
+	loop();//foreag
+
+				
 			}
 
 		</script>
