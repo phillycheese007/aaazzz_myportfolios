@@ -89,8 +89,7 @@
 		</script>
 
 		<script>
-        var clock = new THREE.Clock; //for eagle
-        var meshes = [], mixers = [] //for eag
+
 	
 	
 	
@@ -273,38 +272,6 @@
 				
 				
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-		var snoop;		
-            var loader = new THREE.JDLoader();
-            loader.load("/aaazzz_myportfolios/please_work/js/model.jd",
-                        function (data)
-                        {
-                            var multiMaterial = new THREE.MultiMaterial(data.materials);
-                            for (var i = 0; i < data.geometries.length; ++i)
-                            {
-                                var mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
-                                meshes.push(snoop);
-                                scene.add(snoop);
-
-                                if (snoop.geometry.animations)
-                                {
-                                    var mixer = new THREE.AnimationMixer(snoop);
-                                    mixers.push(mixer);
-                                    mixer.clipAction(snoop.geometry.animations[0]).play();
-                                }
-                            }
-
-
-                        });				
 				
 				
 				
