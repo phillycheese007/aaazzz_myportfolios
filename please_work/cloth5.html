@@ -266,15 +266,15 @@ var clock = new THREE.Clock; //foreagle
                             var multiMaterial = new THREE.MultiMaterial(data.materials);
                             for (var i = 0; i < data.geometries.length; ++i)
                             {
-                                var mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
-                                nip_meshes.push(mesh);
-                                scene.add(mesh);
+                                var nip_mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
+                                nip_meshes.push(nip_mesh);
+                                scene.add(nip_mesh);
 
-                                if (mesh.geometry.animations)
+                                if (nip_mesh.geometry.animations)
                                 {
-                                    var mixer = new THREE.AnimationMixer(mesh);
+                                    var mixer = new THREE.AnimationMixer(nip_mesh);
                                     nip_mixers.push(mixer);
-                                    mixer.clipAction(mesh.geometry.animations[0]).play();
+                                    mixer.clipAction(nip_mesh.geometry.animations[0]).play();
                                 }
                             }
 
