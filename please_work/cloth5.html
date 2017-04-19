@@ -269,8 +269,9 @@ var clock = new THREE.Clock; //foreagle
                                 var nip_mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
                                 nip_meshes.push(nip_mesh);
                                 scene.add(nip_mesh);
-                                nip_mesh.position.set( 0, 54.5, 0 );
-                                nip_mesh.scale.set(42,42,42);
+                                nip_mesh.position.set( 0, 54.5, 200 );
+                                nip_mesh.scale.set(62,62,62);
+                                nip_mesh.rotation.y = -Math.PI/3;		
                                 if (nip_mesh.geometry.animations)
                                 {
                                     var mixer = new THREE.AnimationMixer(nip_mesh);
