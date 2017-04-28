@@ -114,6 +114,8 @@
 
 			var container, stats;
 			var camera, scene, renderer;
+			var origin;//orig
+
 			var cameraCube, sceneCube;
 
 			var clothGeometry;
@@ -157,6 +159,7 @@ var clock = new THREE.Clock; //foreagle
 				camera.position.set( 0, 0, 1000); //1000 );
 				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
 			
+				origin = new THREE.Object3D();//orig
 				
 				// controls
 				controls = new THREE.OrbitControls( camera );
