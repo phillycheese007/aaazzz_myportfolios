@@ -143,7 +143,10 @@
 			
 			
 			
-
+			var rectLight;
+			var rectLightHelper;
+			var rectLight3;
+			var rectLightHelper3;
 			
 			var ray = new THREE.Raycaster();
 			var mouseDown = new THREE.Vector2();
@@ -176,11 +179,31 @@
 
 				cam.position.set( 0, 20, 45 );
 
+				rectLight = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
+				rectLight.matrixAutoUpdate = true;
+				rectLight.intensity = 2000.0;
+				rectLight.position.set( 0, 30, -149.5 );
 
+				// TODO: ensure RectAreaLight handles target param correctly
+				//rectLight.target = mshPhongBox;
 
+				rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
+				rectLight.add( rectLightHelper );
 
 				
-			
+				
+				rectLight3 = new THREE.RectAreaLight( 0xFFFFFF, undefined, 20, 25 );
+				rectLight3.matrixAutoUpdate = true;
+				rectLight3.intensity = 2000.0;
+				rectLight3.position.set( 0, 30, 149 );
+				rectLight3.rotation.y = Math.PI/180 * 180;
+
+				// TODO: ensure RectAreaLight handles target param correctly
+				// rectLight.target = mshPhongBox;
+
+				rectLight3Helper = new THREE.RectAreaLightHelper( rectLight3 );
+				rectLight3.add( rectLight3Helper );			
+				// TODO (abelnation): rect light shadow
 
 				
 								
@@ -410,7 +433,9 @@ window1.position.set( 0, 60,-149.9 );
 				scn.add( ambLight2 );
 
 				
-
+				
+				scn.add( rectLight );
+				scn.add( rectLight3 );
 
 				
 
@@ -485,14 +510,38 @@ window1.position.set( 0, 60,-149.9 );
 
 				var ly = 5.0 + 5.0 * Math.sin( t / 3.0 );
 
+				rectLight.position.set( lx, ly, lz );
+				rectLight.lookAt( origin.position );
+				rectLight.updateMatrixWorld();
+				
+				rectLight3.position.set( lx, ly, lz );
+				rectLight3.lookAt( origin.position );
+				rectLight3.updateMatrixWorld();
+			}
 
+			function render() {
+
+				rectLightHelper.update(); // required
+				rectLight3Helper.update(); // required
 
 				rnd.render( scn, cam );
 					
 			}
 
-	
+			function clearGui() {
 
+				if ( gui ) gui.destroy();
+
+				gui = new dat.GUI();
+				gui.width = 190;
+				var gStyle = gui.domElement.style;
+				gStyle.position = "absolute";
+				gStyle.top = "48px";
+				gStyle.height = "220px";
+
+				gui.open();
+
+			}
 
 			function blinnToGGX( blinnExp ) {
 				return Math.sqrt( 2.0 / ( blinnExp + 2.0 ) );
@@ -502,9 +551,131 @@ window1.position.set( 0, 60,-149.9 );
 				return ( 2.0 / Math.pow( roughness + 0.0001, 2 ) - 2.0 );
 			}
 
+			function buildGui() {
+
+				clearGui();
+
+				param = {
+					motion: false,
+					width: rectLight.width,
+					height: rectLight.height,
+					color: rectLight.color.getHex(),
+					
+					width: rectLight3.width,
+					height: rectLight3.height,
+					color: rectLight3.color.getHex(),
+					
+					intensity: rectLight.intensity,
+					intensity: rectLight3.intensity,
+					'ambient light color': amb.color.getHex(),
+					'floor color p': matPhongFloor.color.getHex(),
+					'object color p': matPhongObjects.color.getHex(),
+					'shininess p': matPhongFloor.shininess,
+					'floor color s': matStdFloor.color.getHex(),
+					'object color s': matStdObjects.color.getHex(),
+					'roughness s': matStdFloor.roughness,
+					'metalness s': matStdFloor.metalness,
+
+				};
+
+				gui.add( param, 'motion' );
+
+				var lightFolder = gui.addFolder( 'Light' );
+				lightFolder.add( param, 'width', 0.1, 20).onChange( function ( val ) {
+
+					rectLight.width = val;
+					rectLight3.width = val;
+
+
+				} );
+
+				lightFolder.add( param, 'height', 0.1, 20).onChange( function ( val ) {
+
+					rectLight.height = val;
+					rectLight3.height = val;
+
+
+				} );
+
+				lightFolder.addColor( param, 'color' ).onChange( function ( val ) {
+
+					rectLight.color.setHex( val );
+					rectLight3.color.setHex( val );
+
+				} );
+
+				lightFolder.add( param, 'intensity', 0.0, 2000.0 ).onChange( function ( val ) {
+
+					rectLight.intensity = val;
+					rectLight3.intensity = val;
+
+				} );
+
+				lightFolder.addColor( param, 'ambient light color' ).onChange( function ( val ) {
+
+					amb.color.setHex( val );
+
+				} );
+
+				var phongFolder = gui.addFolder( 'Phong Material' );
+				phongFolder.addColor( param, 'floor color p' ).onChange( function ( val ) {
+
+						matPhongFloor.color.setHex( val );
+
+					} );
+
+				phongFolder.addColor( param, 'object color p' ).onChange( function ( val ) {
+
+					matPhongObjects.color.setHex( val );
+
+				} );
+
+				phongFolder.add( param, 'shininess p', 0.0, 1000.0 ).listen().onChange( function ( val ) {
+
+					matPhongObjects.shininess = val;
+					matPhongFloor.shininess = val;
+
+					param['roughness s'] = blinnToGGX( val );
+
+				} );
+
+				var standardFolder = gui.addFolder( 'Standard Material' );
+				standardFolder.addColor( param, 'floor color s' ).onChange( function ( val ) {
+
+					matStdFloor.color.setHex( val );
+
+				} );
+
+				standardFolder.addColor( param, 'object color s' ).onChange( function ( val ) {
+
+					matStdObjects.color.setHex( val );
+
+				} );
+
+				standardFolder.add( param, 'roughness s', 0.0, 1.0 ).listen().onChange( function ( val ) {
+
+					matStdObjects.roughness = val;
+					matStdFloor.roughness = val;
+
+					param['shininess p'] = GGXToBlinn( val );
+
+				} );
+
+				// TODO (abelnation): use env map to reflect metal property
+				standardFolder.add( param, 'metalness s', 0.0, 1.0 ).onChange( function ( val ) {
+
+					matStdObjects.metalness = val;
+					matStdFloor.metalness = val;
+
+				} );
+
+				// TODO: rect area light distance
+				// TODO: rect area light decay
+
+			}
 
 			init();
-	
+			buildGui();
 			tick();
 
 		</script>
