@@ -408,7 +408,7 @@ var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
 var wallyGeo = new THREE.BoxGeometry( 1000, 500, 5, 5 );
 				
 
-var buzzyGeo = new THREE.BoxGeometry( 500, 614, 5, 5 );
+var buzzyGeo = new THREE.BoxGeometry( 200, 245, 5, 5 );
 				
 				
 var wallyMat = new THREE.MeshPhongMaterial( { color: 0xffff00, specular: 0x111111, shininess: 100 } );
@@ -424,7 +424,7 @@ scene.add( mesh );
 var mesh = new THREE.Mesh( buzzyGeo, buzzyMat  );//left?
 mesh.position.x = 0;
 mesh.position.y = 0;
-mesh.position.z = -250;			
+mesh.position.z = -450;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
 scene.add( mesh );				
