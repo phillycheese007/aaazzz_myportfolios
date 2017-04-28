@@ -581,13 +581,10 @@ window1.position.set( 0, 60,-149.9 );
 				gui.add( param, 'motion' );
 
 				var lightFolder = gui.addFolder( 'Light' );
-				lightFolder.add( param, 'width', 0.1, 20).onChange( function ( val ) {
 
-					rectLight.width = val;
-					rectLight3.width = val;
-
-
-				} );
+				
+				
+				
 
 				lightFolder.add( param, 'height', 0.1, 20).onChange( function ( val ) {
 
