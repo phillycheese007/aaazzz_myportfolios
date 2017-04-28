@@ -268,6 +268,38 @@
 
 				mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
+				
+				
+				
+				
+var plant_1_pot;
+var subjMat_num2 = new THREE.MeshPhongMaterial({
+  shininess:10, 
+  specular:0xFF0000, 
+  shading: THREE.SmoothShading
+  // shading: THREE.FlatShading
+});	
+subjMat_num2.map = THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/please_work/textures/terrrain/grasslight-big.jpg');	
+subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/checkerboard.jpg');
+var itmArr = [];
+var vx, vy, vz;
+var loader = new THREE.JSONLoader(); // init the loader util
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
+    plant_1_pot.castShadow = true;
+    plant_1_pot.receiveShadow = true;
+    geometry.computeVertexNormals();
+    plant_1_pot.scale.set(12,12,12);
+    plant_1_pot.position.set(130, -250, -120);
+    plant_1_pot.castShadow = true;
+    scene.add(plant_1_pot);	 	
+});
+				
+				
+				
+				
+				
+				
 
 				// objects
 
