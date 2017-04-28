@@ -163,6 +163,17 @@ var clock = new THREE.Clock; //foreagle
 				controls.minDistance = 50;
 				controls.maxDistance = 500;			
 				
+				
+				
+				
+				
+				// controls
+				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.maxPolarAngle = Math.PI * 0.5;
+				controls.minDistance = 50;//1000;
+				controls.maxDistance = 500;
+
+				
 				// lights
 
 				// lights
