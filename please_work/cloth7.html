@@ -392,7 +392,7 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				
 
 var buzzyTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/trippy1_threejs.png" );			
-var buzzyMat = new THREE.MeshPhongMaterial( { map: buzzyTexture, transparent: true } );
+var buzzyMat = new THREE.MeshPhongMaterial( { map: buzzyTexture } );
 
 			
 				
@@ -408,7 +408,7 @@ var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
 var wallyGeo = new THREE.BoxGeometry( 1000, 500, 5, 5 );
 				
 
-var buzzyGeo = new THREE.BoxGeometry( 200, 245, 5, 5 );
+var buzzyGeo = new THREE.BoxGeometry( 300, 367.5, 5, 5 );
 				
 				
 var wallyMat = new THREE.MeshPhongMaterial( { color: 0xffff00, specular: 0x111111, shininess: 100 } );
