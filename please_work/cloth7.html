@@ -391,8 +391,8 @@ loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
 				scene.add( mesh );
 				
 
-var buzzyTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/please_work/images/deer/buzzy.jpg" );			
-var buzzyMat = new THREE.MeshPhongMaterial( { map: wallWindTexture} );	
+var buzzyTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/buzzy.jpg" );			
+var buzzyMat = new THREE.MeshPhongMaterial( { map: buzzyTexture, transparent: true } );
 
 			
 				
