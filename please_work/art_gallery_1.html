@@ -321,7 +321,7 @@ scene.add( mesh );
 
 var floorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );			
 var floorMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
-var floorGeo = new THREE.BoxGeometry( 500, 250, 4, 4 );
+var floorGeo = new THREE.PlaneGeometry( 500, 250, 4, 4 );
 var mesh = new THREE.Mesh( floorGeo, floorMat  );//left?
 mesh.position.x = 0;
 mesh.position.y = 0;
