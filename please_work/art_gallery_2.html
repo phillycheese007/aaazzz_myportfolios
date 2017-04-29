@@ -277,8 +277,7 @@ camera.add( mesh );
 	
 				
 				
-				
-function addLights() {
+
   // var dirLight = new THREE.DirectionalLight(0xffffff, 1);
   //  dirLight.position.set(-500, 100, 50);
  //  scene.add(dirLight);
@@ -308,10 +307,10 @@ scene.add(new THREE.PointLightHelper(greenPoint, 3));
 
 // white spotlight shining from the side, casting a shadow
 
-var spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 100, 1000, 100 );
+//var spotLight = new THREE.SpotLight( 0xffffff );
+//spotLight.position.set( 10, 10, 10 );
 
-spotLight.castShadow = true;
+//spotLight.castShadow = true;
 
 spotLight.shadow.mapSize.width = 1024;
 spotLight.shadow.mapSize.height = 1024;
@@ -324,7 +323,7 @@ scene.add( spotLight );
 	
 var hemLight = new THREE.HemisphereLight(0xffe5bb, 0xFFBF00, .1);
 scene.add(hemLight);	
-}
+
 				
 				
 				
