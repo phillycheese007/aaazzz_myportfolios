@@ -319,8 +319,8 @@ scene.add( mesh );
 				
 				
 
-var floorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );			
-var floorMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
+var floorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/floor.jpg" );			
+var floorMat = new THREE.MeshPhongMaterial( { map: floorTexture, transparent: true } );
 var floorGeo = new THREE.PlaneGeometry( 500, 250, 22,  );
 var mesh = new THREE.Mesh( floorGeo, floorMat  );//left?
 mesh.position.x = 0;
