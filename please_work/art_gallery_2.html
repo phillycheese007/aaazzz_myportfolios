@@ -244,7 +244,7 @@
 
 		
 var spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 100, 20, 100 );
+spotLight.position.set( 50, 20, 50 );
 
 spotLight.castShadow = true;
 
@@ -389,7 +389,7 @@ var flTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/dee
 flTexture.wrapS = flTexture.wrapT = THREE.RepeatWrapping;
 flTexture.repeat.set( 12, 3 );
 var flMat = new THREE.MeshPhongMaterial( { map: flTexture, transparent: true } );
-var flGeo = new THREE.PlaneGeometry( 200, 150, 4, 4 );
+var flGeo = new THREE.BoxGeometry( 200, 150, 4, 4 );
 
 var mesh = new THREE.Mesh( flGeo, flMat  );//left?
 mesh.position.x = 0;
