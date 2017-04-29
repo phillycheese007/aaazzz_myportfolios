@@ -304,16 +304,37 @@ camera.add( mesh );
 
 var buzzyTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/trippy1_threejs.png" );			
 var buzzyMat = new THREE.MeshPhongMaterial( { map: buzzyTexture } );
-var buzzyGeo = new THREE.BoxGeometry( 700, 836.1581921, 5, 5 );
+var buzzyGeo = new THREE.BoxGeometry( 30, 35, 2, 2 );
 
 				
 var mesh = new THREE.Mesh( buzzyGeo, buzzyMat  );//left?
 mesh.position.x = 0;
 mesh.position.y = 300;
-mesh.position.z = -495;			
+mesh.position.z = -95;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
 scene.add( mesh );			
+		
+
+				
+				
+				
+
+var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
+var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
+
+var wallyGeo = new THREE.BoxGeometry( 1000, 500, 5, 5 );
+
+var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//left?
+mesh.position.x = 0;
+mesh.position.y = 0;
+mesh.position.z = -100;			
+mesh.receiveShadow = true;
+mesh.castShadow = true;
+scene.add( mesh );				
+				
+				
+				
 				
 
 				// objects
