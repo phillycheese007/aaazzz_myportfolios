@@ -242,7 +242,13 @@
 				raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 1, 0 ), 0, 10 );
 
 
-				
+    var floorMat = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/floor.jpg') } );
+    // Floor
+    var floor = new THREE.Mesh(cube, floorMat );
+    floor.position.set(0,-10,0);
+    floor.castShadow = true;
+    floor.receiveShadow = true;
+    scene.add( floor );			
 				
 				
 				
