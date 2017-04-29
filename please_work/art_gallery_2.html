@@ -274,8 +274,25 @@ var mesh = new THREE.Mesh( new THREE.SphereGeometry( 5, 16, 8 ), new THREE.MeshN
 mesh.position.z = - 100; // some negative number
 
 camera.add( mesh );			
+	
 				
-
+				
+				
+var spotLight = new THREE.SpotLight( 0xffffff );
+spotLight.position.set( 100, 1000, 100 );
+spotLight.castShadow = true;
+spotLight.shadow.mapSize.width = 1024;
+spotLight.shadow.mapSize.height = 1024;
+spotLight.shadow.camera.near = 500;
+spotLight.shadow.camera.far = 4000;
+spotLight.shadow.camera.fov = 30;
+scene.add( spotLight );	
+				
+				
+				
+				
+				
+				
 var buzzyTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/trippy1_threejs.png" );			
 var buzzyMat = new THREE.MeshPhongMaterial( { map: buzzyTexture } );
 var buzzyGeo = new THREE.BoxGeometry( 30, 35, 2, 2 );
