@@ -304,7 +304,7 @@ var wallyGeo = new THREE.BoxGeometry( 100, 50, 2, 2 );
 
 var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//left?
 mesh.position.x = 0;
-mesh.position.y = 25;
+mesh.position.y = 0;
 mesh.position.z = -100;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
@@ -312,7 +312,7 @@ scene.add( mesh );
 
 var mesh = new THREE.Mesh( wallyGeo, whiteWallMat  );//left?
 mesh.position.x = 0;
-mesh.position.y = 25;
+mesh.position.y = 0;
 mesh.position.z = 100;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
