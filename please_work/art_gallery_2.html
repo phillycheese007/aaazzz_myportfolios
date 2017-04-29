@@ -314,6 +314,8 @@ var flMat = new THREE.MeshPhongMaterial( { map: flTexture, transparent: true } )
 var flGeo = new THREE.PlaneGeometry( 500, 250, 4, 4 );
 
 var mesh = new THREE.Mesh( flGeo, flMat  );//left?
+mesh.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
+mesh.repeat.set( 3, 3 );
 mesh.position.x = 0;
 mesh.position.y = 0;
 mesh.position.z = -100;			
