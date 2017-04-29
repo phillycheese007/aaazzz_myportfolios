@@ -311,7 +311,7 @@ scene.add( mesh );
 //floor
 var flTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/floor.jpg" );			
 var flMat = new THREE.MeshPhongMaterial( { map: flTexture, transparent: true } );
-var flGeo = new THREE.PlaneGeometry( 500, 250, 4, 4 );
+var flGeo = new THREE.PlaneGeometry( 500, 400, 4, 4 );
 
 var mesh = new THREE.Mesh( flGeo, flMat  );//left?
 mesh.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
