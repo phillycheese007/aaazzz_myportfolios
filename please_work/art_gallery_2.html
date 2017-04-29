@@ -301,7 +301,9 @@ var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transpare
 var whiteWallMat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
 
 var wallyGeo = new THREE.BoxGeometry( 200, 100, 2, 2 );
+var wallyGeo2 = new THREE.BoxGeometry( 150, 100, 2, 2 );
 
+				
 var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//left?
 mesh.position.x = 0;
 mesh.position.y = 0;
@@ -318,7 +320,7 @@ mesh.receiveShadow = true;
 mesh.castShadow = true;
 scene.add( mesh );
 
-var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//left?
+var mesh = new THREE.Mesh( wallyGeo2, wallWindMat  );//left?
 mesh.position.x = 75;
 mesh.position.y = 0;
 mesh.position.z = 0;			
