@@ -331,7 +331,7 @@ var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
 			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 			var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
 				mshPhongFloor.receiveShadow = true;
-				mshPhongFloor.position.set( 0, 0, 0 );
+				mshPhongFloor.position.set( 0, -60, 0 );
 				scene.add( mshPhongFloor );
 				
 				
