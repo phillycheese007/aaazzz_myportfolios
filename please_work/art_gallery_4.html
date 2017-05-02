@@ -261,6 +261,140 @@ scene.add( spotLight );
 
 				
 				
+var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
+var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
+
+			
+var matStdFloor = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
+var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
+
+			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
+			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
+
+			var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
+			var mshStdBox = new THREE.Mesh( geoBox, matStdObjects );
+
+
+
+			var amb = new THREE.AmbientLight( 0x000000 );
+                        var ambLight2 = new THREE.AmbientLight(0x404040);
+				
+
+    //Creating box
+    var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
+    var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
+    var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
+    boxer.castShadow = true;
+    scene.add( boxer );			
+
+var planeGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32 );
+var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+plane.receiveShadow = true;
+scene.add( plane );
+plane.position.y = -2;
+plane.rotation.x = -Math.PI/2;		
+				
+var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
+var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
+
+
+var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
+brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
+brickTexture.repeat.set( 7, 5 );			
+var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
+
+
+
+		
+				
+var backWall = new THREE.Mesh( wallGeometry, wallBrickMat );
+backWall.material.side = THREE.DoubleSide;
+backWall.receiveShadow = true;
+scene.add( backWall );
+backWall.position.set( 0, 50, 150 );
+backWall.rotation.y = Math.PI/180 * 180;
+
+var frontWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
+frontWall.material.side = THREE.DoubleSide;
+frontWall.receiveShadow = true;
+scene.add( frontWall );
+frontWall.position.set( 0, 50, -220 );
+frontWall.rotation.y = Math.PI/180 * 180;
+				
+var frontWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
+frontWall2.material.side = THREE.DoubleSide;
+frontWall2.receiveShadow = true;
+scene.add( frontWall2 );
+frontWall2.position.set( 0, 50, -150 );
+frontWall2.rotation.y = Math.PI/180 * 180;	
+
+var leftWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
+leftWall.material.side = THREE.DoubleSide;
+leftWall.receiveShadow = true;
+scene.add( leftWall );
+leftWall.position.set( 220, 50, 0 );
+leftWall.rotation.y = Math.PI/180 * 90;
+
+var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat);  							
+//var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
+leftWall2.material.side = THREE.DoubleSide;
+leftWall2.receiveShadow = true;
+scene.add( leftWall2 );
+leftWall2.position.set( 150, 50, 0 );
+leftWall2.rotation.y = Math.PI/180 * 90;		
+
+
+var spotLight2 = new THREE.SpotLight( 0xffffff );
+spotLight2.position.set( 5, 50, -5 );
+spotLight2.castShadow = true;
+spotLight2.shadow.mapSize.width = 1024;
+spotLight2.shadow.mapSize.height = 1024;
+spotLight2.rotation.y = Math.PI/180 * 90;
+
+spotLight2.shadow.camera.left = 500							
+scene.add( spotLight2 );		
+
+				matPhongObjects.color.set( 0xA00000 );
+				matStdFloor.color.set( 0x808080 );
+				matStdFloor.receiveShadow = true;
+
+				matStdObjects.color.set( 0xA00000 );
+				matStdObjects.castShadow = true;
+				matStdObjects.receiveShadow = true;
+
+				mshPhongFloor.receiveShadow = true;
+				mshPhongFloor.position.set( 0, 0, 0 );
+
+				mshPhongBox.castShadow = true;
+				mshPhongBox.receiveShadow = true;
+
+				mshPhongBox.position.set( 0, 0, 0 );
+				mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
+
+				scene.add( mshPhongFloor );
+				scene.add( mshPhongBox );
+
+
+
+				mshStdBox.castShadow = true;
+				mshStdBox.receiveShadow = true;
+				mshStdBox.position.set( 0, 5, -5 );
+				mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
+
+				scene.add( mshStdFloor );
+				scene.add( mshStdBox );
+
+				scene.add( amb );
+				
+				scene.add( ambLight2 );
+	
+				
+				
+				
+				
+				
+				
 				
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
