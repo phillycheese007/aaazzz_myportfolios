@@ -258,8 +258,12 @@ spotLight.shadow.camera.fov = 20;
 scene.add( spotLight );				
 				
 
-
-				
+			var woodFloorTexture
+			
+			
+woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
+woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+woodFloorTexture.repeat.set( 7, 5 );				
 				
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
