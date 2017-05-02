@@ -257,11 +257,7 @@ spotLight.shadow.camera.fov = 20;
 
 scene.add( spotLight );				
 				
-				renderer.shadowMap.enabled = true;
-				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-				renderer.gammaInput = true;
-				renderer.gammaOutput = true;
-				renderer.antialias = true;
+
 
 				
 				
@@ -453,10 +449,20 @@ scene.add( mesh );
 
 				//
 
+				
+				
 				renderer = new THREE.WebGLRenderer();
 				renderer.setClearColor( 0xffffff );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
+				
+				
 				document.body.appendChild( renderer.domElement );
 
 				//
