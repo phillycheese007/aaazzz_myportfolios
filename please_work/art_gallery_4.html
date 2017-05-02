@@ -273,6 +273,7 @@ scene.add( spotLight );
 woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
 woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
 woodFloorTexture.repeat.set( 7, 5 );				
+var wallBrickTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwall.jpg" );			
 
     var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
     var wallBrickMat = new THREE.MeshPhongMaterial( { map: wallBrickTexture, transparent: true } );				
