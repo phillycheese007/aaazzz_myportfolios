@@ -283,7 +283,8 @@ var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } 
 				
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
-
+			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
 			
 var matStdFloor = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
 var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
@@ -326,54 +327,7 @@ var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 
 
 
-		
-				
-var backWall = new THREE.Mesh( wallGeometry, wallBrickMat );
-backWall.material.side = THREE.DoubleSide;
-backWall.receiveShadow = true;
-scene.add( backWall );
-backWall.position.set( 0, 50, 150 );
-backWall.rotation.y = Math.PI/180 * 180;
-
-var frontWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
-frontWall.material.side = THREE.DoubleSide;
-frontWall.receiveShadow = true;
-scene.add( frontWall );
-frontWall.position.set( 0, 50, -220 );
-frontWall.rotation.y = Math.PI/180 * 180;
-				
-var frontWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
-frontWall2.material.side = THREE.DoubleSide;
-frontWall2.receiveShadow = true;
-scene.add( frontWall2 );
-frontWall2.position.set( 0, 50, -150 );
-frontWall2.rotation.y = Math.PI/180 * 180;	
-
-var leftWall = new THREE.Mesh( wallGeometry, sceneoutsideMat );
-leftWall.material.side = THREE.DoubleSide;
-leftWall.receiveShadow = true;
-scene.add( leftWall );
-leftWall.position.set( 220, 50, 0 );
-leftWall.rotation.y = Math.PI/180 * 90;
-
-var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat);  							
-//var leftWall2 = new THREE.Mesh( wallGeometry, wallWindMat );
-leftWall2.material.side = THREE.DoubleSide;
-leftWall2.receiveShadow = true;
-scene.add( leftWall2 );
-leftWall2.position.set( 150, 50, 0 );
-leftWall2.rotation.y = Math.PI/180 * 90;		
-
-
-var spotLight2 = new THREE.SpotLight( 0xffffff );
-spotLight2.position.set( 5, 50, -5 );
-spotLight2.castShadow = true;
-spotLight2.shadow.mapSize.width = 1024;
-spotLight2.shadow.mapSize.height = 1024;
-spotLight2.rotation.y = Math.PI/180 * 90;
-
-spotLight2.shadow.camera.left = 500							
-scene.add( spotLight2 );		
+	
 
 				matPhongObjects.color.set( 0xA00000 );
 				matStdFloor.color.set( 0x808080 );
