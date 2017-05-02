@@ -313,7 +313,7 @@ var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x
 var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 plane.receiveShadow = true;
 scene.add( plane );
-plane.position.y = -2;
+plane.position.y = -120;
 plane.rotation.x = -Math.PI/2;		
 				
 var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
@@ -338,12 +338,12 @@ var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 				matStdObjects.receiveShadow = true;
 
 				mshPhongFloor.receiveShadow = true;
-				mshPhongFloor.position.set( 0, 0, 0 );
+				mshPhongFloor.position.set( 0, -120, 0 );
 
 				mshPhongBox.castShadow = true;
 				mshPhongBox.receiveShadow = true;
 
-				mshPhongBox.position.set( 0, -100, 0 );
+				mshPhongBox.position.set( 0, -110, 0 );
 				mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
 
 				scene.add( mshPhongFloor );
@@ -353,7 +353,7 @@ var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
 
 				mshStdBox.castShadow = true;
 				mshStdBox.receiveShadow = true;
-				mshStdBox.position.set( 0, 5, -5 );
+				mshStdBox.position.set( 0, -115, -5 );
 				mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
 
 				scene.add( mshStdFloor );
