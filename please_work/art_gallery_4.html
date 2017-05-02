@@ -257,13 +257,28 @@ spotLight.shadow.camera.fov = 20;
 
 scene.add( spotLight );				
 				
-
+    			var matPhongParams = {
+    			specular: 0xFFFFFF,
+    			shininess: 1000
+    			};
+    			var matStdParams = {
+    				roughness: 0.044676705160855, // calculated from shininess = 1000
+    				metalness: 0.0
+    			};
+				
+				
 			var woodFloorTexture
 			
 			
 woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
 woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
 woodFloorTexture.repeat.set( 7, 5 );				
+
+    var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
+    var wallBrickMat = new THREE.MeshPhongMaterial( { map: wallBrickTexture, transparent: true } );				
+var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/lightcity.jpg" );
+var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );	
+								
 				
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
