@@ -42,7 +42,6 @@
 
 
 		
- <script src="/aaazzz_myportfolios/please_work/js/JDLoader.min.js"></script><!-- for eagle -->
 
 		
 		
@@ -129,8 +128,7 @@
 //var mirrorSphere, mirrorSphereCamera; // for mirror material
 			
 			
-var nip_meshes = [], nip_mixers = []; //foreagle
-var clock = new THREE.Clock; //foreagle
+
 			
 			
 			init();
@@ -268,31 +266,7 @@ var clock = new THREE.Clock; //foreagle
 				
 
 				
-				
-	            var nip_loader = new THREE.JDLoader();
-            nip_loader.load("https://phillycheese007.github.io/aaazzz_myportfolios/please_work/js/model.jd",
-			
-			function (data)
-                        {
-                            var multiMaterial = new THREE.MultiMaterial(data.materials);
-                            for (var i = 0; i < data.geometries.length; ++i)
-                            {
-                                var nip_mesh = new THREE.SkinnedMesh(data.geometries[i], multiMaterial);
-                                nip_meshes.push(nip_mesh);
-                                scene.add(nip_mesh);
-                                nip_mesh.position.set( 0, 54.5, 200 );
-                                nip_mesh.scale.set(62,62,62);
-                                nip_mesh.rotation.y = -Math.PI/3;		
-                                if (nip_mesh.geometry.animations)
-                                {
-                                    var mixer = new THREE.AnimationMixer(nip_mesh);
-                                    nip_mixers.push(mixer);
-                                    mixer.clipAction(nip_mesh.geometry.animations[0]).play();
-                                }
-                            }
 
-
-                        });
 				
 				
 				
@@ -553,9 +527,7 @@ camera.add( mesh );
 
 			function animate() {
 				
-            var delta = clock.getDelta();//eag
-            for (var i = 0; i < nip_mixers.length; ++i)//eag
-               nip_mixers[i].update(delta);//eag
+
 
 				var time = Date.now();
 
@@ -565,7 +537,6 @@ camera.add( mesh );
 				simulate( time );
 				render();
 				stats.update();
-                             //   if (controls) controls.update();//eag
 
 				requestAnimationFrame( animate );
 			}
