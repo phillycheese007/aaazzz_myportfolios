@@ -262,7 +262,7 @@ scene.add( spotLight );
     var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
     var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
     boxer.castShadow = true;
-    boxer.position.set(30, 5, 10);
+    boxer.position.set(-30, 5, -10);
     scene.add( boxer );
 				
 		
@@ -332,7 +332,7 @@ mshPhongFloor.position.set( 0, 0, 0 );
 scene.add( mshPhongFloor );
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
-    dirLight44.position.set(3, 70, -150);
+    dirLight44.position.set(3, 30, -15);
     dirLight44.castShadow = true;
     scene.add( dirLight44 );
     scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
