@@ -271,7 +271,7 @@ plant_1_pot = new THREE.Mesh(geometry, poopMat);
 plant_1_pot.castShadow = true;
 plant_1_pot.receiveShadow = true;
 geometry.computeVertexNormals();
-plant_1_pot.scale.set(1,1,1);
+plant_1_pot.scale.set(.5,.5,.5);
 plant_1_pot.position.set(-30, 0, -10);
 								
 //plant_1_pot.rotation.y = convertToRad(90);  
@@ -283,7 +283,7 @@ var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );
 var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
 var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
 matStdPlant.color.set( 0x808080 );
-mshPhongPlant.scale.set(1,1,1);
+mshPhongPlant.scale.set(.5,.5,.5);
 mshPhongPlant.position.set( -30, 0, -10 );
 mshPhongPlant.castShadow = true;
 scene.add( mshPhongPlant );
