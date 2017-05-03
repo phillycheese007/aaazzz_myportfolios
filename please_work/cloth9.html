@@ -321,7 +321,6 @@ var clock = new THREE.Clock; //foreagle
 				
 				
 				
-  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
 
 				
 var matPhongParams = {
@@ -333,54 +332,9 @@ var matStdParams = {
   metalness: 0.0
 };
 											
-  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
-  floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
-  floorTexture.repeat.set( 7, 5 );								
-  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
-  var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );			
- // var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
-  var geoFloor = new THREE.BoxGeometry( 1000, 0.1, 1000 );
-  var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
- // var mshStdFloor = new THREE.Mesh( geoFloor, floorMat ); 
+		
+				
 
- // matStdFloor.color.set( 0x808080 );
- // matStdFloor.receiveShadow = true;
-
-  mshPhongFloor.receiveShadow = true;
-  mshPhongFloor.position.set( 0, -249.5, 0 );
-//  mshStdFloor.position.set( 0, -250, 0 );
-  scene.add( mshPhongFloor );
- // scene.add( mshStdFloor );
-	
-				
-				
-				
-// var subjMat = new THREE.MeshBasicMaterial();
-  //var subj;
-  var plant_1_pot;
-
-				
-var subjMat_num2 = new THREE.MeshPhongMaterial({
-  shininess:10, 
-  specular:0xFF0000, 
-  shading: THREE.SmoothShading
-  // shading: THREE.FlatShading
-});	
-subjMat_num2.map = THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/please_work/textures/terrrain/grasslight-big.jpg');	
-subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/checkerboard.jpg');
-var itmArr = [];
-var vx, vy, vz;
-var loader = new THREE.JSONLoader(); // init the loader util
-loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
-    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
-    plant_1_pot.castShadow = true;
-    plant_1_pot.receiveShadow = true;
-    geometry.computeVertexNormals();
-    plant_1_pot.scale.set(12,12,12);
-    plant_1_pot.position.set(130, -250, -120);
-    plant_1_pot.castShadow = true;
-    scene.add(plant_1_pot);	 	
-});
 				
 				
 var mesh = new THREE.Mesh( new THREE.SphereGeometry( 5, 16, 8 ), new THREE.MeshNormalMaterial() );
@@ -391,115 +345,10 @@ camera.add( mesh );
 		    
 				
 				
-				// poles
 
-				var poleGeo = new THREE.BoxGeometry( 5, 375, 5 );
-				var poleMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x111111, shininess: 100 } );
 
-				
-				var mesh = new THREE.Mesh( poleGeo, poleMat );
-				mesh.position.x = - 25;
-				mesh.position.y = - 62;
-				mesh.receiveShadow = true;
-				mesh.castShadow = true;
-				scene.add( mesh );
-				
 
-var buzzyTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/trippy1_threejs.png" );			
-var buzzyMat = new THREE.MeshPhongMaterial( { map: buzzyTexture } );
 
-			
-				
-var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
-var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
-
-var wallManyWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallmanywind.png" );			
-var wallManyWindMat = new THREE.MeshPhongMaterial( { map: wallManyWindTexture, transparent: true } );
-				
-var wallGeometry = new THREE.PlaneGeometry( 1000, 500, 302, 302 );
-				
-
-var wallyGeo = new THREE.BoxGeometry( 1000, 500, 5, 5 );
-				
-
-var buzzyGeo = new THREE.BoxGeometry( 700, 836.1581921, 5, 5 );
-				
-				
-var wallyMat = new THREE.MeshPhongMaterial( { color: 0xffff00, specular: 0x111111, shininess: 100 } );
-								
-var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//right?
-mesh.position.x = 0;
-mesh.position.y = 0;
-mesh.position.z = 500;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );	
-
-var mesh = new THREE.Mesh( buzzyGeo, buzzyMat  );//left?
-mesh.position.x = 0;
-mesh.position.y = 300;
-mesh.position.z = -495;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );				
-				
-				
-var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//left?
-mesh.position.x = 0;
-mesh.position.y = 0;
-mesh.position.z = -500;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );	
-				
-var mesh = new THREE.Mesh( wallyGeo, wallManyWindMat  );//back?
-mesh.position.x = 500;
-mesh.position.y = 0;
-mesh.position.z = 0;
-mesh.rotation.y = -Math.PI/2;		
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );
-				
-var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//front?
-mesh.position.x = -500;
-mesh.position.y = 0;
-mesh.position.z = 0;
-mesh.rotation.y = -Math.PI/2;		
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );
-				
-
-				
-				var mesh = new THREE.Mesh( poleGeo, poleMat );
-				mesh.position.x = 125;
-				mesh.position.y = - 62;
-				mesh.receiveShadow = true;
-				mesh.castShadow = true;
-				scene.add( mesh );
-
-				var mesh = new THREE.Mesh( new THREE.BoxGeometry( 255, 5, 5 ), poleMat );
-				mesh.position.y = - 250 + ( 750 / 2 );
-				mesh.position.x = 0;
-				mesh.receiveShadow = true;
-				mesh.castShadow = true;
-				scene.add( mesh );
-
-				var gg = new THREE.BoxGeometry( 10, 10, 10 );
-				var mesh = new THREE.Mesh( gg, poleMat );
-				mesh.position.y = - 250;
-				mesh.position.x = 125;
-				mesh.receiveShadow = true;
-				mesh.castShadow = true;
-				scene.add( mesh );
-
-				var mesh = new THREE.Mesh( gg, poleMat );
-				mesh.position.y = - 250;
-				mesh.position.x = - 125;
-				mesh.receiveShadow = true;
-				mesh.castShadow = true;
-				scene.add( mesh );
 
 										
 				// Textures
