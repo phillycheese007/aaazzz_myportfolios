@@ -242,17 +242,19 @@
 
 
 		
-//var spotLight = new THREE.SpotLight( 0xffffff );
-//spotLight.position.set( 20, 90, 20 );
-//spotLight.castShadow = true;
-//spotLight.shadow.mapSize.width = 5124;
-//spotLight.shadow.mapSize.height = 5124;
-//spotLight.shadow.camera.near = 50;
-//spotLight.shadow.camera.far = 3000;
-//spotLight.shadow.camera.fov = 3000;
-//scene.add( spotLight );				
+var spotLight = new THREE.SpotLight( 0xffffff );
+spotLight.position.set( 20, 90, 20 );
 
-				
+spotLight.castShadow = true;
+
+spotLight.shadow.mapSize.width = 5124;
+spotLight.shadow.mapSize.height = 5124;
+
+spotLight.shadow.camera.near = 50;
+spotLight.shadow.camera.far = 3000;
+spotLight.shadow.camera.fov = 3000;
+
+scene.add( spotLight );				
 				
     //Creating box
     var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
@@ -274,7 +276,7 @@ plant_1_pot.castShadow = true;
 plant_1_pot.receiveShadow = true;
 geometry.computeVertexNormals();
 plant_1_pot.scale.set(1,1,1);
-plant_1_pot.position.set(-30, 0, -10);
+plant_1_pot.position.set(-50, 0, -50);
 								
 //plant_1_pot.rotation.y = convertToRad(90);  
 							
@@ -286,7 +288,7 @@ var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
 var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
 matStdPlant.color.set( 0x808080 );
 mshPhongPlant.scale.set(1,1,1);
-mshPhongPlant.position.set( -30, 0, -10 );
+mshPhongPlant.position.set( -50, 0, -50 );
 mshPhongPlant.castShadow = true;
 scene.add( mshPhongPlant );
 scene.add(plant_1_pot);	 	
@@ -334,21 +336,18 @@ scene.add( mshPhongFloor );
     scene.add( dirLight44 );
     scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
     dirLight44.shadowCameraVisible = true;
-				
-dirLight44.shadow.mapSize.width = 1024;
-dirLight44.shadow.mapSize.height = 1024;
-				
-
-dirLight44.shadow.camera.far = 700;
-dirLight44.shadow.camera.left = 150;	
-				
-dirLight44.shadow.camera.fov = 300;
-				
+dirLight44.shadow.mapSize.width = 3024;
+dirLight44.shadow.mapSize.height = 3024;
+dirLight44.shadow.camera.left = 500;	
+dirLight44.shadow.camera.fov = 3000;
 dirLight44.shadowCameraVisible = true;	
 
 
 
-						
+				
+
+					
+
 					
  // var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
  // var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
