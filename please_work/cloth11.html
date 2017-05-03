@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -50,41 +51,7 @@
 		
 		<script src="/aaazzz_myportfolios/please_work/js/libs/stats.min.js"></script>
 
-		<script src="/aaazzz_myportfolios/please_work/js/cloth2.js"></script>
 
-		<script type="x-shader/x-fragment" id="fragmentShaderDepth">
-
-			#include <packing>
-
-			uniform sampler2D texture;
-			varying vec2 vUV;
-
-			void main() {
-
-				vec4 pixel = texture2D( texture, vUV );
-
-				if ( pixel.a < 0.5 ) discard;
-
-				gl_FragData[ 0 ] = packDepthToRGBA( gl_FragCoord.z );
-
-			}
-		</script>
-
-		<script type="x-shader/x-vertex" id="vertexShaderDepth">
-
-			varying vec2 vUV;
-
-			void main() {
-
-				vUV = 0.75 * uv;
-
-				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-
-				gl_Position = projectionMatrix * mvPosition;
-
-			}
-
-		</script>
 
 		<script>
 
@@ -92,22 +59,7 @@
 	
 	
 	
-			/* testing cloth simulation */
-			var pinsFormation = [];
-			var pins = [ 6 ];
-			pinsFormation.push( pins );
-			pins = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
-			pinsFormation.push( pins );
-			pins = [ 0 ];
-			pinsFormation.push( pins );
-			pins = []; // cut the rope ;)
-			pinsFormation.push( pins );
-			pins = [ 0, cloth.w ]; // classic 2 pins
-			pinsFormation.push( pins );
-			pins = pinsFormation[ 1 ];
-			function togglePins() {
-			  pins = pinsFormation[ ~~ ( Math.random() * pinsFormation.length ) ];
-			}
+
 			
 
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
@@ -118,7 +70,6 @@
 
 			var cameraCube, sceneCube;
 
-			var clothGeometry;
 			var sphere;
 			var object;
 			var cube3333;
@@ -200,47 +151,11 @@
 
 				scene.add( light );
 
-				// cloth material
-
 				var loader = new THREE.TextureLoader();
-				var clothTexture = loader.load( '/aaazzz_myportfolios/please_work/images/deer/curtain1.jpg' );
-				clothTexture.wrapS = clothTexture.wrapT = THREE.RepeatWrapping;
-				clothTexture.anisotropy = 16;
-
-				var clothMaterial = new THREE.MeshPhongMaterial( {
-					specular: 0x030303,
-					map: clothTexture,
-					side: THREE.DoubleSide,
-					alphaTest: 0.5
-				} );
-
-				// cloth geometry
-				clothGeometry = new THREE.ParametricGeometry( clothFunction, cloth.w, cloth.h );
-				clothGeometry.dynamic = true;
-
-				var uniforms = { texture:  { value: clothTexture } };
-				var vertexShader = document.getElementById( 'vertexShaderDepth' ).textContent;
-				var fragmentShader = document.getElementById( 'fragmentShaderDepth' ).textContent;
-
-				// cloth mesh
-
-				object = new THREE.Mesh( clothGeometry, clothMaterial );
-				object.position.set( 0, 95, 475 );
-				object.castShadow = true;
-				scene.add( object );
-
-				
-				
-				object.customDepthMaterial = new THREE.ShaderMaterial( {
-					uniforms: uniforms,
-					vertexShader: vertexShader,
-					fragmentShader: fragmentShader,
-					side: THREE.DoubleSide
-				} );
 
 				// sphere
 
-				var ballGeo = new THREE.SphereGeometry( ballSize, 20, 20 );
+				var ballGeo = new THREE.SphereGeometry( 20, 20, 20 );
 				var ballMaterial = new THREE.MeshPhongMaterial( { color: 0xaaaaaa } );
 
 				sphere = new THREE.Mesh( ballGeo, ballMaterial );
@@ -528,13 +443,6 @@ camera.add( mesh );
 			function animate() {
 				
 
-
-				var time = Date.now();
-
-				windStrength = Math.cos( time / 7000 ) * 20 + 40;
-				windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
-
-				simulate( time );
 				render();
 				stats.update();
 
@@ -553,26 +461,13 @@ camera.add( mesh );
 
 			function render() {
 
-				var p = cloth.particles;
 
-				for ( var i = 0, il = p.length; i < il; i ++ ) {
-
-					clothGeometry.vertices[ i ].copy( p[ i ].position );
-	
-									
-					
-				}
 				
 				
 				
 
-				clothGeometry.computeFaceNormals();
-				clothGeometry.computeVertexNormals();
 
-				clothGeometry.normalsNeedUpdate = true;
-				clothGeometry.verticesNeedUpdate = true;
 
-				sphere.position.copy( ballPosition );
 
 				camera.lookAt( scene.position );
 				cameraCube.rotation.copy( camera.rotation );
