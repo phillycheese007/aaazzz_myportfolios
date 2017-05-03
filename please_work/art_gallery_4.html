@@ -318,23 +318,56 @@ camera.add( mesh );
 	
 				
 		
+    			var matPhongParams = {
+    			specular: 0xFFFFFF,
+    			shininess: 1000
+    			};
+    			var matStdParams = {
+    				roughness: 0.044676705160855, // calculated from shininess = 1000
+    				metalness: 0.0
+    			};
+
+var woodFloorTexture
+woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
+woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+woodFloorTexture.repeat.set( 7, 5 );
+var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
+var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
+var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
+var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
+matStdFloor.color.set( 0x808080 );
+matStdFloor.receiveShadow = true;
+mshPhongFloor.receiveShadow = true;
+mshPhongFloor.position.set( 0, 0, 0 );
+scene.add( mshPhongFloor );
+scene.add( mshStdFloor );
+
+
+dirLight44.shadow.mapSize.width = 1024;
+dirLight44.shadow.mapSize.height = 1024;
+dirLight44.shadow.camera.left = 500	
+dirLight44.shadowCameraVisible = true;
+scene.add( new THREE.DirectionalLightHelper(window1_dir_light, 0.4) );	
+
+
+
 				
 
 					
 
 					
-  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
-  var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
-var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
-			var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
-			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
-			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
-			var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
-				mshPhongFloor.receiveShadow = true;
-								matStdFloor.color.set( 0x808080 );
-				matStdFloor.receiveShadow = true;
-				mshPhongFloor.position.set( 0, -60, 0 );
-				scene.add( mshPhongFloor );
+ // var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+ // var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
+//var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
+			//var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
+			//var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
+			//var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+			//var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
+				//mshPhongFloor.receiveShadow = true;
+					//			matStdFloor.color.set( 0x808080 );
+				//matStdFloor.receiveShadow = true;
+				//mshPhongFloor.position.set( 0, -60, 0 );
+				//scene.add( mshPhongFloor );
 				
 				
 				
@@ -398,21 +431,21 @@ mesh.rotateY( - Math.PI / 2 );
 scene.add( mesh );
 				
 //floor
-var flTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/floor.jpg" );	
-flTexture.wrapS = flTexture.wrapT = THREE.RepeatWrapping;
-flTexture.repeat.set( 12, 3 );
-var flMat = new THREE.MeshPhongMaterial( { map: flTexture, transparent: true } );
-var flGeo = new THREE.BoxGeometry( 200, 150, 4, 4 );
+//var flTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/floor.jpg" );	
+//flTexture.wrapS = flTexture.wrapT = THREE.RepeatWrapping;
+//flTexture.repeat.set( 12, 3 );
+//var flMat = new THREE.MeshPhongMaterial( { map: flTexture, transparent: true } );
+//var flGeo = new THREE.BoxGeometry( 200, 150, 4, 4 );
 
-var mesh = new THREE.Mesh( flGeo, flMat  );//left?
-mesh.position.x = 0;
-mesh.position.y = -50;
-mesh.position.z = 0;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-mesh.material.side = THREE.DoubleSide;
-mesh.rotateX( - Math.PI / 2 );
-scene.add( mesh );				
+//var mesh = new THREE.Mesh( flGeo, flMat  );//left?
+//mesh.position.x = 0;
+//mesh.position.y = -50;
+//mesh.position.z = 0;			
+//mesh.receiveShadow = true;
+//mesh.castShadow = true;
+//mesh.material.side = THREE.DoubleSide;
+//mesh.rotateX( - Math.PI / 2 );
+//scene.add( mesh );				
 				
 
 				// objects
