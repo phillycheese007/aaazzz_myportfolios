@@ -259,50 +259,36 @@ scene.add( spotLight );
 				
 
 				
-// var subjMat = new THREE.MeshBasicMaterial();
-var subj;
+		
 var plant_1_pot;
-var subjMat = new THREE.MeshPhongMaterial({
-  color:0xF2461C, 
-  castShadow: true,
-  receiveShadow:true,
-  shininess:11, 
-  specular:0xEBC335, 
-  shading: THREE.SmoothShading
-  // shading: THREE.FlatShading
-});
-var subjMat_num2 = new THREE.MeshPhongMaterial({
-
-  shininess:1, 
-  specular:0xEBC335, 
-  shading: THREE.SmoothShading
-  // shading: THREE.FlatShading
-});	
-subjMat_num2.map = THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/trippy1_threejs.png');
-
-	
-subjMat_num2.bumpMap = THREE.ImageUtils.loadTexture('/aaazzz_myportfolios/images/deer/trippy1_threejs.png');
-var itmArr = [];
-var vx, vy, vz;
-
-var loader = new THREE.JSONLoader(); // init the loader util
-
-
-
-loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
-    plant_1_pot = new THREE.Mesh(geometry, subjMat_num2);
-    plant_1_pot.castShadow = true;
-
-    plant_1_pot.receiveShadow = true;
-    geometry.computeVertexNormals();
-    plant_1_pot.scale.set(1,1,1);
-    plant_1_pot.position.set(0, -50, 0);
-    plant_1_pot.castShadow = true;
-    //plant_1_pot.rotation.y = convertToRad(90);
-    scene.add(plant_1_pot);	 	
-});
-  
+var poopTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
+var poopMat = new THREE.MeshBasicMaterial( { map: poopTexture } );
+var loader = new THREE.JSONLoader();  
 				
+loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
+plant_1_pot = new THREE.Mesh(geometry, poopMat);
+plant_1_pot.castShadow = true;
+plant_1_pot.receiveShadow = true;
+geometry.computeVertexNormals();
+plant_1_pot.scale.set(2,2,2);
+plant_1_pot.position.set(0, 0, 0);
+								
+//plant_1_pot.rotation.y = convertToRad(90);  
+							
+var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/app.png' );
+var gooseMat = new THREE.MeshBasicMaterial( { map: gooseTexture } );
+var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
+var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
+var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
+var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
+matStdPlant.color.set( 0x808080 );
+mshPhongPlant.scale.set(2,2,2);
+mshPhongPlant.position.set( 0, 0, 0 );
+mshPhongPlant.castShadow = true;
+scn.add( mshPhongPlant );
+scn.add(plant_1_pot);	 	
+});
+							
 				
 				
 				
@@ -484,6 +470,14 @@ scene.add( mesh );
 				renderer.setClearColor( 0xffffff );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				
+				
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
+				
 				document.body.appendChild( renderer.domElement );
 
 				//
