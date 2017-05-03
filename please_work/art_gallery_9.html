@@ -292,6 +292,47 @@ scene.add(plant_1_pot);
 							
 				
 				
+
+				
+function loadSkyBox() {
+     
+        // Load the skybox images and create list of materials
+        var materials = [
+            createMaterial( '/aaazzz_myportfolios/please_work/images/deer/app.png' ), // right
+            createMaterial( '/aaazzz_myportfolios/please_work/images/deer/app.png' ), // left
+            createMaterial( '/aaazzz_myportfolios/please_work/images/deer/app.png' ), // top
+            createMaterial( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' ), // bottom
+            createMaterial( '/aaazzz_myportfolios/please_work/images/deer/app.png' ), // back
+            createMaterial( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' )  // front
+        ];
+         
+        // Create a large cube
+        var mesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+         
+        // Set the x scale to be -1, this will turn the cube inside out
+        mesh.scale.set(-1,1,1);
+        scene.add( mesh );  
+}
+ 
+function createMaterial( path ) {
+    var texture = THREE.ImageUtils.loadTexture(path);
+    var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+ 
+    return material; 
+}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				
 				
