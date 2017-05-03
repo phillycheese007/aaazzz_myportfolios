@@ -257,118 +257,7 @@ spotLight.shadow.camera.fov = 20;
 
 scene.add( spotLight );				
 				
-    			var matPhongParams = {
-    			specular: 0xFFFFFF,
-    			shininess: 1000
-    			};
-    			var matStdParams = {
-    				roughness: 0.044676705160855, // calculated from shininess = 1000
-    				metalness: 0.0
-    			};
-				
-				
-			var woodFloorTexture
-			
-			
-woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
-woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
-woodFloorTexture.repeat.set( 7, 5 );				
-var wallBrickTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwall.jpg" );			
 
-    var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
-    var wallBrickMat = new THREE.MeshPhongMaterial( { map: wallBrickTexture, transparent: true } );				
-var sceneoutsideTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/lightcity.jpg" );
-var sceneoutsideMat = new THREE.MeshBasicMaterial( { map: sceneoutsideTexture } );	
-								
-				
-var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
-var matPhongObjects = new THREE.MeshPhongMaterial( matPhongParams );
-			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
-			var mshPhongBox = new THREE.Mesh( geoBox, matPhongObjects );
-			
-var matStdFloor = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
-var matStdObjects = new THREE.MeshStandardMaterial( matStdParams );
-
-			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
-			var geoBox = new THREE.BoxGeometry( Math.PI, Math.sqrt( 2 ), Math.E );
-
-			var mshStdFloor = new THREE.Mesh( geoFloor, wallBrickMat );
-			var mshStdBox = new THREE.Mesh( geoBox, matStdObjects );
-
-
-
-			var amb = new THREE.AmbientLight( 0x000000 );
-                        var ambLight2 = new THREE.AmbientLight(0x404040);
-				
-
-    //Creating box
-    var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
-    var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
-    var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
-    boxer.castShadow = true;
-    scene.add( boxer );			
-
-var planeGeometry = new THREE.PlaneGeometry( 20, 20, 32, 32 );
-var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x00dddd, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
-var plane = new THREE.Mesh( planeGeometry, planeMaterial );
-plane.receiveShadow = true;
-scene.add( plane );
-plane.position.y = -120;
-plane.rotation.x = -Math.PI/2;		
-				
-var wallGeometry = new THREE.PlaneGeometry( 300, 100, 400, 50 );				
-var wallMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, specular: 0x009900, shininess: 10, shading: THREE.FlatShading } )
-
-
-var brickTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/deer/brick.jpg' );
-brickTexture.wrapS = brickTexture.wrapT = THREE.RepeatWrapping;
-brickTexture.repeat.set( 7, 5 );			
-var brickMat = new THREE.MeshBasicMaterial( { map: brickTexture } );
-
-
-
-	
-
-				matPhongObjects.color.set( 0xA00000 );
-				matStdFloor.color.set( 0x808080 );
-				matStdFloor.receiveShadow = true;
-
-				matStdObjects.color.set( 0xA00000 );
-				matStdObjects.castShadow = true;
-				matStdObjects.receiveShadow = true;
-
-				mshPhongFloor.receiveShadow = true;
-				mshPhongFloor.position.set( 0, -120, 0 );
-
-				mshPhongBox.castShadow = true;
-				mshPhongBox.receiveShadow = true;
-
-				mshPhongBox.position.set( 0, -110, 0 );
-				mshPhongBox.rotation.set( 0, Math.PI / 2.0, 0 );
-
-				scene.add( mshPhongFloor );
-				scene.add( mshPhongBox );
-
-
-
-				mshStdBox.castShadow = true;
-				mshStdBox.receiveShadow = true;
-				mshStdBox.position.set( 0, -115, -5 );
-				mshStdBox.rotation.set( 0, Math.PI / 2.0, 0 );
-
-				scene.add( mshStdFloor );
-				scene.add( mshStdBox );
-
-				scene.add( amb );
-				
-				scene.add( ambLight2 );
-	
-				
-				
-				
-				
-				
-				
 				
 // var subjMat = new THREE.MeshBasicMaterial();
 var subj;
@@ -433,19 +322,19 @@ camera.add( mesh );
 
 					
 
-	  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
+					
+  var floorTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/images/floor.jpg' );
   var floorMat = new THREE.MeshBasicMaterial( { map: floorTexture } );		
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: floorTexture } );
 			var matStdFloor = new THREE.MeshBasicMaterial( { map: floorTexture } );
-			var geoFloor = new THREE.BoxGeometry( 300, -121, 300 );
+			var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
 			var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 			var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
 				mshPhongFloor.receiveShadow = true;
 								matStdFloor.color.set( 0x808080 );
 				matStdFloor.receiveShadow = true;
-				mshPhongFloor.position.set( 0, -140, 0 );
-				scene.add( mshPhongFloor );				
-
+				mshPhongFloor.position.set( 0, -60, 0 );
+				scene.add( mshPhongFloor );
 				
 				
 				
@@ -557,20 +446,10 @@ scene.add( mesh );
 
 				//
 
-				
-				
 				renderer = new THREE.WebGLRenderer();
 				renderer.setClearColor( 0xffffff );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				
-				renderer.shadowMap.enabled = true;
-				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-				renderer.gammaInput = true;
-				renderer.gammaOutput = true;
-				renderer.antialias = true;
-				
-				
 				document.body.appendChild( renderer.domElement );
 
 				//
