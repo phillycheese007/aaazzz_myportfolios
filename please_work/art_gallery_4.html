@@ -332,13 +332,13 @@ mshPhongFloor.position.set( 0, 0, 0 );
 scene.add( mshPhongFloor );
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
-    dirLight44.position.set(3, 30, -15);
+    dirLight44.position.set(3, 40, -15);
     dirLight44.castShadow = true;
     scene.add( dirLight44 );
     scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
     dirLight44.shadowCameraVisible = true;
-dirLight44.shadow.mapSize.width = 1024;
-dirLight44.shadow.mapSize.height = 1024;
+dirLight44.shadow.mapSize.width = 2024;
+dirLight44.shadow.mapSize.height = 2024;
 dirLight44.shadow.camera.left = 500	
 dirLight44.shadowCameraVisible = true;	
 
@@ -482,7 +482,7 @@ scene.add( mesh );
 				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 				renderer.gammaInput = true;
 				renderer.gammaOutput = true;
-				renderer.antialias = false;
+				renderer.antialias = true;
 				
 				document.body.appendChild( renderer.domElement );
 
