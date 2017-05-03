@@ -288,7 +288,6 @@ matStdPlant.color.set( 0x808080 );
 mshPhongPlant.scale.set(1,1,1);
 mshPhongPlant.position.set( -30, 0, -10 );
 mshPhongPlant.castShadow = true;
-mshPhongPlant.shadow.camera.far = 1200;
 scene.add( mshPhongPlant );
 scene.add(plant_1_pot);	 	
 });
@@ -330,20 +329,22 @@ mshPhongFloor.position.set( 0, 0, 0 );
 scene.add( mshPhongFloor );
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
-    dirLight44.position.set(3, 50, -15);
+    dirLight44.position.set(3, 40, -15);
     dirLight44.castShadow = true;
     scene.add( dirLight44 );
     scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
     dirLight44.shadowCameraVisible = true;
 				
-dirLight44.shadow.mapSize.width = 1024;
-dirLight44.shadow.mapSize.height = 1024;
+dirLight44.shadow.mapSize.width = 2024;
+dirLight44.shadow.mapSize.height = 2024;
 				
 
 dirLight44.shadow.camera.far = 1200;
-dirLight44.shadow.camera.left = 150;	
+dirLight44.shadow.camera.far = 100;
+
+dirLight44.shadow.camera.left = 350;	
 				
-dirLight44.shadow.camera.fov = 30;
+dirLight44.shadow.camera.fov = 50;
 				
 dirLight44.shadowCameraVisible = true;	
 
