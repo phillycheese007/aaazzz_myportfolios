@@ -334,13 +334,9 @@ woodFloorTexture.repeat.set( 7, 5 );
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var geoFloor = new THREE.BoxGeometry( 300, 0.1, 300 );
-var mshStdFloor = new THREE.Mesh( geoFloor, floorMat );
-matStdFloor.color.set( 0x808080 );
-matStdFloor.receiveShadow = true;
 mshPhongFloor.receiveShadow = true;
 mshPhongFloor.position.set( 0, -60, 0 );
 scene.add( mshPhongFloor );
-scene.add( mshStdFloor );
 
 
 dirLight44.shadow.mapSize.width = 1024;
