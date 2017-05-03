@@ -335,8 +335,6 @@ scene.add( mshPhongFloor );
 dirLight44.shadow.mapSize.width = 3024;
 dirLight44.shadow.mapSize.height = 3024;
 dirLight44.shadow.camera.left = 50;	
-dirLight44.shadow.camera.near = 10;
-dirLight44.shadow.camera.far = 30;
 dirLight44.shadow.camera.fov = 50;
 dirLight44.shadowCameraVisible = true;	
 
@@ -461,6 +459,8 @@ scene.add( mesh );
 				
 				renderer.shadowMap.enabled = true;
 				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadow.camera.near = 10;
+renderer.shadow.camera.far = 30;
 				renderer.gammaInput = true;
 				renderer.gammaOutput = true;
 				renderer.antialias = true;
