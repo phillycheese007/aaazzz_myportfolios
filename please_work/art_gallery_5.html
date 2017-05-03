@@ -243,16 +243,16 @@
 
 		
 var spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 40, 30, 40 );
+spotLight.position.set( 40, 50, 40 );
 
 spotLight.castShadow = true;
 
 spotLight.shadow.mapSize.width = 5124;
 spotLight.shadow.mapSize.height = 5124;
 
-spotLight.shadow.camera.near = 250;
+spotLight.shadow.camera.near = 50;
 spotLight.shadow.camera.far = 1000;
-spotLight.shadow.camera.fov = 200;
+spotLight.shadow.camera.fov = 1000;
 
 scene.add( spotLight );				
 				
