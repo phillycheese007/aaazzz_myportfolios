@@ -334,10 +334,17 @@ scene.add( mshPhongFloor );
     scene.add( dirLight44 );
     scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
     dirLight44.shadowCameraVisible = true;
+				
 dirLight44.shadow.mapSize.width = 1024;
 dirLight44.shadow.mapSize.height = 1024;
-dirLight44.shadow.camera.left = 1560;	
+				
+dirLight44.shadow.camera.near = 50;
+dirLight44.shadow.camera.far = 3000;
+				
+dirLight44.shadow.camera.left = 150;	
+				
 dirLight44.shadow.camera.fov = 300;
+				
 dirLight44.shadowCameraVisible = true;	
 
 
