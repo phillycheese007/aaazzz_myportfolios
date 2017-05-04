@@ -526,13 +526,13 @@ scene.add( mesh );
 				//
 
 				renderer = new THREE.WebGLRenderer();
+				renderer.autoClear = false;//envmap
 				renderer.setClearColor( scene.fog.color );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				
 				
 				
-				renderer.autoClear = false;//envmap
 
 				
 				renderer.shadowMap.enabled = true;
