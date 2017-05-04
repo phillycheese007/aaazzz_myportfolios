@@ -345,8 +345,9 @@
       }), 
       // right side
       new THREE.MeshPhongMaterial({
-        color: 0xff0000,
-      }), 
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/deer/trippy1_threejs.png'),
+        side: THREE.DoubleSide
+      }),
       // left side
       new THREE.MeshBasicMaterial({
         color: 0xff0000,  
