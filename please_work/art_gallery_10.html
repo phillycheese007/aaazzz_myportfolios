@@ -77,7 +77,10 @@
 			var camera, scene, renderer;
 			var geometry, material, mesh;
 			var controls;
+			
+			var cameraCube, sceneCube; //envmap
 
+			
 			var objects = [];
 
 			var raycaster;
@@ -164,10 +167,13 @@
 			function init() {
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );//envmap
 
 				scene = new THREE.Scene();
 				scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
+				sceneCube = new THREE.Scene();//envmap
 
+				
 				var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
 				light.position.set( 0.5, 1, 0.75 );
 				scene.add( light );
@@ -251,6 +257,71 @@
 //spotLight.shadow.camera.far = 3000;
 //spotLight.shadow.camera.fov = 3000;
 //scene.add( spotLight );				
+
+				
+				
+				
+//envmap				
+var meshsicle = new THREE.Mesh( new THREE.SphereGeometry( 5, 16, 8 ), new THREE.MeshNormalMaterial() );
+mesh.position.z = - 100; // some negative number
+camera.add( meshsicle );				
+//envmap				
+
+				
+
+
+				
+				
+				
+				
+				
+				
+
+										
+				// envmap
+
+				var r = "textures/cube/Bridge2/";
+				var urls = [ r + "posx.jpg", r + "negx.jpg",
+							 r + "posy.jpg", r + "negy.jpg",
+							 r + "posz.jpg", r + "negz.jpg" ];
+
+				textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
+				textureCube.mapping = THREE.CubeReflectionMapping;
+
+				var cubeShader = THREE.ShaderLib[ "cube" ];
+				var cubeMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: cubeShader.fragmentShader,
+					vertexShader: cubeShader.vertexShader,
+					uniforms: cubeShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+
+				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+				
+				
+
+				// Skybox
+
+				cubeMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), cubeMaterial );
+				sceneCube.add( cubeMesh );
+
+				// envmap
+				
+				
+				
+				
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
     //Creating box
     var boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
@@ -460,11 +531,19 @@ scene.add( mesh );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				
 				
+				
+				renderer.autoClear = false;//envmap
+
+				
 				renderer.shadowMap.enabled = true;
 				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 				renderer.gammaInput = true;
 				renderer.gammaOutput = true;
 				renderer.antialias = true;
+				
+				
+				renderer.setFaceCulling( THREE.CullFaceNone );//envmap
+
 				
 				document.body.appendChild( renderer.domElement );
 
@@ -533,6 +612,9 @@ scene.add( mesh );
 				}
 
 				renderer.render( scene, camera );
+				
+				
+				cameraCube.rotation.copy( camera.rotation );//envmap
 
 			}
 
