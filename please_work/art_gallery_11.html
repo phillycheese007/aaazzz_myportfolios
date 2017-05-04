@@ -356,9 +356,9 @@
     //add cube & materials
     var buzzyMaterial = new THREE.MeshFaceMaterial(buzzyMaterials);
     var framed_buzzy = new THREE.Mesh(buzzy_geometry, buzzyMaterial);
-    scene.add(framed_buzzy);		
+    scene.add(framed_buzzy);	
+    framed_buzzy.rotateY( - Math.PI / 2 );
     framed_buzzy.position.set(10, 50, -65);
-				
     // trippy images ...buzzy
 
 				
