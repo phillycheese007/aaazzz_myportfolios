@@ -342,8 +342,10 @@ scene.add( mshPhongFloor );
       }),  
       // front side
       new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }),  
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
+        transparent: true,
+	side: THREE.DoubleSide
+      }),    
       // Top side
       new THREE.MeshPhongMaterial({
         color: 0x000000,
@@ -354,7 +356,9 @@ scene.add( mshPhongFloor );
       }),  
       // right side
       new THREE.MeshPhongMaterial({
-        color: 0x000000,
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
+        transparent: true,
+	side: THREE.DoubleSide
       }),  
       // left side
       new THREE.MeshBasicMaterial({
