@@ -322,10 +322,10 @@ woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
 woodFloorTexture.repeat.set( 7, 5 );
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
-var geoFloor = new THREE.BoxGeometry( 350, 0.1, 500 );
+var geoFloor = new THREE.BoxGeometry( 500, 0.1, 350 );
 var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, -100, -250 );
+mshPhongFloor.position.set( -250, -100, 0 );
 scene.add( mshPhongFloor );
 				
 
