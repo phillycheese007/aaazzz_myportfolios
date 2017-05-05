@@ -272,7 +272,7 @@
 				
 				
     // backgroundpanoramic
-    var backgroundpanoramic = new THREE.CubeGeometry(2400, 4400, 2400);
+    var backgroundpanoramic = new THREE.CubeGeometry(1400, 1400, 1400);
     
     var cubeMaterials = [
       // back side
@@ -331,7 +331,7 @@ scene.add( mshPhongFloor );
 				
 				
     // gallerycube
-    var gallery_geometry = new THREE.CubeGeometry(500, 500, 900, 900);
+    var gallery_geometry = new THREE.CubeGeometry(400, 400, 700, 700);
     
     var galleryMaterials = [
       // back side
@@ -572,30 +572,7 @@ mesh.receiveShadow = true;
 mesh.castShadow = true;
 scene.add( mesh );				
 				
-var mesh = new THREE.Mesh( wallyGeo, whiteWallMat  );//left?
-mesh.position.x = 0;
-mesh.position.y = 0;
-mesh.position.z = -75;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );				
 
-var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//windowwll?
-mesh.position.x = 0;
-mesh.position.y = 0;
-mesh.position.z = 75;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );
-
-var mesh = new THREE.Mesh( wallyGeo2, wallEntranceMat  );//entrance?
-mesh.position.x = 100;
-mesh.position.y = 0;
-mesh.position.z = 0;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-mesh.rotateY( - Math.PI / 2 );
-scene.add( mesh );
 
 var mesh = new THREE.Mesh( wallyGeo2, whiteWallMat  );//left?
 mesh.position.x = -100;
