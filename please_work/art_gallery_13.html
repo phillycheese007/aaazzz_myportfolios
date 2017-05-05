@@ -328,6 +328,16 @@ mshPhongFloor.receiveShadow = true;
 mshPhongFloor.position.set( 0, -50, 0 );
 scene.add( mshPhongFloor );
 				
+var loader = new THREE.TextureLoader();
+
+var tex_broth = loader.load( '/aaazzz_myportfolios/images/floor.jpg', function ( tex_broth ) {
+
+    tex_broth.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    tex_broth.offset.set( 0, 0 );
+    tex_broth.repeat.set( 2, 2 );
+
+} );
+				
 				
 				
     // gallerycube
@@ -352,9 +362,7 @@ scene.add( mshPhongFloor );
       }), 
       // Bottom side
      floor = new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/floor.jpg'),
-floor.wrapS = floor.wrapT = THREE.RepeatWrapping;
-floor.repeat.set( 7, 5 )
+        map: tex_broth,
       }),  
 	    
 	    
