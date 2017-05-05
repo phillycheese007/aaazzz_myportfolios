@@ -285,7 +285,7 @@ var material = new THREE.MeshBasicMaterial( { map: spheretexture, overdraw: 0.5 
 
 
 //Use whatever values you were using for the sizes of the spheres before
-var sphere = new THREE.SphereGeometry(…)
+var sphere = new THREE.SphereGeometry( 444, 444, 444 )
 
 //make a mesh from the material and the geometry (the sphere)
 var sphereMesh = new THREE.Mesh(sphere, material);
