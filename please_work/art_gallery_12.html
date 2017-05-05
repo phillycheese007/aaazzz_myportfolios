@@ -242,7 +242,7 @@
 				document.addEventListener( 'keydown', onKeyDown, false );
 				document.addEventListener( 'keyup', onKeyUp, false );
 
-				raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 111, 0 ), 0, 10 );
+				raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, -1, 0 ), 0, 10 );
 
 
 		
@@ -272,7 +272,7 @@
 				
 				
     // backgroundpanoramic
-    var backgroundpanoramic = new THREE.CubeGeometry(900, 900, 900);
+    var backgroundpanoramic = new THREE.CubeGeometry(1400, 1400, 1400);
     
     var cubeMaterials = [
       // back side
