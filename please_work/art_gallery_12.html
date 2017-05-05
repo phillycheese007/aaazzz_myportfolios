@@ -483,7 +483,7 @@ var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var geoFloor = new THREE.BoxGeometry( 200, 0.1, 150 );
 var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, 0, 0 );
+mshPhongFloor.position.set( 0, -50, 0 );
 scene.add( mshPhongFloor );
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
@@ -530,7 +530,7 @@ scene.add( mesh );
 				
 var mesh = new THREE.Mesh( wallyGeo, whiteWallMat  );//left?
 mesh.position.x = 0;
-mesh.position.y = 50;
+mesh.position.y = 0;
 mesh.position.z = -75;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
@@ -538,7 +538,7 @@ scene.add( mesh );
 
 var mesh = new THREE.Mesh( wallyGeo, wallWindMat  );//windowwll?
 mesh.position.x = 0;
-mesh.position.y = 50;
+mesh.position.y = 0;
 mesh.position.z = 75;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
