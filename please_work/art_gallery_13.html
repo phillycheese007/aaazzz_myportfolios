@@ -352,8 +352,12 @@ scene.add( mshPhongFloor );
       }), 
       // Bottom side
       new THREE.MeshPhongMaterial({
-        color: 0x000000,
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/floor.jpg'),
+        transparent: true,
+	side: THREE.DoubleSide
       }),  
+	    
+	    
       // right side
       new THREE.MeshPhongMaterial({
         map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
@@ -370,7 +374,9 @@ scene.add( mshPhongFloor );
     //add cube & materials
     var galleryMaterial = new THREE.MeshFaceMaterial(galleryMaterials);
     var gallery_room_1_cube = new THREE.Mesh(gallery_geometry, galleryMaterial);
-    scene.add(gallery_room_1_cube);		
+    scene.add(gallery_room_1_cube);	
+				
+    gallery_room_1_cube.receiveShadow = true;
     gallery_room_1_cube.position.set(0, 0, -300);
 				
 				
