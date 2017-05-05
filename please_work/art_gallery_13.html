@@ -556,60 +556,18 @@ dirLight44.shadowCameraVisible = true;
 
 				
 
-var wallWindTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/bumwallwind.png" );			
-var wallWindMat = new THREE.MeshPhongMaterial( { map: wallWindTexture, transparent: true } );
 				
-var wallEntranceTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/please_work/images/deer/door8.png" );			
-var wallEntranceMat = new THREE.MeshPhongMaterial( { map: wallEntranceTexture, transparent: true } );
-				
-//var whiteWallMat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
-var whiteWallMat = new THREE.MeshPhongMaterial( { color: 0xffffff } );
 
 				
-var wallyGeo = new THREE.BoxGeometry( 200, 100, 2, 2 );
-var wallyGeo2 = new THREE.BoxGeometry( 150, 100, 2, 2 );
+
 
 
 				
 				
-var mesh = new THREE.Mesh( geoFloor, whiteWallMat  );//left?
-mesh.position.x = 0;
-mesh.position.y = 50;
-mesh.position.z = 0;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-scene.add( mesh );				
-				
+	
 
 
-var mesh = new THREE.Mesh( wallyGeo2, whiteWallMat  );//left?
-mesh.position.x = -100;
-mesh.position.y = 0;
-mesh.position.z = 0;			
-mesh.receiveShadow = true;
-mesh.castShadow = true;
-mesh.rotateY( - Math.PI / 2 );
-scene.add( mesh );		
-				
-				
-//floor
-//var flTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/deer/floor.jpg" );	
-//flTexture.wrapS = flTexture.wrapT = THREE.RepeatWrapping;
-//flTexture.repeat.set( 12, 3 );
-//var flMat = new THREE.MeshPhongMaterial( { map: flTexture, transparent: true } );
-//var flGeo = new THREE.BoxGeometry( 200, 150, 4, 4 );
-
-//var mesh = new THREE.Mesh( flGeo, flMat  );//left?
-//mesh.position.x = 0;
-//mesh.position.y = -50;
-//mesh.position.z = 0;			
-//mesh.receiveShadow = true;
-//mesh.castShadow = true;
-//mesh.material.side = THREE.DoubleSide;
-//mesh.rotateX( - Math.PI / 2 );
-//scene.add( mesh );				
-				
-
+	
 
 
 				//
