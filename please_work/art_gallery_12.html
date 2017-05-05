@@ -416,7 +416,7 @@
     var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
     var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
     boxer.castShadow = true;
-    boxer.position.set(-30, 0, -10);
+    boxer.position.set(-30, -50, -10);
     scene.add( boxer );
 				
 		
@@ -431,7 +431,7 @@ plant_1_pot.castShadow = true;
 plant_1_pot.receiveShadow = true;
 geometry.computeVertexNormals();
 plant_1_pot.scale.set(.5,.5,.5);
-plant_1_pot.position.set(-30, 5, -10);
+plant_1_pot.position.set(-30, -45, -10);
 								
 //plant_1_pot.rotation.y = convertToRad(90);  
 							
@@ -443,7 +443,7 @@ var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
 var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
 matStdPlant.color.set( 0x808080 );
 mshPhongPlant.scale.set(.5,.5,.5);
-mshPhongPlant.position.set( -30, 5, -10 );
+mshPhongPlant.position.set( -30, -45, -10 );
 mshPhongPlant.castShadow = true;
 scene.add( mshPhongPlant );
 scene.add(plant_1_pot);	 	
@@ -487,7 +487,7 @@ mshPhongFloor.position.set( 0, -50, 0 );
 scene.add( mshPhongFloor );
 
     var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
-    dirLight44.position.set(3, 50, -15);
+    dirLight44.position.set(3, 30, -15);
     dirLight44.castShadow = true;
     scene.add( dirLight44 );
     scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
@@ -522,7 +522,7 @@ var wallyGeo2 = new THREE.BoxGeometry( 150, 100, 2, 2 );
 				
 var mesh = new THREE.Mesh( geoFloor, whiteWallMat  );//left?
 mesh.position.x = 0;
-mesh.position.y = 100;
+mesh.position.y = 50;
 mesh.position.z = 0;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
@@ -546,7 +546,7 @@ scene.add( mesh );
 
 var mesh = new THREE.Mesh( wallyGeo2, wallEntranceMat  );//entrance?
 mesh.position.x = 100;
-mesh.position.y = 50;
+mesh.position.y = 0;
 mesh.position.z = 0;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
@@ -555,7 +555,7 @@ scene.add( mesh );
 
 var mesh = new THREE.Mesh( wallyGeo2, whiteWallMat  );//left?
 mesh.position.x = -100;
-mesh.position.y = 50;
+mesh.position.y = 0;
 mesh.position.z = 0;			
 mesh.receiveShadow = true;
 mesh.castShadow = true;
