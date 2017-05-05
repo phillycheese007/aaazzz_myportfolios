@@ -1,3 +1,69 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js - pointerlock controls</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				width: 100%;
+				height: 100%;
+			}
+
+			body {
+				background-color: #ffffff;
+				margin: 0;
+				overflow: hidden;
+				font-family: arial;
+			}
+
+			#blocker {
+
+				position: absolute;
+
+				width: 100%;
+				height: 100%;
+
+				background-color: rgba(0,0,0,0.5);
+
+			}
+
+			#instructions {
+
+				width: 100%;
+				height: 100%;
+
+				display: -webkit-box;
+				display: -moz-box;
+				display: box;
+
+				-webkit-box-orient: horizontal;
+				-moz-box-orient: horizontal;
+				box-orient: horizontal;
+
+				-webkit-box-pack: center;
+				-moz-box-pack: center;
+				box-pack: center;
+
+				-webkit-box-align: center;
+				-moz-box-align: center;
+				box-align: center;
+
+				color: #ffffff;
+				text-align: center;
+
+				cursor: pointer;
+
+			}
+
+		</style>
+	</head>
+	<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+		<script src="/aaazzz_myportfolios/please_work/js/controls/PointerLockControls.js"></script>
+<script>
 threevideodemo.js
 //Set up scene, camera, and renderer
 var scene = new THREE.Scene;
@@ -9,7 +75,7 @@ var renderer = new THREE.CanvasRenderer();
     document.body.appendChild( renderer.domElement );
                 
 var video = document.createElement('video');
-    video.src = "URL for your video file goes here";
+    video.src = "aaazzz_myportfolios/please_work/images/deer/goat2.mp4";
     video.load();
     video.play();
 
@@ -33,7 +99,7 @@ var material = new THREE.MeshBasicMaterial( { map: spheretexture, overdraw: 0.5 
 
 
 //Use whatever values you were using for the sizes of the spheres before
-var sphere = new THREE.SphereGeometry(…)
+var sphere = new THREE.SphereGeometry(44, 44, 44)
 
 //make a mesh from the material and the geometry (the sphere)
 var sphereMesh = new THREE.Mesh(sphere, material);
@@ -53,4 +119,8 @@ function render(){
       window.requestAnimationFrame(render); //When finished rendering, ask to render again on the next frame
 }
 
-window.requestAnimationFrame(render); //Start render loop
+window.requestAnimationFrame(render); //Start render loop	
+
+        </script>
+	</body>
+</html>
