@@ -281,7 +281,7 @@
         side: THREE.DoubleSide
       }),
       // front side
-      new THREE.MeshBasicMaterial({
+      new THREE.MeshPhongMaterial({
         map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/front.jpg'),
         side: THREE.DoubleSide
       }), 
@@ -341,19 +341,17 @@ scene.add( mshPhongFloor );
       }),
       // front side
       new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/deer/bumwallwind.png'),
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
         side: THREE.DoubleSide
       }), 
       // Top side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/top.jpg'),
-        side: THREE.DoubleSide
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
       }), 
       // Bottom side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/down.jpg'),
-        side: THREE.DoubleSide
-      }), 
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }),  
       // right side
       new THREE.MeshBasicMaterial({
         map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/deer/bumwallwind.png'),
