@@ -316,6 +316,65 @@
 
 				
 				
+var woodFloorTexture
+woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
+woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+woodFloorTexture.repeat.set( 7, 5 );
+var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
+var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
+var geoFloor = new THREE.BoxGeometry( 200, 0.1, 150 );
+var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+mshPhongFloor.receiveShadow = true;
+mshPhongFloor.position.set( 0, -50, 0 );
+scene.add( mshPhongFloor );
+				
+				
+				
+    // backgroundpanoramic
+    var gallery_geometry = new THREE.CubeGeometry(500, 500, 500);
+    
+    var galleryMaterials = [
+      // back side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/back.jpg'),
+        side: THREE.DoubleSide
+      }),
+      // front side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/front.jpg'),
+        side: THREE.DoubleSide
+      }), 
+      // Top side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/top.jpg'),
+        side: THREE.DoubleSide
+      }), 
+      // Bottom side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/down.jpg'),
+        side: THREE.DoubleSide
+      }), 
+      // right side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/right.png'),
+        side: THREE.DoubleSide
+      }), 
+      // left side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/left.jpg'),
+        side: THREE.DoubleSide
+      }) 
+    ];
+
+    //add cube & materials
+    var galleryMaterial = new THREE.MeshFaceMaterial(galleryMaterials);
+    var gallery_room_1_cube = new THREE.Mesh(gallery_geometry, galleryMaterial);
+    scene.add(gallery_room_1_cube);		
+    gallery_room_1_cube.position.set(0, 0, 0);
+				
+				
+				
+				
 				
 				
 				
@@ -467,24 +526,17 @@ camera.add( mesh );
 		
 
 
-var woodFloorTexture
-woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
-woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
-woodFloorTexture.repeat.set( 7, 5 );
-var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
-var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
-var geoFloor = new THREE.BoxGeometry( 200, 0.1, 150 );
-var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
-mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, -50, 0 );
-scene.add( mshPhongFloor );
 
-    var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
-    dirLight44.position.set(3, 30, -15);
-    dirLight44.castShadow = true;
-    scene.add( dirLight44 );
-    scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
-    dirLight44.shadowCameraVisible = true;
+
+
+//Lights
+				
+var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight44.position.set(3, 30, -15);
+dirLight44.castShadow = true;
+scene.add( dirLight44 );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+dirLight44.shadowCameraVisible = true;
 dirLight44.shadow.mapSize.width = 3024;
 dirLight44.shadow.mapSize.height = 3024;
 dirLight44.shadow.camera.left = 50;	
