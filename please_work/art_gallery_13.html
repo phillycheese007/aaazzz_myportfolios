@@ -335,17 +335,15 @@ scene.add( mshPhongFloor );
     
     var galleryMaterials = [
       // back side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/deer/bumwallwind.png'),
-        transparent: true,
-        side: THREE.DoubleSide
-      }),
-      // front side
-      new THREE.MeshBasicMaterial({
+      new THREE.MeshPhongMaterial({
         map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
         transparent: true,
 	side: THREE.DoubleSide
-      }),    
+      }),  
+      // front side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }),  
       // Top side
       new THREE.MeshPhongMaterial({
         color: 0x000000,
