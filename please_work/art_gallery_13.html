@@ -693,8 +693,7 @@ scene.add( mesh );
 					prevTime = time;
 
 				}
-
-				
+function render(){
     //check for vid data
     if(video.readyState === video.HAVE_ENOUGH_DATA){
       //draw video to canvas starting from upper left corner
@@ -703,7 +702,7 @@ scene.add( mesh );
       texture.needsUpdate = true;
     }
 				
-				
+			
 				renderer.render( scene, camera );
 
 			}
