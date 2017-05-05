@@ -416,7 +416,7 @@
     var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
     var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
     boxer.castShadow = true;
-    boxer.position.set(-30, 5, -10);
+    boxer.position.set(-30, 0, -10);
     scene.add( boxer );
 				
 		
@@ -431,7 +431,7 @@ plant_1_pot.castShadow = true;
 plant_1_pot.receiveShadow = true;
 geometry.computeVertexNormals();
 plant_1_pot.scale.set(.5,.5,.5);
-plant_1_pot.position.set(-30, 0, -10);
+plant_1_pot.position.set(-30, 5, -10);
 								
 //plant_1_pot.rotation.y = convertToRad(90);  
 							
@@ -443,7 +443,7 @@ var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
 var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
 matStdPlant.color.set( 0x808080 );
 mshPhongPlant.scale.set(.5,.5,.5);
-mshPhongPlant.position.set( -30, 0, -10 );
+mshPhongPlant.position.set( -30, 5, -10 );
 mshPhongPlant.castShadow = true;
 scene.add( mshPhongPlant );
 scene.add(plant_1_pot);	 	
@@ -620,7 +620,7 @@ scene.add( mesh );
 
 				if ( controlsEnabled ) {
 					raycaster.ray.origin.copy( controls.getObject().position );
-					raycaster.ray.origin.y -= 1000;
+					raycaster.ray.origin.y -= 10;
 
 					var intersections = raycaster.intersectObjects( objects );
 
