@@ -332,7 +332,7 @@ scene.add( mshPhongFloor );
 				
     // gallerycube
     var gallery_geometry = new THREE.CubeGeometry(350, 350, 500, 500);
-    
+    var floor;
     var galleryMaterials = [
       // back side
       new THREE.MeshPhongMaterial({
@@ -351,10 +351,10 @@ scene.add( mshPhongFloor );
         color: 0x000000,
       }), 
       // Bottom side
-      new THREE.MeshPhongMaterial({
+     floor = new THREE.MeshPhongMaterial({
         map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/floor.jpg'),
-        transparent: true,
-	side: THREE.DoubleSide
+floor.wrapS = floor.wrapT = THREE.RepeatWrapping,
+floor.repeat.set( 7, 5 )
       }),  
 	    
 	    
