@@ -314,7 +314,10 @@
     meshboy.position.set(0, 0, 0);				
 				
 
-				
+var gallery_cube_width = 650 ;			
+var gallery_cube_height = 300 ;
+var gallery_cube_depth = 500 ;
+
 				
 var woodFloorTexture
 woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
@@ -322,10 +325,10 @@ woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
 woodFloorTexture.repeat.set( 7, 5 );
 var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
 var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
-var geoFloor = new THREE.BoxGeometry( 650, 0.1, 500 );
+var geoFloor = new THREE.BoxGeometry( gallery_cube_width , 0.1, gallery_cube_depth );
 var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, -175, -300 );
+mshPhongFloor.position.set( 0, -175, - ( gallery_cube_height) );
 scene.add( mshPhongFloor );
 				
 
@@ -333,7 +336,7 @@ scene.add( mshPhongFloor );
 				
 				
     // gallerycube
-    var gallery_geometry = new THREE.CubeGeometry(650, 350, 500, 500);
+    var gallery_geometry = new THREE.CubeGeometry(gallery_cube_width, gallery_cube_height, gallery_cube_depth, gallery_cube_depth);
     var floor;
     var galleryMaterials = [
       // back side
