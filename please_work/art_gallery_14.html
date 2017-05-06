@@ -328,7 +328,7 @@ var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var geoFloor = new THREE.BoxGeometry( gallery_cube_width , 0.1, gallery_cube_depth );
 var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, -175, - ( gallery_cube_height) );
+mshPhongFloor.position.set( 0, -175, - gallery_cube_height );
 scene.add( mshPhongFloor );
 				
 
