@@ -430,7 +430,7 @@ scene.add( mshPhongFloor );
 				
 				
    // trippy images ...nuzzy
-    var nuzzy_geometry = new THREE.CubeGeometry( 30, 35, 2, 2 );
+    var nuzzy_geometry = new THREE.CubeGeometry( 150, 175, 2, 2 );
     
     var nuzzyMaterials = [
       // back side
@@ -464,8 +464,8 @@ scene.add( mshPhongFloor );
     var nuzzyMaterial = new THREE.MeshFaceMaterial(nuzzyMaterials);
     var framed_nuzzy = new THREE.Mesh(nuzzy_geometry, nuzzyMaterial);
     scene.add(framed_nuzzy);	
-    framed_nuzzy.rotateY( Math.PI / 2 );
-    framed_nuzzy.position.set(-95, 10, 25);
+    //framed_nuzzy.rotateY( Math.PI / 2 );
+    framed_nuzzy.position.set(45, 10, -549);
     // trippy images ...nuzzy				
 								
 				
@@ -486,7 +486,7 @@ scene.add( mshPhongFloor );
 		
 var plant_1_pot;
 var poopMat = new THREE.MeshBasicMaterial( { 
-        color: 0xff0000
+        color: 0xffff00
 } );
 var loader = new THREE.JSONLoader();  
 				
@@ -505,7 +505,9 @@ var gooseMat = new THREE.MeshBasicMaterial( {
         color: 0xff0000
 	
 } );
-var matPhongPlant = new THREE.MeshPhongMaterial( { map: gooseTexture } );
+var matPhongPlant = new THREE.MeshPhongMaterial( { 
+        color: 0xffff00
+} );
 var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
 var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
 var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
