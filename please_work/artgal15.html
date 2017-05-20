@@ -479,55 +479,9 @@ scene.add( mshPhongFloor );
 				
 				
 				
-    //Creating box
-    var boxGeometry = new THREE.BoxGeometry( 5, 10, 5 );
-    var boxMaterial = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading } );
-    var boxer = new THREE.Mesh( boxGeometry, boxMaterial );
-    boxer.castShadow = true;
-    boxer.position.set(-30, -50, -10);
-    scene.add( boxer );
-				
-		
-var plant_1_pot;
-var poopMat = new THREE.MeshBasicMaterial( { 
-        color: 0xffff00
-} );
-var loader = new THREE.JSONLoader();  
-				
-loader.load('/aaazzz_myportfolios/images/deer/pot.js', function (geometry) {
-plant_1_pot = new THREE.Mesh(geometry, poopMat);
-plant_1_pot.castShadow = true;
-plant_1_pot.receiveShadow = true;
-geometry.computeVertexNormals();
-plant_1_pot.scale.set(15,15,15);
-plant_1_pot.position.set(-530, -125, -390);
-								
-//plant_1_pot.rotation.y = convertToRad(90);  
-							
-var gooseTexture = THREE.ImageUtils.loadTexture( '/aaazzz_myportfolios/please_work/images/deer/checkerboard.jpg' );
-var gooseMat = new THREE.MeshBasicMaterial( { 
-        color: 0xff0000
-	
-} );
-var matPhongPlant = new THREE.MeshPhongMaterial( { 
-        color: 0xffff00
-} );
-var matStdPlant = new THREE.MeshBasicMaterial( { map: gooseTexture } );	
-var mshPhongPlant = new THREE.Mesh( geometry, matPhongPlant );
-var mshStdPlant = new THREE.Mesh( geometry, gooseMat );
-matStdPlant.color.set( 0x808080 );
-mshPhongPlant.scale.set(15,15,15);
-mshPhongPlant.position.set( -430, -125, -390 );
-mshPhongPlant.castShadow = true;
-mshPhongPlant.opacity = .3 ;
-scene.add( mshPhongPlant );
-scene.add(plant_1_pot);	 	
-});
-							
-				
-				
 
 				
+	
 				
 				
 				
