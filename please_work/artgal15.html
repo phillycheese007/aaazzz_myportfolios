@@ -341,11 +341,10 @@ scene.add( mshPhongFloor );
     var floor;
     var galleryMaterials = [
       // back side
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
-        transparent: true,
+     new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,
 	side: THREE.DoubleSide
-      }),  
+      }), 
       // front side
      new THREE.MeshPhongMaterial({
         color: 0xFFFFFF,
