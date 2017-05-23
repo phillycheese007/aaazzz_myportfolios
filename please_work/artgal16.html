@@ -350,9 +350,9 @@ oil_2.position.set( 300, 10, 50 );
 	
 				
 
-var spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 100, 1000, 100 );
-
+var spotLight = new THREE.SpotLight( 0xffffff, 3 );
+spotLight.position.set( 150, 100, 10 );
+scene.add( new THREE.DirectionalLightHelper(spotlight, 5) );
 spotLight.castShadow = true;
 
 spotLight.shadow.mapSize.width = 1024;
