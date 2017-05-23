@@ -332,27 +332,7 @@ var trippy_2_material = new THREE.MeshFaceMaterial(trippy_2_materials_list);
 var trippy_2 = new THREE.Mesh(sml_port_geom_1, trippy_2_material);scene.add(trippy_2); 
 trippy_2.position.set( -100, 10, -524 );
 				
-				
-				
-  // trippy images ...buzzy oil 2
-    var buzzy_geometry6 = new THREE.CubeGeometry( 75, 88, 2, 2 );
-    var buzzyMaterials6 = [// back side
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-      new THREE.MeshPhongMaterial({color: 0x000000,}),  
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/philipdusel/images/pd_1.jpg'),
-        side: THREE.DoubleSide
-      }),
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-    ];
-    //add cube & materials
-    var buzzyMaterial6 = new THREE.MeshFaceMaterial(buzzyMaterials6);
-    var framed_buzzy6 = new THREE.Mesh(buzzy_geometry6, buzzyMaterial6);
-    scene.add(framed_buzzy6); framed_buzzy6.rotateY( Math.PI / 2 ); framed_buzzy6.position.set(-300, 10, -100);
-    // trippy images ...buzzy	oil 2
-				
+								
 
   // trippy images ...buzzy oil 2
     var buzzy_geometry7 = new THREE.CubeGeometry( 220, 150, 2, 2 );
