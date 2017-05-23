@@ -474,11 +474,14 @@ scene.add( mshPhongFloor );
     framed_nuzzy.position.set(100, 10, -524);
     // trippy images ...nuzzy				
 								
+    var sml_port_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+    var lrg_landscp_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
 
+				
+				
 
-   var small_port_geom = '75, 88, 2, 2';
    // trippy images ...flower1
-    var buzzy_geometry1 = new THREE.CubeGeometry( small_port_geom );var buzzyMaterials1 = [ new THREE.MeshPhongMaterial({
+      var buzzyMaterials1 = [ new THREE.MeshPhongMaterial({
 	color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({
         map: new THREE.TextureLoader().load( '/philipdusel/images/16L_67.jpg' ),
         side: THREE.DoubleSide
@@ -487,12 +490,14 @@ scene.add( mshPhongFloor );
     ];
     //add cube & materials
     var buzzyMaterial1 = new THREE.MeshFaceMaterial(buzzyMaterials1);
-    var framed_buzzy1 = new THREE.Mesh(buzzy_geometry1, buzzyMaterial1);
+    var framed_buzzy1 = new THREE.Mesh(sml_port_geom_1, buzzyMaterial1);
     scene.add(framed_buzzy1); framed_buzzy1.rotateY( Math.PI / 2 ); framed_buzzy1.position.set(-300, 10, -200);
     // trippy images ...buzzy				
 								
     // trippy images ...buzzy
-    var buzzy_geometry2 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+				
+				
+
     var buzzyMaterials2 = [// back side
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
@@ -506,13 +511,12 @@ scene.add( mshPhongFloor );
     ];
     //add cube & materials
     var buzzyMaterial2 = new THREE.MeshFaceMaterial(buzzyMaterials2);
-    var framed_buzzy2 = new THREE.Mesh(buzzy_geometry2, buzzyMaterial2);
+    var framed_buzzy2 = new THREE.Mesh(sml_port_geom_1, buzzyMaterial2);
     scene.add(framed_buzzy2); framed_buzzy2.rotateY( Math.PI / 2 ); framed_buzzy2.position.set(-300, 10, 100);
     // trippy images ...buzzy				
 
 				
    // trippy images ...buzzy
-    var buzzy_geometry4 = new THREE.CubeGeometry( 75, 88, 2, 2 );
     var buzzyMaterials4 = [// back side
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
@@ -526,7 +530,7 @@ scene.add( mshPhongFloor );
     ];
     //add cube & materials
     var buzzyMaterial4 = new THREE.MeshFaceMaterial(buzzyMaterials4);
-    var framed_buzzy4 = new THREE.Mesh(buzzy_geometry4, buzzyMaterial4);
+    var framed_buzzy4 = new THREE.Mesh(sml_port_geom_1, buzzyMaterial4);
     scene.add(framed_buzzy4); framed_buzzy4.rotateY( Math.PI / 2 ); 
     framed_buzzy4.position.set(-300, 10, 0);
     // trippy images ...buzzy
@@ -535,7 +539,6 @@ scene.add( mshPhongFloor );
 				
 				
    // trippy images ...buzzy flower
-    var buzzy_geometry5 = new THREE.CubeGeometry( 75, 88, 2, 2 );
     var buzzyMaterials5 = [// back side
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
@@ -549,7 +552,7 @@ scene.add( mshPhongFloor );
     ];
     //add cube & materials
     var buzzyMaterial5 = new THREE.MeshFaceMaterial(buzzyMaterials5);
-    var framed_buzzy5 = new THREE.Mesh(buzzy_geometry5, buzzyMaterial5);
+    var framed_buzzy5 = new THREE.Mesh(sml_port_geom_1, buzzyMaterial5);
     scene.add(framed_buzzy5); framed_buzzy5.rotateY( Math.PI / 2 ); framed_buzzy5.position.set(-300, 10, -100);
     // trippy images ...buzzy	flower		
 
