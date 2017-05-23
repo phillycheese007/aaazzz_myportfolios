@@ -354,7 +354,7 @@ oil_2.position.set( 300, 10, 50 );
 
 
 		// Light
-		mylight1 = new THREE.DirectionalLight( 0xFFFFFF );
+		var mylight1 = new THREE.DirectionalLight( 0xFFFFFF,4 );
 		mylight1.position.set( -20, 80, 0 );
 		mylight1.target.position.copy( scene.position );
         scene.add( new THREE.DirectionalLightHelper(mylight1, 2.5) );
