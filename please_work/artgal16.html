@@ -343,73 +343,20 @@ var oil_2 = new THREE.Mesh(lrg_landscp_geom_1, oil_2_material);scene.add(oil_2);
 oil_2.rotateY( -(Math.PI / 2) );
 oil_2.position.set( 300, 10, 50 );				
 
-				
-				
-				
-				
-    // trippy images ...buzzy
-    var buzzy_geometry3 = new THREE.CubeGeometry( 220, 150, 2, 2 );
-    
-    var buzzyMaterials3 = [
-      // back side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // front side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // Top side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }),  
-      // Bottom side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // right side
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/philipdusel/images/pd_2.jpg'),
-        side: THREE.DoubleSide
-      }),
-      // left side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-    ];
-
-    //add cube & materials
-    var buzzyMaterial3 = new THREE.MeshFaceMaterial(buzzyMaterials3);
-    var framed_buzzy3 = new THREE.Mesh(buzzy_geometry3, buzzyMaterial3);
-    scene.add(framed_buzzy3);	
-    framed_buzzy3.rotateY( -(Math.PI / 2) );
-    framed_buzzy3.position.set(300, 10, -249);
-    // trippy images ...buzzy				
-								
-	
-				
-				
-				
-				
-				
+							
 //var mesh = new THREE.Mesh( new THREE.SphereGeometry( 5, 16, 8 ), new THREE.MeshNormalMaterial() );
 //mesh.position.z = - 100; // some negative number
 //camera.add( mesh );			
 	
 				
-		
 
 
-
-
-
-//Lights
-				
+//Lights				
 var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
 dirLight44.position.set(3, 30, -15);
 dirLight44.castShadow = true;
 scene.add( dirLight44 );
-//scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
 dirLight44.shadowCameraVisible = true;
 dirLight44.shadow.mapSize.width = 3024;
 dirLight44.shadow.mapSize.height = 3024;
@@ -417,24 +364,18 @@ dirLight44.shadow.camera.left = 50;
 dirLight44.shadow.camera.fov = 50;
 dirLight44.shadowCameraVisible = true;	
 
-
-
-				
-
-				
-
-				
-
-				
-
-
-
-				
-				
-	
-
-
-	
+//Lights				
+var dirLight55 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight55.position.set(100, 30, -15);
+dirLight55.castShadow = true;
+scene.add( dirLight55 );
+scene.add( new THREE.DirectionalLightHelper(dirLight55, 1) );
+dirLight55.shadowCameraVisible = true;
+dirLight55.shadow.mapSize.width = 3024;
+dirLight55.shadow.mapSize.height = 3024;
+dirLight55.shadow.camera.left = 50;	
+dirLight55.shadow.camera.fov = 50;
+dirLight55.shadowCameraVisible = true;	
 
 
 				//
