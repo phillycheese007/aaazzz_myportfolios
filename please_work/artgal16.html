@@ -351,14 +351,14 @@ oil_2.position.set( 300, 10, 50 );
 				
 
 var spotLight = new THREE.SpotLight( 0xffffff, 2 );
-spotLight.position.set( 150, 150, 10 );
+spotLight.position.set( 150, 250, 10 );
 spotLight.castShadow = true;
 
 spotLight.shadow.mapSize.width = 124;
 spotLight.shadow.mapSize.height = 124;
 
-spotLight.shadow.camera.near = 500;
-spotLight.shadow.camera.far = 400;
+spotLight.shadow.camera.near = 50;
+spotLight.shadow.camera.far = 40;
 spotLight.shadow.camera.fov = 30;
 
 scene.add( spotLight );
