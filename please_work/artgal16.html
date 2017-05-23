@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js - pointerlock controls</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				width: 100%;
+				height: 100%;
+			}
+
+			body {
+				background-color: #ffffff;
+				margin: 0;
+				overflow: hidden;
+				font-family: arial;
+			}
+
+			#blocker {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.5);
+			}
+
+			#instructions {
+
+				width: 100%;
+				height: 100%;
+				display: -webkit-box;
+				display: -moz-box;
+				display: box;
+
+				-webkit-box-orient: horizontal;
+				-moz-box-orient: horizontal;
+				box-orient: horizontal;
+
+				-webkit-box-pack: center;
+				-moz-box-pack: center;
+				box-pack: center;
+
+				-webkit-box-align: center;
+				-moz-box-align: center;
+				box-align: center;
+
+				color: #ffffff;
+				text-align: center;
+
+				cursor: pointer;
+
+			}
+
+		</style>
+	</head>
+	<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+		<script src="/aaazzz_myportfolios/please_work/js/controls/PointerLockControls.js"></script>
+
+		<div id="blocker">
+
+			<div id="instructions">
+				<span style="font-size:40px">Click to play</span>
+				<br />
+				(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
+			</div>
+
+		</div>
+
+		<script>
+
+			var camera, scene, renderer;
+			var geometry, material, mesh;
+			
+			var meshbert;//env
+			
+			var controls;
+
+			var objects = [];
+
+			var raycaster;
+
+			var blocker = document.getElementById( 'blocker' );
+			var instructions = document.getElementById( 'instructions' );
+
+			// http://www.html5rocks.com/en/tutorials/pointerlock/intro/
+
+			var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
+
+			if ( havePointerLock ) {
+
+				var element = document.body;
+
+				var pointerlockchange = function ( event ) {
+
+					if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
+
+						controlsEnabled = true;
+						controls.enabled = true;
+
+						blocker.style.display = 'none';
+
+					} else {
+
+						controls.enabled = false;
+
+						blocker.style.display = '-webkit-box';
+						blocker.style.display = '-moz-box';
+						blocker.style.display = 'box';
+
+						instructions.style.display = '';
+
+					}
+
+				};
+
+				var pointerlockerror = function ( event ) {
+
+					instructions.style.display = '';
+
+				};
+
+				// Hook pointer lock state change events
+				document.addEventListener( 'pointerlockchange', pointerlockchange, false );
+				document.addEventListener( 'mozpointerlockchange', pointerlockchange, false );
+				document.addEventListener( 'webkitpointerlockchange', pointerlockchange, false );
+
+				document.addEventListener( 'pointerlockerror', pointerlockerror, false );
+				document.addEventListener( 'mozpointerlockerror', pointerlockerror, false );
+				document.addEventListener( 'webkitpointerlockerror', pointerlockerror, false );
+
+				instructions.addEventListener( 'click', function ( event ) {
+
+					instructions.style.display = 'none';
+
+					// Ask the browser to lock the pointer
+					element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
+					element.requestPointerLock();
+
+				}, false );
+
+			} else {
+				
+				instructions.innerHTML = 'Your browser doesnt work ..try this linksssss <a href="https://phillycheese007.github.io/philipdusel/html/index.html" target="_top">click me</a>';
+
+
+			}
+
+			init();
+			animate();
+
+			var controlsEnabled = false;
+
+			var moveForward = false;
+			var moveBackward = false;
+			var moveLeft = false;
+			var moveRight = false;
+			var canJump = false;
+
+			var prevTime = performance.now();
+			var velocity = new THREE.Vector3();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1400 );
+
+				scene = new THREE.Scene();
+				//scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
+
+				var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+				light.position.set( 0.5, 1, 0.75 );
+				scene.add( light );
+
+				controls = new THREE.PointerLockControls( camera );
+				scene.add( controls.getObject() );
+
+				var onKeyDown = function ( event ) {
+
+					switch ( event.keyCode ) {
+
+						case 38: // up
+						case 87: // w
+							velocity.z -= 50;
+							moveForward = true;
+							break;
+
+						case 37: // left
+						case 65: // a
+							//velocity.y += 350;
+							velocity.x -= 50;
+							moveLeft = true; break;
+
+						case 40: // down
+						case 83: // s
+							velocity.z += 50;
+							moveBackward = true;
+							break;
+
+						case 39: // right
+						case 68: // d
+							//velocity.y += 350;
+							velocity.x += 150;
+							moveRight = true;
+							break;
+
+						case 32: // space
+							if ( canJump === true ) velocity.y += 350;
+							canJump = false;
+							break;
+
+					}
+
+				};
+
+
+				var onKeyUp = function ( event ) {
+
+					switch( event.keyCode ) {
+
+						case 38: // up
+						case 87: // w
+							moveForward = false;
+							break;
+
+						case 37: // left
+						case 65: // a
+							moveLeft = false;
+							break;
+
+						case 40: // down
+						case 83: // s
+							moveBackward = false;
+							break;
+
+						case 39: // right
+						case 68: // d
+							moveRight = false;
+							break;
+
+					}
+
+				};
+
+				document.addEventListener( 'keydown', onKeyDown, false );
+				document.addEventListener( 'keyup', onKeyUp, false );
+
+				raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, -1, 0 ), 0, 10 );
+
+
+		
+//var spotLight = new THREE.SpotLight( 0xffffff );
+//spotLight.position.set( 20, 90, 20 );
+//spotLight.castShadow = true;
+//spotLight.shadow.mapSize.width = 5124;
+//spotLight.shadow.mapSize.height = 5124;
+//spotLight.shadow.camera.near = 50;
+//spotLight.shadow.camera.far = 3000;
+//spotLight.shadow.camera.fov = 3000;
+//scene.add( spotLight );				
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+    // backgroundpanoramic
+    var backgroundpanoramic = new THREE.CubeGeometry(1400, 1400, 1400);
+    
+    var cubeMaterials = [
+      // back side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/back.jpg'),
+        side: THREE.DoubleSide
+      }),
+      // front side
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/front.jpg'),
+        side: THREE.DoubleSide
+      }), 
+      // Top side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/top.jpg'),
+        side: THREE.DoubleSide
+      }), 
+      // Bottom side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/down.jpg'),
+        side: THREE.DoubleSide
+      }), 
+      // right side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/right.png'),
+        side: THREE.DoubleSide
+      }), 
+      // left side
+      new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/left.jpg'),
+        side: THREE.DoubleSide
+      }) 
+    ];
+
+    //add cube & materials
+    var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+    var meshboy = new THREE.Mesh(backgroundpanoramic, cubeMaterial);
+    scene.add(meshboy);		
+    meshboy.position.set(0, 0, 0);				
+				
+
+var gallery_cube_width = 650 ;			
+var gallery_cube_height = 450 ;
+var gallery_cube_depth = 750 ;
+
+				
+var woodFloorTexture
+woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
+woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
+woodFloorTexture.repeat.set( 7, 5 );
+var floorMat = new THREE.MeshBasicMaterial( { map: woodFloorTexture } );
+var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
+var geoFloor = new THREE.BoxGeometry( gallery_cube_width , 0.1, gallery_cube_depth );
+var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
+mshPhongFloor.receiveShadow = true;
+mshPhongFloor.position.set( 0, -150, -150 );
+scene.add( mshPhongFloor );
+				
+
+				
+				
+				
+    // gallerycube
+    var gallery_geometry = new THREE.CubeGeometry(gallery_cube_width, gallery_cube_height, gallery_cube_depth, gallery_cube_depth);
+    var floor;
+    var galleryMaterials = [
+      // back side
+     new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,
+	side: THREE.DoubleSide
+      }), 
+      // front side
+     new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,
+	side: THREE.DoubleSide
+      }), 
+      // Top side
+      new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,
+	side: THREE.DoubleSide
+      }), 
+      // Bottom side
+     new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }),  	    	    
+      // right side
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
+        transparent: true,
+	side: THREE.DoubleSide
+      }),    
+      // left side
+     new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF,
+	side: THREE.DoubleSide    
+      }),  
+    ];
+
+    //add cube & materials
+    var galleryMaterial = new THREE.MeshFaceMaterial(galleryMaterials);
+    var gallery_room_1_cube = new THREE.Mesh(gallery_geometry, galleryMaterial);
+    scene.add(gallery_room_1_cube);	
+				
+    gallery_room_1_cube.receiveShadow = true;
+    gallery_room_1_cube.position.set(0, 75, -150);
+				
+				
+			
+				
+				
+				
+				
+				
+				
+				
+				
+    // trippy images ...buzzy
+    var buzzy_geometry = new THREE.CubeGeometry( 100, 118, 2, 2 );
+    
+    var buzzyMaterials = [
+      // back side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // front side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // Top side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }),  
+      // Bottom side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // right side
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/deer/trippy1_threejs.png'),
+        side: THREE.DoubleSide
+      }),
+      // left side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+    ];
+
+    //add cube & materials
+    var buzzyMaterial = new THREE.MeshFaceMaterial(buzzyMaterials);
+    var framed_buzzy = new THREE.Mesh(buzzy_geometry, buzzyMaterial);
+    scene.add(framed_buzzy);	
+   // framed_buzzy.rotateY( Math.PI / 2 );
+    framed_buzzy.position.set(-100, 10, -524);
+    // trippy images ...buzzy
+
+				
+
+				
+				
+   // trippy images ...nuzzy
+    var nuzzy_geometry = new THREE.CubeGeometry( 100, 118, 2, 2 );
+    
+    var nuzzyMaterials = [
+      // back side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // front side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // Top side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }),  
+      // Bottom side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // right side
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/nuzzy.jpg'),
+        side: THREE.DoubleSide
+      }),
+      // left side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+    ];
+
+    //add cube & materials
+    var nuzzyMaterial = new THREE.MeshFaceMaterial(nuzzyMaterials);
+    var framed_nuzzy = new THREE.Mesh(nuzzy_geometry, nuzzyMaterial);
+    scene.add(framed_nuzzy);	
+    //framed_nuzzy.rotateY( Math.PI / 2 );
+    framed_nuzzy.position.set(100, 10, -524);
+    // trippy images ...nuzzy				
+								
+
+
+   
+   // trippy images ...flower1
+    var buzzy_geometry1 = new THREE.CubeGeometry( 75, 88, 2, 2 );var buzzyMaterials1 = [ new THREE.MeshPhongMaterial({
+	color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load( '/philipdusel/images/16L_67.jpg' ),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial1 = new THREE.MeshFaceMaterial(buzzyMaterials1);
+    var framed_buzzy1 = new THREE.Mesh(buzzy_geometry1, buzzyMaterial1);
+    scene.add(framed_buzzy1); framed_buzzy1.rotateY( Math.PI / 2 ); framed_buzzy1.position.set(-300, 10, -200);
+    // trippy images ...buzzy				
+								
+    // trippy images ...buzzy
+    var buzzy_geometry2 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+    var buzzyMaterials2 = [// back side
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}),  
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load( '/philipdusel/images/16L_68.jpg' ),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial2 = new THREE.MeshFaceMaterial(buzzyMaterials2);
+    var framed_buzzy2 = new THREE.Mesh(buzzy_geometry2, buzzyMaterial2);
+    scene.add(framed_buzzy2); framed_buzzy2.rotateY( Math.PI / 2 ); framed_buzzy2.position.set(-300, 10, 100);
+    // trippy images ...buzzy				
+
+				
+   // trippy images ...buzzy
+    var buzzy_geometry4 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+    var buzzyMaterials4 = [// back side
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}),  
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load( '/philipdusel/images/16L_69.jpg' ),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial4 = new THREE.MeshFaceMaterial(buzzyMaterials4);
+    var framed_buzzy4 = new THREE.Mesh(buzzy_geometry4, buzzyMaterial4);
+    scene.add(framed_buzzy4); framed_buzzy4.rotateY( Math.PI / 2 ); 
+    framed_buzzy4.position.set(-300, 10, 0);
+    // trippy images ...buzzy
+				
+				
+				
+				
+   // trippy images ...buzzy flower
+    var buzzy_geometry5 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+    var buzzyMaterials5 = [// back side
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}),  
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load( '/philipdusel/images/16L_71.jpg' ),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial5 = new THREE.MeshFaceMaterial(buzzyMaterials5);
+    var framed_buzzy5 = new THREE.Mesh(buzzy_geometry5, buzzyMaterial5);
+    scene.add(framed_buzzy5); framed_buzzy5.rotateY( Math.PI / 2 ); framed_buzzy5.position.set(-300, 10, -100);
+    // trippy images ...buzzy	flower		
+
+
+				
+				
+				
+				
+				
+  // trippy images ...buzzy oil 2
+    var buzzy_geometry6 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+    var buzzyMaterials6 = [// back side
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}),  
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/philipdusel/images/pd_1.jpg'),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial6 = new THREE.MeshFaceMaterial(buzzyMaterials6);
+    var framed_buzzy6 = new THREE.Mesh(buzzy_geometry6, buzzyMaterial6);
+    scene.add(framed_buzzy6); framed_buzzy6.rotateY( Math.PI / 2 ); framed_buzzy6.position.set(-300, 10, -100);
+    // trippy images ...buzzy	oil 2
+				
+
+  // trippy images ...buzzy oil 2
+    var buzzy_geometry7 = new THREE.CubeGeometry( 220, 150, 2, 2 );
+    var buzzyMaterials7 = [// back side
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}),  
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/philipdusel/images/pd_1.jpg'),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial7 = new THREE.MeshFaceMaterial(buzzyMaterials7);
+    var framed_buzzy7 = new THREE.Mesh(buzzy_geometry7, buzzyMaterial7);
+    scene.add(framed_buzzy7); 
+    framed_buzzy7.rotateY( -(Math.PI / 2) );
+    framed_buzzy7.position.set(300, 10, 50);
+				// trippy images ...buzzy	oil 2
+								
+				
+				
+				
+    // trippy images ...buzzy
+    var buzzy_geometry3 = new THREE.CubeGeometry( 220, 150, 2, 2 );
+    
+    var buzzyMaterials3 = [
+      // back side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // front side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // Top side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }),  
+      // Bottom side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+      // right side
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/philipdusel/images/pd_2.jpg'),
+        side: THREE.DoubleSide
+      }),
+      // left side
+      new THREE.MeshPhongMaterial({
+        color: 0x000000,
+      }), 
+    ];
+
+    //add cube & materials
+    var buzzyMaterial3 = new THREE.MeshFaceMaterial(buzzyMaterials3);
+    var framed_buzzy3 = new THREE.Mesh(buzzy_geometry3, buzzyMaterial3);
+    scene.add(framed_buzzy3);	
+    framed_buzzy3.rotateY( -(Math.PI / 2) );
+    framed_buzzy3.position.set(300, 10, -249);
+    // trippy images ...buzzy				
+								
+	
+				
+				
+				
+				
+				
+//var mesh = new THREE.Mesh( new THREE.SphereGeometry( 5, 16, 8 ), new THREE.MeshNormalMaterial() );
+//mesh.position.z = - 100; // some negative number
+//camera.add( mesh );			
+	
+				
+		
+
+
+
+
+
+//Lights
+				
+var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight44.position.set(3, 30, -15);
+dirLight44.castShadow = true;
+scene.add( dirLight44 );
+//scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+dirLight44.shadowCameraVisible = true;
+dirLight44.shadow.mapSize.width = 3024;
+dirLight44.shadow.mapSize.height = 3024;
+dirLight44.shadow.camera.left = 50;	
+dirLight44.shadow.camera.fov = 50;
+dirLight44.shadowCameraVisible = true;	
+
+
+
+				
+
+				
+
+				
+
+				
+
+
+
+				
+				
+	
+
+
+	
+
+
+				//
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setClearColor( 0xffffff );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				
+				
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.antialias = true;
+				
+				document.body.appendChild( renderer.domElement );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				if ( controlsEnabled ) {
+					raycaster.ray.origin.copy( controls.getObject().position );
+					raycaster.ray.origin.y -= 10;
+
+					var intersections = raycaster.intersectObjects( objects );
+
+					var isOnObject = intersections.length > 0;
+
+					var time = performance.now();
+					var delta = ( time - prevTime ) / 1000;
+
+					velocity.x -= velocity.x * 10.0 * delta;
+					velocity.z -= velocity.z * 10.0 * delta;
+
+					velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
+
+					if ( moveForward ) velocity.z -= 400.0 * delta;
+					if ( moveBackward ) velocity.z += 400.0 * delta;
+
+					if ( moveLeft ) velocity.x -= 400.0 * delta;
+					if ( moveRight ) velocity.x += 400.0 * delta;
+
+					if ( isOnObject === true ) {
+						velocity.y = Math.max( 0, velocity.y );
+
+						canJump = true;
+					}
+
+					controls.getObject().translateX( velocity.x * delta );
+					controls.getObject().translateY( velocity.y * delta );
+					controls.getObject().translateZ( velocity.z * delta );
+
+					if ( controls.getObject().position.y < 10 ) {
+
+						velocity.y = 0;
+						controls.getObject().position.y = 10;
+
+						canJump = true;
+
+					}
+
+					prevTime = time;
+
+				}
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>
