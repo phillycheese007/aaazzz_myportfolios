@@ -533,7 +533,24 @@ scene.add( mshPhongFloor );
     scene.add(framed_buzzy4); framed_buzzy4.rotateY( Math.PI / 2 ); framed_buzzy4.position.set(-300, 10, 0);
     // trippy images ...buzzy
 				
-				
+   // trippy images ...buzzy
+    var buzzy_geometry4 = new THREE.CubeGeometry( 75, 88, 2, 2 );
+    var buzzyMaterials4 = [// back side
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({color: 0x000000,}),  
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+      new THREE.MeshPhongMaterial({
+        map: new THREE.TextureLoader().load('/philipdusel/images/16L_67.jpg'),
+        side: THREE.DoubleSide
+      }),
+      new THREE.MeshPhongMaterial({color: 0x000000,}), 
+    ];
+    //add cube & materials
+    var buzzyMaterial4 = new THREE.MeshFaceMaterial(buzzyMaterials4);
+    var framed_buzzy5 = new THREE.Mesh(buzzy_geometry4, buzzyMaterial4);
+    scene.add(framed_buzzy5); framed_buzzy5.rotateY( Math.PI / 2 ); framed_buzzy5.position.set(-300, 10, -100);
+    // trippy images ...buzzy			
 
     // trippy images ...buzzy
     var buzzy_geometry3 = new THREE.CubeGeometry( 220, 150, 2, 2 );
