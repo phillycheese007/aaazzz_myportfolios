@@ -168,7 +168,8 @@ var pointerlockerror = function ( event ) {instructions.style.display = '';};
 				
 				
 				
-				
+var color_white = '0xFFFFFF' ;	
+var color_black = '0x000000' ;
 				
 				
 				
@@ -232,13 +233,13 @@ scene.add( mshPhongFloor );
 var gallery_geometry = new THREE.CubeGeometry(gallery_cube_width, gallery_cube_height, gallery_cube_depth, gallery_cube_depth);
 var floor;
 var galleryMaterials = [
-new THREE.MeshPhongMaterial({color: 0xFFFFFF,side: THREE.DoubleSide}), 
-new THREE.MeshPhongMaterial({color: 0xFFFFFF,side: THREE.DoubleSide}), 
-new THREE.MeshPhongMaterial({color: 0xFFFFFF,side: THREE.DoubleSide}), 
-new THREE.MeshPhongMaterial({color: 0x000000,}),  	    	    
+new THREE.MeshPhongMaterial({color: color_white,side: THREE.DoubleSide}), 
+new THREE.MeshPhongMaterial({color: color_white,side: THREE.DoubleSide}), 
+new THREE.MeshPhongMaterial({color: color_white,side: THREE.DoubleSide}), 
+new THREE.MeshPhongMaterial({color: color_white,}),  	    	    
 new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/door8.png'),
 transparent: true,side: THREE.DoubleSide}),    
-new THREE.MeshPhongMaterial({color: 0xFFFFFF,side: THREE.DoubleSide }),  
+new THREE.MeshPhongMaterial({color: color_white,side: THREE.DoubleSide }),  
 ];
 //add cube & materials
 var galleryMaterial = new THREE.MeshFaceMaterial(galleryMaterials);
@@ -253,8 +254,7 @@ gallery_room_1_cube.position.set(0, 75, -150);
 				
 var sml_port_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
 var lrg_landscp_geom_1 = new THREE.CubeGeometry( 220, 150, 3, 3 );
-var color_white = '0xFFFFFF' ;	
-var color_black = '0x000000' ;	
+	
 
 				
 // flower1
