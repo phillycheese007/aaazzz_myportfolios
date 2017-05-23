@@ -454,13 +454,14 @@ gallery_room_1_cube.position.set(0, 75, -150);
 
 // flower1
 var flower_1_materials_list = [ new THREE.MeshPhongMaterial({
-color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({color: 0x000000,}),
-new THREE.MeshPhongMaterial({color: 0x000000,}),new THREE.MeshPhongMaterial({
+var color_flower = '0x000000' ;	
+color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
+new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({
 map: new THREE.TextureLoader().load( '/philipdusel/images/16L_67.jpg' ),side: THREE.DoubleSide}),
-new THREE.MeshPhongMaterial({color: 0x000000,}), ];
-var buzzyMaterial1 = new THREE.MeshFaceMaterial(flower_1_materials_list);
-var framed_buzzy1 = new THREE.Mesh(sml_port_geom_1, buzzyMaterial1);scene.add(framed_buzzy1); 
-framed_buzzy1.rotateY( Math.PI / 2 ); framed_buzzy1.position.set(-300, 10, -200);
+new THREE.MeshPhongMaterial({color: color_flower,}), ];
+var flower_1_material = new THREE.MeshFaceMaterial(flower_1_materials_list);
+var flower_1 = new THREE.Mesh(sml_port_geom_1, flower_1_material);scene.add(flower_1); 
+flower_1.rotateY( Math.PI / 2 ); flower_1.position.set(-300, 10, -200);
 // flower1
 								
 				
