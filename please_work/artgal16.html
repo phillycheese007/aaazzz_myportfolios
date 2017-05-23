@@ -353,15 +353,20 @@ oil_2.position.set( 300, 10, 50 );
 
 
 
-var spotLight = new THREE.SpotLight(0xffff00, 10, 200, 20, 10);
-spotLight.position.set( 0, 40, 30 );
-  
-var spotTarget = new THREE.Object3D();
-spotTarget.position.set(0, 0, 10);
-spotLight.target = spotTarget;
-  
-scene.add(spotLight);
-scene.add(new THREE.PointLightHelper(spotLight, 11));
+//Lights				
+var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight44.position.set(3, 30, -15);
+dirLight44.castShadow = true;
+scene.add( dirLight44 );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 5) );
+dirLight44.shadowCameraVisible = true;
+dirLight44.shadow.mapSize.width = 3024;
+dirLight44.shadow.mapSize.height = 3024;
+dirLight44.shadow.camera.left = 50;	
+dirLight44.shadow.camera.fov = 50;
+dirLight44.shadowCameraVisible = true;	
+
+
 				//
 
 				renderer = new THREE.WebGLRenderer();
