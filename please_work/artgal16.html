@@ -356,7 +356,7 @@ var dirLight44 = new THREE.DirectionalLight( 0xffffff, 2 );
 dirLight44.position.set(3, 30, -15);
 dirLight44.castShadow = true;
 scene.add( dirLight44 );
-scene.add( new THREE.DirectionalLightHelper(dirLight44, 1) );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 5) );
 dirLight44.shadowCameraVisible = true;
 dirLight44.shadow.mapSize.width = 3024;
 dirLight44.shadow.mapSize.height = 3024;
@@ -365,13 +365,13 @@ dirLight44.shadow.camera.fov = 50;
 dirLight44.shadowCameraVisible = true;	
 
 //Lights				
-var dirLight55 = new THREE.DirectionalLight( 0xffffff, 5 );
-dirLight55.position.set(0, 10, -15);
+var dirLight55 = new THREE.DirectionalLight( 0xffffff, 2 );
+dirLight55.position.set(222, 10, -15);
 dirLight55.rotateY( -(Math.PI / 2) );
 
 dirLight55.castShadow = true;
 scene.add( dirLight55 );
-scene.add( new THREE.DirectionalLightHelper(dirLight55, 1) );
+scene.add( new THREE.DirectionalLightHelper(dirLight55, 5) );
 dirLight55.shadowCameraVisible = true;
 dirLight55.shadow.mapSize.width = 3024;
 dirLight55.shadow.mapSize.height = 3024;
