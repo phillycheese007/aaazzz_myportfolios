@@ -274,47 +274,34 @@
 				
 				
 				
-    // backgroundpanoramic
-    var backgroundpanoramic = new THREE.CubeGeometry(1400, 1400, 1400);
-    
-    var cubeMaterials = [
-      // back side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/back.jpg'),
-        side: THREE.DoubleSide
-      }),
-      // front side
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/front.jpg'),
-        side: THREE.DoubleSide
-      }), 
-      // Top side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/top.jpg'),
-        side: THREE.DoubleSide
-      }), 
-      // Bottom side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/down.jpg'),
-        side: THREE.DoubleSide
-      }), 
-      // right side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/right.png'),
-        side: THREE.DoubleSide
-      }), 
-      // left side
-      new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/left.jpg'),
-        side: THREE.DoubleSide
-      }) 
-    ];
-
-    //add cube & materials
-    var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
-    var meshboy = new THREE.Mesh(backgroundpanoramic, cubeMaterial);
-    scene.add(meshboy);		
-    meshboy.position.set(0, 0, 0);				
+// backgroundpanoramic
+var backgroundpanoramic = new THREE.CubeGeometry(1400, 1400, 1400);
+var cubeMaterials = [
+new THREE.MeshBasicMaterial({
+map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/back.jpg'),
+side: THREE.DoubleSide}),
+new THREE.MeshPhongMaterial({
+map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/front.jpg'),
+side: THREE.DoubleSide }), 
+new THREE.MeshBasicMaterial({
+map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/top.jpg'),
+side: THREE.DoubleSide }), 
+new THREE.MeshBasicMaterial({
+map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/down.jpg'),
+side: THREE.DoubleSide}), 
+new THREE.MeshBasicMaterial({
+map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/right.png'),
+side: THREE.DoubleSide}), 
+new THREE.MeshBasicMaterial({
+map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/textures/cube/Bridge2/left.jpg'),
+side: THREE.DoubleSide
+}) 
+];
+//add cube & materials
+var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+var meshboy = new THREE.Mesh(backgroundpanoramic, cubeMaterial);scene.add(meshboy);		
+meshboy.position.set(0, 0, 0);				
+// backgroundpanoramic
 				
 
 var gallery_cube_width = 650 ;			
@@ -322,7 +309,7 @@ var gallery_cube_height = 450 ;
 var gallery_cube_depth = 750 ;
 
 				
-var woodFloorTexture
+var woodFloorTexture;
 woodFloorTexture = new THREE.TextureLoader().load( "/aaazzz_myportfolios/images/floor.jpg" );
 woodFloorTexture.wrapS = woodFloorTexture.wrapT = THREE.RepeatWrapping;
 woodFloorTexture.repeat.set( 7, 5 );
