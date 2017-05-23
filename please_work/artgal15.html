@@ -191,6 +191,10 @@
 
 						case 37: // left
 						case 65: // a
+							//velocity.y += 350;
+							velocity.x += 350;
+							velocity.z += 350;
+							
 							moveLeft = true; break;
 
 						case 40: // down
@@ -200,7 +204,7 @@
 
 						case 39: // right
 						case 68: // d
-							velocity.y += 350;
+							//velocity.y += 350;
 							velocity.x += 350;
 							velocity.z += 350;
 							moveRight = true;
