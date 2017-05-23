@@ -1,91 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>three.js - pointerlock controls</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			html, body {
-				width: 100%;
-				height: 100%;
-			}
-
-			body {
-				background-color: #ffffff;
-				margin: 0;
-				overflow: hidden;
-				font-family: arial;
-			}
-
-			#blocker {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0,0,0,0.5);
-			}
-
-			#instructions {
-
-				width: 100%;
-				height: 100%;
-				display: -webkit-box;
-				display: -moz-box;
-				display: box;
-
-				-webkit-box-orient: horizontal;
-				-moz-box-orient: horizontal;
-				box-orient: horizontal;
-
-				-webkit-box-pack: center;
-				-moz-box-pack: center;
-				box-pack: center;
-
-				-webkit-box-align: center;
-				-moz-box-align: center;
-				box-align: center;
-
-				color: #ffffff;
-				text-align: center;
-
-				cursor: pointer;
-
-			}
-
-		</style>
-	</head>
-	<body>
+<head>
+<title>three.js - pointerlock controls</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<style>
+html, body {width: 100%;height: 100%;}body {background-color: #ffffff;margin: 0;
+overflow: hidden;font-family: arial;}#blocker {position: absolute;width: 100%;height: 100%;
+background-color: rgba(0,0,0,0.5);}#instructions {width: 100%;height: 100%;
+display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;
+box-orient: horizontal;-webkit-box-pack: center;-moz-box-pack: center;box-pack: center;
+-webkit-box-align: center;-moz-box-align: center;box-align: center;color: #ffffff;text-align: center;cursor: pointer;
+}
+</style>
+</head>
+<body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
-		<script src="/aaazzz_myportfolios/please_work/js/controls/PointerLockControls.js"></script>
-
-		<div id="blocker">
-
-			<div id="instructions">
-				<span style="font-size:40px">Click to play</span>
-				<br />
-				(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
-			</div>
-
-		</div>
-
-		<script>
+<script src="/aaazzz_myportfolios/please_work/js/controls/PointerLockControls.js"></script>
+<div id="blocker">
+<div id="instructions"><span style="font-size:40px">Click to play</span><br />
+(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
+</div></div>
+	
+<script>
 
 			var camera, scene, renderer;
 			var geometry, material, mesh;
-			
 			var meshbert;//env
-			
 			var controls;
-
 			var objects = [];
-
 			var raycaster;
-
 			var blocker = document.getElementById( 'blocker' );
 			var instructions = document.getElementById( 'instructions' );
-
-			// http://www.html5rocks.com/en/tutorials/pointerlock/intro/
-
 			var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
 
 			if ( havePointerLock ) {
@@ -125,15 +71,12 @@
 				document.addEventListener( 'pointerlockchange', pointerlockchange, false );
 				document.addEventListener( 'mozpointerlockchange', pointerlockchange, false );
 				document.addEventListener( 'webkitpointerlockchange', pointerlockchange, false );
-
 				document.addEventListener( 'pointerlockerror', pointerlockerror, false );
 				document.addEventListener( 'mozpointerlockerror', pointerlockerror, false );
 				document.addEventListener( 'webkitpointerlockerror', pointerlockerror, false );
 
 				instructions.addEventListener( 'click', function ( event ) {
-
 					instructions.style.display = 'none';
-
 					// Ask the browser to lock the pointer
 					element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
 					element.requestPointerLock();
@@ -141,23 +84,18 @@
 				}, false );
 
 			} else {
-				
 				instructions.innerHTML = 'Your browser doesnt work ..try this linksssss <a href="https://phillycheese007.github.io/philipdusel/html/index.html" target="_top">click me</a>';
-
-
 			}
 
 			init();
 			animate();
 
 			var controlsEnabled = false;
-
 			var moveForward = false;
 			var moveBackward = false;
 			var moveLeft = false;
 			var moveRight = false;
 			var canJump = false;
-
 			var prevTime = performance.now();
 			var velocity = new THREE.Vector3();
 
@@ -448,45 +386,46 @@ gallery_room_1_cube.position.set(0, 75, -150);
 				
 var sml_port_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
 var lrg_landscp_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
-var color_flower = '0x000000' ;	
+var color_white = '0xFFFFFF' ;	
+var color_black = '0x000000' ;	
 
 				
 // flower1
 var flower_1_materials_list = [ new THREE.MeshPhongMaterial({
-color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
-new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({
+color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),
+new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({
 map: new THREE.TextureLoader().load( '/philipdusel/images/16L_67.jpg' ),side: THREE.DoubleSide}),
-new THREE.MeshPhongMaterial({color: color_flower,}), ];
+new THREE.MeshPhongMaterial({color: color_black,}), ];
 var flower_1_material = new THREE.MeshFaceMaterial(flower_1_materials_list);
 var flower_1 = new THREE.Mesh(sml_port_geom_1, flower_1_material);scene.add(flower_1); 
 flower_1.rotateY( Math.PI / 2 ); flower_1.position.set(-300, 10, -200);				
 				
 // flower2
 var flower_2_materials_list = [ new THREE.MeshPhongMaterial({
-color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
-new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({
+color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),
+new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({
 map: new THREE.TextureLoader().load( '/philipdusel/images/16L_68.jpg' ),side: THREE.DoubleSide}),
-new THREE.MeshPhongMaterial({color: color_flower,}), ];
+new THREE.MeshPhongMaterial({color: color_black,}), ];
 var flower_2_material = new THREE.MeshFaceMaterial(flower_2_materials_list);
 var flower_2 = new THREE.Mesh(sml_port_geom_1, flower_2_material);scene.add(flower_2); 
 flower_2.rotateY( Math.PI / 2 ); flower_2.position.set(-300, 10, 100);
 				
 // flower3
 var flower_3_materials_list = [ new THREE.MeshPhongMaterial({
-color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
-new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({
+color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),
+new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({
 map: new THREE.TextureLoader().load( '/philipdusel/images/16L_69.jpg' ),side: THREE.DoubleSide}),
-new THREE.MeshPhongMaterial({color: color_flower,}), ];
+new THREE.MeshPhongMaterial({color: color_black,}), ];
 var flower_3_material = new THREE.MeshFaceMaterial(flower_3_materials_list);
 var flower_3 = new THREE.Mesh(sml_port_geom_1, flower_3_material);scene.add(flower_3); 
 flower_3.rotateY( Math.PI / 2 ); flower_3.position.set(-300, 10, 0);				
 
 // flower3
 var flower_4_materials_list = [ new THREE.MeshPhongMaterial({
-color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
-new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({
+color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),
+new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({
 map: new THREE.TextureLoader().load( '/philipdusel/images/16L_71.jpg' ),side: THREE.DoubleSide}),
-new THREE.MeshPhongMaterial({color: color_flower,}), ];
+new THREE.MeshPhongMaterial({color: color_black,}), ];
 var flower_4_material = new THREE.MeshFaceMaterial(flower_4_materials_list);
 var flower_4 = new THREE.Mesh(sml_port_geom_1, flower_4_material);scene.add(flower_4); 
 flower_4.rotateY( Math.PI / 2 ); flower_4.position.set(-300, 10, 0);				
@@ -494,8 +433,15 @@ flower_4.rotateY( Math.PI / 2 ); flower_4.position.set(-300, 10, 0);
 
 
 
-				
-				
+// trippy1
+var flower_4_materials_list = [ new THREE.MeshPhongMaterial({
+color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),
+new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({
+map: new THREE.TextureLoader().load( '/aaazzz_myportfolios/please_work/images/deer/nuzzy.jpg' ),side: THREE.DoubleSide}),
+new THREE.MeshPhongMaterial({color: color_black,}), ];
+var flower_4_material = new THREE.MeshFaceMaterial(flower_4_materials_list);
+var flower_4 = new THREE.Mesh(sml_port_geom_1, flower_4_material);scene.add(flower_4); 
+flower_4.rotateY( Math.PI / 2 ); flower_4.position.set( 100, 10, -524 );
 				
 				
 				
