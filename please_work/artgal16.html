@@ -449,11 +449,11 @@ gallery_room_1_cube.position.set(0, 75, -150);
     var sml_port_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
     var lrg_landscp_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
 
-				
+    var color_flower = '0x000000' ;	
+
 				
 
 // flower1
-				var color_flower = '0x000000' ;	
 
 var flower_1_materials_list = [ new THREE.MeshPhongMaterial({
 color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
@@ -465,25 +465,19 @@ var flower_1 = new THREE.Mesh(sml_port_geom_1, flower_1_material);scene.add(flow
 flower_1.rotateY( Math.PI / 2 ); flower_1.position.set(-300, 10, -200);
 // flower1
 								
+var flower_2_materials_list = [ new THREE.MeshPhongMaterial({
+color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({color: color_flower,}),
+new THREE.MeshPhongMaterial({color: color_flower,}),new THREE.MeshPhongMaterial({
+map: new THREE.TextureLoader().load( '/philipdusel/images/16L_68.jpg' ),side: THREE.DoubleSide}),
+new THREE.MeshPhongMaterial({color: color_flower,}), ];
+var flower_2_material = new THREE.MeshFaceMaterial(flower_2_materials_list);
+var flower_2 = new THREE.Mesh(sml_port_geom_1, flower_2_material);scene.add(flower_2); 
+flower_2.rotateY( Math.PI / 2 ); flower_2.position.set(-300, 10, 100);
+// flower1
 				
 				
 
-    var flower_2_materials_list = [// back side
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-      new THREE.MeshPhongMaterial({color: 0x000000,}),  
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load( '/philipdusel/images/16L_68.jpg' ),
-        side: THREE.DoubleSide
-      }),
-      new THREE.MeshPhongMaterial({color: 0x000000,}), 
-    ];
-    //add cube & materials
-    var buzzyMaterial2 = new THREE.MeshFaceMaterial(flower_2_materials_list);
-    var framed_buzzy2 = new THREE.Mesh(sml_port_geom_1, buzzyMaterial2);
-    scene.add(framed_buzzy2); framed_buzzy2.rotateY( Math.PI / 2 ); framed_buzzy2.position.set(-300, 10, 100);
-    // trippy images ...buzzy				
+			
 
 				
    // trippy images ...buzzy
