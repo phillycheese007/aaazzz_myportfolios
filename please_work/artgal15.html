@@ -186,30 +186,24 @@
 
 						case 38: // up
 						case 87: // w
-							velocity.y += 750;
-							velocity.x += 750;
-							velocity.z += 750;
 							moveForward = true;
 							break;
 
 						case 37: // left
 						case 65: // a
-							velocity.y += 750;
-							velocity.x += 750;
-							velocity.z += 750;							moveLeft = true; break;
+							moveLeft = true; break;
 
 						case 40: // down
 						case 83: // s
-							velocity.y += 750;
-							velocity.x += 750;
-							velocity.z += 750;							moveBackward = true;
+							moveBackward = true;
 							break;
 
 						case 39: // right
 						case 68: // d
-							velocity.y += 750;
-							velocity.x += 750;
-							velocity.z += 750;							moveRight = true;
+							velocity.y += 350;
+							velocity.x += 350;
+							velocity.z += 350;
+							moveRight = true;
 							break;
 
 						case 32: // space
@@ -220,6 +214,7 @@
 					}
 
 				};
+
 
 				var onKeyUp = function ( event ) {
 
