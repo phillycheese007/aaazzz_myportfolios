@@ -286,104 +286,6 @@ gallery_room_1_cube.position.set(0, 75, -150);
 				
 			
 				
-				
-				
-				
-				
-				
-				
-				
-    // trippy images ...buzzy
-    var buzzy_geometry = new THREE.CubeGeometry( 100, 118, 2, 2 );
-    
-    var buzzyMaterials = [
-      // back side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // front side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // Top side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }),  
-      // Bottom side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // right side
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/images/deer/trippy1_threejs.png'),
-        side: THREE.DoubleSide
-      }),
-      // left side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-    ];
-
-    //add cube & materials
-    var buzzyMaterial = new THREE.MeshFaceMaterial(buzzyMaterials);
-    var framed_buzzy = new THREE.Mesh(buzzy_geometry, buzzyMaterial);
-    scene.add(framed_buzzy);	
-   // framed_buzzy.rotateY( Math.PI / 2 );
-    framed_buzzy.position.set(-100, 10, -524);
-    // trippy images ...buzzy
-
-				
-
-				
-				
-   // trippy images ...nuzzy
-    var nuzzy_geometry = new THREE.CubeGeometry( 100, 118, 2, 2 );
-    
-    var nuzzyMaterials = [
-      // back side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // front side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // Top side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }),  
-      // Bottom side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-      // right side
-      new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load('/aaazzz_myportfolios/please_work/images/deer/nuzzy.jpg'),
-        side: THREE.DoubleSide
-      }),
-      // left side
-      new THREE.MeshPhongMaterial({
-        color: 0x000000,
-      }), 
-    ];
-
-    //add cube & materials
-    var nuzzyMaterial = new THREE.MeshFaceMaterial(nuzzyMaterials);
-    var framed_nuzzy = new THREE.Mesh(nuzzy_geometry, nuzzyMaterial);
-    scene.add(framed_nuzzy);	
-    //framed_nuzzy.rotateY( Math.PI / 2 );
-    framed_nuzzy.position.set(100, 10, -524);
-    // trippy images ...nuzzy				
-	
-				
-				
-				
-				
-				
-				
-				
-				
-				
 var sml_port_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
 var lrg_landscp_geom_1 = new THREE.CubeGeometry( 75, 88, 2, 2 );
 var color_white = '0xFFFFFF' ;	
@@ -442,6 +344,16 @@ new THREE.MeshPhongMaterial({color: color_black,}), ];
 var flower_4_material = new THREE.MeshFaceMaterial(flower_4_materials_list);
 var flower_4 = new THREE.Mesh(sml_port_geom_1, flower_4_material);scene.add(flower_4); 
 flower_4.rotateY( Math.PI / 2 ); flower_4.position.set( 100, 10, -524 );
+				
+// trippy2
+var trippy_2_materials_list = [ new THREE.MeshPhongMaterial({
+color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({color: color_black,}),
+new THREE.MeshPhongMaterial({color: color_black,}),new THREE.MeshPhongMaterial({
+map: new THREE.TextureLoader().load( '/aaazzz_myportfolios/images/deer/trippy1_threejs.png' ),side: THREE.DoubleSide}),
+new THREE.MeshPhongMaterial({color: color_black,}), ];
+var trippy_2_material = new THREE.MeshFaceMaterial(trippy_2_materials_list);
+var trippy_2 = new THREE.Mesh(sml_port_geom_1, trippy_2_material);scene.add(trippy_2); 
+trippy_2.rotateY( Math.PI / 2 ); trippy_2.position.set( -100, 10, -524 );
 				
 				
 				
