@@ -186,25 +186,30 @@
 
 						case 38: // up
 						case 87: // w
-							velocity += 750;
+							velocity.y += 750;
+							velocity.x += 750;
+							velocity.z += 750;
 							moveForward = true;
 							break;
 
 						case 37: // left
 						case 65: // a
-							velocity += 750;
-							moveLeft = true; break;
+							velocity.y += 750;
+							velocity.x += 750;
+							velocity.z += 750;							moveLeft = true; break;
 
 						case 40: // down
 						case 83: // s
-							velocity += 750;
-							moveBackward = true;
+							velocity.y += 750;
+							velocity.x += 750;
+							velocity.z += 750;							moveBackward = true;
 							break;
 
 						case 39: // right
 						case 68: // d
-							velocity += 750;
-							moveRight = true;
+							velocity.y += 750;
+							velocity.x += 750;
+							velocity.z += 750;							moveRight = true;
 							break;
 
 						case 32: // space
