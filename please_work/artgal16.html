@@ -352,19 +352,14 @@ oil_2.position.set( 300, 10, 50 );
 
 
 
-		// Light
-		var mylight1 = new THREE.DirectionalLight( 0xFFFFFF,4 );
-		mylight1.position.set( -120, 80, 0 );
-		mylight1.target.position.copy( scene.position );
-        scene.add( new THREE.DirectionalLightHelper(mylight1, 2.5) );
-		mylight1.castShadow = true;
-
-		// Light
-		var mylight2 = new THREE.DirectionalLight( 0xFFFFFF,4 );
-		mylight2.position.set( 120, 80, 0 );
-		mylight2.target.position.copy( scene.position );
-        scene.add( new THREE.DirectionalLightHelper(mylight2, 2.5) );
-		mylight2.castShadow = true;
+//Lights				
+var dirLight44 = new THREE.DirectionalLight( 0xffffff, 5 );
+dirLight44.position.set(3, 30, -15);
+dirLight44.castShadow = true;
+scene.add( dirLight44 );
+scene.add( new THREE.DirectionalLightHelper(dirLight44, 5) );
+dirLight44.shadowCameraVisible = true;
+dirLight44.target.position.set(10, -10, 90); 
 
 				//
 
