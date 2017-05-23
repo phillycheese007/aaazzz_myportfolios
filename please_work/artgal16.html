@@ -383,11 +383,11 @@ var spotLight = new THREE.SpotLight(0xffff00, 1, 200, 20, 10);
 spotLight.position.set( 0, 40, 0 );
   
 var spotTarget = new THREE.Object3D();
-spotTarget.position.set(0, -150, 100);
+spotTarget.position.set(0, 0, 100);
 spotLight.target = spotTarget;
   
 scene.add(spotLight);
-scene.add(new THREE.PointLightHelper(spotLight, 1));
+scene.add(new THREE.PointLightHelper(spotLight, 11));
 				//
 
 				renderer = new THREE.WebGLRenderer();
