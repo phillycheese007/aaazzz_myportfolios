@@ -353,11 +353,11 @@ oil_2.position.set( 300, 10, 50 );
 
 
 
-var spotLight = new THREE.SpotLight(0xffff00, 1, 200, 20, 10);
-spotLight.position.set( 0, 40, 0 );
+var spotLight = new THREE.SpotLight(0xffff00, 10, 200, 20, 10);
+spotLight.position.set( 0, 40, 30 );
   
 var spotTarget = new THREE.Object3D();
-spotTarget.position.set(0, 0, 100);
+spotTarget.position.set(0, 0, 10);
 spotLight.target = spotTarget;
   
 scene.add(spotLight);
