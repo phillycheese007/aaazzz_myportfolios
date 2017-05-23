@@ -584,7 +584,7 @@ scene.add( mshPhongFloor );
 				
 
   // trippy images ...buzzy oil 2
-    var buzzy_geometry7 = new THREE.CubeGeometry( 420, 150, 2, 2 );
+    var buzzy_geometry7 = new THREE.CubeGeometry( 220, 150, 2, 2 );
     var buzzyMaterials7 = [// back side
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
@@ -598,7 +598,7 @@ scene.add( mshPhongFloor );
     ];
     //add cube & materials
     var buzzyMaterial7 = new THREE.MeshFaceMaterial(buzzyMaterials7);
-    var framed_buzzy7 = new THREE.Mesh(buzzy_geometry4, buzzyMaterial7);
+    var framed_buzzy7 = new THREE.Mesh(buzzy_geometry7, buzzyMaterial7);
     scene.add(framed_buzzy7); 
     framed_buzzy7.rotateY( -(Math.PI / 2) );
     framed_buzzy7.position.set(300, 10, 50);
