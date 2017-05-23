@@ -515,7 +515,7 @@ scene.add( mshPhongFloor );
     // trippy images ...buzzy				
 
 				
-   var image1 = "/philipdusel/images/16L_68.jpg"
+   var image1 = '/philipdusel/images/16L_68.jpg'
    // trippy images ...buzzy
     var buzzy_geometry4 = new THREE.CubeGeometry( 705, 88, 2, 2 );
     var buzzyMaterials4 = [// back side
@@ -524,7 +524,7 @@ scene.add( mshPhongFloor );
       new THREE.MeshPhongMaterial({color: 0x000000,}),  
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
       new THREE.MeshPhongMaterial({
-        map: new THREE.TextureLoader().load( 'bunny1' ),
+        map: new THREE.TextureLoader().load( image1 ),
         side: THREE.DoubleSide
       }),
       new THREE.MeshPhongMaterial({color: 0x000000,}), 
