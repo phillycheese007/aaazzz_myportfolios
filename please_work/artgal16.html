@@ -350,12 +350,12 @@ oil_2.position.set( 300, 10, 50 );
 	
 			var spotLight = new THREE.SpotLight( 0xffffff, 1 );
 			var lightHelper;
-				spotLight.position.set( 15, 140, 35 );
+				spotLight.position.set( 15, 200, 35 );
 				spotLight.castShadow = true;
-				spotLight.angle = Math.PI / 4;
+				spotLight.angle = Math.PI / 12;
 				spotLight.penumbra = 0.01;
 				spotLight.decay = 2;
-				spotLight.distance = 300;
+				spotLight.distance = 400;
 				spotLight.shadow.mapSize.width = 1024;
 				spotLight.shadow.mapSize.height = 1024;
 				spotLight.shadow.camera.near = 1;
