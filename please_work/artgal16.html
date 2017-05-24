@@ -348,14 +348,14 @@ oil_2.position.set( 300, 10, 50 );
 //mesh.position.z = - 100; // some negative number
 //camera.add( mesh );			
 	
-			var spotLight = new THREE.SpotLight( 0xffffff, 1 );
+			var spotLight = new THREE.SpotLight( 0xffffff, 2 );
 			var lightHelper;
-				spotLight.position.set( 15, 200, 305 );
+				spotLight.position.set( 150, 200, 30 );
 				spotLight.castShadow = true;
 				spotLight.angle = Math.PI / 20;
 				spotLight.penumbra = 0.01;
 				spotLight.decay = 2;
-				spotLight.distance = 400;
+				spotLight.distance = 500;
 				spotLight.shadow.mapSize.width = 1024;
 				spotLight.shadow.mapSize.height = 1024;
 				spotLight.shadow.camera.near = 1;
