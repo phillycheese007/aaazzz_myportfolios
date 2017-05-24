@@ -357,9 +357,9 @@ spotLight.castShadow = true;
 spotLight.shadow.mapSize.width = 124;
 spotLight.shadow.mapSize.height = 124;
 
-spotLight.shadow.camera.near = 50;
-spotLight.shadow.camera.far = 40;
-spotLight.shadow.camera.fov = 30;
+spotLight.shadow.camera.near = 5;
+spotLight.shadow.camera.far = 4;
+spotLight.shadow.camera.fov = 30
 
 scene.add( spotLight );
 scene.add( new THREE.SpotLightHelper(spotLight, 1) );
