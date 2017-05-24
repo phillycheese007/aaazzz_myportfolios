@@ -356,10 +356,7 @@ spotLight.exponent = 2.0;
 spotLight.penumbra = 0.1;
 spotLight.decay = 2.0;
 spotLight.distance = 500;
-var mapSize = spotLight.shadow.mapSize;
-if ( isMobile === true ) mapSize.width = ( maxMapSize / 2 );
-else mapSize.width = maxMapSize;
-mapSize.height = mapSize.width;
+
 
 var shadowCamera = spotLight.shadow.camera;
 spotLight.shadowCameraHelper = new THREE.CameraHelper( shadowCamera ); // colored lines
