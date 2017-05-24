@@ -348,22 +348,23 @@ oil_2.position.set( 300, 10, 50 );
 //mesh.position.z = - 100; // some negative number
 //camera.add( mesh );			
 	
-var spotLight;				
-spotLight.position.set( 15, 40, 35 );
-spotLight.castShadow = true;
-spotLight.angle = 0.45;
-spotLight.exponent = 2.0;
-spotLight.penumbra = 0.1;
-spotLight.decay = 2.0;
-spotLight.distance = 500;
+			var spotLight = new THREE.SpotLight( 0xffffff, 1 );
+			var lightHelper;
+				spotLight.position.set( 15, 40, 35 );
+				spotLight.castShadow = true;
+				spotLight.angle = Math.PI / 4;
+				spotLight.penumbra = 0.05;
+				spotLight.decay = 2;
+				spotLight.distance = 200;
+				spotLight.shadow.mapSize.width = 1024;
+				spotLight.shadow.mapSize.height = 1024;
+				spotLight.shadow.camera.near = 1;
+				spotLight.shadow.camera.far = 200;
 
-
-var shadowCamera = spotLight.shadow.camera;
-spotLight.shadowCameraHelper = new THREE.CameraHelper( shadowCamera ); // colored lines
-shadowCamera.near = 1.0;
-shadowCamera.far = 1000;
-
-
+				lightHelper = new THREE.SpotLightHelper( spotLight );				
+				scene.add( spotLight );
+				scene.add( new THREE.AxisHelper( 10 ) );
+				scene.add( lightHelper );
 				//
 
 				renderer = new THREE.WebGLRenderer();
