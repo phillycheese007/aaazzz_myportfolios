@@ -353,8 +353,13 @@ oil_2.position.set( 300, 10, 50 );
         var light = new THREE.SpotLight(0xFFFFFF);
         light.position.set(0,330,0);
         light.target.position.set(40,-330,0);
-        scene.add( light.target );
+light.shadowCameraLeft = -30;
+light.shadowCameraRight = 30;
+light.shadowCameraTop = 350;
+light.shadowCameraBottom = -30;
+				scene.add( light.target );
         scene.add(light);
+				
 scene.add( new THREE.SpotLightHelper(light, 1) );
 
 				//
