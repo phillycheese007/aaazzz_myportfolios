@@ -350,19 +350,12 @@ oil_2.position.set( 300, 10, 50 );
 	
 				
 
-var spotLight = new THREE.SpotLight( 0xffffff, 2 );
-spotLight.position.set( 150, 250, 10 );
-spotLight.castShadow = true;
-
-spotLight.shadow.mapSize.width = 124;
-spotLight.shadow.mapSize.height = 124;
-
-spotLight.shadow.camera.near = 5;
-spotLight.shadow.camera.far = 4;
-spotLight.shadow.camera.fov = 30
-
-scene.add( spotLight );
-scene.add( new THREE.SpotLightHelper(spotLight, 1) );
+        var light = new THREE.SpotLight(0xFFFFFF);
+        light.position.set(0,130,0);
+        light.target.position.set(400,-130,0);
+        scene.add( light.target );
+        scene.add(light);
+scene.add( new THREE.SpotLightHelper(light, 1) );
 
 				//
 
