@@ -222,7 +222,7 @@ var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var geoFloor = new THREE.BoxGeometry( gallery_cube_width , 0.1, gallery_cube_depth );
 var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, 0, -150 );
+mshPhongFloor.position.set( 0, -150, -150 );
 scene.add( mshPhongFloor );
 				
 
@@ -348,13 +348,13 @@ oil_2.position.set( 300, 10, 50 );
 //mesh.position.z = - 100; // some negative number
 //camera.add( mesh );			
 	
-			var spotLight = new THREE.SpotLight( 0xffffff, 2 );
+			var spotLight = new THREE.SpotLight( 0xffffff, 3 );
 			var lightHelper;
-				spotLight.position.set( -150, 200, 30 );
+				spotLight.position.set( -150, 180, 30 );
 				spotLight.castShadow = true;
 				spotLight.angle = Math.PI / 24;
 				spotLight.penumbra = 0.01;
-				spotLight.decay = 2;
+				spotLight.decay = 1;
 				spotLight.distance = 500;
 				spotLight.shadow.mapSize.width = 1024;
 				spotLight.shadow.mapSize.height = 1024;
@@ -363,16 +363,17 @@ oil_2.position.set( 300, 10, 50 );
 
 				lightHelper = new THREE.SpotLightHelper( spotLight );				
 				scene.add( spotLight );
-				scene.add( new THREE.AxisHelper( 10 ) );
 				scene.add( lightHelper );
 				
-				
 				var targetObject = new THREE.Object3D();
-				targetObject.position.set( 0, 0, 230 );
-scene.add(targetObject);
-spotLight.target = targetObject;
+				targetObject.position.set( 0, 0, 0 );
+                                scene.add(targetObject);
+                                spotLight.target = targetObject;
 				//
 
+				
+				
+				
 				renderer = new THREE.WebGLRenderer();
 				renderer.setClearColor( 0xffffff );
 				renderer.setPixelRatio( window.devicePixelRatio );
