@@ -222,7 +222,7 @@ var matPhongFloor = new THREE.MeshPhongMaterial( { map: woodFloorTexture } );
 var geoFloor = new THREE.BoxGeometry( gallery_cube_width , 0.1, gallery_cube_depth );
 var mshPhongFloor = new THREE.Mesh( geoFloor, matPhongFloor );
 mshPhongFloor.receiveShadow = true;
-mshPhongFloor.position.set( 0, -150, -150 );
+mshPhongFloor.position.set( 0, 0, -150 );
 scene.add( mshPhongFloor );
 				
 
@@ -368,7 +368,7 @@ oil_2.position.set( 300, 10, 50 );
 				
 				
 				var targetObject = new THREE.Object3D();
-				targetObject.position.set( 150, 0, 30 );
+				targetObject.position.set( 0, 0, 30 );
 scene.add(targetObject);
 spotLight.target = targetObject;
 				//
