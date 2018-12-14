@@ -14,7 +14,7 @@
 function tick() {
   const element = (
     <div>
-      <h1>Hello, world!</h1>
+      <h1>Hello, world, And Onion Man!</h1>
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
@@ -23,6 +23,9 @@ function tick() {
 
 setInterval(tick, 1000);
 
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
 
     </script>
 </body>
