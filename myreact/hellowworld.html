@@ -7,11 +7,15 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-    
 ReactDOM.render(
-    <Hello />, 
+    <Hello message="my friend" />, 
     document.getElementById("root")
-);
+);    
+class Hello extends React.Component {
+    render() {
+        return <h1>Hello {this.props.message}!</h1>;
+    }
+}
     </script>
 </body>
 </html>
