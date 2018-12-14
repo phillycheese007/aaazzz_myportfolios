@@ -7,25 +7,10 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-    
-/*
- * A simple React component
- */
-class Application extends React.Component {
-  render() {
-    return <div>
-      <h1>Hello, ES6 and React 0.13!</h1>
-      <p>
-        More info <a href="https://github.com/bradleyboy/codepen-react" target="_blank">here</a>.
-      </p>
-    </div>;
-  }
-}
-
-/*
- * Render the above component into the div#app
- */
-React.render(<Application />, document.getElementById('app'));
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);
     </script>
 </body>
 </html>
