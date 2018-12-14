@@ -8,31 +8,35 @@
     <div id="root"></div>
     <script type="text/babel">
     
-class Hello extends React.Component {
-    
-    constructor(){
-        super();
-        this.state = {
-            message: "my friend (from state)!"
-        };
-        this.updateMessage = this.updateMessage.bind(this);
-    }
-
-    updateMessage() {
-        this.setState({
-            message: "my friend (from changed state)!"
-        });
-    }
-
-    render() {
-         return (
-           <div>
-             <h1>Hello {this.state.message}!</h1>
-             <button onClick={this.updateMessage}>Click me!</button>
-           </div>   
-        )
-    }
-}
+React.createElement(
+  "div",
+  { className: "shopping-list" },
+  React.createElement(
+    "h1",
+    null,
+    "Shopping List for ",
+    props.name
+  ),
+  React.createElement(
+    "ul",
+    null,
+    React.createElement(
+      "li",
+      null,
+      "Instagram"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "WhatsApp"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "Oculus"
+    )
+  )
+);
     </script>
 </body>
 </html>
